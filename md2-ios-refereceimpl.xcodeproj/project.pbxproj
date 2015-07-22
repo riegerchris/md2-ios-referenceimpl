@@ -42,7 +42,7 @@
 		59CB70711B5E9889001D312F /* InitialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialView.xib; sourceTree = "<group>"; };
 		59CB707D1B5EAE2D001D312F /* MD2Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Type.swift; sourceTree = "<group>"; };
 		59CB707F1B5EB15C001D312F /* MD2DataType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2DataType.swift; sourceTree = "<group>"; };
-		59CB70811B5EB281001D312F /* MD2NumericType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MD2NumericType.swift; path = ../MD2NumericType.swift; sourceTree = "<group>"; };
+		59CB70811B5EB281001D312F /* MD2NumericType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2NumericType.swift; sourceTree = "<group>"; };
 		59CB70831B5EB321001D312F /* MD2Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Enum.swift; sourceTree = "<group>"; };
 		59CB70851B5EB3CD001D312F /* MD2String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2String.swift; sourceTree = "<group>"; };
 		59CB70871B5EB72B001D312F /* MD2Boolean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Boolean.swift; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 				59CB707B1B5EADE8001D312F /* widget */,
 				59CB70711B5E9889001D312F /* InitialView.xib */,
 			);
-			name = view;
+			path = view;
 			sourceTree = "<group>";
 		};
 		59CB70751B5E9E11001D312F /* controller */ = {
@@ -97,7 +97,7 @@
 				59CB70791B5EAD52001D312F /* eventhandler */,
 				59CB70701B5E9889001D312F /* InitialViewController.swift */,
 			);
-			name = controller;
+			path = controller;
 			sourceTree = "<group>";
 		};
 		59CB70761B5E9E29001D312F /* model */ = {
@@ -106,7 +106,7 @@
 				59CB70781B5EAD19001D312F /* datastore */,
 				59CB70771B5EACDC001D312F /* type */,
 			);
-			name = model;
+			path = model;
 			sourceTree = "<group>";
 		};
 		59CB70771B5EACDC001D312F /* type */ = {
@@ -126,42 +126,42 @@
 				59CB70931B5F9995001D312F /* MD2Entity.swift */,
 				59CB70951B5FA282001D312F /* Location.swift */,
 			);
-			name = type;
+			path = type;
 			sourceTree = "<group>";
 		};
 		59CB70781B5EAD19001D312F /* datastore */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = datastore;
+			path = datastore;
 			sourceTree = "<group>";
 		};
 		59CB70791B5EAD52001D312F /* eventhandler */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = eventhandler;
+			path = eventhandler;
 			sourceTree = "<group>";
 		};
 		59CB707A1B5EAD5F001D312F /* contentprovider */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = contentprovider;
+			path = contentprovider;
 			sourceTree = "<group>";
 		};
 		59CB707B1B5EADE8001D312F /* widget */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = widget;
+			path = widget;
 			sourceTree = "<group>";
 		};
 		59CB707C1B5EADFE001D312F /* action */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = action;
+			path = action;
 			sourceTree = "<group>";
 		};
 		59CD55971B5E8258007B9834 = {
