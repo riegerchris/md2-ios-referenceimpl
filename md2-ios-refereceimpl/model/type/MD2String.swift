@@ -16,6 +16,10 @@ class MD2String: MD2DataType {
         // Nothing to initialize
     }
     
+    init(value: String) {
+        platformValue = value
+    }
+    
     init(md2String: MD2String) {
         platformValue = md2String.platformValue
     }

@@ -16,6 +16,10 @@ class MD2Boolean: MD2DataType {
         // Nothing to initialize
     }
     
+    init(value : Bool) {
+        platformValue = value
+    }
+    
     init(md2Boolean: MD2Boolean) {
         platformValue = md2Boolean.platformValue
     }
