@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class Location: MD2Entity {
+class Location: MD2EntityType {
     
     var containedTypes : Dictionary = Dictionary<String,MD2Type>()
     
