@@ -9,6 +9,7 @@
 class MD2Integer: MD2NumericType {
     
     typealias ValueType = Int
+    typealias NumericType = MD2Integer
     
     var platformValue: Int?
     
@@ -24,20 +25,20 @@ class MD2Integer: MD2NumericType {
         return platformValue != nil
     }
     
-    func gt(value: Int) -> Bool {
-        return isSet() ? platformValue! > value : false
+    func gt(value: MD2Integer) -> Bool {
+        return (isSet() && value.isSet()) ? platformValue! > value.platformValue : false
     }
     
-    func gte(value: Int) -> Bool {
-        return isSet() ? platformValue! >= value : false
+    func gte(value: MD2Integer) -> Bool {
+        return (isSet() && value.isSet()) ? platformValue! >= value.platformValue : false
     }
     
-    func lt(value: Int) -> Bool {
-        return isSet() ? platformValue! < value : false
+    func lt(value: MD2Integer) -> Bool {
+        return (isSet() && value.isSet()) ? platformValue! < value.platformValue : false
     }
     
-    func lte(value: Int) -> Bool {
-        return isSet() ? platformValue! <= value : false
+    func lte(value: MD2Integer) -> Bool {
+        return (isSet() && value.isSet()) ? platformValue! <= value.platformValue : false
     }
     
     func clone() -> MD2Type {

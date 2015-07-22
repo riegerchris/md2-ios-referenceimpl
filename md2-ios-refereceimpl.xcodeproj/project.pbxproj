@@ -16,6 +16,12 @@
 		59CB70861B5EB3CD001D312F /* MD2String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70851B5EB3CD001D312F /* MD2String.swift */; };
 		59CB70881B5EB72B001D312F /* MD2Boolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70871B5EB72B001D312F /* MD2Boolean.swift */; };
 		59CB708A1B5EB78D001D312F /* MD2Integer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70891B5EB78D001D312F /* MD2Integer.swift */; };
+		59CB708C1B5F8E23001D312F /* MD2Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB708B1B5F8E22001D312F /* MD2Float.swift */; };
+		59CB708E1B5F8FE8001D312F /* MD2Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB708D1B5F8FE8001D312F /* MD2Date.swift */; };
+		59CB70901B5F97A6001D312F /* MD2Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB708F1B5F97A6001D312F /* MD2Time.swift */; };
+		59CB70921B5F9932001D312F /* MD2DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70911B5F9932001D312F /* MD2DateTime.swift */; };
+		59CB70941B5F9995001D312F /* MD2Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70931B5F9995001D312F /* MD2Entity.swift */; };
+		59CB70961B5FA283001D312F /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70951B5FA282001D312F /* Location.swift */; };
 		59CD55A61B5E8258007B9834 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CD55A51B5E8258007B9834 /* AppDelegate.swift */; };
 		59CD55AD1B5E8258007B9834 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59CD55AC1B5E8258007B9834 /* Images.xcassets */; };
 		59CD55BC1B5E8259007B9834 /* md2_ios_refereceimplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CD55BB1B5E8259007B9834 /* md2_ios_refereceimplTests.swift */; };
@@ -41,6 +47,12 @@
 		59CB70851B5EB3CD001D312F /* MD2String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2String.swift; sourceTree = "<group>"; };
 		59CB70871B5EB72B001D312F /* MD2Boolean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Boolean.swift; sourceTree = "<group>"; };
 		59CB70891B5EB78D001D312F /* MD2Integer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Integer.swift; sourceTree = "<group>"; };
+		59CB708B1B5F8E22001D312F /* MD2Float.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Float.swift; sourceTree = "<group>"; };
+		59CB708D1B5F8FE8001D312F /* MD2Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Date.swift; sourceTree = "<group>"; };
+		59CB708F1B5F97A6001D312F /* MD2Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Time.swift; sourceTree = "<group>"; };
+		59CB70911B5F9932001D312F /* MD2DateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2DateTime.swift; sourceTree = "<group>"; };
+		59CB70931B5F9995001D312F /* MD2Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Entity.swift; sourceTree = "<group>"; };
+		59CB70951B5FA282001D312F /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		59CD55A01B5E8258007B9834 /* md2-ios-refereceimpl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "md2-ios-refereceimpl.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59CD55A41B5E8258007B9834 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59CD55A51B5E8258007B9834 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,7 +118,13 @@
 				59CB707F1B5EB15C001D312F /* MD2DataType.swift */,
 				59CB70851B5EB3CD001D312F /* MD2String.swift */,
 				59CB70871B5EB72B001D312F /* MD2Boolean.swift */,
+				59CB708B1B5F8E22001D312F /* MD2Float.swift */,
+				59CB708D1B5F8FE8001D312F /* MD2Date.swift */,
+				59CB708F1B5F97A6001D312F /* MD2Time.swift */,
+				59CB70911B5F9932001D312F /* MD2DateTime.swift */,
 				59CB70891B5EB78D001D312F /* MD2Integer.swift */,
+				59CB70931B5F9995001D312F /* MD2Entity.swift */,
+				59CB70951B5FA282001D312F /* Location.swift */,
 			);
 			name = type;
 			sourceTree = "<group>";
@@ -303,12 +321,18 @@
 			files = (
 				59CB70721B5E9889001D312F /* InitialViewController.swift in Sources */,
 				59CD55A61B5E8258007B9834 /* AppDelegate.swift in Sources */,
+				59CB70941B5F9995001D312F /* MD2Entity.swift in Sources */,
+				59CB70901B5F97A6001D312F /* MD2Time.swift in Sources */,
 				59CB70861B5EB3CD001D312F /* MD2String.swift in Sources */,
+				59CB708E1B5F8FE8001D312F /* MD2Date.swift in Sources */,
 				59CB70841B5EB321001D312F /* MD2Enum.swift in Sources */,
+				59CB70961B5FA283001D312F /* Location.swift in Sources */,
 				59CB707E1B5EAE2D001D312F /* MD2Type.swift in Sources */,
+				59CB70921B5F9932001D312F /* MD2DateTime.swift in Sources */,
 				59CB708A1B5EB78D001D312F /* MD2Integer.swift in Sources */,
 				59CB70801B5EB15C001D312F /* MD2DataType.swift in Sources */,
 				59CB70881B5EB72B001D312F /* MD2Boolean.swift in Sources */,
+				59CB708C1B5F8E23001D312F /* MD2Float.swift in Sources */,
 				59CB70821B5EB281001D312F /* MD2NumericType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

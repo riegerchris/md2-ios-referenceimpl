@@ -8,14 +8,14 @@
 
 protocol MD2NumericType: MD2DataType {
     
-    typealias ValueType
+    typealias NumericType
     
-    func gt(value: ValueType) -> Bool
+    func gt(value: NumericType) -> Bool
 
-    func gte(value: ValueType) -> Bool
+    func gte(value: NumericType) -> Bool
 
-    func lt(value: ValueType) -> Bool
+    func lt(value: NumericType) -> Bool
 
-    func lte(value: ValueType) -> Bool
+    func lte(value: NumericType) -> Bool
 
 }
