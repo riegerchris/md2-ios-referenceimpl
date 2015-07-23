@@ -37,9 +37,16 @@
 		59CB70B01B5FE271001D312F /* WidgetWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70AF1B5FE271001D312F /* WidgetWrapper.swift */; };
 		59CB70B31B5FE3B9001D312F /* ValidatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70B21B5FE3B9001D312F /* ValidatorType.swift */; };
 		59CB70B51B5FE4C3001D312F /* NotNullValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70B41B5FE4C3001D312F /* NotNullValidator.swift */; };
+		59CB70B71B60CDE6001D312F /* StringRangeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70B61B60CDE5001D312F /* StringRangeValidator.swift */; };
 		59CD55A61B5E8258007B9834 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CD55A51B5E8258007B9834 /* AppDelegate.swift */; };
 		59CD55AD1B5E8258007B9834 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59CD55AC1B5E8258007B9834 /* Images.xcassets */; };
 		59CD55BC1B5E8259007B9834 /* md2_ios_refereceimplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CD55BB1B5E8259007B9834 /* md2_ios_refereceimplTests.swift */; };
+		59CE10111B60D71400ACE1E7 /* NumberRangeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE10101B60D71400ACE1E7 /* NumberRangeValidator.swift */; };
+		59CE10131B60D88500ACE1E7 /* DateRangeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE10121B60D88400ACE1E7 /* DateRangeValidator.swift */; };
+		59CE10151B60DD5800ACE1E7 /* RegExValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE10141B60DD5600ACE1E7 /* RegExValidator.swift */; };
+		59CE10171B60DFAC00ACE1E7 /* RegEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE10161B60DFAB00ACE1E7 /* RegEx.swift */; };
+		59CE10191B60E31000ACE1E7 /* TimeRangeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE10181B60E31000ACE1E7 /* TimeRangeValidator.swift */; };
+		59CE101B1B60E35500ACE1E7 /* DateTimeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE101A1B60E35500ACE1E7 /* DateTimeValidator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +90,7 @@
 		59CB70AF1B5FE271001D312F /* WidgetWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetWrapper.swift; sourceTree = "<group>"; };
 		59CB70B21B5FE3B9001D312F /* ValidatorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorType.swift; sourceTree = "<group>"; };
 		59CB70B41B5FE4C3001D312F /* NotNullValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotNullValidator.swift; sourceTree = "<group>"; };
+		59CB70B61B60CDE5001D312F /* StringRangeValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringRangeValidator.swift; sourceTree = "<group>"; };
 		59CD55A01B5E8258007B9834 /* md2-ios-refereceimpl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "md2-ios-refereceimpl.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59CD55A41B5E8258007B9834 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59CD55A51B5E8258007B9834 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +98,12 @@
 		59CD55B51B5E8259007B9834 /* md2-ios-refereceimplTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "md2-ios-refereceimplTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59CD55BA1B5E8259007B9834 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59CD55BB1B5E8259007B9834 /* md2_ios_refereceimplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = md2_ios_refereceimplTests.swift; sourceTree = "<group>"; };
+		59CE10101B60D71400ACE1E7 /* NumberRangeValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberRangeValidator.swift; sourceTree = "<group>"; };
+		59CE10121B60D88400ACE1E7 /* DateRangeValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeValidator.swift; sourceTree = "<group>"; };
+		59CE10141B60DD5600ACE1E7 /* RegExValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegExValidator.swift; sourceTree = "<group>"; };
+		59CE10161B60DFAB00ACE1E7 /* RegEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegEx.swift; sourceTree = "<group>"; };
+		59CE10181B60E31000ACE1E7 /* TimeRangeValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeRangeValidator.swift; sourceTree = "<group>"; };
+		59CE101A1B60E35500ACE1E7 /* DateTimeValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeValidator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,9 +149,12 @@
 		59CB70761B5E9E29001D312F /* model */ = {
 			isa = PBXGroup;
 			children = (
+				59CB709D1B5FB82B001D312F /* Query.swift */,
+				59CB709B1B5FB7B3001D312F /* Filter.swift */,
 				59CB707A1B5EAD5F001D312F /* contentprovider */,
 				59CB70781B5EAD19001D312F /* store */,
 				59CB70771B5EACDC001D312F /* type */,
+				59CE10161B60DFAB00ACE1E7 /* RegEx.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -145,7 +162,6 @@
 		59CB70771B5EACDC001D312F /* type */ = {
 			isa = PBXGroup;
 			children = (
-				59CB709B1B5FB7B3001D312F /* Filter.swift */,
 				59CB70951B5FA282001D312F /* Location.swift */,
 				59CB70871B5EB72B001D312F /* MD2Boolean.swift */,
 				59CB707F1B5EB15C001D312F /* MD2DataType.swift */,
@@ -159,7 +175,6 @@
 				59CB70851B5EB3CD001D312F /* MD2String.swift */,
 				59CB708F1B5F97A6001D312F /* MD2Time.swift */,
 				59CB707D1B5EAE2D001D312F /* MD2Type.swift */,
-				59CB709D1B5FB82B001D312F /* Query.swift */,
 			);
 			path = type;
 			sourceTree = "<group>";
@@ -214,6 +229,12 @@
 			children = (
 				59CB70B21B5FE3B9001D312F /* ValidatorType.swift */,
 				59CB70B41B5FE4C3001D312F /* NotNullValidator.swift */,
+				59CB70B61B60CDE5001D312F /* StringRangeValidator.swift */,
+				59CE10101B60D71400ACE1E7 /* NumberRangeValidator.swift */,
+				59CE10141B60DD5600ACE1E7 /* RegExValidator.swift */,
+				59CE10121B60D88400ACE1E7 /* DateRangeValidator.swift */,
+				59CE10181B60E31000ACE1E7 /* TimeRangeValidator.swift */,
+				59CE101A1B60E35500ACE1E7 /* DateTimeValidator.swift */,
 			);
 			path = validator;
 			sourceTree = "<group>";
@@ -382,18 +403,25 @@
 				59CB70941B5F9995001D312F /* MD2EntityType.swift in Sources */,
 				59CB70901B5F97A6001D312F /* MD2Time.swift in Sources */,
 				59CB70B31B5FE3B9001D312F /* ValidatorType.swift in Sources */,
+				59CE10191B60E31000ACE1E7 /* TimeRangeValidator.swift in Sources */,
 				59CB70AC1B5FDEA0001D312F /* GotoView.swift in Sources */,
 				59CB70A61B5FCC95001D312F /* ContentProviderRegistry.swift in Sources */,
 				59CB70861B5EB3CD001D312F /* MD2String.swift in Sources */,
 				59CB708E1B5F8FE8001D312F /* MD2Date.swift in Sources */,
+				59CE10131B60D88500ACE1E7 /* DateRangeValidator.swift in Sources */,
 				59CB70981B5FB25B001D312F /* ContentProviderType.swift in Sources */,
 				59CB709C1B5FB7B3001D312F /* Filter.swift in Sources */,
 				59CB709E1B5FB82B001D312F /* Query.swift in Sources */,
 				59CB70B01B5FE271001D312F /* WidgetWrapper.swift in Sources */,
+				59CE10111B60D71400ACE1E7 /* NumberRangeValidator.swift in Sources */,
 				59CB70841B5EB321001D312F /* MD2Enum.swift in Sources */,
+				59CE10171B60DFAC00ACE1E7 /* RegEx.swift in Sources */,
 				59CB70961B5FA283001D312F /* Location.swift in Sources */,
 				59CB707E1B5EAE2D001D312F /* MD2Type.swift in Sources */,
+				59CE101B1B60E35500ACE1E7 /* DateTimeValidator.swift in Sources */,
+				59CB70B71B60CDE6001D312F /* StringRangeValidator.swift in Sources */,
 				59CB70A81B5FDD37001D312F /* Controller.swift in Sources */,
+				59CE10151B60DD5800ACE1E7 /* RegExValidator.swift in Sources */,
 				59CB709A1B5FB6E5001D312F /* DataStoreType.swift in Sources */,
 				59CB70921B5F9932001D312F /* MD2DateTime.swift in Sources */,
 				59CB70B51B5FE4C3001D312F /* NotNullValidator.swift in Sources */,

@@ -28,28 +28,28 @@ class MD2Float: MD2NumericType {
         return platformValue != nil
     }
     
-    func gt(value: Float) -> Bool {
-        return isSet() ? platformValue! > value : false
+    func gt(value: MD2Float) -> Bool {
+        return (isSet() && value.isSet()) ? platformValue! > value.platformValue : false
     }
     
-    func gte(value: Float) -> Bool {
-        return isSet() ? platformValue! >= value : false
+    func gte(value: MD2Float) -> Bool {
+        return (isSet() && value.isSet()) ? platformValue! >= value.platformValue : false
     }
     
-    func lt(value: Float) -> Bool {
-        return isSet() ? platformValue! < value : false
+    func lt(value: MD2Float) -> Bool {
+        return (isSet() && value.isSet()) ? platformValue! < value.platformValue : false
     }
     
-    func lte(value: Float) -> Bool {
-        return isSet() ? platformValue! <= value : false
+    func lte(value: MD2Float) -> Bool {
+        return (isSet() && value.isSet()) ? platformValue! <= value.platformValue : false
     }
     
     func clone() -> MD2Type {
         return MD2Float(md2Float: self)
     }
     
-    func toString() -> String {
-        return platformValue != nil ? platformValue!.description : ""
+    func toString() -> MD2String {
+        return platformValue != nil ? MD2String(value: platformValue!.description) : MD2String(value: "")
     }
     
     func equals(value : MD2Type) -> Bool {

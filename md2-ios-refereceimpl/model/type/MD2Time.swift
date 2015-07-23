@@ -66,16 +66,16 @@ class MD2Time: MD2NumericType {
         return MD2Time(md2Time: self)
     }
     
-    func toString() -> String {
+    func toString() -> MD2String {
         if platformValue == nil {
-            return ""
+            return MD2String(value: "")
         }
         
         var dateFormatter = NSDateFormatter()
         dateFormatter.timeZone = NSTimeZone.defaultTimeZone()
         dateFormatter.dateFormat = stringFormat
         
-        return dateFormatter.stringFromDate(platformValue!)
+        return MD2String(value: dateFormatter.stringFromDate(platformValue!))
     }
     
     func equals(value : MD2Type) -> Bool {

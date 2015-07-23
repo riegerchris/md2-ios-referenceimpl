@@ -32,12 +32,12 @@ class MD2Boolean: MD2DataType {
         return MD2Boolean(md2Boolean: self)
     }
     
-    func toString() -> String {
+    func toString() -> MD2String {
         if platformValue == nil {
-            return ""
+            return MD2String(value: "")
         }
         
-        return platformValue == true ? "true" : "false"
+        return platformValue == true ? MD2String(value: "true") : MD2String(value: "false")
     }
     
     func equals(value : MD2Type) -> Bool {
