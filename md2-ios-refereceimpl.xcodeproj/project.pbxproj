@@ -47,6 +47,11 @@
 		59CE10171B60DFAC00ACE1E7 /* RegEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE10161B60DFAB00ACE1E7 /* RegEx.swift */; };
 		59CE10191B60E31000ACE1E7 /* TimeRangeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE10181B60E31000ACE1E7 /* TimeRangeValidator.swift */; };
 		59CE101B1B60E35500ACE1E7 /* DateTimeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE101A1B60E35500ACE1E7 /* DateTimeValidator.swift */; };
+		59CE101D1B60E87300ACE1E7 /* EventHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE101C1B60E87300ACE1E7 /* EventHandlerType.swift */; };
+		59CE101F1B60E89000ACE1E7 /* GlobalEventHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE101E1B60E89000ACE1E7 /* GlobalEventHandlerType.swift */; };
+		59CE10211B60E8F500ACE1E7 /* WidgetEventHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE10201B60E8F500ACE1E7 /* WidgetEventHandlerType.swift */; };
+		59CE10231B60E95500ACE1E7 /* ContentProviderEventHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE10221B60E95500ACE1E7 /* ContentProviderEventHandlerType.swift */; };
+		59CE10251B60E9EA00ACE1E7 /* OnChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE10241B60E9EA00ACE1E7 /* OnChangeHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +109,11 @@
 		59CE10161B60DFAB00ACE1E7 /* RegEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegEx.swift; sourceTree = "<group>"; };
 		59CE10181B60E31000ACE1E7 /* TimeRangeValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeRangeValidator.swift; sourceTree = "<group>"; };
 		59CE101A1B60E35500ACE1E7 /* DateTimeValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeValidator.swift; sourceTree = "<group>"; };
+		59CE101C1B60E87300ACE1E7 /* EventHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerType.swift; sourceTree = "<group>"; };
+		59CE101E1B60E89000ACE1E7 /* GlobalEventHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalEventHandlerType.swift; sourceTree = "<group>"; };
+		59CE10201B60E8F500ACE1E7 /* WidgetEventHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetEventHandlerType.swift; sourceTree = "<group>"; };
+		59CE10221B60E95500ACE1E7 /* ContentProviderEventHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentProviderEventHandlerType.swift; sourceTree = "<group>"; };
+		59CE10241B60E9EA00ACE1E7 /* OnChangeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnChangeHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +204,11 @@
 		59CB70791B5EAD52001D312F /* eventhandler */ = {
 			isa = PBXGroup;
 			children = (
+				59CE101C1B60E87300ACE1E7 /* EventHandlerType.swift */,
+				59CE101E1B60E89000ACE1E7 /* GlobalEventHandlerType.swift */,
+				59CE10201B60E8F500ACE1E7 /* WidgetEventHandlerType.swift */,
+				59CE10221B60E95500ACE1E7 /* ContentProviderEventHandlerType.swift */,
+				59CE10241B60E9EA00ACE1E7 /* OnChangeHandler.swift */,
 			);
 			path = eventhandler;
 			sourceTree = "<group>";
@@ -408,6 +423,7 @@
 				59CB70A61B5FCC95001D312F /* ContentProviderRegistry.swift in Sources */,
 				59CB70861B5EB3CD001D312F /* MD2String.swift in Sources */,
 				59CB708E1B5F8FE8001D312F /* MD2Date.swift in Sources */,
+				59CE10231B60E95500ACE1E7 /* ContentProviderEventHandlerType.swift in Sources */,
 				59CE10131B60D88500ACE1E7 /* DateRangeValidator.swift in Sources */,
 				59CB70981B5FB25B001D312F /* ContentProviderType.swift in Sources */,
 				59CB709C1B5FB7B3001D312F /* Filter.swift in Sources */,
@@ -415,7 +431,9 @@
 				59CB70B01B5FE271001D312F /* WidgetWrapper.swift in Sources */,
 				59CE10111B60D71400ACE1E7 /* NumberRangeValidator.swift in Sources */,
 				59CB70841B5EB321001D312F /* MD2Enum.swift in Sources */,
+				59CE101D1B60E87300ACE1E7 /* EventHandlerType.swift in Sources */,
 				59CE10171B60DFAC00ACE1E7 /* RegEx.swift in Sources */,
+				59CE10211B60E8F500ACE1E7 /* WidgetEventHandlerType.swift in Sources */,
 				59CB70961B5FA283001D312F /* Location.swift in Sources */,
 				59CB707E1B5EAE2D001D312F /* MD2Type.swift in Sources */,
 				59CE101B1B60E35500ACE1E7 /* DateTimeValidator.swift in Sources */,
@@ -428,8 +446,10 @@
 				59CB708A1B5EB78D001D312F /* MD2Integer.swift in Sources */,
 				59CB70A41B5FBC6A001D312F /* LocalStore.swift in Sources */,
 				59CB70801B5EB15C001D312F /* MD2DataType.swift in Sources */,
+				59CE10251B60E9EA00ACE1E7 /* OnChangeHandler.swift in Sources */,
 				59CB70881B5EB72B001D312F /* MD2Boolean.swift in Sources */,
 				59CB708C1B5F8E23001D312F /* MD2Float.swift in Sources */,
+				59CE101F1B60E89000ACE1E7 /* GlobalEventHandlerType.swift in Sources */,
 				59CB70821B5EB281001D312F /* MD2NumericType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
