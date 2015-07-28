@@ -5,6 +5,8 @@
 //  Created by Christoph Rieger on 23.07.15.
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
+//  Implementation adapted from http://benscheirman.com/2014/06/regex-in-swift/
+//
 
 import Foundation
 

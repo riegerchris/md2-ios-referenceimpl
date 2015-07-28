@@ -12,7 +12,7 @@ class RegExValidator {
     
     var defaultMessage: MD2String {
         get {
-            return MD2String(value: "This value must match the expected pattern!")
+            return MD2String("This value must match the expected pattern!")
         }
     }
     
@@ -27,7 +27,7 @@ class RegExValidator {
         if value is MD2String {
             return regEx.test(value as! MD2String)
         } else {
-            return MD2Boolean(value: false)
+            return MD2Boolean(false)
         }
     }
     

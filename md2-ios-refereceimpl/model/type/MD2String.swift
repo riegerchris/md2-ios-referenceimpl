@@ -16,11 +16,11 @@ class MD2String: MD2DataType {
         // Nothing to initialize
     }
     
-    init(value: String) {
+    init(_ value: String) {
         platformValue = value
     }
     
-    init(md2String: MD2String) {
+    init(_ md2String: MD2String) {
         platformValue = md2String.platformValue
     }
     
@@ -29,11 +29,11 @@ class MD2String: MD2DataType {
     }
     
     func clone() -> MD2Type {
-        return MD2String(md2String: self)
+        return MD2String(self)
     }
     
     func toString() -> MD2String {
-        return platformValue != nil ? MD2String(value: platformValue!) : MD2String(value: "")
+        return platformValue != nil ? MD2String(platformValue!) : MD2String("")
     }
     
     func equals(value : MD2Type) -> Bool {

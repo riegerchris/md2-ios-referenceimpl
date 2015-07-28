@@ -12,7 +12,7 @@ class DateRangeValidator {
     
     var defaultMessage: MD2String {
         get {
-            return MD2String(value: "The date must be between \(min.toString().platformValue) and \(max.toString().platformValue)!")
+            return MD2String("The date must be between \(min.toString().platformValue) and \(max.toString().platformValue)!")
         }
     }
     
@@ -30,9 +30,9 @@ class DateRangeValidator {
         if value is MD2Date
             && (value as! MD2Date).gte(min)
             && (value as! MD2Date).lte(max) {
-                return MD2Boolean(value: true)
+                return MD2Boolean(true)
         } else {
-            return MD2Boolean(value: false)
+            return MD2Boolean(false)
         }
     }
     

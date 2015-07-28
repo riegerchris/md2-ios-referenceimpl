@@ -16,11 +16,11 @@ class MD2Float: MD2NumericType {
         // Nothing to initialize
     }
     
-    init(value: Float) {
+    init(_ value: Float) {
         platformValue = value
     }
     
-    init(md2Float: MD2Float) {
+    init(_ md2Float: MD2Float) {
         platformValue = md2Float.platformValue
     }
     
@@ -45,7 +45,7 @@ class MD2Float: MD2NumericType {
     }
     
     func clone() -> MD2Type {
-        return MD2Float(md2Float: self)
+        return MD2Float(self)
     }
     
     func toString() -> MD2String {

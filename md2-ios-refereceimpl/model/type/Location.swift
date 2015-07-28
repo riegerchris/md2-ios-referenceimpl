@@ -12,8 +12,8 @@ class Location: MD2EntityType {
     
     init() {
         // Initialize location
-        containedTypes["longitude"] = MD2Float(value: 0.0)
-        containedTypes["latitude"] = MD2Float(value: 0.0)
+        containedTypes["longitude"] = MD2Float(0.0)
+        containedTypes["latitude"] = MD2Float(0.0)
     }
     
     init(md2Entity: Location) {
@@ -27,7 +27,7 @@ class Location: MD2EntityType {
     }
     
     func toString() -> MD2String {
-        return MD2String(value: "Location") // TODO
+        return MD2String("Location") // TODO
     }
     
     func equals(value : MD2Type) -> Bool {

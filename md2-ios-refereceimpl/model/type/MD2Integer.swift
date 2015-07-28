@@ -17,7 +17,11 @@ class MD2Integer: MD2NumericType {
         // Nothing to initialize
     }
     
-    init(md2Integer: MD2Integer) {
+    init(_ value : Int){
+        platformValue = value
+    }
+    
+    init(_ md2Integer: MD2Integer) {
         platformValue = md2Integer.platformValue
     }
     
@@ -42,7 +46,7 @@ class MD2Integer: MD2NumericType {
     }
     
     func clone() -> MD2Type {
-        return MD2Integer(md2Integer: self)
+        return MD2Integer(self)
     }
     
     func toString() -> MD2String {

@@ -21,7 +21,7 @@ class MD2DateTime: MD2NumericType {
         // Nothing to initialize
     }
     
-    init(value: String) {
+    init(_ value: String) {
         var dateFormatter = NSDateFormatter()
         dateFormatter.timeZone = NSTimeZone.defaultTimeZone()
         dateFormatter.dateFormat = stringFormat
@@ -29,7 +29,7 @@ class MD2DateTime: MD2NumericType {
         platformValue = dateFormatter.dateFromString(value)
     }
     
-    init(md2DateTime: MD2DateTime) {
+    init(_ md2DateTime: MD2DateTime) {
         platformValue = md2DateTime.platformValue
     }
     
@@ -63,19 +63,19 @@ class MD2DateTime: MD2NumericType {
     }
     
     func clone() -> MD2Type {
-        return MD2DateTime(md2DateTime: self)
+        return MD2DateTime(self)
     }
     
     func toString() -> MD2String {
         if platformValue == nil {
-            return MD2String(value: "")
+            return MD2String("")
         }
         
         var dateFormatter = NSDateFormatter()
         dateFormatter.timeZone = NSTimeZone.defaultTimeZone()
         dateFormatter.dateFormat = stringFormat
         
-        return MD2String(value: dateFormatter.stringFromDate(platformValue!))
+        return MD2String(dateFormatter.stringFromDate(platformValue!))
     }
     
     func equals(value : MD2Type) -> Bool {

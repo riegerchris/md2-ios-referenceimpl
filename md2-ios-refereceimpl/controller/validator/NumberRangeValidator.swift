@@ -12,7 +12,7 @@ class NumberRangeValidator {
     
     var defaultMessage: MD2String {
         get {
-            return MD2String(value: "This value must be between \(min.toString().platformValue) and \(max.toString().platformValue)!")
+            return MD2String("This value must be between \(min.toString().platformValue) and \(max.toString().platformValue)!")
         }
     }
 
@@ -35,9 +35,9 @@ class NumberRangeValidator {
         } else */ if value is MD2Float
             && (value as! MD2Float).gte(min)
             && (value as! MD2Float).lte(max) {
-                return MD2Boolean(value: true)
+                return MD2Boolean(true)
         } else {
-            return MD2Boolean(value: false)
+            return MD2Boolean(false)
         }
     }
     

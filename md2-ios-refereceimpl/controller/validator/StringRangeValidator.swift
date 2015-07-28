@@ -10,7 +10,11 @@ class StringRangeValidator: ValidatorType {
     
     var message: (() -> MD2String)?
     
-    var defaultMessage: MD2String = MD2String(value: "This value must be between \(minLength) and \(maxLength) characters long!")
+    var defaultMessage: MD2String {
+        get {
+            return MD2String("This value must be between \(minLength) and \(maxLength) characters long!")
+        }
+    }
     
     var minLength: MD2Integer
     
@@ -23,12 +27,20 @@ class StringRangeValidator: ValidatorType {
     }
     
     func isValid(value: MD2Type) -> MD2Boolean {
-        if value is MD2String
-            && count((value as! MD2String).platformValue) >= minLength
-            && count((value as! MD2String).platformValue) <= maxLength {
-            return MD2Boolean(value: true)
+        if !(value is MD2String)
+            || !((value as! MD2String).isSet())
+            || !(minLength.isSet())
+            || !(maxLength.isSet()) {
+                return MD2Boolean(false)
+        }
+        
+        let stringValue = (value as! MD2String).platformValue!
+        
+        if count(stringValue) >= minLength.platformValue!
+           && count(stringValue) <= maxLength.platformValue! {
+            return MD2Boolean(true)
         } else {
-            return MD2Boolean(value: false)
+            return MD2Boolean(false)
         }
     }
     

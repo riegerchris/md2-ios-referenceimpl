@@ -16,11 +16,11 @@ class MD2Boolean: MD2DataType {
         // Nothing to initialize
     }
     
-    init(value : Bool) {
+    init(_ value : Bool) {
         platformValue = value
     }
     
-    init(md2Boolean: MD2Boolean) {
+    init(_ md2Boolean: MD2Boolean) {
         platformValue = md2Boolean.platformValue
     }
     
@@ -29,15 +29,15 @@ class MD2Boolean: MD2DataType {
     }
     
     func clone() -> MD2Type {
-        return MD2Boolean(md2Boolean: self)
+        return MD2Boolean(self)
     }
     
     func toString() -> MD2String {
         if platformValue == nil {
-            return MD2String(value: "")
+            return MD2String("")
         }
         
-        return platformValue == true ? MD2String(value: "true") : MD2String(value: "false")
+        return platformValue == true ? MD2String("true") : MD2String("false")
     }
     
     func equals(value : MD2Type) -> Bool {
