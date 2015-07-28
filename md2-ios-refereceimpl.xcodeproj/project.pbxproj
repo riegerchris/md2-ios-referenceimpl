@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		59C3D5B91B67E86400C5A613 /* WidgetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5B81B67E86300C5A613 /* WidgetType.swift */; };
+		59C3D5BB1B67FC0C00C5A613 /* WidgetRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5BA1B67FC0C00C5A613 /* WidgetRegistry.swift */; };
+		59C3D5BD1B67FDFB00C5A613 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5BC1B67FDFB00C5A613 /* ViewManager.swift */; };
+		59C3D5BF1B6802DB00C5A613 /* LayoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5BE1B6802DB00C5A613 /* LayoutType.swift */; };
+		59C3D5C11B68035600C5A613 /* SingleWidgetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5C01B68035600C5A613 /* SingleWidgetType.swift */; };
+		59C3D5C31B680E4400C5A613 /* FlowLayoutPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5C21B680E4400C5A613 /* FlowLayoutPane.swift */; };
 		59CB70721B5E9889001D312F /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70701B5E9889001D312F /* InitialViewController.swift */; };
 		59CB70731B5E9889001D312F /* InitialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59CB70711B5E9889001D312F /* InitialView.xib */; };
 		59CB707E1B5EAE2D001D312F /* MD2Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB707D1B5EAE2D001D312F /* MD2Type.swift */; };
@@ -67,6 +72,11 @@
 
 /* Begin PBXFileReference section */
 		59C3D5B81B67E86300C5A613 /* WidgetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetType.swift; sourceTree = "<group>"; };
+		59C3D5BA1B67FC0C00C5A613 /* WidgetRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetRegistry.swift; sourceTree = "<group>"; };
+		59C3D5BC1B67FDFB00C5A613 /* ViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
+		59C3D5BE1B6802DB00C5A613 /* LayoutType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutType.swift; sourceTree = "<group>"; };
+		59C3D5C01B68035600C5A613 /* SingleWidgetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleWidgetType.swift; sourceTree = "<group>"; };
+		59C3D5C21B680E4400C5A613 /* FlowLayoutPane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowLayoutPane.swift; sourceTree = "<group>"; };
 		59CB70701B5E9889001D312F /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		59CB70711B5E9889001D312F /* InitialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialView.xib; sourceTree = "<group>"; };
 		59CB707D1B5EAE2D001D312F /* MD2Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Type.swift; sourceTree = "<group>"; };
@@ -141,6 +151,7 @@
 			children = (
 				59CB707B1B5EADE8001D312F /* widget */,
 				59CB70711B5E9889001D312F /* InitialView.xib */,
+				59C3D5BC1B67FDFB00C5A613 /* ViewManager.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -228,7 +239,11 @@
 			isa = PBXGroup;
 			children = (
 				59CB70AF1B5FE271001D312F /* WidgetWrapper.swift */,
+				59C3D5BA1B67FC0C00C5A613 /* WidgetRegistry.swift */,
 				59C3D5B81B67E86300C5A613 /* WidgetType.swift */,
+				59C3D5BE1B6802DB00C5A613 /* LayoutType.swift */,
+				59C3D5C01B68035600C5A613 /* SingleWidgetType.swift */,
+				59C3D5C21B680E4400C5A613 /* FlowLayoutPane.swift */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -412,6 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59C3D5C11B68035600C5A613 /* SingleWidgetType.swift in Sources */,
 				59CB70A01B5FBBAF001D312F /* DataStoreFactory.swift in Sources */,
 				59CB70A21B5FBC01001D312F /* LocalStoreFactory.swift in Sources */,
 				59CB70AA1B5FDD63001D312F /* ActionType.swift in Sources */,
@@ -439,16 +455,20 @@
 				59CE10171B60DFAC00ACE1E7 /* RegEx.swift in Sources */,
 				59CE10211B60E8F500ACE1E7 /* WidgetEventHandlerType.swift in Sources */,
 				59CB70961B5FA283001D312F /* Location.swift in Sources */,
+				59C3D5BD1B67FDFB00C5A613 /* ViewManager.swift in Sources */,
 				59CB707E1B5EAE2D001D312F /* MD2Type.swift in Sources */,
 				59CE101B1B60E35500ACE1E7 /* DateTimeValidator.swift in Sources */,
 				59CB70B71B60CDE6001D312F /* StringRangeValidator.swift in Sources */,
 				59CB70A81B5FDD37001D312F /* Controller.swift in Sources */,
 				59CE10151B60DD5800ACE1E7 /* RegExValidator.swift in Sources */,
+				59C3D5BF1B6802DB00C5A613 /* LayoutType.swift in Sources */,
+				59C3D5BB1B67FC0C00C5A613 /* WidgetRegistry.swift in Sources */,
 				59CB709A1B5FB6E5001D312F /* DataStoreType.swift in Sources */,
 				59CB70921B5F9932001D312F /* MD2DateTime.swift in Sources */,
 				59CB70B51B5FE4C3001D312F /* NotNullValidator.swift in Sources */,
 				59CB708A1B5EB78D001D312F /* MD2Integer.swift in Sources */,
 				59CB70A41B5FBC6A001D312F /* LocalStore.swift in Sources */,
+				59C3D5C31B680E4400C5A613 /* FlowLayoutPane.swift in Sources */,
 				59CB70801B5EB15C001D312F /* MD2DataType.swift in Sources */,
 				59CE10251B60E9EA00ACE1E7 /* OnChangeHandler.swift in Sources */,
 				59CB70881B5EB72B001D312F /* MD2Boolean.swift in Sources */,

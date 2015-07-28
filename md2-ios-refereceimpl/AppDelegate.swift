@@ -29,6 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.navigationController = UINavigationController(rootViewController: mainController!)
         self.window!.rootViewController = self.navigationController
         
+        // Initialize MD2 application
+        var md2Controller = Controller()
+        md2Controller.run()
+        
         return true
         
     }

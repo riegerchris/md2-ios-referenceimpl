@@ -34,11 +34,11 @@ class RegEx {
     
     func test(input: MD2String) -> MD2Boolean {
         if expression == nil || !input.isSet() {
-            return MD2Boolean(value: false)
+            return MD2Boolean(false)
         }
         
         let matches = self.expression!.matchesInString(input.platformValue!, options: nil, range:NSMakeRange(0, count(input.platformValue!)))
-        return MD2Boolean(value: matches.count > 0)
+        return MD2Boolean(matches.count > 0)
     }
     
 }

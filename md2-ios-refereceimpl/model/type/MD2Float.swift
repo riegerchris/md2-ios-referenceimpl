@@ -49,7 +49,7 @@ class MD2Float: MD2NumericType {
     }
     
     func toString() -> MD2String {
-        return platformValue != nil ? MD2String(value: platformValue!.description) : MD2String(value: "")
+        return platformValue != nil ? MD2String(platformValue!.description) : MD2String("")
     }
     
     func equals(value : MD2Type) -> Bool {

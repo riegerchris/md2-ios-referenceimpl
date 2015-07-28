@@ -8,7 +8,7 @@
 
 class Location: MD2EntityType {
     
-    var containedTypes : Dictionary = Dictionary<String,MD2Type>()
+    var containedTypes: Dictionary<String,MD2Type> = [:]
     
     init() {
         // Initialize location

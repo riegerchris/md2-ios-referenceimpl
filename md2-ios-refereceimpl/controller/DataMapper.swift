@@ -8,13 +8,17 @@
 
 class DataMapper {
     
-    var contentProviderToActionMapping: Dictionary<ContentProviderType,ActionType>
+    var contentProviderToWidgetMapping: Dictionary<String, (ContentProviderType, WidgetWrapper)> = [:]
     
     func map(widget: WidgetWrapper, contentProvider: ContentProviderType, attribute: MD2String) {
-        // TODO
+        if attribute.isSet() {
+            contentProviderToWidgetMapping[attribute.platformValue!] = (contentProvider, widget)
+        }
     }
 
     func unmap(widget: WidgetWrapper, contentProvider: ContentProviderType, attribute: MD2String) {
-        // TODO
+        if attribute.isSet() {
+            contentProviderToWidgetMapping.removeValueForKey(attribute.platformValue!)
+        }
     }
 }

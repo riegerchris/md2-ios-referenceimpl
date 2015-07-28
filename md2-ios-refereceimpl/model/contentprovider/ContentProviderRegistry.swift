@@ -18,5 +18,4 @@ class ContentProviderRegistry {
         contentProviders.append(provider)
     }
     
-    // TODO remove needed? how to identify?
 }

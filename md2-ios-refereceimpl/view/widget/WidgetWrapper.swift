@@ -8,7 +8,7 @@
 
 class WidgetWrapper {
     
-    var widget: WidgetType?
+    var widget: SingleWidgetType?
     
     var widgetId: MD2String?
     
@@ -16,8 +16,10 @@ class WidgetWrapper {
     
     var validators: Array<ValidatorType> = [] // TODO
     
-    func setWidget(widget: WidgetType){
+    func setWidget(widget: SingleWidgetType){
         self.widget = widget
+        
+        // TODO Restore widget state. i.e. value + enabled state
     }
     
     func unsetWidget() {
@@ -36,13 +38,12 @@ class WidgetWrapper {
         }
     }
     
-    func getValue() -> MD2Type {
-        // TODO
-        return MD2Integer(42)
+    func getValue() -> MD2Type? {
+        return widget?.getValue()
     }
     
     func setValue(value: MD2Type) {
-        
+        widget?.setValue(value)
     }
     
     func addValidator(validator: ValidatorType) {

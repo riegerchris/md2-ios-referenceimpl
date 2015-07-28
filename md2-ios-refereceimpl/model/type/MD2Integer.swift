@@ -50,7 +50,7 @@ class MD2Integer: MD2NumericType {
     }
     
     func toString() -> MD2String {
-        return platformValue != nil ? MD2String(value: String(platformValue!)) : MD2String(value: "")
+        return platformValue != nil ? MD2String(String(platformValue!)) : MD2String("")
     }
     
     func equals(value : MD2Type) -> Bool {
