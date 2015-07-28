@@ -12,26 +12,19 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var navigationController: UINavigationController?
+    //var navigationController: UINavigationController?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        // Create window object and pass it to the view manager
+        // Needs to be defined here or the application shows only a black screen!!
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        // Override point for customization after application launch.
         self.window!.backgroundColor = UIColor.whiteColor()
         self.window!.makeKeyAndVisible()
-        
-        // Approach without storyboard
-        // Step 1: create view controller instance
-        // Step 2: create a navigation controller with view controller instance as root
-        // Step 3: navigation controller instance is set as rootviewcontroller of the window
-        var mainController: InitialViewController? = InitialViewController(nibName: "InitialView", bundle: nil)
-        self.navigationController = UINavigationController(rootViewController: mainController!)
-        self.window!.rootViewController = self.navigationController
-        
+   
         // Initialize MD2 application
         var md2Controller = Controller()
-        md2Controller.run()
+        md2Controller.run(window!)
         
         return true
         
@@ -58,7 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
     
 }
 

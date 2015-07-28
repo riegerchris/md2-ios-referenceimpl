@@ -6,10 +6,29 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
+import UIKit
+
 class Controller {
     
-    func run() {
-        // TODO initialization
+    func run(window: UIWindow) {
+        // Initialize the widget registry
+        var widgetRegistry = WidgetRegistry()
+        // TODO
+        
+        // Initialize event handlers
+        // TODO
+        
+        // Initialize content providers
+        var contentProviderRegistry = ContentProviderRegistry()
+        // TODO
+        
+        // Initialize the view manager
+        var viewManager = ViewManager()
+        viewManager.window = window
+        viewManager.setupView(MD2String("Testview"), view: FlowLayoutPane())
+        
+        // Start initial action of the app
+        // TODO
+        
     }
-    
 }
