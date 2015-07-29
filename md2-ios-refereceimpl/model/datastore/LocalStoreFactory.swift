@@ -9,7 +9,7 @@
 class LocalStoreFactory: DataStoreFactoryType {
     
     func createStore() -> DataStoreType {
-        //TODO
+        // Create and initialize a local data store
         return LocalStore()
     }
 }

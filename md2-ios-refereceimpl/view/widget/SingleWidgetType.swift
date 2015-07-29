@@ -7,10 +7,7 @@
 //
 
 protocol SingleWidgetType: WidgetType {
-    // TODO
     
-    func getValue() -> MD2Type
-    
-    func setValue(value: MD2Type)
-    
+    var value: MD2Type { get set }
+
 }

@@ -14,7 +14,7 @@ class WidgetWrapper {
     
     var disabled: MD2Boolean?
     
-    var validators: Array<ValidatorType> = [] // TODO
+    var validators: Array<ValidatorType> = []
     
     func setWidget(widget: SingleWidgetType){
         self.widget = widget
@@ -39,11 +39,11 @@ class WidgetWrapper {
     }
     
     func getValue() -> MD2Type? {
-        return widget?.getValue()
+        return widget?.value
     }
     
     func setValue(value: MD2Type) {
-        widget?.setValue(value)
+        widget?.value = value
     }
     
     func addValidator(validator: ValidatorType) {
