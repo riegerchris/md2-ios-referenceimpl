@@ -23,6 +23,13 @@ class InitialViewController: UIViewController {
         let buttonWidget = ButtonWidget(name: MD2String("dummyname2"), initialValue: MD2String("YEAH2!"), action: MD2String("pressme"))
         buttonWidget.render(self.view, controller: self)
         
+        let textFieldWidget = TextFieldWidget(name: MD2String("dummyname3"), initialValue: MD2String("dummytext3"))
+        textFieldWidget.placeholder = MD2String("dummyplaceholder")
+        textFieldWidget.render(self.view, controller: self)
+        
+        let switchWidget = SwitchWidget(name: MD2String("dummyname4"), initialValue: MD2Boolean(true), action: MD2String())
+        switchWidget.render(self.view, controller: self)
+        
     }
 
     override func didReceiveMemoryWarning() {

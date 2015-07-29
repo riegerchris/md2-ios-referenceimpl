@@ -1,5 +1,5 @@
 //
-//  LabelWidget.swift
+//  TextFieldWidget.swift
 //  md2-ios-refereceimpl
 //
 //  Created by Christoph Rieger on 29.07.15.
@@ -8,13 +8,15 @@
 
 import UIKit
 
-class LabelWidget: WidgetType {
+class TextFieldWidget: WidgetType {
     
     let name: MD2String
     
     var value: MD2Type? = MD2String("")
     
     var dimensions: (MD2Integer, MD2Integer, MD2Integer, MD2Integer)?
+    
+    var placeholder: MD2String?
     
     init(name: MD2String, initialValue: MD2Type) {
         self.name = name
@@ -24,17 +26,16 @@ class LabelWidget: WidgetType {
     func render(view: UIView, controller: UIViewController) {
         
         // Create and set value
-        let label = UILabel()
-        label.text = value?.toString().platformValue
+        let textField = UITextField()
+        textField.frame = CGRectMake(120, 200, 150, 50) // TODO dimensions
+        textField.placeholder = placeholder?.platformValue
+        textField.text = value?.toString().platformValue
         
         // Set styling
-        label.font = UIFont(name: "MarkerFelt-Thin", size: 12) // TODO styling
-        label.textColor = UIColor.redColor()
-        label.textAlignment = .Center
-        label.numberOfLines = 5
-        label.frame = CGRectMake(15, 254, 300, 500) // TODO dimensions
+        textField.backgroundColor = UIColor.grayColor() // TODO styling
+        textField.borderStyle = UITextBorderStyle.Line
         
         // Add to surrounding view
-        view.addSubview(label)
+        view.addSubview(textField)
     }
 }

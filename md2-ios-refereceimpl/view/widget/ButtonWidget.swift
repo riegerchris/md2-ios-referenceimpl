@@ -30,7 +30,7 @@ class ButtonWidget: WidgetType {
         let button = UIButton()
         button.frame = CGRectMake(120, 80, 150, 100) // TODO dimensions
         button.setTitle(value?.toString().platformValue, forState: .Normal)
-        button.addTarget(controller, action: action.toString().platformValue, forControlEvents: .TouchUpInside) // TODO actions on touch events
+        button.addTarget(controller, action: Selector(action.toString().platformValue!), forControlEvents: UIControlEvents.TouchUpInside) // TODO actions on touch events
         
         // Set styling
         button.backgroundColor = UIColor.blueColor() // TODO styling
