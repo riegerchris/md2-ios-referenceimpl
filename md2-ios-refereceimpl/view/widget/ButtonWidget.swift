@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ButtonWidget: WidgetType {
+class ButtonWidget: SingleWidgetType {
     
     let name: MD2String
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SwitchWidget: WidgetType {
+class SwitchWidget: SingleWidgetType {
     
     let name: MD2String
     

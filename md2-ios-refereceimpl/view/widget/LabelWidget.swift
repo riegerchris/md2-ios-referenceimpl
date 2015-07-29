@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabelWidget: WidgetType {
+class LabelWidget: SingleWidgetType {
     
     let name: MD2String
     

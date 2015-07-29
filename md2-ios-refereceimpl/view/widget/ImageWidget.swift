@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageWidget: WidgetType {
+class ImageWidget: SingleWidgetType {
     
     let name: MD2String
     

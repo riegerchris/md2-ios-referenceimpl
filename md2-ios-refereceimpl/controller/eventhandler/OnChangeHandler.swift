@@ -6,6 +6,26 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class OnChangeHandler {
+class OnChangeHandler: WidgetEventHandlerType {
     //TODO
+    
+    var actions: Dictionary<String,(ActionType,WidgetWrapper)> = [:]
+    
+    func registerAction(action: ActionType, widget: WidgetWrapper) {
+        actions[action.actionSignature.platformValue!] = (action, widget)
+    }
+    
+    func unregisterAction(action: ActionType, widget: WidgetWrapper) {
+        for (key, value) in actions {
+            if MD2String(key).equals(action.actionSignature) {
+                actions[key] = nil
+                break
+            }
+        }
+    }
+    
+    func fire() { // TODO signature, execute action
+        
+    }
+    
 }

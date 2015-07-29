@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextFieldWidget: WidgetType {
+class TextFieldWidget: SingleWidgetType {
     
     let name: MD2String
     

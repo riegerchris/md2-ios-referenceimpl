@@ -16,6 +16,10 @@ class WidgetWrapper {
     
     var validators: Array<ValidatorType> = []
     
+    init(widget: SingleWidgetType){
+        self.widget = widget
+    }
+    
     func setWidget(widget: SingleWidgetType){
         self.widget = widget
         

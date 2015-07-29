@@ -8,7 +8,17 @@
 
 protocol ActionType {
     
-    var actionSignature: MD2String { get set }
+    var actionSignature: MD2String { get }
+    
+    var widgetRegistry: WidgetRegistry { get }
+    
+    var eventHandler: EventHandlerType  { get }
+    
+    var contentProviderRegistry: ContentProviderRegistry  { get }
+    
+    var viewManager: ViewManager  { get }
+    
+    var dataMapper: DataMapper  { get }
     
     func execute()
     

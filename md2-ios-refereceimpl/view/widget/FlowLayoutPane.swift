@@ -14,7 +14,10 @@ class FlowLayoutPane: LayoutType {
 
     var widgets: Array<WidgetType> = []
     
+    var orientation: Orientation
+    
     init(name: MD2String) {
+        self.orientation = Orientation.Horizontal
         self.name = name
     }
     
@@ -27,4 +30,9 @@ class FlowLayoutPane: LayoutType {
     func addWidget(widget: WidgetType) {
         widgets.append(widget)
     }
+    
+    enum Orientation {
+        case Vertical, Horizontal
+    }
+    
 }
