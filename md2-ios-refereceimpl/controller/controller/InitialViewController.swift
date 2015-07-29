@@ -11,32 +11,17 @@ import UIKit
 class InitialViewController: UIViewController {
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.view.backgroundColor=UIColor.whiteColor()
         
         // Do any additional setup after loading the view.
 
-        let myFirstLabel = UILabel()
+        let labelWidget = LabelWidget(name: MD2String("dummyname"), initialValue: MD2String("YEAH!"))
+        labelWidget.render(self.view, controller: self)
         
-        myFirstLabel.text = "First label to show content"
-        myFirstLabel.font = UIFont(name: "MarkerFelt-Thin", size: 45)
-        myFirstLabel.textColor = UIColor.redColor()
-        myFirstLabel.textAlignment = .Center
-        myFirstLabel.numberOfLines = 5
-        myFirstLabel.frame = CGRectMake(15, 54, 300, 500)
-        
-        self.view.addSubview(myFirstLabel)
-        
-        var button = UIButton(frame: CGRectMake(120, 80, 150, 100))
-        button.backgroundColor = UIColor.blueColor()
-        button.setTitle("Name", forState: .Normal)
-        button.alpha = 0.6
-        button.layer.borderWidth = 0.3
-        button.layer.cornerRadius = 2
-        button.addTarget(self, action: "pressme", forControlEvents: .TouchUpInside)
-        button.titleLabel!.textAlignment=NSTextAlignment.Center
-        
-        self.view.addSubview(button)
+        let buttonWidget = ButtonWidget(name: MD2String("dummyname2"), initialValue: MD2String("YEAH2!"), action: MD2String("pressme"))
+        buttonWidget.render(self.view, controller: self)
         
     }
 

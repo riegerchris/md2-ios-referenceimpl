@@ -31,6 +31,7 @@ class ViewManager {
         var studyController: InitialViewController = InitialViewController(nibName: nil, bundle:nil)
         navigationController = UINavigationController(rootViewController: studyController)
         
+        // Set and show initial view
         window!.rootViewController = self.navigationController
         navigationController!.setNavigationBarHidden(true, animated: false)
         

@@ -6,6 +6,12 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
+import UIKit
+
 protocol WidgetType {
+    
+    var name: MD2String { get }
+    
+    func render(view: UIView, controller: UIViewController)
     
 }

@@ -10,4 +10,6 @@ protocol SingleWidgetType: WidgetType {
     
     var value: MD2Type { get set }
 
+    var dimensions: (MD2Integer, MD2Integer, MD2Integer, MD2Integer) { get set }
+    
 }

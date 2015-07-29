@@ -11,4 +11,6 @@ protocol LayoutType: WidgetType {
     
     var widgets: Array<WidgetType> { get set }
     
+    func addWidget(widget: WidgetType)
+    
 }

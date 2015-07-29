@@ -17,6 +17,8 @@
 		59C3D5C91B68B25800C5A613 /* Complaint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5C81B68B25800C5A613 /* Complaint.swift */; };
 		59C3D5CB1B68B26000C5A613 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5CA1B68B25F00C5A613 /* Address.swift */; };
 		59C3D5CF1B68B2D100C5A613 /* ComplaintStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5CE1B68B2D100C5A613 /* ComplaintStatus.swift */; };
+		59C3D5D21B691FC100C5A613 /* LabelWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5D11B691FC100C5A613 /* LabelWidget.swift */; };
+		59C3D5D41B69260D00C5A613 /* ButtonWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5D31B69260D00C5A613 /* ButtonWidget.swift */; };
 		59CB70721B5E9889001D312F /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70701B5E9889001D312F /* InitialViewController.swift */; };
 		59CB70731B5E9889001D312F /* InitialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59CB70711B5E9889001D312F /* InitialView.xib */; };
 		59CB707E1B5EAE2D001D312F /* MD2Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB707D1B5EAE2D001D312F /* MD2Type.swift */; };
@@ -85,6 +87,8 @@
 		59C3D5C81B68B25800C5A613 /* Complaint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Complaint.swift; sourceTree = "<group>"; };
 		59C3D5CA1B68B25F00C5A613 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		59C3D5CE1B68B2D100C5A613 /* ComplaintStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplaintStatus.swift; sourceTree = "<group>"; };
+		59C3D5D11B691FC100C5A613 /* LabelWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelWidget.swift; sourceTree = "<group>"; };
+		59C3D5D31B69260D00C5A613 /* ButtonWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWidget.swift; sourceTree = "<group>"; };
 		59CB70701B5E9889001D312F /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		59CB70711B5E9889001D312F /* InitialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialView.xib; sourceTree = "<group>"; };
 		59CB707D1B5EAE2D001D312F /* MD2Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Type.swift; sourceTree = "<group>"; };
@@ -280,6 +284,8 @@
 				59C3D5BE1B6802DB00C5A613 /* LayoutType.swift */,
 				59C3D5C01B68035600C5A613 /* SingleWidgetType.swift */,
 				59C3D5C21B680E4400C5A613 /* FlowLayoutPane.swift */,
+				59C3D5D11B691FC100C5A613 /* LabelWidget.swift */,
+				59C3D5D31B69260D00C5A613 /* ButtonWidget.swift */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -498,7 +504,9 @@
 				59C3D5BD1B67FDFB00C5A613 /* ViewManager.swift in Sources */,
 				59CB707E1B5EAE2D001D312F /* MD2Type.swift in Sources */,
 				59CE101B1B60E35500ACE1E7 /* DateTimeValidator.swift in Sources */,
+				59C3D5D41B69260D00C5A613 /* ButtonWidget.swift in Sources */,
 				59CB70B71B60CDE6001D312F /* StringRangeValidator.swift in Sources */,
+				59C3D5D21B691FC100C5A613 /* LabelWidget.swift in Sources */,
 				59CB70A81B5FDD37001D312F /* Controller.swift in Sources */,
 				59CE10151B60DD5800ACE1E7 /* RegExValidator.swift in Sources */,
 				59C3D5BF1B6802DB00C5A613 /* LayoutType.swift in Sources */,

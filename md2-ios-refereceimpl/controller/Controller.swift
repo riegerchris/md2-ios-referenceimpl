@@ -25,7 +25,7 @@ class Controller {
         // Initialize the view manager
         var viewManager = ViewManager()
         viewManager.window = window
-        viewManager.setupView(MD2String("Testview"), view: FlowLayoutPane())
+        viewManager.setupView(MD2String("TestView"), view: FlowLayoutPane(name: MD2String("TestFlowLayout")))
         
         // Start initial action of the app
         // TODO
