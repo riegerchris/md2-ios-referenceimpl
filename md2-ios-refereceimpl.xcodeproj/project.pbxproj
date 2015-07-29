@@ -21,7 +21,6 @@
 		59C3D5D41B69260D00C5A613 /* ButtonWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5D31B69260D00C5A613 /* ButtonWidget.swift */; };
 		59C3D5D61B6966C000C5A613 /* TextFieldWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5D51B6966BF00C5A613 /* TextFieldWidget.swift */; };
 		59C3D5D81B69681300C5A613 /* SwitchWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5D71B69681300C5A613 /* SwitchWidget.swift */; };
-		59C3D5DA1B696BE000C5A613 /* imageWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5D91B696BE000C5A613 /* imageWidget.swift */; };
 		59CB70721B5E9889001D312F /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70701B5E9889001D312F /* InitialViewController.swift */; };
 		59CB70731B5E9889001D312F /* InitialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59CB70711B5E9889001D312F /* InitialView.xib */; };
 		59CB707E1B5EAE2D001D312F /* MD2Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB707D1B5EAE2D001D312F /* MD2Type.swift */; };
@@ -94,7 +93,6 @@
 		59C3D5D31B69260D00C5A613 /* ButtonWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWidget.swift; sourceTree = "<group>"; };
 		59C3D5D51B6966BF00C5A613 /* TextFieldWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldWidget.swift; sourceTree = "<group>"; };
 		59C3D5D71B69681300C5A613 /* SwitchWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchWidget.swift; sourceTree = "<group>"; };
-		59C3D5D91B696BE000C5A613 /* imageWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageWidget.swift; sourceTree = "<group>"; };
 		59CB70701B5E9889001D312F /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		59CB70711B5E9889001D312F /* InitialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialView.xib; sourceTree = "<group>"; };
 		59CB707D1B5EAE2D001D312F /* MD2Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Type.swift; sourceTree = "<group>"; };
@@ -294,7 +292,6 @@
 				59C3D5D31B69260D00C5A613 /* ButtonWidget.swift */,
 				59C3D5D51B6966BF00C5A613 /* TextFieldWidget.swift */,
 				59C3D5D71B69681300C5A613 /* SwitchWidget.swift */,
-				59C3D5D91B696BE000C5A613 /* imageWidget.swift */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -525,7 +522,6 @@
 				59CB709A1B5FB6E5001D312F /* DataStoreType.swift in Sources */,
 				59CB70921B5F9932001D312F /* MD2DateTime.swift in Sources */,
 				59CB70B51B5FE4C3001D312F /* NotNullValidator.swift in Sources */,
-				59C3D5DA1B696BE000C5A613 /* imageWidget.swift in Sources */,
 				59CB708A1B5EB78D001D312F /* MD2Integer.swift in Sources */,
 				59CB70A41B5FBC6A001D312F /* LocalStore.swift in Sources */,
 				59C3D5C31B680E4400C5A613 /* FlowLayoutPane.swift in Sources */,
