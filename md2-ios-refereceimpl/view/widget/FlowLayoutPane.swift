@@ -10,15 +10,15 @@ import UIKit
 
 class FlowLayoutPane: LayoutType {
     
-    let name: MD2String
+    let widgetId: WidgetMapping
 
     var widgets: Array<WidgetType> = []
     
     var orientation: Orientation
     
-    init(name: MD2String) {
+    init(widgetId: WidgetMapping) {
         self.orientation = Orientation.Horizontal
-        self.name = name
+        self.widgetId = widgetId
     }
     
     func render(view: UIView, controller: UIViewController) {

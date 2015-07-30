@@ -51,9 +51,7 @@ class InitialViewController: UIViewController {
     }
     
     func pressme() {
-        let action = GotoView(actionSignature: MD2String(), widgetRegistry: WidgetRegistry(), eventHandler: OnChangeHandler(), contentProviderRegistry: ContentProviderRegistry(), viewManager: ViewManager(), dataMapper: DataMapper(), targetView: MD2String())
         
-        action.execute()
         /*
         self.navigationController!.pushViewController(SecondViewController(), animated:false)
         var alertView=UIAlertView()

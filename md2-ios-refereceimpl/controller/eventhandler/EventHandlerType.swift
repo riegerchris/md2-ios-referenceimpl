@@ -8,6 +8,4 @@
 
 protocol EventHandlerType {
     
-    func fire()
-    
 }

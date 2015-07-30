@@ -14,12 +14,12 @@ class ViewManager {
     
     var navigationController: UINavigationController?
     
-    var views: Array<LayoutType> = []
+    var views: Dictionary<String, InitialViewController> = [:]//Array<LayoutType> = []
     
     func goto(viewName: MD2String) {
-        for view in views {
-            if viewName.equals(view.name) {
-                self.navigationController!.pushViewController(SecondViewController(layout: view), animated:false)
+        for (name, controller) in views {
+            if viewName.equals(MD2String(controller.layout.widgetId.description)) { // TODO widgetId != viewName)
+                self.navigationController!.pushViewController(controller, animated: false)//SecondViewController(layout: view), animated:false)
                 // TODO invoke view (stack or root??)
                 break
             }
@@ -27,6 +27,8 @@ class ViewManager {
     }
     
     func setupView(viewName: MD2String, view: LayoutType) { // TODO view = layout?
+        // TODO why viewName explicit/differing from view.widgetId 
+        
         // Called once at start-up of the app
         
         // TODO create widgetwrappers, register wrappers in registry, store actual view instances in internal data structure
@@ -36,16 +38,22 @@ class ViewManager {
         // Step 2: Create a navigation controller with view controller instance as root
         // Step 3: Navigation controller instance is set as rootviewcontroller of the window
         
-       
+        if viewName.equals(MD2String("MainView")) {
         
-        var initialController: InitialViewController = InitialViewController(layout: view)
-        navigationController = UINavigationController(rootViewController: initialController)
+            var initialController: InitialViewController = InitialViewController(layout: view)
+            navigationController = UINavigationController(rootViewController: initialController)
         
-        // Set and show initial view
-        window!.rootViewController = self.navigationController
-        navigationController!.setNavigationBarHidden(true, animated: false)
+            // Set and show initial view
+            window!.rootViewController = self.navigationController
+            navigationController!.setNavigationBarHidden(true, animated: false)
         
-        views.append(view)
+            views[viewName.toString().platformValue!] = initialController
+            
+        } else if viewName.equals(MD2String("View2")) {
+            var secondController: InitialViewController = InitialViewController(layout: view)
+            
+            views[viewName.toString().platformValue!] = secondController
+        }
     }
     
 }

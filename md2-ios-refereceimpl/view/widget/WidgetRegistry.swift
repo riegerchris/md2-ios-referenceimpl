@@ -18,9 +18,9 @@ class WidgetRegistry {
         widgets.append(widget)
     }
     
-    func getWidget(id: MD2String) -> WidgetWrapper? {
+    func getWidget(id: WidgetMapping) -> WidgetWrapper? {
         for widget in widgets {
-            if widget.widgetId?.equals(id) == true {
+            if widget.widgetId == id {
                 return widget
             }
         }

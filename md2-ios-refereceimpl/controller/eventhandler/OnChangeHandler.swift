@@ -9,6 +9,8 @@
 class OnChangeHandler: WidgetEventHandlerType {
     //TODO
     
+    static let instance:OnChangeHandler = OnChangeHandler()
+    
     var actions: Dictionary<String,(ActionType,WidgetWrapper)> = [:]
     
     func registerAction(action: ActionType, widget: WidgetWrapper) {
@@ -25,7 +27,7 @@ class OnChangeHandler: WidgetEventHandlerType {
     }
     
     func fire() { // TODO signature, execute action
-        
+        print("testevent")
     }
     
 }

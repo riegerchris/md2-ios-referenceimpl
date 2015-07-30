@@ -10,14 +10,14 @@ import UIKit
 
 class LabelWidget: SingleWidgetType {
     
-    let name: MD2String
+    let widgetId: WidgetMapping
     
     var value: MD2Type? = MD2String("")
     
     var dimensions: (MD2Integer, MD2Integer, MD2Integer, MD2Integer)?
     
-    init(name: MD2String, initialValue: MD2Type) {
-        self.name = name
+    init(widgetId: WidgetMapping, initialValue: MD2Type) {
+        self.widgetId = widgetId
         self.value = initialValue
     }
     

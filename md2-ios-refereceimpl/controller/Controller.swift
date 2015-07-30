@@ -15,47 +15,54 @@ class Controller {
         var widgetRegistry = WidgetRegistry()
 
         // Initialize all view elements
-        let mainLayout = FlowLayoutPane(name: MD2String("MainLayout"))
+        let mainLayout = FlowLayoutPane(widgetId: WidgetMapping.MainView)
         mainLayout.orientation = FlowLayoutPane.Orientation.Vertical
         
-        let labelWidget = LabelWidget(name: MD2String("dummyname"), initialValue: MD2String("YEAH!"))
+        let labelWidget = LabelWidget(widgetId: WidgetMapping.Label1, initialValue: MD2String("YEAH!"))
         //labelWidget.render(self.view, controller: self)
         mainLayout.addWidget(labelWidget)
         let labelWidgetWrapper = WidgetWrapper(widget: labelWidget)
         widgetRegistry.add(labelWidgetWrapper)
         
-        let buttonWidget = ButtonWidget(name: MD2String("dummyname2"), initialValue: MD2String("YEAH2!"), action: MD2String("pressme"))
+        let buttonWidget = ButtonWidget(widgetId: WidgetMapping.Button1, initialValue: MD2String("YEAH2!"), action: MD2String("pressme"))
         //buttonWidget.render(self.view, controller: self)
         mainLayout.addWidget(buttonWidget)
         let buttonWidgetWrapper = WidgetWrapper(widget: buttonWidget)
         widgetRegistry.add(buttonWidgetWrapper)
         
-        let textFieldWidget = TextFieldWidget(name: MD2String("dummyname3"), initialValue: MD2String("dummytext3"))
+        let textFieldWidget = TextFieldWidget(widgetId: WidgetMapping.TextField1, initialValue: MD2String("dummytext3"))
         textFieldWidget.placeholder = MD2String("dummyplaceholder")
         //textFieldWidget.render(self.view, controller: self)
         mainLayout.addWidget(textFieldWidget)
         let textFieldWidgetWrapper = WidgetWrapper(widget: textFieldWidget)
         widgetRegistry.add(textFieldWidgetWrapper)
         
-        let subLayout = FlowLayoutPane(name: MD2String("SubLayout"))
+        let subLayout = FlowLayoutPane(widgetId: WidgetMapping.SubLayout1)
         subLayout.orientation = FlowLayoutPane.Orientation.Horizontal
         mainLayout.addWidget(subLayout)
         
-        let switchWidget = SwitchWidget(name: MD2String("dummyname4"), initialValue: MD2Boolean(true), action: MD2String())
+        let switchWidget = SwitchWidget(widgetId: WidgetMapping.Switch1, initialValue: MD2Boolean(true), action: MD2String())
         //switchWidget.render(self.view, controller: self)
         subLayout.addWidget(switchWidget)
         let switchWidgetWrapper = WidgetWrapper(widget: switchWidget)
         widgetRegistry.add(switchWidgetWrapper)
         
-        let switchWidget2 = SwitchWidget(name: MD2String("dummyname5"), initialValue: MD2Boolean(false), action: MD2String())
+        let switchWidget2 = SwitchWidget(widgetId: WidgetMapping.Switch2, initialValue: MD2Boolean(false), action: MD2String())
         //switchWidget.render(self.view, controller: self)
         subLayout.addWidget(switchWidget2)
         let switchWidget2Wrapper = WidgetWrapper(widget: switchWidget2)
         widgetRegistry.add(switchWidget2Wrapper)
         
+        let secondView = FlowLayoutPane(widgetId: WidgetMapping.View2)
+        secondView.orientation = FlowLayoutPane.Orientation.Vertical
+        
+        let labelWidget2 = LabelWidget(widgetId: WidgetMapping.Label2, initialValue: MD2String("YEAH2222!"))
+        secondView.addWidget(labelWidget2)
+        let labelWidgetWrapper2 = WidgetWrapper(widget: labelWidget2)
+        widgetRegistry.add(labelWidgetWrapper2)
         
         // Initialize event handlers
-        let mainLayoutButtonHandler = OnClickHandler()
+        let onClickHandler = OnClickHandler.instance
         
         // Initialize content providers
         var contentProviderRegistry = ContentProviderRegistry()
@@ -67,14 +74,15 @@ class Controller {
         
         // Initialize all views
         viewManager.setupView(MD2String("MainView"), view: mainLayout)
+        viewManager.setupView(MD2String("View2"), view: secondView)
         
         // Initialize data mapper
         let dataMapper = DataMapper()
         // TODO
         
         // Initialize and register Actions
-        let mainPageNextAction = GotoView(actionSignature: MD2String("mainPageNextAction"), widgetRegistry: widgetRegistry, eventHandler: mainLayoutButtonHandler, contentProviderRegistry: contentProviderRegistry, viewManager: viewManager, dataMapper: dataMapper, targetView: MD2String("view2"))
-        mainLayoutButtonHandler.registerAction(mainPageNextAction, widget: buttonWidgetWrapper)
+        let mainPageNextAction = GotoView(actionSignature: MD2String("mainPageNextAction"), widgetRegistry: widgetRegistry, eventHandler: onClickHandler, contentProviderRegistry: contentProviderRegistry, viewManager: viewManager, dataMapper: dataMapper, targetView: WidgetMapping.View2)
+        onClickHandler.registerAction(mainPageNextAction, widget: buttonWidgetWrapper)
         
         
         // Start initial action of the app

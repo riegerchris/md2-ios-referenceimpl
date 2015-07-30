@@ -10,7 +10,7 @@ import UIKit
 
 class TextFieldWidget: SingleWidgetType {
     
-    let name: MD2String
+    let widgetId: WidgetMapping
     
     var value: MD2Type? = MD2String("")
     
@@ -18,8 +18,8 @@ class TextFieldWidget: SingleWidgetType {
     
     var placeholder: MD2String?
     
-    init(name: MD2String, initialValue: MD2Type) {
-        self.name = name
+    init(widgetId: WidgetMapping, initialValue: MD2Type) {
+        self.widgetId = widgetId
         self.value = initialValue
     }
     

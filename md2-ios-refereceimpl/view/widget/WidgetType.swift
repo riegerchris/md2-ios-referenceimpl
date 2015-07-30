@@ -10,7 +10,7 @@ import UIKit
 
 protocol WidgetType {
     
-    var name: MD2String { get }
+    var widgetId: WidgetMapping { get }
     
     func render(view: UIView, controller: UIViewController)
     

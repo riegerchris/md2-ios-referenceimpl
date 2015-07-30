@@ -10,7 +10,7 @@ import UIKit
 
 class SwitchWidget: SingleWidgetType {
     
-    let name: MD2String
+    let widgetId: WidgetMapping
     
     var value: MD2Type? = MD2Boolean(false)
     
@@ -18,8 +18,8 @@ class SwitchWidget: SingleWidgetType {
     
     var action: MD2String
     
-    init(name: MD2String, initialValue: MD2Type, action: MD2String) {
-        self.name = name
+    init(widgetId: WidgetMapping, initialValue: MD2Type, action: MD2String) {
+        self.widgetId = widgetId
         self.value = initialValue
         self.action = action
     }

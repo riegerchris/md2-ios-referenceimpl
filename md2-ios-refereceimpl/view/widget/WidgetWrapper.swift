@@ -10,7 +10,7 @@ class WidgetWrapper {
     
     var widget: SingleWidgetType?
     
-    var widgetId: MD2String?
+    var widgetId: WidgetMapping?
     
     var disabled: MD2Boolean?
     

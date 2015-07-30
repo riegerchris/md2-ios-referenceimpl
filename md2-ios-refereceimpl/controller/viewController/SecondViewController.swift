@@ -12,8 +12,8 @@ class SecondViewController: UIViewController {
     
     var layout: LayoutType
     
-    init(view: LayoutType) {
-        self.layout = view
+    init(layout: LayoutType) {
+        self.layout = layout
         super.init(nibName: nil, bundle: nil)
     }
 

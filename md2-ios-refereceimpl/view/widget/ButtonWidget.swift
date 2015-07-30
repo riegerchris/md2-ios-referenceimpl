@@ -10,7 +10,7 @@ import UIKit
 
 class ButtonWidget: SingleWidgetType {
     
-    let name: MD2String
+    let widgetId: WidgetMapping
     
     var value: MD2Type? = MD2String("")
     
@@ -18,8 +18,8 @@ class ButtonWidget: SingleWidgetType {
     
     var action: MD2String
     
-    init(name: MD2String, initialValue: MD2Type, action: MD2String) {
-        self.name = name
+    init(widgetId: WidgetMapping, initialValue: MD2Type, action: MD2String) {
+        self.widgetId = widgetId
         self.value = initialValue
         self.action = action
     }
@@ -30,7 +30,9 @@ class ButtonWidget: SingleWidgetType {
         let button = UIButton()
         button.frame = CGRectMake(120, 80, 150, 100) // TODO dimensions
         button.setTitle(value?.toString().platformValue, forState: .Normal)
-        button.addTarget(controller, action: Selector(action.toString().platformValue!), forControlEvents: UIControlEvents.TouchUpInside) // TODO actions on touch events
+        button.tag = widgetId.rawValue
+        button.addTarget(OnClickHandler.instance, action: "fire:", forControlEvents: UIControlEvents.TouchUpInside)
+        //button.addTarget(controller, action: Selector(action.toString().platformValue!), forControlEvents: UIControlEvents.TouchUpInside) // TODO actions on touch events
         
         // Set styling
         button.backgroundColor = UIColor.blueColor() // TODO styling
