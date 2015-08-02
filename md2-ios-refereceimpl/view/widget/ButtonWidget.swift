@@ -32,7 +32,6 @@ class ButtonWidget: SingleWidgetType {
         button.setTitle(value?.toString().platformValue, forState: .Normal)
         button.tag = widgetId.rawValue
         button.addTarget(OnClickHandler.instance, action: "fire:", forControlEvents: UIControlEvents.TouchUpInside)
-        //button.addTarget(controller, action: Selector(action.toString().platformValue!), forControlEvents: UIControlEvents.TouchUpInside) // TODO actions on touch events
         
         // Set styling
         button.backgroundColor = UIColor.blueColor() // TODO styling

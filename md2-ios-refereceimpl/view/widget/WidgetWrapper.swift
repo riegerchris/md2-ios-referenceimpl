@@ -17,11 +17,12 @@ class WidgetWrapper {
     var validators: Array<ValidatorType> = []
     
     init(widget: SingleWidgetType){
-        self.widget = widget
+        setWidget(widget)
     }
     
     func setWidget(widget: SingleWidgetType){
         self.widget = widget
+        widgetId = widget.widgetId
         
         // TODO Restore widget state. i.e. value + enabled state
     }

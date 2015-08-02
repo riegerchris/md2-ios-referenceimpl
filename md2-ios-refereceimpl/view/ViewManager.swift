@@ -14,7 +14,7 @@ class ViewManager {
     
     var navigationController: UINavigationController?
     
-    var views: Dictionary<String, InitialViewController> = [:]//Array<LayoutType> = []
+    var views: Dictionary<String, MD2ViewController> = [:]//Array<LayoutType> = []
     
     func goto(viewName: MD2String) {
         for (name, controller) in views {
@@ -40,7 +40,7 @@ class ViewManager {
         
         if viewName.equals(MD2String("MainView")) {
         
-            var initialController: InitialViewController = InitialViewController(layout: view)
+            var initialController: MD2ViewController = MD2ViewController(layout: view)
             navigationController = UINavigationController(rootViewController: initialController)
         
             // Set and show initial view
@@ -50,7 +50,7 @@ class ViewManager {
             views[viewName.toString().platformValue!] = initialController
             
         } else if viewName.equals(MD2String("View2")) {
-            var secondController: InitialViewController = InitialViewController(layout: view)
+            var secondController: MD2ViewController = MD2ViewController(layout: view)
             
             views[viewName.toString().platformValue!] = secondController
         }

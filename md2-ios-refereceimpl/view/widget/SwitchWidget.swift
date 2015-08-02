@@ -29,12 +29,15 @@ class SwitchWidget: SingleWidgetType {
         // Create and set value
         let switchElement = UISwitch()
         switchElement.frame = CGRectMake(120, 300, 150, 100) // TODO dimensions
-        //switchElement.addTarget(controller, action: Selector(action.toString().platformValue!), forControlEvents: .ValueChanged)
+        
         if (value is MD2Boolean) && (value as! MD2Boolean).isSet() {
             switchElement.setOn((value as! MD2Boolean).platformValue!, animated: false)
         } else {
             switchElement.setOn(false, animated: false)
         }
+        
+        switchElement.tag = widgetId.rawValue
+        switchElement.addTarget(OnChangeHandler.instance, action: "fire:", forControlEvents: UIControlEvents.ValueChanged)
         
         // Set styling
         // TODO styling

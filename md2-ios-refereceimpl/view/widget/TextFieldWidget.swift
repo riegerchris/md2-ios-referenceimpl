@@ -31,6 +31,9 @@ class TextFieldWidget: SingleWidgetType {
         textField.placeholder = placeholder?.platformValue
         textField.text = value?.toString().platformValue
         
+        textField.tag = widgetId.rawValue
+        textField.addTarget(OnChangeHandler.instance, action: "fire:", forControlEvents: UIControlEvents.ValueChanged)
+        
         // Set styling
         textField.backgroundColor = UIColor.grayColor() // TODO styling
         textField.borderStyle = UITextBorderStyle.Line

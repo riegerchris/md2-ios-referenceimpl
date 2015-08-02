@@ -6,15 +6,19 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
+import UIKit
+
 class OnChangeHandler: WidgetEventHandlerType {
-    //TODO
+    
+    typealias actionWidgetTuple = (ActionType,WidgetWrapper)
     
     static let instance:OnChangeHandler = OnChangeHandler()
     
-    var actions: Dictionary<String,(ActionType,WidgetWrapper)> = [:]
+    var actions: Dictionary<String,actionWidgetTuple> = [:]
     
     func registerAction(action: ActionType, widget: WidgetWrapper) {
         actions[action.actionSignature.platformValue!] = (action, widget)
+        //println("registered action \(action.actionSignature.platformValue!)")
     }
     
     func unregisterAction(action: ActionType, widget: WidgetWrapper) {
@@ -26,8 +30,15 @@ class OnChangeHandler: WidgetEventHandlerType {
         }
     }
     
-    func fire() { // TODO signature, execute action
-        print("testevent")
+    @objc
+    func fire(sender: UIControl) {
+        //println("Event fired to OnClickHandler: " + String(sender.tag) + "=" + WidgetMapping.fromRawValue(sender.tag).description)
+        
+        for (_, (action, widget)) in actions {
+            if widget.widgetId == WidgetMapping.fromRawValue(sender.tag) {
+                action.execute()
+            }
+        }
     }
     
 }

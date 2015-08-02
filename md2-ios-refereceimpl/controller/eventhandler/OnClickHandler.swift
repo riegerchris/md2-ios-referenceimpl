@@ -9,7 +9,6 @@
 import UIKit
 
 class OnClickHandler: WidgetEventHandlerType {
-    //TODO
     
     typealias actionWidgetTuple = (ActionType,WidgetWrapper)
     
@@ -32,12 +31,14 @@ class OnClickHandler: WidgetEventHandlerType {
     }
     
     @objc
-    func fire(sender: AnyObject) { // TODO signature, execute action
+    func fire(sender: UIControl) {
         //println("Event fired to OnClickHandler: " + String(sender.tag) + "=" + WidgetMapping.fromRawValue(sender.tag).description)
         
-        var action: ActionType = actions["mainPageNextAction"]!.0
-        action.execute()
-        
+        for (_, (action, widget)) in actions {
+            if widget.widgetId == WidgetMapping.fromRawValue(sender.tag) {
+                action.execute()
+            }
+        }
     }
 
 }
