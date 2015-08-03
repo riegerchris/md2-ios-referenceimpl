@@ -14,7 +14,9 @@ class ImageWidget: SingleWidgetType {
     
     var value: MD2Type? = MD2Boolean(false)
     
-    var dimensions: (MD2Integer, MD2Integer, MD2Integer, MD2Integer)?
+    var dimensions: Dimension?
+    
+    var imageElement: UIImageView?
     
     var action: MD2String
     
@@ -28,7 +30,7 @@ class ImageWidget: SingleWidgetType {
         
         // Create and set value
         let imageElement = UIImageView()
-        imageElement.frame = CGRectMake(120, 300, 150, 100) // TODO dimensions
+        imageElement.frame = UIUtil.dimensionToCGRect(dimensions!) //CGRectMake(120, 300, 150, 100) // TODO dimensions
         let image = UIImage(named: value!.toString().platformValue!)
         imageElement.image = image
         
@@ -37,5 +39,16 @@ class ImageWidget: SingleWidgetType {
         
         // Add to surrounding view
         view.addSubview(imageElement)
+        self.imageElement = imageElement
     }
+    
+    func calculateDimensions(bounds: Dimension) {
+        // Add gutter
+        self.dimensions = Dimension(
+            x: bounds.x + ViewConfig.GUTTER,
+            y: bounds.y + ViewConfig.GUTTER,
+            width: bounds.width - 2 * ViewConfig.GUTTER,
+            height: bounds.height - 2 * ViewConfig.GUTTER)
+    }
+    
 }

@@ -14,13 +14,13 @@ class ViewManager {
     
     var navigationController: UINavigationController?
     
-    var views: Dictionary<String, MD2ViewController> = [:]//Array<LayoutType> = []
+    var views: Dictionary<String, MD2ViewController> = [:]
     
     func goto(viewName: MD2String) {
         for (name, controller) in views {
-            if viewName.equals(MD2String(controller.layout.widgetId.description)) { // TODO widgetId != viewName)
-                self.navigationController!.pushViewController(controller, animated: false)//SecondViewController(layout: view), animated:false)
-                // TODO invoke view (stack or root??)
+            if viewName.equals(MD2String(controller.layout.widgetId.description)) { // TODO widgetId != viewName?
+                // Show view
+                self.navigationController!.pushViewController(controller, animated: false)
                 break
             }
         }
@@ -33,26 +33,27 @@ class ViewManager {
         
         // TODO create widgetwrappers, register wrappers in registry, store actual view instances in internal data structure
         
-        // Create views programatically without storyboard
-        // Step 1: Create view controller instance
-        // Step 2: Create a navigation controller with view controller instance as root
-        // Step 3: Navigation controller instance is set as rootviewcontroller of the window
+        // Create controller with view and add to list
+        let controller: MD2ViewController = MD2ViewController(layout: view)
         
-        if viewName.equals(MD2String("MainView")) {
+        controller.calculateDimensions()
         
-            var initialController: MD2ViewController = MD2ViewController(layout: view)
-            navigationController = UINavigationController(rootViewController: initialController)
-        
-            // Set and show initial view
-            window!.rootViewController = self.navigationController
-            navigationController!.setNavigationBarHidden(true, animated: false)
-        
-            views[viewName.toString().platformValue!] = initialController
-            
-        } else if viewName.equals(MD2String("View2")) {
-            var secondController: MD2ViewController = MD2ViewController(layout: view)
-            
-            views[viewName.toString().platformValue!] = secondController
+        views[viewName.toString().platformValue!] = controller
+    }
+    
+    func showRootView(viewName:MD2String) {
+        for (name, controller) in views {
+            if viewName.equals(MD2String(controller.layout.widgetId.description)) { // TODO widgetId != viewName?
+                
+                // Define navigation controller
+                navigationController = UINavigationController(rootViewController: controller)
+                
+                // Set and show initial view
+                window!.rootViewController = self.navigationController
+                navigationController!.setNavigationBarHidden(true, animated: false)
+                
+                break
+            }
         }
     }
     

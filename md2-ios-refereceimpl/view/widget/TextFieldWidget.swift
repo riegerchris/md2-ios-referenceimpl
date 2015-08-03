@@ -14,9 +14,11 @@ class TextFieldWidget: SingleWidgetType {
     
     var value: MD2Type? = MD2String("")
     
-    var dimensions: (MD2Integer, MD2Integer, MD2Integer, MD2Integer)?
+    var dimensions: Dimension?
     
     var placeholder: MD2String?
+    
+    var textField: UITextField?
     
     init(widgetId: WidgetMapping, initialValue: MD2Type) {
         self.widgetId = widgetId
@@ -27,7 +29,7 @@ class TextFieldWidget: SingleWidgetType {
         
         // Create and set value
         let textField = UITextField()
-        textField.frame = CGRectMake(120, 200, 150, 50) // TODO dimensions
+        textField.frame = UIUtil.dimensionToCGRect(dimensions!) //CGRectMake(120, 200, 150, 50) // TODO dimensions
         textField.placeholder = placeholder?.platformValue
         textField.text = value?.toString().platformValue
         
@@ -40,5 +42,16 @@ class TextFieldWidget: SingleWidgetType {
         
         // Add to surrounding view
         view.addSubview(textField)
+        self.textField = textField
     }
+    
+    func calculateDimensions(bounds: Dimension) {
+        // Add gutter
+        self.dimensions = Dimension(
+            x: bounds.x + ViewConfig.GUTTER,
+            y: bounds.y + ViewConfig.GUTTER,
+            width: bounds.width - 2 * ViewConfig.GUTTER,
+            height: bounds.height - 2 * ViewConfig.GUTTER)
+    }
+
 }

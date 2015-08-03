@@ -8,8 +8,6 @@
 
 protocol SingleWidgetType: WidgetType {
     
-    var value: MD2Type? { get set } // TODO keep optional?
+    var value: MD2Type? { get set }
 
-    var dimensions: (MD2Integer, MD2Integer, MD2Integer, MD2Integer)? { get set } // TODO keep optional?
-    
 }

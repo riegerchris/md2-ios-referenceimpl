@@ -12,6 +12,10 @@ protocol WidgetType {
     
     var widgetId: WidgetMapping { get }
     
+    var dimensions: Dimension? { get set }
+    
     func render(view: UIView, controller: UIViewController)
+
+    func calculateDimensions(bounds: Dimension)
     
 }

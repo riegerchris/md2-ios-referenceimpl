@@ -53,6 +53,10 @@ class Controller {
         let switchWidget2Wrapper = WidgetWrapper(widget: switchWidget2)
         widgetRegistry.add(switchWidget2Wrapper)
         
+        let spacer = SpacerWidget(widgetId: WidgetMapping.Spacer)
+        mainLayout.addWidget(spacer)
+        // No wrapper
+        
         let secondView = FlowLayoutPane(widgetId: WidgetMapping.View2)
         secondView.orientation = FlowLayoutPane.Orientation.Vertical
         
@@ -87,6 +91,6 @@ class Controller {
         
         // Start initial action of the app
         // TODO
-        
+        viewManager.showRootView(MD2String("MainView"))
     }
 }

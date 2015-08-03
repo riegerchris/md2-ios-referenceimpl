@@ -21,6 +21,7 @@ enum WidgetMapping: Int {
     case Switch2 = 7
     case View2 = 8
     case Label2 = 9
+    case Spacer = 10
     
     // There is currently no introspection into enums
     // Therefore computed property to establish a link of type enum -> string representation
@@ -35,6 +36,7 @@ enum WidgetMapping: Int {
         case .Switch2: return "Switch2"
         case .View2: return "View2"
         case .Label2: return "Label2"
+        case .Spacer: return "Spacer"
         default: return "NotFound"
         }
     }
@@ -51,6 +53,7 @@ enum WidgetMapping: Int {
         case 7: return .Switch2
         case 8: return .View2
         case 9: return .Label2
+        case 10: return .Spacer
         default: return .NotFound
         }
     }

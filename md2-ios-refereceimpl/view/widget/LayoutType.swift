@@ -7,7 +7,6 @@
 //
 
 protocol LayoutType: WidgetType {
-    // TODO add etc
     
     var widgets: Array<WidgetType> { get set }
     

@@ -23,6 +23,10 @@
 		59C3D5DC1B696FDF00C5A613 /* ImageWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5DB1B696FDF00C5A613 /* ImageWidget.swift */; };
 		59C3D5E01B698C9900C5A613 /* OnClickHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5DF1B698C9800C5A613 /* OnClickHandler.swift */; };
 		59C3D5E21B6AB3DE00C5A613 /* WidgetMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5E11B6AB3DE00C5A613 /* WidgetMapping.swift */; };
+		59C3D5E51B6F736900C5A613 /* UIUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5E41B6F736900C5A613 /* UIUtil.swift */; };
+		59C3D5E71B6F739D00C5A613 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5E61B6F739D00C5A613 /* Dimension.swift */; };
+		59C3D5E91B6F840300C5A613 /* ViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5E81B6F840300C5A613 /* ViewConfig.swift */; };
+		59C3D5EB1B6F84EA00C5A613 /* SpacerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5EA1B6F84EA00C5A613 /* SpacerWidget.swift */; };
 		59CB70721B5E9889001D312F /* MD2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70701B5E9889001D312F /* MD2ViewController.swift */; };
 		59CB70731B5E9889001D312F /* InitialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59CB70711B5E9889001D312F /* InitialView.xib */; };
 		59CB707E1B5EAE2D001D312F /* MD2Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB707D1B5EAE2D001D312F /* MD2Type.swift */; };
@@ -97,6 +101,10 @@
 		59C3D5DB1B696FDF00C5A613 /* ImageWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageWidget.swift; sourceTree = "<group>"; };
 		59C3D5DF1B698C9800C5A613 /* OnClickHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnClickHandler.swift; sourceTree = "<group>"; };
 		59C3D5E11B6AB3DE00C5A613 /* WidgetMapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetMapping.swift; sourceTree = "<group>"; };
+		59C3D5E41B6F736900C5A613 /* UIUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtil.swift; sourceTree = "<group>"; };
+		59C3D5E61B6F739D00C5A613 /* Dimension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
+		59C3D5E81B6F840300C5A613 /* ViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewConfig.swift; sourceTree = "<group>"; };
+		59C3D5EA1B6F84EA00C5A613 /* SpacerWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpacerWidget.swift; sourceTree = "<group>"; };
 		59CB70701B5E9889001D312F /* MD2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2ViewController.swift; sourceTree = "<group>"; };
 		59CB70711B5E9889001D312F /* InitialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialView.xib; sourceTree = "<group>"; };
 		59CB707D1B5EAE2D001D312F /* MD2Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Type.swift; sourceTree = "<group>"; };
@@ -193,12 +201,21 @@
 			path = enum;
 			sourceTree = "<group>";
 		};
+		59C3D5E31B6F733E00C5A613 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				59C3D5E41B6F736900C5A613 /* UIUtil.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 		59CB70741B5E9DF1001D312F /* view */ = {
 			isa = PBXGroup;
 			children = (
 				59CB707B1B5EADE8001D312F /* widget */,
 				59CB70711B5E9889001D312F /* InitialView.xib */,
 				59C3D5BC1B67FDFB00C5A613 /* ViewManager.swift */,
+				59C3D5E81B6F840300C5A613 /* ViewConfig.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -227,6 +244,7 @@
 				59CB70781B5EAD19001D312F /* store */,
 				59CB70771B5EACDC001D312F /* type */,
 				59CE10161B60DFAB00ACE1E7 /* RegEx.swift */,
+				59C3D5E61B6F739D00C5A613 /* Dimension.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -294,6 +312,7 @@
 				59C3D5C01B68035600C5A613 /* SingleWidgetType.swift */,
 				59C3D5C21B680E4400C5A613 /* FlowLayoutPane.swift */,
 				59C3D5D11B691FC100C5A613 /* LabelWidget.swift */,
+				59C3D5EA1B6F84EA00C5A613 /* SpacerWidget.swift */,
 				59C3D5D31B69260D00C5A613 /* ButtonWidget.swift */,
 				59C3D5D51B6966BF00C5A613 /* TextFieldWidget.swift */,
 				59C3D5D71B69681300C5A613 /* SwitchWidget.swift */,
@@ -347,6 +366,7 @@
 		59CD55A21B5E8258007B9834 /* md2-ios-refereceimpl */ = {
 			isa = PBXGroup;
 			children = (
+				59C3D5E31B6F733E00C5A613 /* util */,
 				59CD55A51B5E8258007B9834 /* AppDelegate.swift */,
 				59CB70751B5E9E11001D312F /* controller */,
 				59CD55AC1B5E8258007B9834 /* Images.xcassets */,
@@ -489,8 +509,10 @@
 				59CB70AA1B5FDD63001D312F /* ActionType.swift in Sources */,
 				59CB70721B5E9889001D312F /* MD2ViewController.swift in Sources */,
 				59CB70AE1B5FDF2A001D312F /* DataMapper.swift in Sources */,
+				59C3D5E71B6F739D00C5A613 /* Dimension.swift in Sources */,
 				59CD55A61B5E8258007B9834 /* AppDelegate.swift in Sources */,
 				59CB70941B5F9995001D312F /* MD2EntityType.swift in Sources */,
+				59C3D5E51B6F736900C5A613 /* UIUtil.swift in Sources */,
 				59CB70901B5F97A6001D312F /* MD2Time.swift in Sources */,
 				59CB70B31B5FE3B9001D312F /* ValidatorType.swift in Sources */,
 				59CE10191B60E31000ACE1E7 /* TimeRangeValidator.swift in Sources */,
@@ -520,6 +542,7 @@
 				59C3D5BD1B67FDFB00C5A613 /* ViewManager.swift in Sources */,
 				59CB707E1B5EAE2D001D312F /* MD2Type.swift in Sources */,
 				59CE101B1B60E35500ACE1E7 /* DateTimeValidator.swift in Sources */,
+				59C3D5EB1B6F84EA00C5A613 /* SpacerWidget.swift in Sources */,
 				59C3D5D41B69260D00C5A613 /* ButtonWidget.swift in Sources */,
 				59CB70B71B60CDE6001D312F /* StringRangeValidator.swift in Sources */,
 				59C3D5D21B691FC100C5A613 /* LabelWidget.swift in Sources */,
@@ -539,6 +562,7 @@
 				59CB708C1B5F8E23001D312F /* MD2Float.swift in Sources */,
 				59CE101F1B60E89000ACE1E7 /* GlobalEventHandlerType.swift in Sources */,
 				59CB70821B5EB281001D312F /* MD2NumericType.swift in Sources */,
+				59C3D5E91B6F840300C5A613 /* ViewConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

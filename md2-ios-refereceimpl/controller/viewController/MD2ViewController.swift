@@ -24,7 +24,7 @@ class MD2ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor=UIColor.whiteColor()
-        
+
         // Render the desired Layout
         layout.render(self.view, controller: self)
     }
@@ -32,6 +32,10 @@ class MD2ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func calculateDimensions() {
+        layout.calculateDimensions(UIUtil.CGRectToDimension(UIScreen.mainScreen().bounds))
     }
     
 }
