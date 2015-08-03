@@ -27,4 +27,5 @@ class UIUtil {
                         height: Double(dimension.height))
         return rect
     }
+
 }

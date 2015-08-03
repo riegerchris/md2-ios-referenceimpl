@@ -16,21 +16,23 @@ class FlowLayoutPane: LayoutType {
     
     var orientation: Orientation
     
+    var tabTitle: MD2String?
+    
+    var tabIcon: MD2String?
+    
     var dimensions: Dimension?
     
     init(widgetId: WidgetMapping) {
-        self.orientation = Orientation.Horizontal
         self.widgetId = widgetId
+        
+        // Default
+        self.orientation = Orientation.Horizontal
     }
     
     func render(view: UIView, controller: UIViewController) {
-        
-        // Calculate dimensions
-        // TODO
-        
         // Render sub-elements
         for widget in widgets {
-            widget.render(view, controller: controller) // TODO create view itself
+            widget.render(view, controller: controller)
         }
     }
     
@@ -48,7 +50,7 @@ class FlowLayoutPane: LayoutType {
         
         let numUiElements = widgets.count
         
-        // TODO Gutter
+        // Calculate individual positions
         for var currentElem = 0; currentElem < numUiElements; currentElem++ {
             var subDimensions = Dimension()
             

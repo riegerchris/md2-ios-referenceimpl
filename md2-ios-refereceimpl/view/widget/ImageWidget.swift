@@ -12,13 +12,17 @@ class ImageWidget: SingleWidgetType {
     
     let widgetId: WidgetMapping
     
-    var value: MD2Type? = MD2Boolean(false)
+    var value: MD2Type? = MD2String() // path relative to /resources/images
     
     var dimensions: Dimension?
     
     var imageElement: UIImageView?
     
     var action: MD2String
+    
+    var height: MD2Integer?
+    
+    var width: MD2Integer?
     
     init(widgetId: WidgetMapping, initialValue: MD2Type, action: MD2String) {
         self.widgetId = widgetId
@@ -27,10 +31,14 @@ class ImageWidget: SingleWidgetType {
     }
     
     func render(view: UIView, controller: UIViewController) {
+        if dimensions == nil {
+            // Element is not specified in layout. Maybe grid with not enough cells?!
+            return
+        }
         
         // Create and set value
         let imageElement = UIImageView()
-        imageElement.frame = UIUtil.dimensionToCGRect(dimensions!) //CGRectMake(120, 300, 150, 100) // TODO dimensions
+        imageElement.frame = UIUtil.dimensionToCGRect(dimensions!)
         let image = UIImage(named: value!.toString().platformValue!)
         imageElement.image = image
         

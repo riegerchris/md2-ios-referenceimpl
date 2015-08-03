@@ -20,16 +20,26 @@ class TextFieldWidget: SingleWidgetType {
     
     var textField: UITextField?
     
+    var label: MD2String?
+    
+    var tooltip: MD2String?
+    
+    var type: TextFieldType = TextFieldType.Standard
+    
     init(widgetId: WidgetMapping, initialValue: MD2Type) {
         self.widgetId = widgetId
         self.value = initialValue
     }
     
     func render(view: UIView, controller: UIViewController) {
+        if dimensions == nil {
+            // Element is not specified in layout. Maybe grid with not enough cells?!
+            return
+        }
         
         // Create and set value
         let textField = UITextField()
-        textField.frame = UIUtil.dimensionToCGRect(dimensions!) //CGRectMake(120, 200, 150, 50) // TODO dimensions
+        textField.frame = UIUtil.dimensionToCGRect(dimensions!)
         textField.placeholder = placeholder?.platformValue
         textField.text = value?.toString().platformValue
         
@@ -52,6 +62,10 @@ class TextFieldWidget: SingleWidgetType {
             y: bounds.y + ViewConfig.GUTTER,
             width: bounds.width - 2 * ViewConfig.GUTTER,
             height: bounds.height - 2 * ViewConfig.GUTTER)
+    }
+    
+    enum TextFieldType {
+        case Standard, Date, Time, Timestamp
     }
 
 }

@@ -11,4 +11,7 @@ class ViewConfig {
     // Distance between elements in pixels
     static let GUTTER: Float = 10.0
     
+    // Font size
+    static let FONT_SIZE: Int = 15
+    
 }

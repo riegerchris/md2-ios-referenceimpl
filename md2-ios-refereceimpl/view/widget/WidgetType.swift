@@ -17,5 +17,5 @@ protocol WidgetType {
     func render(view: UIView, controller: UIViewController)
 
     func calculateDimensions(bounds: Dimension)
-    
+
 }

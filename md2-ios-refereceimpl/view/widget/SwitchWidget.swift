@@ -16,22 +16,27 @@ class SwitchWidget: SingleWidgetType {
     
     var dimensions: Dimension?
     
-    var action: MD2String
-    
     var switchElement: UISwitch?
     
-    init(widgetId: WidgetMapping, initialValue: MD2Type, action: MD2String) {
+    var label: MD2String?
+    
+    var tooltip: MD2String?
+    
+    init(widgetId: WidgetMapping, initialValue: MD2Type) {
         self.widgetId = widgetId
         self.value = initialValue
-        self.action = action
     }
     
     func render(view: UIView, controller: UIViewController) {
+        if dimensions == nil {
+            // Element is not specified in layout. Maybe grid with not enough cells?!
+            return
+        }
         
         // Create and set value
         let switchElement = UISwitch()
-        switchElement.frame = UIUtil.dimensionToCGRect(dimensions!) //CGRectMake(120, 300, 150, 100) // TODO dimensions
-        
+        switchElement.frame = UIUtil.dimensionToCGRect(dimensions!)
+        // TODO Label for caption
         if (value is MD2Boolean) && (value as! MD2Boolean).isSet() {
             switchElement.setOn((value as! MD2Boolean).platformValue!, animated: false)
         } else {

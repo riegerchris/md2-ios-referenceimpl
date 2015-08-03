@@ -17,22 +17,26 @@ class Controller {
         // Initialize all view elements
         let mainLayout = FlowLayoutPane(widgetId: WidgetMapping.MainView)
         mainLayout.orientation = FlowLayoutPane.Orientation.Vertical
+        //mainLayout.columns = MD2Integer(2)
+        //mainLayout.rows = MD2Integer(2)
         
         let labelWidget = LabelWidget(widgetId: WidgetMapping.Label1, initialValue: MD2String("YEAH!"))
-        //labelWidget.render(self.view, controller: self)
+        labelWidget.textStyle = WidgetTextStyle.Italic
+        labelWidget.fontSize = MD2Integer(15)
         mainLayout.addWidget(labelWidget)
         let labelWidgetWrapper = WidgetWrapper(widget: labelWidget)
         widgetRegistry.add(labelWidgetWrapper)
         
-        let buttonWidget = ButtonWidget(widgetId: WidgetMapping.Button1, initialValue: MD2String("YEAH2!"), action: MD2String("pressme"))
-        //buttonWidget.render(self.view, controller: self)
+        let buttonWidget = ButtonWidget(widgetId: WidgetMapping.Button1, initialValue: MD2String("YEAH2!"))
+        buttonWidget.textStyle = WidgetTextStyle.BoldItalic
+        buttonWidget.fontSize = MD2Integer(22)
+        buttonWidget.color = MD2String("#FF0000")
         mainLayout.addWidget(buttonWidget)
         let buttonWidgetWrapper = WidgetWrapper(widget: buttonWidget)
         widgetRegistry.add(buttonWidgetWrapper)
         
         let textFieldWidget = TextFieldWidget(widgetId: WidgetMapping.TextField1, initialValue: MD2String("dummytext3"))
         textFieldWidget.placeholder = MD2String("dummyplaceholder")
-        //textFieldWidget.render(self.view, controller: self)
         mainLayout.addWidget(textFieldWidget)
         let textFieldWidgetWrapper = WidgetWrapper(widget: textFieldWidget)
         widgetRegistry.add(textFieldWidgetWrapper)
@@ -41,21 +45,19 @@ class Controller {
         subLayout.orientation = FlowLayoutPane.Orientation.Horizontal
         mainLayout.addWidget(subLayout)
         
-        let switchWidget = SwitchWidget(widgetId: WidgetMapping.Switch1, initialValue: MD2Boolean(true), action: MD2String())
-        //switchWidget.render(self.view, controller: self)
+        let switchWidget = SwitchWidget(widgetId: WidgetMapping.Switch1, initialValue: MD2Boolean(true))
         subLayout.addWidget(switchWidget)
         let switchWidgetWrapper = WidgetWrapper(widget: switchWidget)
         widgetRegistry.add(switchWidgetWrapper)
         
-        let switchWidget2 = SwitchWidget(widgetId: WidgetMapping.Switch2, initialValue: MD2Boolean(false), action: MD2String())
-        //switchWidget.render(self.view, controller: self)
+        let switchWidget2 = SwitchWidget(widgetId: WidgetMapping.Switch2, initialValue: MD2Boolean(false))
         subLayout.addWidget(switchWidget2)
         let switchWidget2Wrapper = WidgetWrapper(widget: switchWidget2)
         widgetRegistry.add(switchWidget2Wrapper)
         
         let spacer = SpacerWidget(widgetId: WidgetMapping.Spacer)
         mainLayout.addWidget(spacer)
-        // No wrapper
+        // No wrapper needed
         
         let secondView = FlowLayoutPane(widgetId: WidgetMapping.View2)
         secondView.orientation = FlowLayoutPane.Orientation.Vertical
@@ -92,5 +94,7 @@ class Controller {
         // Start initial action of the app
         // TODO
         viewManager.showRootView(MD2String("MainView"))
+        println("done")
+      //  viewManager.navigationController!.pushViewController(MD2PickerView(), animated:false)
     }
 }

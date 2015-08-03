@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabelWidget: SingleWidgetType {
+class LabelWidget: SingleWidgetType, WidgetStyleType {
     
     let widgetId: WidgetMapping
     
@@ -18,23 +18,42 @@ class LabelWidget: SingleWidgetType {
     
     var labelElement: UILabel?
     
+    var color: MD2String?
+    
+    var fontSize: MD2Integer?
+    
+    var textStyle: WidgetTextStyle = WidgetTextStyle.Normal
+    
     init(widgetId: WidgetMapping, initialValue: MD2Type) {
         self.widgetId = widgetId
         self.value = initialValue
     }
     
     func render(view: UIView, controller: UIViewController) {
+        if dimensions == nil {
+            // Element is not specified in layout. Maybe grid with not enough cells?!
+            return
+        }
         
         // Create and set value
         let label = UILabel()
         label.text = value?.toString().platformValue
+        label.frame = UIUtil.dimensionToCGRect(dimensions!)
         
-        // Set styling
-        label.font = UIFont(name: "MarkerFelt-Thin", size: 12) // TODO styling
-        label.textColor = UIColor.redColor()
-        label.textAlignment = .Center
-        label.numberOfLines = 5
-        label.frame = UIUtil.dimensionToCGRect(dimensions!) //CGRectMake(15, 254, 300, 500) // TODO dimensions
+        // Set default styles
+        //label.textAlignment = .Center
+        //label.numberOfLines = 5
+        
+        // Set custom styles
+        if color?.isSet() == true {
+            label.textColor = UIColor(rgba: color!.platformValue!)
+        }
+        
+        if fontSize?.isSet() == nil || fontSize?.isSet() == false {
+            fontSize = MD2Integer(ViewConfig.FONT_SIZE)
+        }
+        
+        label.font = UIFont(name: textStyle.rawValue, size: CGFloat(fontSize!.platformValue!))
         
         // Add to surrounding view
         view.addSubview(label)
