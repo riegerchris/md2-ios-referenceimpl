@@ -30,7 +30,6 @@
 		59C3D5ED1B6FAB4B00C5A613 /* GridLayoutPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5EC1B6FAB4B00C5A613 /* GridLayoutPane.swift */; };
 		59C3D5EF1B6FBA2700C5A613 /* OptionWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5EE1B6FBA2700C5A613 /* OptionWidget.swift */; };
 		59C3D5F11B6FBF6C00C5A613 /* DateTimePickerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5F01B6FBF6C00C5A613 /* DateTimePickerWidget.swift */; };
-		59C3D5F31B6FC3CE00C5A613 /* MD2PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5F21B6FC3CE00C5A613 /* MD2PickerView.swift */; };
 		59CB70721B5E9889001D312F /* MD2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70701B5E9889001D312F /* MD2ViewController.swift */; };
 		59CB70731B5E9889001D312F /* InitialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59CB70711B5E9889001D312F /* InitialView.xib */; };
 		59CB707E1B5EAE2D001D312F /* MD2Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB707D1B5EAE2D001D312F /* MD2Type.swift */; };
@@ -115,7 +114,6 @@
 		59C3D5EC1B6FAB4B00C5A613 /* GridLayoutPane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayoutPane.swift; sourceTree = "<group>"; };
 		59C3D5EE1B6FBA2700C5A613 /* OptionWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionWidget.swift; sourceTree = "<group>"; };
 		59C3D5F01B6FBF6C00C5A613 /* DateTimePickerWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePickerWidget.swift; sourceTree = "<group>"; };
-		59C3D5F21B6FC3CE00C5A613 /* MD2PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2PickerView.swift; sourceTree = "<group>"; };
 		59CB70701B5E9889001D312F /* MD2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2ViewController.swift; sourceTree = "<group>"; };
 		59CB70711B5E9889001D312F /* InitialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialView.xib; sourceTree = "<group>"; };
 		59CB707D1B5EAE2D001D312F /* MD2Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Type.swift; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				59CB70701B5E9889001D312F /* MD2ViewController.swift */,
-				59C3D5F21B6FC3CE00C5A613 /* MD2PickerView.swift */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -551,7 +548,6 @@
 				59C3D5CF1B68B2D100C5A613 /* ComplaintStatus.swift in Sources */,
 				59CE10131B60D88500ACE1E7 /* DateRangeValidator.swift in Sources */,
 				59CB70981B5FB25B001D312F /* ContentProviderType.swift in Sources */,
-				59C3D5F31B6FC3CE00C5A613 /* MD2PickerView.swift in Sources */,
 				59CB709C1B5FB7B3001D312F /* Filter.swift in Sources */,
 				59CB709E1B5FB82B001D312F /* Query.swift in Sources */,
 				59CB70B01B5FE271001D312F /* WidgetWrapper.swift in Sources */,

@@ -14,4 +14,7 @@ class ViewConfig {
     // Font size
     static let FONT_SIZE: Int = 15
     
+    // Default placeholder for option widgets
+    static let OPTION_WIDGET_PLACEHOLDER = " - Please select -"
+    
 }

@@ -12,4 +12,6 @@ protocol MD2EnumType: MD2Type {
     
     var platformValue: T? { get }
     
+    func getAllValues() -> Array<String>
+    
 }

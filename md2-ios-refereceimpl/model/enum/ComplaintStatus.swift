@@ -37,5 +37,15 @@ class ComplaintStatus: MD2EnumType {
         case Elem2 = "Complaint is sent to administration"
         case Elem3 = "Complaint is in process"
         case Elem4 = "Complaint has been handled by the administration"
+        
+        static let allValues = [Elem1, Elem2, Elem3, Elem4]
+    }
+    
+    func getAllValues() -> Array<String> {
+        var array: Array<String> = []
+        for elem in ComplaintStatus.EnumType.allValues {
+            array.append(elem.rawValue)
+        }
+        return array
     }
 }

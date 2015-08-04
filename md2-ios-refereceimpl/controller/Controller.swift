@@ -41,6 +41,12 @@ class Controller {
         let textFieldWidgetWrapper = WidgetWrapper(widget: textFieldWidget)
         widgetRegistry.add(textFieldWidgetWrapper)
         
+        let optionWidget = OptionWidget(widgetId: WidgetMapping.TextField1, initialValue: MD2String("dummytext3"))
+        optionWidget.options = ComplaintStatus().getAllValues()
+        mainLayout.addWidget(optionWidget)
+        let optionFieldWidgetWrapper = WidgetWrapper(widget: optionWidget)
+        widgetRegistry.add(optionFieldWidgetWrapper)
+        
         let subLayout = FlowLayoutPane(widgetId: WidgetMapping.SubLayout1)
         subLayout.orientation = FlowLayoutPane.Orientation.Horizontal
         mainLayout.addWidget(subLayout)
@@ -94,6 +100,13 @@ class Controller {
         // Start initial action of the app
         // TODO
         viewManager.showRootView(MD2String("MainView"))
+       /* viewManager.navigationController = UINavigationController(rootViewController: MD2PickerView())
+        
+        // Set and show initial view
+        viewManager.window!.rootViewController = viewManager.navigationController
+        viewManager.navigationController!.setNavigationBarHidden(true, animated: false)
+        */
+
         println("done")
       //  viewManager.navigationController!.pushViewController(MD2PickerView(), animated:false)
     }
