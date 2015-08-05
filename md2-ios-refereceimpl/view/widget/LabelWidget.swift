@@ -37,7 +37,7 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
         
         // Create and set value
         let label = UILabel()
-        label.text = value?.toString().platformValue
+        label.text = value?.toString()
         label.frame = UIUtil.dimensionToCGRect(dimensions!)
         
         // Set default styles

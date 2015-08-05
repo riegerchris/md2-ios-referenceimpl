@@ -26,21 +26,21 @@ class StringRangeValidator: ValidatorType {
         self.maxLength = maxLength
     }
     
-    func isValid(value: MD2Type) -> MD2Boolean {
+    func isValid(value: MD2Type) -> Bool {
         if !(value is MD2String)
             || !((value as! MD2String).isSet())
             || !(minLength.isSet())
             || !(maxLength.isSet()) {
-                return MD2Boolean(false)
+                return false
         }
         
         let stringValue = (value as! MD2String).platformValue!
         
         if count(stringValue) >= minLength.platformValue!
            && count(stringValue) <= maxLength.platformValue! {
-            return MD2Boolean(true)
+            return true
         } else {
-            return MD2Boolean(false)
+            return false
         }
     }
     

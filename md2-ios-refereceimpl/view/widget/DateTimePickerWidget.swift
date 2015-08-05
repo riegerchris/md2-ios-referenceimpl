@@ -40,7 +40,7 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
         let textField = UITextField()
         textField.frame = UIUtil.dimensionToCGRect(dimensions!)
         textField.placeholder = ViewConfig.OPTION_WIDGET_PLACEHOLDER
-        textField.text = value?.toString().platformValue
+        textField.text = value?.toString()
         
         textField.tag = widgetId.rawValue
         textField.addTarget(OnChangeHandler.instance, action: "fire:", forControlEvents: UIControlEvents.ValueChanged)

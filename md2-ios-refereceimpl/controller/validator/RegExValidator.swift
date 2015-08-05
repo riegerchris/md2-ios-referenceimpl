@@ -23,11 +23,11 @@ class RegExValidator {
         self.regEx = RegEx(pattern: regEx)
     }
     
-    func isValid(value: MD2Type) -> MD2Boolean {
+    func isValid(value: MD2Type) -> Bool {
         if value is MD2String {
             return regEx.test(value as! MD2String)
         } else {
-            return MD2Boolean(false)
+            return false
         }
     }
     

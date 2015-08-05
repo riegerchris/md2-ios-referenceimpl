@@ -10,7 +10,7 @@ protocol MD2Type {
     
     func clone() -> MD2Type
     
-    func toString() -> MD2String
+    func toString() -> String
     
     func equals(value : MD2Type) -> Bool
     

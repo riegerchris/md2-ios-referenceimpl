@@ -28,8 +28,8 @@ class Complaint: MD2EntityType {
         return Complaint(md2Entity: self)
     }
     
-    func toString() -> MD2String {
-        return MD2String("Complaint") // TODO
+    func toString() -> String {
+        return "Complaint" // TODO
     }
     
     func equals(value : MD2Type) -> Bool {

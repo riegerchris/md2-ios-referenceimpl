@@ -12,7 +12,7 @@ import Foundation
 
 infix operator =~ {}
 
-func =~ (input: MD2String, pattern: MD2String) -> MD2Boolean {
+func =~ (input: MD2String, pattern: MD2String) -> Bool {
     return RegEx(pattern: pattern).test(input)
 }
 
@@ -32,13 +32,13 @@ class RegEx {
         }
     }
     
-    func test(input: MD2String) -> MD2Boolean {
+    func test(input: MD2String) -> Bool {
         if expression == nil || !input.isSet() {
-            return MD2Boolean(false)
+            return false
         }
         
         let matches = self.expression!.matchesInString(input.platformValue!, options: nil, range:NSMakeRange(0, count(input.platformValue!)))
-        return MD2Boolean(matches.count > 0)
+        return matches.count > 0
     }
     
 }

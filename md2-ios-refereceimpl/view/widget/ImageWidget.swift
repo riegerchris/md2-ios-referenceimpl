@@ -39,7 +39,7 @@ class ImageWidget: SingleWidgetType {
         // Create and set value
         let imageElement = UIImageView()
         imageElement.frame = UIUtil.dimensionToCGRect(dimensions!)
-        let image = UIImage(named: value!.toString().platformValue!)
+        let image = UIImage(named: value!.toString())
         imageElement.image = image
         
         // Set styling

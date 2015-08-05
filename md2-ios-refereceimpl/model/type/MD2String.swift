@@ -32,11 +32,15 @@ class MD2String: MD2DataType {
         return MD2String(self)
     }
     
-    func toString() -> MD2String {
-        return platformValue != nil ? MD2String(platformValue!) : MD2String("")
+    func toString() -> String {
+        if platformValue == nil {
+            return ""
+        } else {
+            return platformValue!
+        }
     }
     
     func equals(value : MD2Type) -> Bool {
-        return (value is MD2String) && platformValue == (value as! MD2String).platformValue
+        return platformValue == value.toString()
     }
 }

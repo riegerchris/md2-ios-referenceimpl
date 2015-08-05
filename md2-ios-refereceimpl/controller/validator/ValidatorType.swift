@@ -12,7 +12,7 @@ protocol ValidatorType {
     
     var defaultMessage: MD2String { get }
     
-    func isValid(value: MD2Type) -> MD2Boolean
+    func isValid(value: MD2Type) -> Bool
     
     func getMessage() -> MD2String
     

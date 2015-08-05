@@ -8,10 +8,7 @@
 
 import Foundation
 
-class MD2Date: MD2NumericType {
-    
-    typealias ValueType = NSDate
-    typealias NumericType = MD2Date
+class MD2Date: MD2TemporalType {
     
     let stringFormat = "yyyy-MM-dd"
 
@@ -37,49 +34,86 @@ class MD2Date: MD2NumericType {
         return platformValue != nil
     }
     
-    func gt(value: MD2Date) -> Bool {
-        return isSet()
-            && value.isSet()
-            && platformValue!.compare(value.platformValue!) == NSComparisonResult.OrderedDescending // receiver value after other value
+    func gt(value: MD2TemporalType) -> Bool {
+        if value is MD2Date || value is MD2DateTime {
+            return isSet()
+                && value.isSet()
+                && platformValue!.compare((value as! MD2Date).platformValue!) == NSComparisonResult.OrderedDescending // receiver value is after other value
+        }
+        
+        // Cannot compare date with time
+        return false
     }
     
-    func gte(value: MD2Date) -> Bool {
-        return isSet()
-            && value.isSet()
-            && (platformValue!.compare(value.platformValue!) == NSComparisonResult.OrderedDescending ||
-                platformValue!.compare(value.platformValue!) == NSComparisonResult.OrderedSame)
+    func gte(value: MD2TemporalType) -> Bool {
+        if value is MD2Date {
+            return isSet()
+                && value.isSet()
+                && (platformValue!.compare((value as! MD2Date).platformValue!) == NSComparisonResult.OrderedDescending ||
+                    platformValue!.compare((value as! MD2Date).platformValue!) == NSComparisonResult.OrderedSame)
+        } else if value is MD2DateTime {
+            return isSet()
+                && value.isSet()
+                && (platformValue!.compare((value as! MD2DateTime).platformValue!) == NSComparisonResult.OrderedDescending ||
+                    platformValue!.compare((value as! MD2DateTime).platformValue!) == NSComparisonResult.OrderedSame)
+        }
+        
+        // Cannot compare date with time
+        return false
     }
     
-    func lt(value: MD2Date) -> Bool {
-        return isSet() && value.isSet()
-            && platformValue!.compare(value.platformValue!) == NSComparisonResult.OrderedAscending
+    func lt(value: MD2TemporalType) -> Bool {
+        if value is MD2Date {
+            return isSet() && value.isSet()
+                && platformValue!.compare((value as! MD2Date).platformValue!) == NSComparisonResult.OrderedAscending
+        } else if value is MD2DateTime {
+            return isSet() && value.isSet()
+                && platformValue!.compare((value as! MD2DateTime).platformValue!) == NSComparisonResult.OrderedAscending
+        }
+        
+        // Cannot compare date with time
+        return false
     }
     
-    func lte(value: MD2Date) -> Bool {
-        return isSet()
-            && value.isSet()
-            && (platformValue!.compare(value.platformValue!) == NSComparisonResult.OrderedAscending ||
-                platformValue!.compare(value.platformValue!) == NSComparisonResult.OrderedSame)
-     }
+    func lte(value: MD2TemporalType) -> Bool {
+        if value is MD2Date {
+            return isSet()
+                && value.isSet()
+                && (platformValue!.compare((value as! MD2Date).platformValue!) == NSComparisonResult.OrderedAscending ||
+                    platformValue!.compare((value as! MD2Date).platformValue!) == NSComparisonResult.OrderedSame)
+        } else if value is MD2DateTime {
+            return isSet()
+                && value.isSet()
+                && (platformValue!.compare((value as! MD2DateTime).platformValue!) == NSComparisonResult.OrderedAscending ||
+                    platformValue!.compare((value as! MD2DateTime).platformValue!) == NSComparisonResult.OrderedSame)
+        }
+        
+        // Cannot compare date with time
+        return false
+    }
     
     func clone() -> MD2Type {
         return MD2Date(self)
     }
     
-    func toString() -> MD2String {
+    func toString() -> String {
         if platformValue == nil {
-            return MD2String("")
+            return ""
         }
         
         var dateFormatter = NSDateFormatter()
         dateFormatter.timeZone = NSTimeZone.defaultTimeZone()
         dateFormatter.dateFormat = stringFormat
         
-        return MD2String(dateFormatter.stringFromDate(platformValue!))
+        return dateFormatter.stringFromDate(platformValue!)
     }
     
     func equals(value : MD2Type) -> Bool {
-        return (value is MD2Date) && gte(value as! MD2Date) && lte(value as! MD2Date)
+        if value is MD2TemporalType {
+            return gte((value as! MD2TemporalType)) && lte((value as! MD2TemporalType))
+        } else {
+            return toString() == value.toString()
+        }
     }
     
 }

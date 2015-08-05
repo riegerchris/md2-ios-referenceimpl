@@ -12,7 +12,7 @@ class DateTimeRangeValidator {
     
     var defaultMessage: MD2String {
         get {
-            return MD2String("The date and time must be between \(min.toString().platformValue) and \(max.toString().platformValue)!")
+            return MD2String("The date and time must be between \(min.toString()) and \(max.toString())!")
         }
     }
     
@@ -26,13 +26,13 @@ class DateTimeRangeValidator {
         self.max = max
     }
     
-    func isValid(value: MD2Type) -> MD2Boolean {
+    func isValid(value: MD2Type) -> Bool {
         if value is MD2DateTime
             && (value as! MD2DateTime).gte(min)
             && (value as! MD2DateTime).lte(max) {
-                return MD2Boolean(true)
+                return true
         } else {
-            return MD2Boolean(false)
+            return false
         }
     }
     

@@ -38,7 +38,7 @@ class ViewManager {
         
         controller.calculateDimensions()
         
-        views[viewName.toString().platformValue!] = controller
+        views[viewName.toString()] = controller
     }
     
     func showRootView(viewName:MD2String) {

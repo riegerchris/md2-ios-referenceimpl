@@ -8,8 +8,6 @@
 
 class MD2Float: MD2NumericType {
     
-    typealias ValueType = Float
-    
     var platformValue: Float?
     
     init() {
@@ -28,32 +26,47 @@ class MD2Float: MD2NumericType {
         return platformValue != nil
     }
     
-    func gt(value: MD2Float) -> Bool {
-        return (isSet() && value.isSet()) ? platformValue! > value.platformValue : false
+    func gt(value: MD2NumericType) -> Bool {
+        if value is MD2Integer && isSet() && value.isSet() {
+            return platformValue! - Float((value as! MD2Integer).platformValue!) > ModelConfig.FLOATING_ERROR
+        } else if value is MD2Float && isSet() && value.isSet() {
+            return platformValue! - (value as! MD2Float).platformValue! > ModelConfig.FLOATING_ERROR
+        }
+        return false
     }
     
-    func gte(value: MD2Float) -> Bool {
-        return (isSet() && value.isSet()) ? platformValue! >= value.platformValue : false
+    func gte(value: MD2NumericType) -> Bool {
+        return gt(value) || equals(value)
     }
     
-    func lt(value: MD2Float) -> Bool {
-        return (isSet() && value.isSet()) ? platformValue! < value.platformValue : false
+    func lt(value: MD2NumericType) -> Bool {
+        if value is MD2Integer && isSet() && value.isSet() {
+            return platformValue! - Float((value as! MD2Integer).platformValue!) < -1 * ModelConfig.FLOATING_ERROR
+        } else if value is MD2Float && isSet() && value.isSet() {
+            return platformValue! - (value as! MD2Float).platformValue! < -1 *  ModelConfig.FLOATING_ERROR
+        }
+        return false
     }
     
-    func lte(value: MD2Float) -> Bool {
-        return (isSet() && value.isSet()) ? platformValue! <= value.platformValue : false
+    func lte(value: MD2NumericType) -> Bool {
+        return lt(value) || equals(value)
     }
     
     func clone() -> MD2Type {
         return MD2Float(self)
     }
     
-    func toString() -> MD2String {
-        return platformValue != nil ? MD2String(platformValue!.description) : MD2String("")
+    func toString() -> String {
+        return platformValue != nil ? platformValue!.description : ""
     }
     
     func equals(value : MD2Type) -> Bool {
-        return (value is MD2Float) && platformValue == (value as! MD2Float).platformValue
+        if value is MD2Integer && isSet() && (value as! MD2Integer).isSet() {
+            return abs(platformValue! - Float((value as! MD2Integer).platformValue!)) < ModelConfig.FLOATING_ERROR
+        } else if value is MD2Float && isSet() && (value as! MD2Float).isSet() {
+            return abs(platformValue! - Float((value as! MD2Float).platformValue!)) < ModelConfig.FLOATING_ERROR
+        }
+        return self.toString() == value.toString()
     }
     
 }

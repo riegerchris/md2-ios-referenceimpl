@@ -8,8 +8,6 @@
 
 class MD2Boolean: MD2DataType {
     
-    typealias ValueType = Bool
-    
     var platformValue: Bool?
     
     init() {
@@ -32,16 +30,17 @@ class MD2Boolean: MD2DataType {
         return MD2Boolean(self)
     }
     
-    func toString() -> MD2String {
+    func toString() -> String {
         if platformValue == nil {
-            return MD2String("")
+            return ""
         }
         
-        return platformValue == true ? MD2String("true") : MD2String("false")
+        return platformValue == true ? "true" : "false"
     }
     
     func equals(value : MD2Type) -> Bool {
-        return (value is MD2Boolean) && platformValue == (value as! MD2Boolean).platformValue
+        return (value is MD2Boolean)
+            && platformValue == (value as! MD2Boolean).platformValue
     }
 
 }

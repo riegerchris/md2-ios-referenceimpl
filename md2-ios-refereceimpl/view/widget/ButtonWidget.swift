@@ -39,7 +39,7 @@ class ButtonWidget: SingleWidgetType, WidgetStyleType {
         /*   TODO     button.buttonType = InfoLight Custom System */
         let button = UIButton.buttonWithType(UIButtonType.System) as! UIButton
         button.frame = UIUtil.dimensionToCGRect(dimensions!)
-        button.setTitle(value?.toString().platformValue, forState: .Normal)
+        button.setTitle(value?.toString(), forState: .Normal)
         button.tag = widgetId.rawValue
         button.addTarget(OnTouchHandler.instance, action: "fire:", forControlEvents: UIControlEvents.TouchUpInside)
         

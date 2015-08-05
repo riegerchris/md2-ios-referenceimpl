@@ -29,8 +29,8 @@ class Address: MD2EntityType {
         return Address(md2Entity: self)
     }
     
-    func toString() -> MD2String {
-        return MD2String("Address") // TODO
+    func toString() -> String {
+        return "Address" // TODO
     }
     
     func equals(value : MD2Type) -> Bool {

@@ -12,7 +12,7 @@ class NumberRangeValidator {
     
     var defaultMessage: MD2String {
         get {
-            return MD2String("This value must be between \(min.toString().platformValue) and \(max.toString().platformValue)!")
+            return MD2String("This value must be between \(min.toString()) and \(max.toString())!")
         }
     }
 
@@ -26,7 +26,7 @@ class NumberRangeValidator {
         self.max = max
     }
     
-    func isValid(value: MD2Type) -> MD2Boolean {
+    func isValid(value: MD2Type) -> Bool {
         // Separate handling needed because check on MD2NumericType leads to error
         /* TODO if value is MD2Integer
             && (value as! MD2Integer).gte(min)
@@ -35,9 +35,9 @@ class NumberRangeValidator {
         } else */ if value is MD2Float
             && (value as! MD2Float).gte(min)
             && (value as! MD2Float).lte(max) {
-                return MD2Boolean(true)
+                return true
         } else {
-            return MD2Boolean(false)
+            return false
         }
     }
     

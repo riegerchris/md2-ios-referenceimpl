@@ -18,11 +18,11 @@ class ComplaintStatus: MD2EnumType {
         return newComplaintStatus
     }
     
-    func toString() -> MD2String {
+    func toString() -> String {
         if let _ = platformValue {
-            return MD2String(platformValue!.rawValue)
+            return platformValue!.rawValue
         } else {
-            return MD2String()
+            return ""
         }
     }
     
