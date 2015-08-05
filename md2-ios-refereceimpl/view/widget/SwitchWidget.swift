@@ -63,4 +63,12 @@ class SwitchWidget: SingleWidgetType {
             height: bounds.height - 2 * ViewConfig.GUTTER)
     }
     
+    func enable() {
+        self.switchElement?.enabled = true
+    }
+    
+    func disable() {
+        self.switchElement?.enabled = false
+    }
+    
 }

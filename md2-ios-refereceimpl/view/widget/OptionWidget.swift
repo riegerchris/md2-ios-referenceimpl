@@ -110,4 +110,12 @@ class OptionWidget: NSObject, SingleWidgetType, UIPickerViewDataSource, UIPicker
         return true
     }
     
+    func enable() {
+        self.optionElement?.enabled = true
+    }
+    
+    func disable() {
+        self.optionElement?.enabled = false
+    }
+    
 }

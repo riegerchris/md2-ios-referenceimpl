@@ -80,7 +80,7 @@ class Controller {
         widgetRegistry.add(labelWidgetWrapper2)
         
         // Initialize event handlers
-        let onClickHandler = OnClickHandler.instance
+        let onTouchHandler = OnTouchHandler.instance
         
         // Initialize content providers
         var contentProviderRegistry = ContentProviderRegistry()
@@ -99,21 +99,14 @@ class Controller {
         // TODO
         
         // Initialize and register Actions
-        let mainPageNextAction = GotoView(actionSignature: MD2String("mainPageNextAction"), widgetRegistry: widgetRegistry, eventHandler: onClickHandler, contentProviderRegistry: contentProviderRegistry, viewManager: viewManager, dataMapper: dataMapper, targetView: WidgetMapping.View2)
-        onClickHandler.registerAction(mainPageNextAction, widget: buttonWidgetWrapper)
+        let mainPageNextAction = GotoViewAction(actionSignature: MD2String("mainPageNextAction"), widgetRegistry: widgetRegistry, eventHandler: onTouchHandler, contentProviderRegistry: contentProviderRegistry, viewManager: viewManager, dataMapper: dataMapper, targetView: WidgetMapping.View2)
+        onTouchHandler.registerAction(mainPageNextAction, widget: buttonWidgetWrapper)
         
         
         // Start initial action of the app
         // TODO
         viewManager.showRootView(MD2String("MainView"))
-       /* viewManager.navigationController = UINavigationController(rootViewController: MD2PickerView())
-        
-        // Set and show initial view
-        viewManager.window!.rootViewController = viewManager.navigationController
-        viewManager.navigationController!.setNavigationBarHidden(true, animated: false)
-        */
-
+       
         println("done")
-      //  viewManager.navigationController!.pushViewController(MD2PickerView(), animated:false)
     }
 }

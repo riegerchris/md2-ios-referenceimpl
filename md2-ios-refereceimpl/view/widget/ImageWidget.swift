@@ -59,4 +59,12 @@ class ImageWidget: SingleWidgetType {
             height: bounds.height - 2 * ViewConfig.GUTTER)
     }
     
+    func enable() {
+        // Nothing to do on a read-only element
+    }
+    
+    func disable() {
+        // Nothing to do on a read-only element
+    }
+    
 }

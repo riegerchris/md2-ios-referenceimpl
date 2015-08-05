@@ -41,7 +41,7 @@ class ButtonWidget: SingleWidgetType, WidgetStyleType {
         button.frame = UIUtil.dimensionToCGRect(dimensions!)
         button.setTitle(value?.toString().platformValue, forState: .Normal)
         button.tag = widgetId.rawValue
-        button.addTarget(OnClickHandler.instance, action: "fire:", forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(OnTouchHandler.instance, action: "fire:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // Set default styles
         button.layer.borderWidth = 0.3
@@ -72,6 +72,14 @@ class ButtonWidget: SingleWidgetType, WidgetStyleType {
             y: bounds.y + ViewConfig.GUTTER,
             width: bounds.width - 2 * ViewConfig.GUTTER,
             height: bounds.height - 2 * ViewConfig.GUTTER)
+    }
+    
+    func enable() {
+        self.buttonElement?.enabled = true
+    }
+    
+    func disable() {
+        self.buttonElement?.enabled = false
     }
     
 }

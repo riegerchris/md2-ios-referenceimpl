@@ -106,4 +106,12 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
         
         self.resultElement!.text = formatter.stringFromDate(self.pickerElement!.date)
     }
+    
+    func enable() {
+        self.resultElement?.enabled = true
+    }
+    
+    func disable() {
+        self.resultElement?.enabled = false
+    }
 }

@@ -68,5 +68,13 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
             width: bounds.width - 2 * ViewConfig.GUTTER,
             height: bounds.height - 2 * ViewConfig.GUTTER)
     }
+    
+    func enable() {
+        self.labelElement?.enabled = true
+    }
+    
+    func disable() {
+        self.labelElement?.enabled = false
+    }
 
 }

@@ -79,4 +79,18 @@ class GridLayoutPane: LayoutType {
         }
     }
     
+    func enable() {
+        // Pass order to sub-elements
+        for widget in widgets {
+            widget.enable()
+        }
+    }
+    
+    func disable() {
+        // Pass order to sub-elements
+        for widget in widgets {
+            widget.disable()
+        }
+    }
+    
 }

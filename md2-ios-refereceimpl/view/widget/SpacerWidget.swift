@@ -28,4 +28,12 @@ class SpacerWidget: SingleWidgetType {
         self.dimensions = bounds
     }
     
+    func enable() {
+        // Nothing to do
+    }
+    
+    func disable() {
+        // Nothing to do
+    }
+    
 }

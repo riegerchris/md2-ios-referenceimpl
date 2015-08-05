@@ -73,5 +73,13 @@ class TextFieldWidget: NSObject, SingleWidgetType, UITextFieldDelegate {
         self.textField?.resignFirstResponder()
         return true
     }
+    
+    func enable() {
+        self.textField?.enabled = true
+    }
+    
+    func disable() {
+        self.textField?.enabled = false
+    }
 
 }
