@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextFieldWidget: SingleWidgetType {
+class TextFieldWidget: NSObject, SingleWidgetType, UITextFieldDelegate {
     
     let widgetId: WidgetMapping
     
@@ -51,6 +51,7 @@ class TextFieldWidget: SingleWidgetType {
         textField.borderStyle = UITextBorderStyle.Line
         
         // Add to surrounding view
+        textField.delegate = self
         view.addSubview(textField)
         self.textField = textField
     }
@@ -66,6 +67,11 @@ class TextFieldWidget: SingleWidgetType {
     
     enum TextFieldType {
         case Standard, Date, Time, Timestamp
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.textField?.resignFirstResponder()
+        return true
     }
 
 }

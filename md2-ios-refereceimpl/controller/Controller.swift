@@ -41,6 +41,12 @@ class Controller {
         let textFieldWidgetWrapper = WidgetWrapper(widget: textFieldWidget)
         widgetRegistry.add(textFieldWidgetWrapper)
         
+        let datePicker = DateTimePickerWidget(widgetId: WidgetMapping.TextField1, initialValue: MD2DateTime())
+        datePicker.pickerMode = UIDatePickerMode.Time
+        mainLayout.addWidget(datePicker)
+        let datePickerWrapper = WidgetWrapper(widget: datePicker)
+        widgetRegistry.add(datePickerWrapper)
+        
         let optionWidget = OptionWidget(widgetId: WidgetMapping.TextField1, initialValue: MD2String("dummytext3"))
         optionWidget.options = ComplaintStatus().getAllValues()
         mainLayout.addWidget(optionWidget)

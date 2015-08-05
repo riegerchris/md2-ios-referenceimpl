@@ -17,4 +17,9 @@ class ViewConfig {
     // Default placeholder for option widgets
     static let OPTION_WIDGET_PLACEHOLDER = " - Please select -"
     
+    // Date format
+    static let TIME_FORMAT = "HH:mm:ss"
+    static let DATE_FORMAT = "yyyy-MM-dd"
+    static let DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss"
+    
 }

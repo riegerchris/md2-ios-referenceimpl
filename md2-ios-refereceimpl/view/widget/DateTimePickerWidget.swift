@@ -1,5 +1,5 @@
 //
-//  OptionWidget.swift
+//  DateTimePickerWidget.swift
 //  md2-ios-refereceimpl
 //
 //  Created by Christoph Rieger on 03.08.15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OptionWidget: NSObject, SingleWidgetType, UIPickerViewDataSource, UIPickerViewDelegate, UIGestureRecognizerDelegate {
+class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDelegate {
     
     let widgetId: WidgetMapping
     
@@ -16,19 +16,18 @@ class OptionWidget: NSObject, SingleWidgetType, UIPickerViewDataSource, UIPicker
     
     var dimensions: Dimension?
     
-    var optionElement: UITextField?
+    var pickerElement: UIDatePicker?
     
-    var label: MD2String?
-    
-    var tooltip: MD2String?
-    
-    var options: Array<String>? = []
-    
-    var picker: UIPickerView = UIPickerView()
+    var resultElement: UITextField?
+   
+    var pickerMode: UIDatePickerMode?
     
     init(widgetId: WidgetMapping, initialValue: MD2Type) {
         self.widgetId = widgetId
         self.value = initialValue
+
+        // Default
+        self.pickerMode = UIDatePickerMode.DateAndTime
     }
     
     func render(view: UIView, controller: UIViewController) {
@@ -52,21 +51,26 @@ class OptionWidget: NSObject, SingleWidgetType, UIPickerViewDataSource, UIPicker
         
         // Add to surrounding view
         view.addSubview(textField)
-        self.optionElement = textField
-
-        // Picker to select value
-        picker.delegate = self
-        picker.dataSource = self
-        picker.backgroundColor = UIColor(rgba: "#eee")
-        self.optionElement!.inputView = picker
+        self.resultElement = textField
         
-        // Add tap recognizer on picker field manually
+        // Create and set value
+        let pickerElement = UIDatePicker()
+        pickerElement.datePickerMode = pickerMode!
+        pickerElement.frame = UIUtil.dimensionToCGRect(dimensions!)
+        // TODO set initial picker value
+        
+        pickerElement.tag = widgetId.rawValue
+        pickerElement.addTarget(self, action: "updateTextField", forControlEvents: UIControlEvents.ValueChanged)
+        
+        textField.inputView = pickerElement
+        
+        // Add to surrounding view
+        self.pickerElement = pickerElement
+        
         let tapRecognizer = UITapGestureRecognizer()
         tapRecognizer.addTarget(self, action: "pickerViewTapped")
         tapRecognizer.delegate = self
-        self.picker.addGestureRecognizer(tapRecognizer)
-        
-         // TODO preselect value
+        self.pickerElement!.addGestureRecognizer(tapRecognizer)
     }
     
     func calculateDimensions(bounds: Dimension) {
@@ -78,36 +82,28 @@ class OptionWidget: NSObject, SingleWidgetType, UIPickerViewDataSource, UIPicker
             height: bounds.height - 2 * ViewConfig.GUTTER)
     }
     
-    // Data source methods
-    @objc func numberOfComponentsInPickerView(colorPicker: UIPickerView) -> Int {
-        return 1
-    }
-    
-    @objc func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return options!.count
-    }
-    
-    // Delegate methods
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String!
-    {
-        return options![row]
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        // Update text field on scrolling
-        self.optionElement!.text = options![row]
-    }
-    
     // Action method to capture single click on picker view element
     func pickerViewTapped() {
-        self.optionElement!.text = options![self.picker.selectedRowInComponent(0)]
+        updateTextField()
         // Hide picker element
-        self.optionElement!.resignFirstResponder()
+        self.resultElement!.resignFirstResponder()
     }
-
+    
     // Some other delegate tries to get the tap first -> allow simultaneous processing
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
     
+    func updateTextField() {
+        let formatter = NSDateFormatter()
+        
+        switch self.pickerMode! {
+        case UIDatePickerMode.DateAndTime:  formatter.dateFormat = ViewConfig.DATE_TIME_FORMAT
+        case UIDatePickerMode.Date:         formatter.dateFormat = ViewConfig.DATE_FORMAT
+        case UIDatePickerMode.Time:         formatter.dateFormat = ViewConfig.TIME_FORMAT
+        default:                            formatter.dateFormat = ViewConfig.DATE_TIME_FORMAT
+        }
+        
+        self.resultElement!.text = formatter.stringFromDate(self.pickerElement!.date)
+    }
 }
