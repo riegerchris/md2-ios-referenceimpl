@@ -12,8 +12,6 @@ class ContentProviderOperationAction: ActionType {
     
     let widgetRegistry: WidgetRegistry
     
-    let eventHandler: EventHandlerType
-    
     let contentProviderRegistry: ContentProviderRegistry
     
     let viewManager: ViewManager
@@ -24,11 +22,10 @@ class ContentProviderOperationAction: ActionType {
     
     let contentProvider: ContentProviderType
     
-    init(actionSignature: MD2String, widgetRegistry: WidgetRegistry, eventHandler: EventHandlerType, contentProviderRegistry: ContentProviderRegistry, viewManager: ViewManager, dataMapper: DataMapper, allowedOperation: AllowedOperation, contentProvider: ContentProviderType) {
+    init(actionSignature: MD2String, widgetRegistry: WidgetRegistry, contentProviderRegistry: ContentProviderRegistry, viewManager: ViewManager, dataMapper: DataMapper, allowedOperation: AllowedOperation, contentProvider: ContentProviderType) {
         
         self.actionSignature = actionSignature
         self.widgetRegistry = widgetRegistry
-        self.eventHandler = eventHandler
         self.contentProviderRegistry = contentProviderRegistry
         self.viewManager = viewManager
         self.dataMapper = dataMapper

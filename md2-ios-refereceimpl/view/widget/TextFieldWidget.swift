@@ -49,8 +49,9 @@ class TextFieldWidget: NSObject, SingleWidgetType, WidgetAssistedType, UITextFie
         textField.addTarget(OnChangeHandler.instance, action: "fire:", forControlEvents: UIControlEvents.ValueChanged)
         
         // Set styling
-        textField.backgroundColor = UIColor.grayColor() // TODO styling
-        textField.borderStyle = UITextBorderStyle.Line
+        textField.backgroundColor = UIColor.whiteColor()
+        textField.borderStyle = UITextBorderStyle.RoundedRect
+        textField.font = UIFont(name: ViewConfig.FONT_NAME.rawValue, size: CGFloat(ViewConfig.FONT_SIZE))
         
         // Add to surrounding view
         textField.delegate = self

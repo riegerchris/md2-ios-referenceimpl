@@ -40,14 +40,15 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
         let textField = UITextField()
         textField.frame = UIUtil.dimensionToCGRect(dimensions!)
         textField.placeholder = ViewConfig.OPTION_WIDGET_PLACEHOLDER
-        textField.text = value?.toString()
+        //textField.text = value?.toString()
         
         textField.tag = widgetId.rawValue
         textField.addTarget(OnChangeHandler.instance, action: "fire:", forControlEvents: UIControlEvents.ValueChanged)
         
         // Set styling
-        textField.backgroundColor = UIColor.grayColor() // TODO styling
-        textField.borderStyle = UITextBorderStyle.Line
+        textField.backgroundColor = UIColor(rgba: "#fff")
+        textField.borderStyle = UITextBorderStyle.RoundedRect
+        textField.font = UIFont(name: ViewConfig.FONT_NAME.rawValue, size: CGFloat(ViewConfig.FONT_SIZE))
         
         // Add to surrounding view
         view.addSubview(textField)
@@ -57,6 +58,7 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
         let pickerElement = UIDatePicker()
         pickerElement.datePickerMode = pickerMode!
         pickerElement.frame = UIUtil.dimensionToCGRect(dimensions!)
+        pickerElement.backgroundColor = UIColor(rgba: "#dfdfdf")
         // TODO set initial picker value
         
         pickerElement.tag = widgetId.rawValue

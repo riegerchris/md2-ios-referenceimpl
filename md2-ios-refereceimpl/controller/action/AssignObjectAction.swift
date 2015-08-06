@@ -12,8 +12,6 @@ class AssignObjectAction: ActionType {
     
     let widgetRegistry: WidgetRegistry
     
-    let eventHandler: EventHandlerType
-    
     let contentProviderRegistry: ContentProviderRegistry
     
     let viewManager: ViewManager
@@ -26,11 +24,10 @@ class AssignObjectAction: ActionType {
     
     let attribute: MD2String
     
-    init(actionSignature: MD2String, widgetRegistry: WidgetRegistry, eventHandler: EventHandlerType, contentProviderRegistry: ContentProviderRegistry, viewManager: ViewManager, dataMapper: DataMapper,assignContentProvider: ContentProviderType, toContentProvider: ContentProviderType, attribute: MD2String) {
+    init(actionSignature: MD2String, widgetRegistry: WidgetRegistry, contentProviderRegistry: ContentProviderRegistry, viewManager: ViewManager, dataMapper: DataMapper,assignContentProvider: ContentProviderType, toContentProvider: ContentProviderType, attribute: MD2String) {
         
         self.actionSignature = actionSignature
         self.widgetRegistry = widgetRegistry
-        self.eventHandler = eventHandler
         self.contentProviderRegistry = contentProviderRegistry
         self.viewManager = viewManager
         self.dataMapper = dataMapper

@@ -101,13 +101,15 @@ class Controller {
         // TODO
         
         // Initialize and register Actions
-        let mainPageNextAction = GotoViewAction(actionSignature: MD2String("mainPageNextAction"), widgetRegistry: widgetRegistry, eventHandler: onTouchHandler, contentProviderRegistry: contentProviderRegistry, viewManager: viewManager, dataMapper: dataMapper, targetView: WidgetMapping.View2)
+        let mainPageNextAction = GotoViewAction(actionSignature: MD2String("mainPageNextAction"), widgetRegistry: widgetRegistry, contentProviderRegistry: contentProviderRegistry, viewManager: viewManager, dataMapper: dataMapper, targetView: WidgetMapping.View2)
         onTouchHandler.registerAction(mainPageNextAction, widget: buttonWidgetWrapper)
         
         
         // Start initial action of the app
-        // TODO
-        viewManager.showRootView(MD2String("MainView"))
+        let initialAction = GotoViewAction(actionSignature: MD2String("initialAction"), widgetRegistry: widgetRegistry, contentProviderRegistry: contentProviderRegistry, viewManager: viewManager, dataMapper: dataMapper, targetView: WidgetMapping.MainView)
+        initialAction.execute()
+
+       // viewManager.showRootView(MD2String("MainView"))
        
         println("done")
     }

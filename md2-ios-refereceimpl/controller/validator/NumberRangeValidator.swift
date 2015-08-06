@@ -30,14 +30,9 @@ class NumberRangeValidator {
     }
     
     func isValid(value: MD2Type) -> Bool {
-        // Separate handling needed because check on MD2NumericType leads to error
-        /* TODO if value is MD2Integer
-            && (value as! MD2Integer).gte(min)
-            && (value as! MD2Integer).lte(max) {
-                return MD2Boolean(value: true)
-        } else */ if value is MD2Float
-            && (value as! MD2Float).gte(min)
-            && (value as! MD2Float).lte(max) {
+        if value is MD2NumericType
+            && (value as! MD2NumericType).gte(min)
+            && (value as! MD2NumericType).lte(max) {
                 return true
         } else {
             return false

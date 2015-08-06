@@ -12,8 +12,6 @@ class LocationAction: ActionType {
     
     let widgetRegistry: WidgetRegistry
     
-    let eventHandler: EventHandlerType
-    
     let contentProviderRegistry: ContentProviderRegistry
     
     let viewManager: ViewManager
@@ -22,11 +20,10 @@ class LocationAction: ActionType {
     
     let location: Location
     
-    init(actionSignature: MD2String, widgetRegistry: WidgetRegistry, eventHandler: EventHandlerType, contentProviderRegistry: ContentProviderRegistry, viewManager: ViewManager, dataMapper: DataMapper, location: Location) {
+    init(actionSignature: MD2String, widgetRegistry: WidgetRegistry, contentProviderRegistry: ContentProviderRegistry, viewManager: ViewManager, dataMapper: DataMapper, location: Location) {
         
         self.actionSignature = actionSignature
         self.widgetRegistry = widgetRegistry
-        self.eventHandler = eventHandler
         self.contentProviderRegistry = contentProviderRegistry
         self.viewManager = viewManager
         self.dataMapper = dataMapper

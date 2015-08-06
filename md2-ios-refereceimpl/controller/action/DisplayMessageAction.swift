@@ -12,8 +12,6 @@ class DisplayMessageAction: ActionType {
     
     let widgetRegistry: WidgetRegistry
     
-    let eventHandler: EventHandlerType
-    
     let contentProviderRegistry: ContentProviderRegistry
     
     let viewManager: ViewManager
@@ -22,11 +20,10 @@ class DisplayMessageAction: ActionType {
     
     let message: MD2String
     
-    init(actionSignature: MD2String, widgetRegistry: WidgetRegistry, eventHandler: EventHandlerType, contentProviderRegistry: ContentProviderRegistry, viewManager: ViewManager, dataMapper: DataMapper, message: MD2String) {
+    init(actionSignature: MD2String, widgetRegistry: WidgetRegistry, contentProviderRegistry: ContentProviderRegistry, viewManager: ViewManager, dataMapper: DataMapper, message: MD2String) {
         
         self.actionSignature = actionSignature
         self.widgetRegistry = widgetRegistry
-        self.eventHandler = eventHandler
         self.contentProviderRegistry = contentProviderRegistry
         self.viewManager = viewManager
         self.dataMapper = dataMapper
@@ -34,7 +31,7 @@ class DisplayMessageAction: ActionType {
     }
     
     func execute() {
-        // TODO
+        UIUtil.showMessage(message.toString(), title: ViewConfig.TOOLTIP_TITLE_MESSAGE)
     }
     
     func equals(anotherAction: ActionType) -> Bool {

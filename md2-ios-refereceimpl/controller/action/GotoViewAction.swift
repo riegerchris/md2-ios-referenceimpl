@@ -12,8 +12,6 @@ class GotoViewAction: ActionType {
     
     let widgetRegistry: WidgetRegistry
     
-    let eventHandler: EventHandlerType
-    
     let contentProviderRegistry: ContentProviderRegistry
     
     let viewManager: ViewManager
@@ -22,11 +20,10 @@ class GotoViewAction: ActionType {
     
     let targetView: WidgetMapping
     
-    init(actionSignature: MD2String, widgetRegistry: WidgetRegistry, eventHandler: EventHandlerType, contentProviderRegistry: ContentProviderRegistry, viewManager: ViewManager, dataMapper: DataMapper, targetView: WidgetMapping) {
+    init(actionSignature: MD2String, widgetRegistry: WidgetRegistry, contentProviderRegistry: ContentProviderRegistry, viewManager: ViewManager, dataMapper: DataMapper, targetView: WidgetMapping) {
         
         self.actionSignature = actionSignature
         self.widgetRegistry = widgetRegistry
-        self.eventHandler = eventHandler
         self.contentProviderRegistry = contentProviderRegistry
         self.viewManager = viewManager
         self.dataMapper = dataMapper

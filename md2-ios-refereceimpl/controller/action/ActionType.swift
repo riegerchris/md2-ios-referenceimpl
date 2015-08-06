@@ -12,8 +12,6 @@ protocol ActionType {
     
     var widgetRegistry: WidgetRegistry { get }
     
-    var eventHandler: EventHandlerType  { get }
-    
     var contentProviderRegistry: ContentProviderRegistry  { get }
     
     var viewManager: ViewManager  { get }

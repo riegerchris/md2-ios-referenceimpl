@@ -41,14 +41,15 @@ class OptionWidget: NSObject, SingleWidgetType, WidgetAssistedType, UIPickerView
         let textField = UITextField()
         textField.frame = UIUtil.dimensionToCGRect(dimensions!)
         textField.placeholder = ViewConfig.OPTION_WIDGET_PLACEHOLDER
-        textField.text = value?.toString()
+        //textField.text = value?.toString()
         
         textField.tag = widgetId.rawValue
         textField.addTarget(OnChangeHandler.instance, action: "fire:", forControlEvents: UIControlEvents.ValueChanged)
         
         // Set styling
-        textField.backgroundColor = UIColor.grayColor() // TODO styling
-        textField.borderStyle = UITextBorderStyle.Line
+        textField.backgroundColor = UIColor(rgba: "#fff")
+        textField.borderStyle = UITextBorderStyle.RoundedRect
+        textField.font = UIFont(name: ViewConfig.FONT_NAME.rawValue, size: CGFloat(ViewConfig.FONT_SIZE))
         
         // Add to surrounding view
         view.addSubview(textField)
@@ -57,7 +58,7 @@ class OptionWidget: NSObject, SingleWidgetType, WidgetAssistedType, UIPickerView
         // Picker to select value
         picker.delegate = self
         picker.dataSource = self
-        picker.backgroundColor = UIColor(rgba: "#eee")
+        picker.backgroundColor = UIColor(rgba: "#dfdfdf")
         self.optionElement!.inputView = picker
         
         // Add tap recognizer on picker field manually

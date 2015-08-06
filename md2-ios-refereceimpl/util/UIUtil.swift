@@ -27,5 +27,13 @@ class UIUtil {
                         height: Double(dimension.height))
         return rect
     }
+    
+    static func showMessage(message: String, title: String) {
+        var alertView = UIAlertView()
+        alertView.title = title
+        alertView.addButtonWithTitle(ViewConfig.TOOLTIP_BUTTON)
+        alertView.message = message
+        alertView.show()
+    }
 
 }

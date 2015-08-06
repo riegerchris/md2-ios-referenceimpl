@@ -11,7 +11,8 @@ class ViewConfig {
     // Distance between elements in pixels
     static let GUTTER: Float = 10.0
     
-    // Font size
+    // Font defaults
+    static let FONT_NAME: WidgetTextStyle = WidgetTextStyle.Normal
     static let FONT_SIZE: Int = 15
     
     // Default placeholder for option widgets
@@ -22,8 +23,10 @@ class ViewConfig {
     static let DATE_FORMAT = "yyyy-MM-dd"
     static let DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss"
     
-    // Tooltip info view
-    static let TOOLTIP_TITLE = "Info"
+    // Tooltip view
+    static let TOOLTIP_TITLE_INFO = "Info"
+    static let TOOLTIP_TITLE_MESSAGE = "Message"
     static let TOOLTIP_BUTTON = "OK"
     static let TOOLTIP_WIDTH: Float = 35.0
+    
 }

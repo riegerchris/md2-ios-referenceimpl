@@ -24,17 +24,13 @@ class TooltipHandler: WidgetEventHandlerType {
     func fire(sender: UIControl) {
         let wrapper = WidgetRegistry.instance.getWidget(WidgetMapping.fromRawValue(sender.tag))
             
-        if wrapper == nil || wrapper?.widget == nil {
+        if wrapper == nil || wrapper?.widget == nil || !(wrapper!.widget is WidgetAssistedType) {
             return
         }
-            
-        var alertView = UIAlertView()
-        alertView.title = ViewConfig.TOOLTIP_TITLE
-        alertView.addButtonWithTitle(ViewConfig.TOOLTIP_BUTTON)
-            
-        if wrapper!.widget is WidgetAssistedType && (wrapper!.widget as! WidgetAssistedType).tooltip != nil {
-            alertView.message = (wrapper!.widget as! WidgetAssistedType).tooltip!.toString()
-            alertView.show()
+        
+        if (wrapper!.widget as! WidgetAssistedType).tooltip != nil { 
+            UIUtil.showMessage((wrapper!.widget as! WidgetAssistedType).tooltip!.toString(),
+                title: ViewConfig.TOOLTIP_TITLE_INFO)
         }
     }
     
