@@ -12,11 +12,16 @@ class WidgetWrapper {
     
     var widgetId: WidgetMapping?
     
-    var disabled: MD2Boolean?
+    var disabled: MD2Boolean
+    
+    var value: MD2Type
     
     var validators: Array<ValidatorType> = []
     
-    init(widget: SingleWidgetType){
+    init(widget: SingleWidgetType, value: MD2Type, disabled: MD2Boolean){
+        self.value = value
+        self.disabled = disabled
+        
         setWidget(widget)
     }
     
@@ -24,7 +29,15 @@ class WidgetWrapper {
         self.widget = widget
         widgetId = widget.widgetId
         
-        // TODO Restore widget state. i.e. value + enabled state
+        // Restore widget enabled/disabled state
+        if isDisabled() {
+            widget.disable()
+        } else {
+            widget.enable()
+        }
+        
+        // Restore widget value
+        widget.value = self.value
     }
     
     func unsetWidget() {
@@ -33,14 +46,11 @@ class WidgetWrapper {
     
     func setDisabled(isDisabled: MD2Boolean) {
         disabled = isDisabled
+        widget?.disable()
     }
     
-    func isDisabled() -> MD2Boolean {
-        if let _ = disabled {
-            return disabled!
-        } else {
-            return MD2Boolean(false)
-        }
+    func isDisabled() -> Bool {
+        return disabled.isSet() == true && disabled.equals(MD2Boolean(false))
     }
     
     func getValue() -> MD2Type? {
@@ -59,7 +69,7 @@ class WidgetWrapper {
         if validators.isEmpty { return }
         
         for i in 0..<count(validators) {
-            if validators[i].defaultMessage.equals(validator.defaultMessage) { // TODO how to identify validator?
+            if validators[i].identifier.equals(validator.identifier) {
                 validators.removeAtIndex(i)
                 break
             }

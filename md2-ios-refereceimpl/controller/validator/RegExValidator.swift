@@ -8,6 +8,8 @@
 
 class RegExValidator {
     
+    let identifier: MD2String
+    
     var message: (() -> MD2String)?
     
     var defaultMessage: MD2String {
@@ -18,7 +20,8 @@ class RegExValidator {
     
     let regEx: RegEx
     
-    init(message: () -> MD2String, regEx: MD2String) {
+    init(identifier: MD2String, message: () -> MD2String, regEx: MD2String) {
+        self.identifier = identifier
         self.message = message
         self.regEx = RegEx(pattern: regEx)
     }

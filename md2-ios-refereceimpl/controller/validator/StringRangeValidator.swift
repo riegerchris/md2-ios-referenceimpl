@@ -8,6 +8,8 @@
 
 class StringRangeValidator: ValidatorType {
     
+    let identifier: MD2String
+    
     var message: (() -> MD2String)?
     
     var defaultMessage: MD2String {
@@ -20,7 +22,8 @@ class StringRangeValidator: ValidatorType {
     
     var maxLength: MD2Integer
     
-    init(message: () -> MD2String, minLength: MD2Integer, maxLength: MD2Integer) {
+    init(identifier: MD2String, message: () -> MD2String, minLength: MD2Integer, maxLength: MD2Integer) {
+        self.identifier = identifier
         self.message = message
         self.minLength = minLength
         self.maxLength = maxLength

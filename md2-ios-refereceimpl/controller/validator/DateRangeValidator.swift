@@ -8,6 +8,8 @@
 
 class DateRangeValidator {
     
+    let identifier: MD2String
+    
     var message: (() -> MD2String)?
     
     var defaultMessage: MD2String {
@@ -20,7 +22,8 @@ class DateRangeValidator {
     
     let max: MD2Date
     
-    init(message: () -> MD2String, min: MD2Date, max: MD2Date) {
+    init(identifier: MD2String, message: () -> MD2String, min: MD2Date, max: MD2Date) {
+        self.identifier = identifier
         self.message = message
         self.min = min
         self.max = max

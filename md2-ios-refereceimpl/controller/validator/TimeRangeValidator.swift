@@ -8,6 +8,8 @@
 
 class TimeRangeValidator {
     
+    let identifier: MD2String
+    
     var message: (() -> MD2String)?
     
     var defaultMessage: MD2String {
@@ -20,7 +22,8 @@ class TimeRangeValidator {
     
     let max: MD2Time
     
-    init(message: () -> MD2String, min: MD2Time, max: MD2Time) {
+    init(identifier: MD2String, message: () -> MD2String, min: MD2Time, max: MD2Time) {
+        self.identifier = identifier
         self.message = message
         self.min = min
         self.max = max

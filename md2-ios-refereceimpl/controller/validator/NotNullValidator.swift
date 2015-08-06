@@ -8,11 +8,14 @@
 
 class NotNullValidator: ValidatorType {
     
+    let identifier: MD2String
+    
     var message: (() -> MD2String)?
     
     var defaultMessage: MD2String = MD2String("This value must not be empty!")
     
-    init(message: () -> MD2String) {
+    init(identifier: MD2String, message: () -> MD2String) {
+        self.identifier = identifier
         self.message = message
     }
     

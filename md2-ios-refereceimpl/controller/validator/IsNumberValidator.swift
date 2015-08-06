@@ -8,6 +8,8 @@
 
 class IsNumberValidator {
     
+    let identifier: MD2String
+    
     var message: (() -> MD2String)?
     
     var defaultMessage: MD2String {
@@ -16,7 +18,8 @@ class IsNumberValidator {
         }
     }
     
-    init(message: () -> MD2String) {
+    init(identifier: MD2String, message: () -> MD2String) {
+        self.identifier = identifier
         self.message = message
     }
     

@@ -8,6 +8,8 @@
 
 protocol ValidatorType {
     
+    var identifier: MD2String { get }
+    
     var message: (() -> MD2String)? { get }
     
     var defaultMessage: MD2String { get }

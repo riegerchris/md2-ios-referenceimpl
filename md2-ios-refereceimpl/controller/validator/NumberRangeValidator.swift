@@ -8,6 +8,8 @@
 
 class NumberRangeValidator {
     
+    let identifier: MD2String
+    
     var message: (() -> MD2String)?
     
     var defaultMessage: MD2String {
@@ -20,7 +22,8 @@ class NumberRangeValidator {
     
     let max: MD2Float
     
-    init(message: () -> MD2String, min: MD2Float, max: MD2Float) {
+    init(identifier: MD2String, message: () -> MD2String, min: MD2Float, max: MD2Float) {
+        self.identifier = identifier
         self.message = message
         self.min = min
         self.max = max
