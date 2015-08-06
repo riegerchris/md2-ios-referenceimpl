@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol WidgetType {
+protocol WidgetType: class {
     
     var widgetId: WidgetMapping { get }
     

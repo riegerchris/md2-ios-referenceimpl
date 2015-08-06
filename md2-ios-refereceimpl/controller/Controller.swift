@@ -12,7 +12,7 @@ class Controller {
     
     func run(window: UIWindow) {
         // Initialize the widget registry
-        var widgetRegistry = WidgetRegistry()
+        var widgetRegistry = WidgetRegistry.instance
 
         // Initialize all view elements
         let mainLayout = FlowLayoutPane(widgetId: WidgetMapping.MainView)
@@ -28,26 +28,28 @@ class Controller {
         widgetRegistry.add(labelWidgetWrapper)
         
         let buttonWidget = ButtonWidget(widgetId: WidgetMapping.Button1, initialValue: MD2String("YEAH2!"))
-        buttonWidget.textStyle = WidgetTextStyle.BoldItalic
+        buttonWidget.buttonType = UIButtonType.System
+        buttonWidget.textStyle = WidgetTextStyle.Italic
         buttonWidget.fontSize = MD2Integer(22)
-        buttonWidget.color = MD2String("#FF0000")
+        //buttonWidget.color = MD2String("#FF0000")
         mainLayout.addWidget(buttonWidget)
         let buttonWidgetWrapper = WidgetWrapper(widget: buttonWidget)
         widgetRegistry.add(buttonWidgetWrapper)
         
         let textFieldWidget = TextFieldWidget(widgetId: WidgetMapping.TextField1, initialValue: MD2String("dummytext3"))
+        textFieldWidget.tooltip = MD2String("Help message!")
         textFieldWidget.placeholder = MD2String("dummyplaceholder")
         mainLayout.addWidget(textFieldWidget)
         let textFieldWidgetWrapper = WidgetWrapper(widget: textFieldWidget)
         widgetRegistry.add(textFieldWidgetWrapper)
         
-        let datePicker = DateTimePickerWidget(widgetId: WidgetMapping.TextField1, initialValue: MD2DateTime())
+        let datePicker = DateTimePickerWidget(widgetId: WidgetMapping.DatePicker1, initialValue: MD2DateTime())
         datePicker.pickerMode = UIDatePickerMode.Time
         mainLayout.addWidget(datePicker)
         let datePickerWrapper = WidgetWrapper(widget: datePicker)
         widgetRegistry.add(datePickerWrapper)
         
-        let optionWidget = OptionWidget(widgetId: WidgetMapping.TextField1, initialValue: MD2String("dummytext3"))
+        let optionWidget = OptionWidget(widgetId: WidgetMapping.Option1, initialValue: MD2String("dummytext3"))
         optionWidget.options = ComplaintStatus().getAllValues()
         mainLayout.addWidget(optionWidget)
         let optionFieldWidgetWrapper = WidgetWrapper(widget: optionWidget)

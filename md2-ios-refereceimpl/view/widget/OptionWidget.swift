@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OptionWidget: NSObject, SingleWidgetType, UIPickerViewDataSource, UIPickerViewDelegate, UIGestureRecognizerDelegate {
+class OptionWidget: NSObject, SingleWidgetType, WidgetAssistedType, UIPickerViewDataSource, UIPickerViewDelegate, UIGestureRecognizerDelegate {
     
     let widgetId: WidgetMapping
     

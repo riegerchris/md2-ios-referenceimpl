@@ -12,17 +12,16 @@ class WidgetWrapper {
     
     var widgetId: WidgetMapping?
     
-    var disabled: MD2Boolean
+    var disabled: MD2Boolean? = MD2Boolean(false)//TODO
     
-    var value: MD2Type
+    var value: MD2Type? // TODO
     
     var validators: Array<ValidatorType> = []
     
-    init(widget: SingleWidgetType, value: MD2Type, disabled: MD2Boolean){
-        self.value = value
-        self.disabled = disabled
-        
-        setWidget(widget)
+    init(widget: SingleWidgetType){
+        self.widget = widget
+        self.widgetId = widget.widgetId
+        self.value = widget.value
     }
     
     func setWidget(widget: SingleWidgetType){
@@ -50,7 +49,7 @@ class WidgetWrapper {
     }
     
     func isDisabled() -> Bool {
-        return disabled.isSet() == true && disabled.equals(MD2Boolean(false))
+        return disabled != nil && disabled!.isSet() == true && disabled!.equals(MD2Boolean(false))
     }
     
     func getValue() -> MD2Type? {

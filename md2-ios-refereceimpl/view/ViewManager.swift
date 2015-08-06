@@ -18,32 +18,38 @@ class ViewManager {
     
     func goto(viewName: MD2String) {
         for (name, controller) in views {
-            if viewName.equals(MD2String(controller.layout.widgetId.description)) { // TODO widgetId != viewName?
+            if viewName.toString() == name {
                 // Show view
-                self.navigationController!.pushViewController(controller, animated: false)
+                
+                if let _ = navigationController {
+                    // Controller exists, push view on top
+                    self.navigationController!.pushViewController(controller, animated: false)
+                } else {
+                    // First view to show, create and initialize navigationController
+                    showRootView(viewName)
+                }
+                
                 break
             }
         }
     }
     
-    func setupView(viewName: MD2String, view: LayoutType) { // TODO view = layout?
-        // TODO why viewName explicit/differing from view.widgetId 
+    func setupView(viewName: MD2String, view: LayoutType) {
+        // Called once at start-up of the app for each view
         
-        // Called once at start-up of the app
-        
-        // TODO create widgetwrappers, register wrappers in registry, store actual view instances in internal data structure
-        
-        // Create controller with view and add to list
+        // Create view controller with view and add to list
         let controller: MD2ViewController = MD2ViewController(layout: view)
         
+        // Initialize view hierarchy
         controller.calculateDimensions()
         
+        // Register viewName in internal data structure
         views[viewName.toString()] = controller
     }
     
     func showRootView(viewName:MD2String) {
         for (name, controller) in views {
-            if viewName.equals(MD2String(controller.layout.widgetId.description)) { // TODO widgetId != viewName?
+            if viewName.toString() == name {
                 
                 // Define navigation controller
                 navigationController = UINavigationController(rootViewController: controller)

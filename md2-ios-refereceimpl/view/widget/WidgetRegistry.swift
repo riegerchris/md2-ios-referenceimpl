@@ -8,6 +8,8 @@
 
 class WidgetRegistry {
     
+    static let instance: WidgetRegistry = WidgetRegistry()
+    
     var widgets: Array<WidgetWrapper> = []
     
     init() {

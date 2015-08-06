@@ -22,4 +22,8 @@ class ViewConfig {
     static let DATE_FORMAT = "yyyy-MM-dd"
     static let DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss"
     
+    // Tooltip info view
+    static let TOOLTIP_TITLE = "Info"
+    static let TOOLTIP_BUTTON = "OK"
+    static let TOOLTIP_WIDTH: Float = 35.0
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextFieldWidget: NSObject, SingleWidgetType, UITextFieldDelegate {
+class TextFieldWidget: NSObject, SingleWidgetType, WidgetAssistedType, UITextFieldDelegate {
     
     let widgetId: WidgetMapping
     
@@ -23,6 +23,8 @@ class TextFieldWidget: NSObject, SingleWidgetType, UITextFieldDelegate {
     var label: MD2String?
     
     var tooltip: MD2String?
+    
+    var tooltipDimensions: Dimension?
     
     var type: TextFieldType = TextFieldType.Standard
     
@@ -54,15 +56,39 @@ class TextFieldWidget: NSObject, SingleWidgetType, UITextFieldDelegate {
         textField.delegate = self
         view.addSubview(textField)
         self.textField = textField
+        
+        // If tooltip info is available show info button
+        if self.tooltip != nil && self.tooltip!.isSet() {
+            let infoButton = ButtonWidget(widgetId: self.widgetId, initialValue: MD2String())
+            infoButton.buttonType = UIButtonType.InfoLight
+            infoButton.dimensions = self.tooltipDimensions
+            infoButton.render(view, controller: controller)
+        }
     }
     
     func calculateDimensions(bounds: Dimension) {
-        // Add gutter
-        self.dimensions = Dimension(
-            x: bounds.x + ViewConfig.GUTTER,
-            y: bounds.y + ViewConfig.GUTTER,
-            width: bounds.width - 2 * ViewConfig.GUTTER,
-            height: bounds.height - 2 * ViewConfig.GUTTER)
+        // If tooltip info is available show info button
+        if self.tooltip != nil && self.tooltip!.isSet() {
+            self.dimensions = Dimension(
+                x: bounds.x + ViewConfig.GUTTER,
+                y: bounds.y + ViewConfig.GUTTER,
+                width: bounds.width - 3 * ViewConfig.GUTTER - Float(ViewConfig.TOOLTIP_WIDTH),
+                height: bounds.height - 2 * ViewConfig.GUTTER)
+            
+            self.tooltipDimensions = Dimension(
+                x: self.dimensions!.x + self.dimensions!.width + ViewConfig.GUTTER,
+                y: self.dimensions!.y,
+                width: ViewConfig.TOOLTIP_WIDTH,
+                height: self.dimensions!.height)
+            
+        } else {
+            // Field with full width (but add gutter)
+            self.dimensions = Dimension(
+                x: bounds.x + ViewConfig.GUTTER,
+                y: bounds.y + ViewConfig.GUTTER,
+                width: bounds.width - 2 * ViewConfig.GUTTER,
+                height: bounds.height - 2 * ViewConfig.GUTTER)
+        }
     }
     
     enum TextFieldType {

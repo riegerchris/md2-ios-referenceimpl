@@ -30,7 +30,12 @@ class Address: MD2EntityType {
     }
     
     func toString() -> String {
-        return "Address" // TODO
+        return "(Address: [myStreet: " + containedTypes["myStreet"]!.toString()
+            + ", myStreetNo: " + containedTypes["myStreetNo"]!.toString()
+            + ", myPostalCode: " + containedTypes["myPostalCode"]!.toString()
+            + ", myCity: " + containedTypes["myCity"]!.toString()
+            + ", myLocation: " + containedTypes["myLocation"]!.toString()
+            + "])"
     }
     
     func equals(value : MD2Type) -> Bool {

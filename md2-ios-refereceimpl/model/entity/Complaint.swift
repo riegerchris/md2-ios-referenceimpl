@@ -29,7 +29,11 @@ class Complaint: MD2EntityType {
     }
     
     func toString() -> String {
-        return "Complaint" // TODO
+        return "(Complaint: [loc: " + containedTypes["loc"]!.toString()
+            + ", descriptions: " + containedTypes["descriptions"]!.toString()
+            + ", feedback: " + containedTypes["feedback"]!.toString()
+            + ", status: " + containedTypes["status"]!.toString()
+            + "])"
     }
     
     func equals(value : MD2Type) -> Bool {

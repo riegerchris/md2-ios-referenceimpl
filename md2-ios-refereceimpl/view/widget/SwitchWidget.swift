@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SwitchWidget: SingleWidgetType {
+class SwitchWidget: SingleWidgetType, WidgetAssistedType {
     
     let widgetId: WidgetMapping
     

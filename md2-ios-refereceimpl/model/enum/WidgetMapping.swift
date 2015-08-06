@@ -23,6 +23,7 @@ enum WidgetMapping: Int {
     case Label2 = 9
     case Spacer = 10
     case Option1 = 11
+    case DatePicker1 = 12
     
     // There is currently no introspection into enums
     // Therefore computed property to establish a link of type enum -> string representation
@@ -39,6 +40,7 @@ enum WidgetMapping: Int {
         case .Label2: return "Label2"
         case .Spacer: return "Spacer"
         case .Option1: return "Option1"
+        case .DatePicker1: return "DatePicker1"
         default: return "NotFound"
         }
     }
@@ -57,6 +59,7 @@ enum WidgetMapping: Int {
         case 9: return .Label2
         case 10: return .Spacer
         case 11: return .Option1
+        case 12: return .DatePicker1
         default: return .NotFound
         }
     }
