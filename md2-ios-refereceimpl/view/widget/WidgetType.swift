@@ -14,9 +14,11 @@ protocol WidgetType: class {
     
     var dimensions: Dimension? { get set }
     
+    var width: Float? { get }
+    
     func render(view: UIView, controller: UIViewController)
 
-    func calculateDimensions(bounds: Dimension)
+    func calculateDimensions(bounds: Dimension) -> Dimension
     
     func enable()
     

@@ -24,6 +24,8 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
     
     var textStyle: WidgetTextStyle = WidgetTextStyle.Normal
     
+    var width: Float?
+    
     init(widgetId: WidgetMapping, initialValue: MD2Type) {
         self.widgetId = widgetId
         self.value = initialValue
@@ -60,13 +62,17 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
         self.labelElement = label
     }
     
-    func calculateDimensions(bounds: Dimension) {
+    func calculateDimensions(bounds: Dimension) -> Dimension {
+        let outerDimensions = Dimension(
+            x: bounds.x,
+            y: bounds.y,
+            width: bounds.width,
+            height: min(bounds.height, ViewConfig.DIMENSION_LABEL_HEIGHT))
+        
         // Add gutter
-        self.dimensions = Dimension(
-            x: bounds.x + ViewConfig.GUTTER,
-            y: bounds.y + ViewConfig.GUTTER,
-            width: bounds.width - 2 * ViewConfig.GUTTER,
-            height: bounds.height - 2 * ViewConfig.GUTTER)
+        self.dimensions = UIUtil.innerDimensionsWithGutter(outerDimensions)
+        
+        return outerDimensions
     }
     
     func enable() {

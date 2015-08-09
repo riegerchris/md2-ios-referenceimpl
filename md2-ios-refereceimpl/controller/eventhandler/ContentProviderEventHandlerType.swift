@@ -8,8 +8,8 @@
 
 protocol ContentProviderEventHandlerType: EventHandlerType {
     
-    func registerAction(action: ActionType, contentProvider: ContentProviderType, attribute: MD2String)
+    func registerAction(action: ActionType, contentProvider: ContentProviderType, attribute: String)
     
-    func unregisterAction(action: ActionType, contentProvider: ContentProviderType, attribute: MD2String)
+    func unregisterAction(action: ActionType, contentProvider: ContentProviderType, attribute: String)
     
 }

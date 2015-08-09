@@ -27,7 +27,9 @@ class Location: MD2EntityType {
     }
     
     func toString() -> String {
-        return "Location" // TODO
+        return "(Location: [longitude: " + containedTypes["longitude"]!.toString()
+            + ", latitude: " + containedTypes["latitude"]!.toString()
+            + "])"
     }
     
     func equals(value : MD2Type) -> Bool {

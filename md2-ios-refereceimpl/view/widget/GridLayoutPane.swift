@@ -24,6 +24,8 @@ class GridLayoutPane: LayoutType {
     
     var dimensions: Dimension?
     
+    var width: Float?
+    
     init(widgetId: WidgetMapping) {
         self.widgetId = widgetId
     }
@@ -39,7 +41,7 @@ class GridLayoutPane: LayoutType {
         widgets.append(widget)
     }
     
-    func calculateDimensions(bounds: Dimension) {
+    func calculateDimensions(bounds: Dimension) -> Dimension {
         // Set own dimensions
         dimensions = bounds
         
@@ -77,6 +79,8 @@ class GridLayoutPane: LayoutType {
                 widgets[(currentRow * columns!.platformValue!) + currentColumn].calculateDimensions(subDimensions)
             }
         }
+        
+        return bounds
     }
     
     func enable() {

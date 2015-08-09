@@ -16,6 +16,8 @@ class SpacerWidget: SingleWidgetType {
     
     var dimensions: Dimension?
     
+    var width: Float?
+    
     init(widgetId: WidgetMapping) {
         self.widgetId = widgetId
     }
@@ -24,8 +26,14 @@ class SpacerWidget: SingleWidgetType {
         // Nothing to render
     }
     
-    func calculateDimensions(bounds: Dimension) {
-        self.dimensions = bounds
+    func calculateDimensions(bounds: Dimension) -> Dimension {
+        self.dimensions = Dimension(
+            x: bounds.x,
+            y: bounds.y,
+            width: bounds.width,
+            height: min(bounds.height, ViewConfig.DIMENSION_SPACER_HEIGHT))
+        
+        return self.dimensions!
     }
     
     func enable() {

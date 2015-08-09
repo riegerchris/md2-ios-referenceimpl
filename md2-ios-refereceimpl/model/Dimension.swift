@@ -6,6 +6,26 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
+infix operator + {}
+infix operator - {}
+
+// This is meant to alter dimensions. For geometrical calculation of two distinct dimensions see union()
+func + (first: Dimension, second: Dimension) -> Dimension {
+    return Dimension(
+        x: first.x + second.x,
+        y: first.y + second.y,
+        width: first.width + second.width,
+        height: first.height + second.height)
+}
+
+func - (first: Dimension, second: Dimension) -> Dimension {
+    return Dimension(
+        x: first.x - second.x,
+        y: first.y - second.y,
+        width: first.width - second.width,
+        height: first.height - second.height)
+}
+
 struct Dimension {
     
     let x: Float
@@ -26,5 +46,18 @@ struct Dimension {
     
     func toString() -> String {
         return "x: \(x), y: \(y), width: \(width), height: \(height)"
+    }
+    
+    func union(second: Dimension) -> Dimension {
+        let newX = min(self.x, second.x)
+        let newY = min(self.x, second.y)
+        let maxRight = max(self.x + self.width, second.x + second.width)
+        let maxBottom = max(self.y + self.height, second.y + second.height)
+        
+        return Dimension(
+            x: newX,
+            y: newY,
+            width: maxRight - newX,
+            height: maxBottom - newY)
     }
 }

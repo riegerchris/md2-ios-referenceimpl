@@ -20,9 +20,9 @@ class ImageWidget: SingleWidgetType {
     
     var action: MD2String
     
-    var height: MD2Integer?
+    var height: Float?
     
-    var width: MD2Integer?
+    var width: Float?
     
     init(widgetId: WidgetMapping, initialValue: MD2Type, action: MD2String) {
         self.widgetId = widgetId
@@ -42,21 +42,22 @@ class ImageWidget: SingleWidgetType {
         let image = UIImage(named: value!.toString())
         imageElement.image = image
         
-        // Set styling
-        // TODO styling
-        
         // Add to surrounding view
         view.addSubview(imageElement)
         self.imageElement = imageElement
     }
     
-    func calculateDimensions(bounds: Dimension) {
+    func calculateDimensions(bounds: Dimension) -> Dimension {
+        let outerDimensions = Dimension(
+            x: bounds.x,
+            y: bounds.y,
+            width: bounds.width,
+            height: min(bounds.height, ViewConfig.DIMENSION_IMAGE_HEIGHT))
+        
         // Add gutter
-        self.dimensions = Dimension(
-            x: bounds.x + ViewConfig.GUTTER,
-            y: bounds.y + ViewConfig.GUTTER,
-            width: bounds.width - 2 * ViewConfig.GUTTER,
-            height: bounds.height - 2 * ViewConfig.GUTTER)
+        self.dimensions = UIUtil.innerDimensionsWithGutter(outerDimensions)
+        
+        return outerDimensions
     }
     
     func enable() {

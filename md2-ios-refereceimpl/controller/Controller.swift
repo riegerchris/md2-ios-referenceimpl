@@ -86,7 +86,9 @@ class Controller {
         
         // Initialize content providers
         var contentProviderRegistry = ContentProviderRegistry()
-        // TODO
+        
+        let oneComplaintContentProvider = ComplaintContentProvider(content: Complaint())
+        contentProviderRegistry.addContentProvider(oneComplaintContentProvider)
         
         // Initialize the view manager
         var viewManager = ViewManager()
@@ -98,19 +100,15 @@ class Controller {
         
         // Initialize data mapper
         let dataMapper = DataMapper()
-        // TODO
-        
+                
         // Initialize and register Actions
         let mainPageNextAction = GotoViewAction(actionSignature: MD2String("mainPageNextAction"), widgetRegistry: widgetRegistry, contentProviderRegistry: contentProviderRegistry, viewManager: viewManager, dataMapper: dataMapper, targetView: WidgetMapping.View2)
         onTouchHandler.registerAction(mainPageNextAction, widget: buttonWidgetWrapper)
-        
         
         // Start initial action of the app
         let initialAction = GotoViewAction(actionSignature: MD2String("initialAction"), widgetRegistry: widgetRegistry, contentProviderRegistry: contentProviderRegistry, viewManager: viewManager, dataMapper: dataMapper, targetView: WidgetMapping.MainView)
         initialAction.execute()
 
-       // viewManager.showRootView(MD2String("MainView"))
-       
         println("done")
     }
 }

@@ -22,6 +22,8 @@ class FlowLayoutPane: LayoutType {
     
     var dimensions: Dimension?
     
+    var width: Float?
+    
     init(widgetId: WidgetMapping) {
         self.widgetId = widgetId
         
@@ -44,7 +46,104 @@ class FlowLayoutPane: LayoutType {
         case Vertical, Horizontal
     }
     
-    func calculateDimensions(bounds: Dimension) {
+    func calculateDimensions(bounds: Dimension) -> Dimension {
+        let numUiElements = widgets.count
+        
+        if orientation == Orientation.Horizontal {
+            // Check that all specified widths do not surpass 100%
+            var sum: Float = 0.0
+            var numNonSpecifiedWidths = 0
+            for widget in widgets {
+                if let _ = widget.width {
+                    sum += widget.width!
+                } else {
+                    sum += 0.1 // Minimum 10% for an element if not explicitly specified
+                    numNonSpecifiedWidths++
+                }
+            }
+            
+            // Capture information on the actual dimensions
+            var maxHeight: Float = 0.0
+            var currentX = bounds.x
+            
+            for var currentElem = 0; currentElem < numUiElements; currentElem++ {
+                var subDimensions: Dimension
+                
+                if sum > 1.0 {
+                    // Reduce overall sizes if widths are too large
+                    let multiplier: Float = 1.0 / sum
+                    
+                    subDimensions = Dimension(
+                        x: currentX,
+                        y: bounds.y,
+                        // Available width * (specified width OR min percentage) * multiplier 
+                        width: (widgets[currentElem].width != nil) ? bounds.width * widgets[currentElem].width! * multiplier : bounds.width * 0.1 * multiplier,
+                        height: bounds.height)
+                } else {
+                    subDimensions = Dimension(
+                        x: currentX,
+                        y: bounds.y,
+                        // Available width * (specified width OR equal proportion of remaining space)
+                        width: (widgets[currentElem].width != nil) ? bounds.width * widgets[currentElem].width! : (bounds.width - (currentX - bounds.x)) / Float(numNonSpecifiedWidths),
+                        height: bounds.height)
+                    
+                    numNonSpecifiedWidths--
+                }
+                
+                let acceptedDimensions = widgets[currentElem].calculateDimensions(subDimensions)
+                    
+                if maxHeight < acceptedDimensions.height {
+                    maxHeight = acceptedDimensions.height
+                }
+                    
+                if currentX < acceptedDimensions.x + acceptedDimensions.width {
+                    currentX = acceptedDimensions.x + acceptedDimensions.width
+                }
+                
+            }
+            
+            return Dimension(
+                x: bounds.x,
+                y: bounds.y,
+                width: currentX - bounds.x,
+                height: maxHeight)
+            
+        } else if orientation == Orientation.Vertical {
+            // Capture information on the actual dimensions
+            var maxWidth: Float = 0.0
+            var currentY = bounds.y
+            
+            for var currentElem = 0; currentElem < numUiElements; currentElem++ {
+                let subDimensions = Dimension(
+                    x: bounds.x,
+                    y: currentY,
+                    width: bounds.width,
+                    // Equal proportion of remaining height
+                    height: (bounds.height - (currentY - bounds.y)) / Float(numUiElements - currentElem))
+                
+                let acceptedDimensions = widgets[currentElem].calculateDimensions(subDimensions)
+                
+                if maxWidth < acceptedDimensions.width {
+                    maxWidth = acceptedDimensions.width
+                }
+                
+                if currentY < acceptedDimensions.y + acceptedDimensions.height {
+                    currentY = acceptedDimensions.y + acceptedDimensions.height
+                }
+                
+                println(widgets[currentElem].widgetId.description + ": " + subDimensions.toString())
+            }
+            
+            return Dimension(
+                x: bounds.x,
+                y: bounds.y,
+                width: maxWidth,
+                height: currentY - bounds.y)
+        }
+        
+        return Dimension()
+        
+/* Naive equi-sized calculation
         // Set own dimensions
         dimensions = bounds
         
@@ -71,6 +170,9 @@ class FlowLayoutPane: LayoutType {
             println(widgets[currentElem].widgetId.description + ": " + subDimensions.toString())
             widgets[currentElem].calculateDimensions(subDimensions)
         }
+        
+        return dimensions!
+*/
     }
     
     func enable() {

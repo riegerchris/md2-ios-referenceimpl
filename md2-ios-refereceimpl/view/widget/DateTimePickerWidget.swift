@@ -22,6 +22,8 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
    
     var pickerMode: UIDatePickerMode?
     
+    var width: Float?
+    
     init(widgetId: WidgetMapping, initialValue: MD2Type) {
         self.widgetId = widgetId
         self.value = initialValue
@@ -75,13 +77,17 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
         self.pickerElement!.addGestureRecognizer(tapRecognizer)
     }
     
-    func calculateDimensions(bounds: Dimension) {
+    func calculateDimensions(bounds: Dimension) -> Dimension {
+        let outerDimensions = Dimension(
+            x: bounds.x,
+            y: bounds.y,
+            width: bounds.width,
+            height: min(bounds.height, ViewConfig.DIMENSION_DATE_TIME_PICKER_HEIGHT))
+        
         // Add gutter
-        self.dimensions = Dimension(
-            x: bounds.x + ViewConfig.GUTTER,
-            y: bounds.y + ViewConfig.GUTTER,
-            width: bounds.width - 2 * ViewConfig.GUTTER,
-            height: bounds.height - 2 * ViewConfig.GUTTER)
+        self.dimensions = UIUtil.innerDimensionsWithGutter(outerDimensions)
+        
+        return outerDimensions
     }
     
     // Action method to capture single click on picker view element

@@ -104,6 +104,9 @@
 		59DF706C1B7283D600F6F0A3 /* ModelConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF706B1B7283D600F6F0A3 /* ModelConfig.swift */; };
 		59DF706E1B73552B00F6F0A3 /* WidgetAssistanceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF706D1B73552B00F6F0A3 /* WidgetAssistanceType.swift */; };
 		59DF70701B7363E800F6F0A3 /* TooltipHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF706F1B7363E800F6F0A3 /* TooltipHandler.swift */; };
+		59DF70721B7394F900F6F0A3 /* ComplaintContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF70711B7394F900F6F0A3 /* ComplaintContentProvider.swift */; };
+		59DF70741B73C73A00F6F0A3 /* OnContentChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF70731B73C73A00F6F0A3 /* OnContentChangeHandler.swift */; };
+		59DF70761B73C82600F6F0A3 /* ContentProviderAttributeIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF70751B73C82600F6F0A3 /* ContentProviderAttributeIdentity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +221,9 @@
 		59DF706B1B7283D600F6F0A3 /* ModelConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelConfig.swift; sourceTree = "<group>"; };
 		59DF706D1B73552B00F6F0A3 /* WidgetAssistanceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetAssistanceType.swift; sourceTree = "<group>"; };
 		59DF706F1B7363E800F6F0A3 /* TooltipHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TooltipHandler.swift; sourceTree = "<group>"; };
+		59DF70711B7394F900F6F0A3 /* ComplaintContentProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplaintContentProvider.swift; sourceTree = "<group>"; };
+		59DF70731B73C73A00F6F0A3 /* OnContentChangeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnContentChangeHandler.swift; sourceTree = "<group>"; };
+		59DF70751B73C82600F6F0A3 /* ContentProviderAttributeIdentity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentProviderAttributeIdentity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +318,7 @@
 				59CE10161B60DFAB00ACE1E7 /* RegEx.swift */,
 				59C3D5E61B6F739D00C5A613 /* Dimension.swift */,
 				59DF706B1B7283D600F6F0A3 /* ModelConfig.swift */,
+				59DF70751B73C82600F6F0A3 /* ContentProviderAttributeIdentity.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -361,6 +368,7 @@
 				59DF704B1B7264C100F6F0A3 /* OnLeftSwipeHandler.swift */,
 				59DF704F1B72650B00F6F0A3 /* OnConnectionLostHandler.swift */,
 				59DF70511B7265CC00F6F0A3 /* OnConnectionRegainedHandler.swift */,
+				59DF70731B73C73A00F6F0A3 /* OnContentChangeHandler.swift */,
 				59DF70531B7265E800F6F0A3 /* OnLocationUpdateHandler.swift */,
 				59DF704D1B7264DD00F6F0A3 /* OnRightSwipeHandler.swift */,
 				59DF70631B726EB300F6F0A3 /* OnWrongValidationHandler.swift */,
@@ -372,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				59CB70971B5FB25B001D312F /* ContentProviderType.swift */,
+				59DF70711B7394F900F6F0A3 /* ComplaintContentProvider.swift */,
 				59CB70A51B5FCC95001D312F /* ContentProviderRegistry.swift */,
 			);
 			path = contentprovider;
@@ -633,6 +642,7 @@
 				59CE10231B60E95500ACE1E7 /* ContentProviderEventHandlerType.swift in Sources */,
 				59DF70581B72698B00F6F0A3 /* EnableAction.swift in Sources */,
 				59C3D5C91B68B25800C5A613 /* Complaint.swift in Sources */,
+				59DF70761B73C82600F6F0A3 /* ContentProviderAttributeIdentity.swift in Sources */,
 				59DF70621B726B3100F6F0A3 /* LocationAction.swift in Sources */,
 				59DF706C1B7283D600F6F0A3 /* ModelConfig.swift in Sources */,
 				59C3D5CF1B68B2D100C5A613 /* ComplaintStatus.swift in Sources */,
@@ -642,11 +652,13 @@
 				59CB70981B5FB25B001D312F /* ContentProviderType.swift in Sources */,
 				59DF70461B725C0300F6F0A3 /* NewObjectAction.swift in Sources */,
 				59DF705A1B7269AC00F6F0A3 /* DisplayMessageAction.swift in Sources */,
+				59DF70721B7394F900F6F0A3 /* ComplaintContentProvider.swift in Sources */,
 				59CB709C1B5FB7B3001D312F /* Filter.swift in Sources */,
 				59DF70421B725A6400F6F0A3 /* ProcessChainGotoAction.swift in Sources */,
 				59DF70401B725A4400F6F0A3 /* ProcessChainReverseAction.swift in Sources */,
 				59CB709E1B5FB82B001D312F /* Query.swift in Sources */,
 				59CB70B01B5FE271001D312F /* WidgetWrapper.swift in Sources */,
+				59DF70741B73C73A00F6F0A3 /* OnContentChangeHandler.swift in Sources */,
 				59CE10111B60D71400ACE1E7 /* NumberRangeValidator.swift in Sources */,
 				59CB70841B5EB321001D312F /* MD2EnumType.swift in Sources */,
 				59C3D5E01B698C9900C5A613 /* OnTouchHandler.swift in Sources */,

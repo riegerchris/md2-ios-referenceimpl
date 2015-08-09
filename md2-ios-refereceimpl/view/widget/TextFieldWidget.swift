@@ -28,6 +28,8 @@ class TextFieldWidget: NSObject, SingleWidgetType, WidgetAssistedType, UITextFie
     
     var type: TextFieldType = TextFieldType.Standard
     
+    var width: Float?
+    
     init(widgetId: WidgetMapping, initialValue: MD2Type) {
         self.widgetId = widgetId
         self.value = initialValue
@@ -67,28 +69,47 @@ class TextFieldWidget: NSObject, SingleWidgetType, WidgetAssistedType, UITextFie
         }
     }
     
-    func calculateDimensions(bounds: Dimension) {
+    func calculateDimensions(bounds: Dimension) -> Dimension {
+        var outerDimensions: Dimension = bounds
+        
         // If tooltip info is available show info button
         if self.tooltip != nil && self.tooltip!.isSet() {
-            self.dimensions = Dimension(
-                x: bounds.x + ViewConfig.GUTTER,
-                y: bounds.y + ViewConfig.GUTTER,
-                width: bounds.width - 3 * ViewConfig.GUTTER - Float(ViewConfig.TOOLTIP_WIDTH),
-                height: bounds.height - 2 * ViewConfig.GUTTER)
+            outerDimensions = Dimension(
+                x: bounds.x,
+                y: bounds.y,
+                width: bounds.width,
+                height: min(bounds.height, ViewConfig.DIMENSION_TEXTFIELD_HEIGHT))
+            
+            var textFieldDimensions = outerDimensions - Dimension(
+                x: Float(0.0),
+                y: Float(0.0),
+                width: Float(ViewConfig.TOOLTIP_WIDTH),
+                height: Float(0.0))
+            
+            // Add gutter
+            self.dimensions = UIUtil.innerDimensionsWithGutter(textFieldDimensions)
             
             self.tooltipDimensions = Dimension(
-                x: self.dimensions!.x + self.dimensions!.width + ViewConfig.GUTTER,
-                y: self.dimensions!.y,
+                x: (outerDimensions.x + outerDimensions.width) - Float(ViewConfig.TOOLTIP_WIDTH) - ViewConfig.GUTTER / 2,
+                // center vertically
+                y: textFieldDimensions.y + (textFieldDimensions.height - ViewConfig.TOOLTIP_WIDTH) / 2,
                 width: ViewConfig.TOOLTIP_WIDTH,
-                height: self.dimensions!.height)
+                height: ViewConfig.TOOLTIP_WIDTH)
+            
+            return outerDimensions
             
         } else {
-            // Field with full width (but add gutter)
-            self.dimensions = Dimension(
-                x: bounds.x + ViewConfig.GUTTER,
-                y: bounds.y + ViewConfig.GUTTER,
-                width: bounds.width - 2 * ViewConfig.GUTTER,
-                height: bounds.height - 2 * ViewConfig.GUTTER)
+            // Normal full-width field
+            outerDimensions = Dimension(
+                x: bounds.x,
+                y: bounds.y,
+                width: bounds.width,
+                height: min(bounds.height, ViewConfig.DIMENSION_TEXTFIELD_HEIGHT))
+            
+            // Add gutter
+            self.dimensions = UIUtil.innerDimensionsWithGutter(outerDimensions)
+            
+            return outerDimensions
         }
     }
     

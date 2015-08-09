@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-protocol ContentProviderType {
+protocol ContentProviderType: AnyObject {
     
     var content: MD2EntityType { get set }
     
@@ -14,9 +14,9 @@ protocol ContentProviderType {
     
     var observedAttributes: Dictionary<String, MD2Type> { get set }
     
-    var filter: Filter { get set }
+    var filter: Filter? { get set }
     
-    func getContent() -> MD2EntityType
+    func getContent() -> MD2EntityType?
     
     func setContent(content: MD2EntityType)
     
@@ -24,7 +24,7 @@ protocol ContentProviderType {
     
     func unregisterObservedOnChange(attribute: String)
     
-    func getValue(attribute: String) -> MD2Type
+    func getValue(attribute: String) -> MD2Type?
     
     func setValue(attribute: String, value: MD2Type)
     

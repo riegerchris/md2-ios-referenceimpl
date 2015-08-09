@@ -36,4 +36,11 @@ class UIUtil {
         alertView.show()
     }
 
+    static func innerDimensionsWithGutter(outerDimensions: Dimension) -> Dimension {
+        return outerDimensions + Dimension(
+            x: ViewConfig.GUTTER,
+            y: ViewConfig.GUTTER,
+            width: -2 * ViewConfig.GUTTER,
+            height: -2 * ViewConfig.GUTTER)
+    }
 }
