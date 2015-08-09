@@ -22,7 +22,7 @@ class ButtonWidget: SingleWidgetType, WidgetStyleType {
     
     var color: MD2String?
     
-    var fontSize: MD2Integer?
+    var fontSize: MD2Float? = MD2Float(1.0)
     
     var textStyle: WidgetTextStyle = WidgetTextStyle.Normal
     
@@ -86,13 +86,9 @@ class ButtonWidget: SingleWidgetType, WidgetStyleType {
             button.tintColor = UIColor(rgba: color!.platformValue!)
         }
         
-        if fontSize?.isSet() == nil || fontSize?.isSet() == false {
-            fontSize = MD2Integer(ViewConfig.FONT_SIZE)
-        }
-        
         // Set more defaults
         button.layer.borderColor = button.tintColor?.CGColor
-        button.titleLabel!.font = UIFont(name: textStyle.rawValue, size: CGFloat(fontSize!.platformValue!))
+        button.titleLabel!.font = UIFont(name: textStyle.rawValue, size: CGFloat(Float(ViewConfig.FONT_SIZE) * fontSize!.platformValue!))
         
         // Add to surrounding view
         view.addSubview(button)

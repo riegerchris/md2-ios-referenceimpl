@@ -75,7 +75,7 @@ class GridLayoutPane: LayoutType {
                     width: columnWidth,
                     height: rowHeight)
                 
-                println(widgets[(currentRow * columns!.platformValue!) + currentColumn].widgetId.description + ": " + subDimensions.toString())
+                //println(widgets[(currentRow * columns!.platformValue!) + currentColumn].widgetId.description + ": " + subDimensions.toString())
                 widgets[(currentRow * columns!.platformValue!) + currentColumn].calculateDimensions(subDimensions)
             }
         }

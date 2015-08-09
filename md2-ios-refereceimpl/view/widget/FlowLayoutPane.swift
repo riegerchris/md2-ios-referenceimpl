@@ -131,7 +131,7 @@ class FlowLayoutPane: LayoutType {
                     currentY = acceptedDimensions.y + acceptedDimensions.height
                 }
                 
-                println(widgets[currentElem].widgetId.description + ": " + subDimensions.toString())
+                // println(widgets[currentElem].widgetId.description + ": " + subDimensions.toString())
             }
             
             return Dimension(

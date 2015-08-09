@@ -10,7 +10,7 @@ protocol WidgetStyleType {
     
     var color: MD2String? { get set }
     
-    var fontSize: MD2Integer? { get set }
+    var fontSize: MD2Float? { get set }
     
     var textStyle: WidgetTextStyle { get set }
     

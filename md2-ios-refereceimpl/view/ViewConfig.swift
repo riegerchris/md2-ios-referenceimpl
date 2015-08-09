@@ -13,7 +13,7 @@ class ViewConfig {
     
     // Font defaults
     static let FONT_NAME: WidgetTextStyle = WidgetTextStyle.Normal
-    static let FONT_SIZE: Int = 15
+    static let FONT_SIZE: Int = 12
     
     // Default placeholder for option widgets
     static let OPTION_WIDGET_PLACEHOLDER = " - Please select -"

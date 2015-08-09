@@ -20,7 +20,7 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
     
     var color: MD2String?
     
-    var fontSize: MD2Integer?
+    var fontSize: MD2Float? = MD2Float(1.0)
     
     var textStyle: WidgetTextStyle = WidgetTextStyle.Normal
     
@@ -51,11 +51,7 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
             label.textColor = UIColor(rgba: color!.platformValue!)
         }
         
-        if fontSize?.isSet() == nil || fontSize?.isSet() == false {
-            fontSize = MD2Integer(ViewConfig.FONT_SIZE)
-        }
-        
-        label.font = UIFont(name: textStyle.rawValue, size: CGFloat(fontSize!.platformValue!))
+        label.font = UIFont(name: textStyle.rawValue, size: CGFloat(Float(ViewConfig.FONT_SIZE) * fontSize!.platformValue!))
         
         // Add to surrounding view
         view.addSubview(label)
