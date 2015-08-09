@@ -27,7 +27,7 @@ class Controller {
         widgetRegistry.add(WidgetWrapper(widget: locationDetectionView_titleLbl))
         
         let locationDetectionView_addressData = GridLayoutPane(widgetId: WidgetMapping.LocationDetectionView_AddressData)
-        locationDetectionView_addressData.columns = MD2Integer(4)
+        locationDetectionView_addressData.columns = MD2Integer(2)
         locationDetectionView.addWidget(locationDetectionView_addressData)
         
         let locationDetectionView_streetValueLabel = LabelWidget(widgetId: WidgetMapping.LocationDetectionView_StreetValueLabel, initialValue: MD2String("Street:"))
@@ -66,11 +66,13 @@ class Controller {
         locationDetectionView_addressData.addWidget(locationDetectionView_cityValue)
         widgetRegistry.add(WidgetWrapper(widget: locationDetectionView_cityValue))
         
+        /*
         let locationDetectionView_spacer = SpacerWidget(widgetId: WidgetMapping.LocationDetectionView_Spacer)
         locationDetectionView_addressData.addWidget(locationDetectionView_spacer)
         
         let locationDetectionView_spacer5 = SpacerWidget(widgetId: WidgetMapping.LocationDetectionView_Spacer5)
         locationDetectionView_addressData.addWidget(locationDetectionView_spacer5)
+        */
         
         let locationDetectionView_countryValueLabel = LabelWidget(widgetId: WidgetMapping.LocationDetectionView_CountryValueLabel, initialValue: MD2String("Country:"))
         locationDetectionView_addressData.addWidget(locationDetectionView_countryValueLabel)
@@ -102,13 +104,14 @@ class Controller {
         widgetRegistry.add(WidgetWrapper(widget: locationDetectionView_longitudeValueLabel))
         
         let locationDetectionView_longitudeValue = TextFieldWidget(widgetId: WidgetMapping.LocationDetectionView_LongitudeValue, initialValue: MD2String())
-        locationDetectionView_countryValue.tooltip = MD2String("Please insert your longitude coordinate.")
+        locationDetectionView_longitudeValue.tooltip = MD2String("Please insert your longitude coordinate.")
         locationDetectionView_addressData.addWidget(locationDetectionView_longitudeValue)
         widgetRegistry.add(WidgetWrapper(widget: locationDetectionView_longitudeValue))
         
         
         let locationDetectionView_spacer4 = SpacerWidget(widgetId: WidgetMapping.LocationDetectionView_Spacer4)
         locationDetectionView.addWidget(locationDetectionView_spacer4)
+        
         
         let locationDetectionView_navbar = GridLayoutPane(widgetId: WidgetMapping.LocationDetectionView_Navbar)
         locationDetectionView_navbar.columns = MD2Integer(3)
@@ -120,7 +123,7 @@ class Controller {
         locationDetectionView_previousDummy.color = MD2String("#007AFF")
         locationDetectionView_navbar.addWidget(locationDetectionView_previousDummy)
         let locationDetectionView_wrapper_previousDummy = WidgetWrapper(widget: locationDetectionView_previousDummy)
-        locationDetectionView_wrapper_previousDummy.disabled = MD2Boolean(true)
+        locationDetectionView_wrapper_previousDummy.disabled = MD2Boolean(false)
         widgetRegistry.add(locationDetectionView_wrapper_previousDummy)
 
         let locationDetectionView_cancel = ButtonWidget(widgetId: WidgetMapping.LocationDetectionView_Cancel, initialValue: MD2String("Cancel"))
@@ -129,7 +132,7 @@ class Controller {
         locationDetectionView_cancel.color = MD2String("#007AFF")
         locationDetectionView_navbar.addWidget(locationDetectionView_cancel)
         let locationDetectionView_wrapper_cancel = WidgetWrapper(widget: locationDetectionView_cancel)
-        locationDetectionView_wrapper_cancel.disabled = MD2Boolean(true)
+        locationDetectionView_wrapper_cancel.disabled = MD2Boolean(false)
         widgetRegistry.add(locationDetectionView_wrapper_cancel)
         
         let locationDetectionView_next = ButtonWidget(widgetId: WidgetMapping.LocationDetectionView_Next, initialValue: MD2String("Next"))
@@ -318,6 +321,6 @@ class Controller {
         let initialAction = GotoViewAction(actionSignature: MD2String("initialAction"), widgetRegistry: widgetRegistry, contentProviderRegistry: contentProviderRegistry, viewManager: viewManager, dataMapper: dataMapper, targetView: WidgetMapping.LocationDetectionView)
         initialAction.execute()
 
-        println("done")
+        println("[Controller] Startup completed")
     }
 }
