@@ -8,7 +8,11 @@
 
 class ComplaintStatus: MD2EnumType {
     
-    typealias T = ComplaintStatus.EnumType
+    var value: Any? {
+        get {
+            return platformValue
+        }
+    }
     
     var platformValue: ComplaintStatus.EnumType?
     
@@ -20,9 +24,9 @@ class ComplaintStatus: MD2EnumType {
     
     func toString() -> String {
         if let _ = platformValue {
-            return platformValue!.rawValue
+            return "ComplaintStatus: [" + platformValue!.rawValue + "]"
         } else {
-            return ""
+            return "ComplaintStatus: []"
         }
     }
     
@@ -47,5 +51,13 @@ class ComplaintStatus: MD2EnumType {
             array.append(elem.rawValue)
         }
         return array
+    }
+    
+    func getValue() -> String {
+        if let _ = platformValue {
+            return platformValue!.rawValue
+        } else {
+            return ""
+        }
     }
 }

@@ -10,6 +10,12 @@ import Foundation
 
 class MD2Date: MD2TemporalType {
     
+    var value: Any? {
+        get {
+            return platformValue
+        }
+    }
+    
     let stringFormat = "yyyy-MM-dd"
 
     var platformValue: NSDate?

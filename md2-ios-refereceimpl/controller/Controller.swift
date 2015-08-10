@@ -299,6 +299,14 @@ class Controller {
         let oneComplaintContentProvider = ComplaintContentProvider(content: Complaint())
         contentProviderRegistry.addContentProvider(oneComplaintContentProvider)
         
+        let address = Address()
+        address.set("myCity", value: MD2String("Muenster"))
+        let oneAddressContentProvider = AddressContentProvider(content: address)
+        contentProviderRegistry.addContentProvider(oneAddressContentProvider)
+        
+        //oneAddressContentProvider.save()
+        oneAddressContentProvider.load()
+        
         // Initialize the view manager
         var viewManager = ViewManager()
         viewManager.window = window

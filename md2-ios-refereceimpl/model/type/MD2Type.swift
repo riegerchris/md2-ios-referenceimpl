@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-protocol MD2Type {
+protocol MD2Type: AnyObject {
     
     func clone() -> MD2Type
     

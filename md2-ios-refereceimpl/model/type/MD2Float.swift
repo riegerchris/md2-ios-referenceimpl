@@ -8,6 +8,12 @@
 
 class MD2Float: MD2NumericType {
     
+    var value: Any? {
+        get {
+            return platformValue
+        }
+    }
+    
     var platformValue: Float?
     
     init() {

@@ -78,6 +78,9 @@
 		59D007061B6FCE5400FA922D /* WidgetTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D007051B6FCE5400FA922D /* WidgetTextStyle.swift */; };
 		59D0070A1B6FCFFA00FA922D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D007091B6FCFFA00FA922D /* UIColorExtension.swift */; };
 		59D0070C1B6FD87600FA922D /* WidgetStyleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D0070B1B6FD87600FA922D /* WidgetStyleType.swift */; };
+		59D363E71B77AAB300E51E19 /* LocalData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 59D363E51B77AAB200E51E19 /* LocalData.xcdatamodeld */; };
+		59D363E91B77BCF700E51E19 /* AddressContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D363E81B77BCF700E51E19 /* AddressContentProvider.swift */; };
+		59D363ED1B78C2BB00E51E19 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D363EC1B78C2BB00E51E19 /* Util.swift */; };
 		59DF703E1B7259E000F6F0A3 /* ProcessChainProceedAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF703D1B7259E000F6F0A3 /* ProcessChainProceedAction.swift */; };
 		59DF70401B725A4400F6F0A3 /* ProcessChainReverseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF703F1B725A4400F6F0A3 /* ProcessChainReverseAction.swift */; };
 		59DF70421B725A6400F6F0A3 /* ProcessChainGotoAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF70411B725A6400F6F0A3 /* ProcessChainGotoAction.swift */; };
@@ -195,6 +198,9 @@
 		59D007051B6FCE5400FA922D /* WidgetTextStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetTextStyle.swift; sourceTree = "<group>"; };
 		59D007091B6FCFFA00FA922D /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		59D0070B1B6FD87600FA922D /* WidgetStyleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetStyleType.swift; sourceTree = "<group>"; };
+		59D363E61B77AAB300E51E19 /* LocalData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalData.xcdatamodel; sourceTree = "<group>"; };
+		59D363E81B77BCF700E51E19 /* AddressContentProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressContentProvider.swift; sourceTree = "<group>"; };
+		59D363EC1B78C2BB00E51E19 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		59DF703D1B7259E000F6F0A3 /* ProcessChainProceedAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessChainProceedAction.swift; sourceTree = "<group>"; };
 		59DF703F1B725A4400F6F0A3 /* ProcessChainReverseAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessChainReverseAction.swift; sourceTree = "<group>"; };
 		59DF70411B725A6400F6F0A3 /* ProcessChainGotoAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessChainGotoAction.swift; sourceTree = "<group>"; };
@@ -276,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				59C3D5E41B6F736900C5A613 /* UIUtil.swift */,
+				59D363EC1B78C2BB00E51E19 /* Util.swift */,
 				59D007091B6FCFFA00FA922D /* UIColorExtension.swift */,
 			);
 			path = util;
@@ -350,6 +357,7 @@
 				59CB709F1B5FBBAF001D312F /* DataStoreFactory.swift */,
 				59CB70A11B5FBC01001D312F /* LocalStoreFactory.swift */,
 				59CB70A31B5FBC6A001D312F /* LocalStore.swift */,
+				59D363E51B77AAB200E51E19 /* LocalData.xcdatamodeld */,
 			);
 			name = store;
 			path = datastore;
@@ -381,6 +389,7 @@
 			children = (
 				59CB70971B5FB25B001D312F /* ContentProviderType.swift */,
 				59DF70711B7394F900F6F0A3 /* ComplaintContentProvider.swift */,
+				59D363E81B77BCF700E51E19 /* AddressContentProvider.swift */,
 				59CB70A51B5FCC95001D312F /* ContentProviderRegistry.swift */,
 			);
 			path = contentprovider;
@@ -635,6 +644,7 @@
 				59C3D5B91B67E86400C5A613 /* WidgetType.swift in Sources */,
 				59CB70A61B5FCC95001D312F /* ContentProviderRegistry.swift in Sources */,
 				59CB70861B5EB3CD001D312F /* MD2String.swift in Sources */,
+				59D363E71B77AAB300E51E19 /* LocalData.xcdatamodeld in Sources */,
 				59CB708E1B5F8FE8001D312F /* MD2Date.swift in Sources */,
 				59C3D5E21B6AB3DE00C5A613 /* WidgetMapping.swift in Sources */,
 				59DF706E1B73552B00F6F0A3 /* WidgetAssistanceType.swift in Sources */,
@@ -652,10 +662,12 @@
 				59CB70981B5FB25B001D312F /* ContentProviderType.swift in Sources */,
 				59DF70461B725C0300F6F0A3 /* NewObjectAction.swift in Sources */,
 				59DF705A1B7269AC00F6F0A3 /* DisplayMessageAction.swift in Sources */,
+				59D363ED1B78C2BB00E51E19 /* Util.swift in Sources */,
 				59DF70721B7394F900F6F0A3 /* ComplaintContentProvider.swift in Sources */,
 				59CB709C1B5FB7B3001D312F /* Filter.swift in Sources */,
 				59DF70421B725A6400F6F0A3 /* ProcessChainGotoAction.swift in Sources */,
 				59DF70401B725A4400F6F0A3 /* ProcessChainReverseAction.swift in Sources */,
+				59D363E91B77BCF700E51E19 /* AddressContentProvider.swift in Sources */,
 				59CB709E1B5FB82B001D312F /* Query.swift in Sources */,
 				59CB70B01B5FE271001D312F /* WidgetWrapper.swift in Sources */,
 				59DF70741B73C73A00F6F0A3 /* OnContentChangeHandler.swift in Sources */,
@@ -893,6 +905,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		59D363E51B77AAB200E51E19 /* LocalData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				59D363E61B77AAB300E51E19 /* LocalData.xcdatamodel */,
+			);
+			currentVersion = 59D363E61B77AAB300E51E19 /* LocalData.xcdatamodel */;
+			path = LocalData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 59CD55981B5E8258007B9834 /* Project object */;
 }

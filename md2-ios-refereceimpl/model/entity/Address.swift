@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
+// Make class visible for Objective-C to work with Core Data persistence framework
+@objc(Address)
 class Address: MD2EntityType {
     
     var containedTypes: Dictionary<String,MD2Type> = [:]
@@ -16,10 +18,12 @@ class Address: MD2EntityType {
         containedTypes["myStreetNo"] = MD2String()
         containedTypes["myPostalCode"] = MD2String()
         containedTypes["myCity"] = MD2String()
-        containedTypes["myLocation"] = Location()
+        //containedTypes["myLocation"] = Location()
     }
     
-    init(md2Entity: Address) {
+    convenience init(md2Entity: Address) {
+        self.init()
+        
         for (typeName, typeValue) in md2Entity.containedTypes {
             containedTypes[typeName] = typeValue.clone()
         }
@@ -34,7 +38,7 @@ class Address: MD2EntityType {
             + ", myStreetNo: " + containedTypes["myStreetNo"]!.toString()
             + ", myPostalCode: " + containedTypes["myPostalCode"]!.toString()
             + ", myCity: " + containedTypes["myCity"]!.toString()
-            + ", myLocation: " + containedTypes["myLocation"]!.toString()
+        //    + ", myLocation: " + containedTypes["myLocation"]!.toString()
             + "])"
     }
     

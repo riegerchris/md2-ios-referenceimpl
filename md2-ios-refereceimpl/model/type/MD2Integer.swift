@@ -8,7 +8,11 @@
 
 class MD2Integer: MD2NumericType {
     
-    typealias ValueType = Int
+    var value: Any? {
+        get {
+            return platformValue
+        }
+    }
     
     var platformValue: Int?
     

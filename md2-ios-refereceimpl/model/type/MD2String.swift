@@ -8,7 +8,11 @@
 
 class MD2String: MD2DataType {
     
-    typealias ValueType = String
+    var value: Any? {
+        get {
+            return platformValue
+        }
+    }
     
     var platformValue: String?
     

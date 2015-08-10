@@ -18,7 +18,9 @@ class Complaint: MD2EntityType {
         containedTypes["status"] = ComplaintStatus()
     }
     
-    init(md2Entity: Complaint) {
+    convenience init(md2Entity: Complaint) {
+        self.init()
+        
         for (typeName, typeValue) in md2Entity.containedTypes {
             containedTypes[typeName] = typeValue.clone()
         }

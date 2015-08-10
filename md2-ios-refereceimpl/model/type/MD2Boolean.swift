@@ -8,6 +8,12 @@
 
 class MD2Boolean: MD2DataType {
     
+    var value: Any? {
+        get {
+            return platformValue
+        }
+    }
+    
     var platformValue: Bool?
     
     init() {
