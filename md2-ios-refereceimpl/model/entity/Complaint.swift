@@ -8,9 +8,11 @@
 
 class Complaint: MD2EntityType {
     
+    var internalId: MD2Integer = MD2Integer()
+    
     var containedTypes: Dictionary<String,MD2Type> = [:]
     
-    init() {
+    required init() {
         // Initialize complaint fields
         containedTypes["loc"] = Address()
         containedTypes["descriptions"] = MD2String()

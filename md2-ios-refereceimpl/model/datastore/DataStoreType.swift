@@ -12,6 +12,6 @@ protocol DataStoreType {
     
     func put(entity: MD2EntityType)
     
-    func remove(internalId: Int)
+    func remove(internalId: MD2Integer)
     
 }

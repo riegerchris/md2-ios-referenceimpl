@@ -18,7 +18,7 @@ class ComplaintContentProvider: ContentProviderType {
     
     init(content: MD2EntityType) {
         self.content = content
-        self.store = LocalStoreFactory().createStore()
+        self.store = LocalStoreFactory<Complaint>().createStore()
     }
     
     func getContent() -> MD2EntityType? {

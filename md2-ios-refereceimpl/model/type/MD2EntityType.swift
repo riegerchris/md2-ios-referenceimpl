@@ -8,7 +8,11 @@
 
 protocol MD2EntityType: MD2Type {
     
+    var internalId: MD2Integer { get set }
+    
     var containedTypes : Dictionary<String, MD2Type> { get set }
+    
+    init()
     
     func get(attribute: String) -> MD2Type?
     

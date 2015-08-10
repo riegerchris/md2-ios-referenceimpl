@@ -305,7 +305,7 @@ class Controller {
         contentProviderRegistry.addContentProvider(oneAddressContentProvider)
         
         //oneAddressContentProvider.save()
-        oneAddressContentProvider.load()
+        //oneAddressContentProvider.load()
         
         // Initialize the view manager
         var viewManager = ViewManager()

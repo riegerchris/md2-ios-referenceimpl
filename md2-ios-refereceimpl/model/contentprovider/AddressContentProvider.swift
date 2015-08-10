@@ -18,7 +18,7 @@ class AddressContentProvider: ContentProviderType {
     
     init(content: MD2EntityType) {
         self.content = content
-        self.store = LocalStoreFactory().createStore()
+        self.store = LocalStoreFactory<Address>().createStore()
     }
     
     func getContent() -> MD2EntityType? {
@@ -85,7 +85,8 @@ class AddressContentProvider: ContentProviderType {
     }
     
     func remove() {
-        // TODO where to get internalId from?
+        println("REMOVE start")
+        store.remove(content.internalId)
     }
     
 }

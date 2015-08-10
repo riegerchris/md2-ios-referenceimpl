@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class LocalStoreFactory: DataStoreFactoryType {
+class LocalStoreFactory<T: MD2EntityType>: DataStoreFactoryType {
     
     func createStore() -> DataStoreType {
         // Create and initialize a local data store
-        return LocalStore()
+        return LocalStore<T>()
     }
 }

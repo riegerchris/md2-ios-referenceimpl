@@ -10,9 +10,11 @@
 @objc(Address)
 class Address: MD2EntityType {
     
+    var internalId: MD2Integer = MD2Integer()
+    
     var containedTypes: Dictionary<String,MD2Type> = [:]
     
-    init() {
+    required init() {
         // Initialize address fields
         containedTypes["myStreet"] = MD2String()
         containedTypes["myStreetNo"] = MD2String()
