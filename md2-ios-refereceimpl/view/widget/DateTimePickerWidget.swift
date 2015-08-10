@@ -12,7 +12,11 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
     
     let widgetId: WidgetMapping
     
-    var value: MD2Type?
+    var value: MD2Type {
+        didSet {
+            updateElement()
+        }
+    }
     
     var dimensions: Dimension?
     
@@ -40,12 +44,13 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
         
         // Text field to display result
         let textField = UITextField()
+        self.resultElement = textField
         textField.frame = UIUtil.dimensionToCGRect(dimensions!)
         textField.placeholder = ViewConfig.OPTION_WIDGET_PLACEHOLDER
-        //textField.text = value?.toString()
+        updateElement()
         
         textField.tag = widgetId.rawValue
-        textField.addTarget(OnChangeHandler.instance, action: "fire:", forControlEvents: UIControlEvents.ValueChanged)
+        textField.addTarget(self, action: "onUpdate", forControlEvents: UIControlEvents.ValueChanged)
         
         // Set styling
         textField.backgroundColor = UIColor(rgba: "#fff")
@@ -54,7 +59,6 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
         
         // Add to surrounding view
         view.addSubview(textField)
-        self.resultElement = textField
         
         // Create and set value
         let pickerElement = UIDatePicker()
@@ -67,8 +71,6 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
         pickerElement.addTarget(self, action: "updateTextField", forControlEvents: UIControlEvents.ValueChanged)
         
         textField.inputView = pickerElement
-        
-        // Add to surrounding view
         self.pickerElement = pickerElement
         
         let tapRecognizer = UITapGestureRecognizer()
@@ -121,5 +123,17 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
     
     func disable() {
         self.resultElement?.enabled = false
+    }
+    
+    // Event from itself
+    func onUpdate() {
+        if let _ = self.resultElement {
+            self.value = MD2String(self.resultElement!.text)
+            WidgetRegistry.instance.getWidget(widgetId)?.setValue(self.value)
+        }
+    }
+    
+    func updateElement() {
+        self.resultElement?.text = value.toString()
     }
 }

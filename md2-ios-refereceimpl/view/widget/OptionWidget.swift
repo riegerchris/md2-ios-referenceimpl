@@ -12,7 +12,11 @@ class OptionWidget: NSObject, SingleWidgetType, WidgetAssistedType, UIPickerView
     
     let widgetId: WidgetMapping
     
-    var value: MD2Type?
+    var value: MD2Type {
+        didSet {
+            updateElement()
+        }
+    }
     
     var dimensions: Dimension?
     
@@ -41,12 +45,13 @@ class OptionWidget: NSObject, SingleWidgetType, WidgetAssistedType, UIPickerView
         
         // Text field to display result
         let textField = UITextField()
+        self.optionElement = textField
         textField.frame = UIUtil.dimensionToCGRect(dimensions!)
         textField.placeholder = ViewConfig.OPTION_WIDGET_PLACEHOLDER
-        //textField.text = value?.toString()
+        updateElement()
         
         textField.tag = widgetId.rawValue
-        textField.addTarget(OnChangeHandler.instance, action: "fire:", forControlEvents: UIControlEvents.ValueChanged)
+        textField.addTarget(self, action: "onUpdate", forControlEvents: UIControlEvents.ValueChanged)
         
         // Set styling
         textField.backgroundColor = UIColor(rgba: "#fff")
@@ -55,8 +60,7 @@ class OptionWidget: NSObject, SingleWidgetType, WidgetAssistedType, UIPickerView
         
         // Add to surrounding view
         view.addSubview(textField)
-        self.optionElement = textField
-
+        
         // Picker to select value
         picker.delegate = self
         picker.dataSource = self
@@ -123,6 +127,18 @@ class OptionWidget: NSObject, SingleWidgetType, WidgetAssistedType, UIPickerView
     
     func disable() {
         self.optionElement?.enabled = false
+    }
+    
+    // Event from itself
+    func onUpdate() {
+        if let _ = self.optionElement {
+            self.value = MD2String(self.optionElement!.text)
+            WidgetRegistry.instance.getWidget(widgetId)?.setValue(self.value)
+        }
+    }
+    
+    func updateElement() {
+        self.optionElement?.text = value.toString()
     }
     
 }

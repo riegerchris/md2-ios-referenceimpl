@@ -8,11 +8,11 @@
 
 import UIKit
 
-class OnChangeHandler: WidgetEventHandlerType {
+class OnWidgetChangeHandler: WidgetEventHandlerType {
     
     typealias actionWidgetTuple = (ActionType,WidgetWrapper)
     
-    static let instance:OnChangeHandler = OnChangeHandler()
+    static let instance:OnWidgetChangeHandler = OnWidgetChangeHandler()
     
     var actions: Dictionary<String,actionWidgetTuple> = [:]
     
@@ -30,12 +30,13 @@ class OnChangeHandler: WidgetEventHandlerType {
         }
     }
     
+    // Make visible to Objective-C to receive events
     @objc
-    func fire(sender: UIControl) {
+    func fire(sender: WidgetWrapper) {
         //println("Event fired to OnClickHandler: " + String(sender.tag) + "=" + WidgetMapping.fromRawValue(sender.tag).description)
         
         for (_, (action, widget)) in actions {
-            if widget.widgetId == WidgetMapping.fromRawValue(sender.tag) {
+            if widget.widgetId == sender.widgetId {
                 action.execute()
             }
         }

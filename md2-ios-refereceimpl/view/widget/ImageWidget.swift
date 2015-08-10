@@ -12,7 +12,7 @@ class ImageWidget: SingleWidgetType {
     
     let widgetId: WidgetMapping
     
-    var value: MD2Type? = MD2String() // path relative to /resources/images
+    var value: MD2Type = MD2String() // path relative to /resources/images
     
     var dimensions: Dimension?
     
@@ -39,7 +39,7 @@ class ImageWidget: SingleWidgetType {
         // Create and set value
         let imageElement = UIImageView()
         imageElement.frame = UIUtil.dimensionToCGRect(dimensions!)
-        let image = UIImage(named: value!.toString())
+        let image = UIImage(named: value.toString())
         imageElement.image = image
         
         // Add to surrounding view

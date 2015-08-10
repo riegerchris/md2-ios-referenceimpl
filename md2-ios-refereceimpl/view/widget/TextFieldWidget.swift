@@ -12,7 +12,11 @@ class TextFieldWidget: NSObject, SingleWidgetType, WidgetAssistedType, UITextFie
     
     let widgetId: WidgetMapping
     
-    var value: MD2Type? = MD2String("")
+    var value: MD2Type {
+        didSet {
+            updateElement()
+        }
+    }
     
     var dimensions: Dimension?
     
@@ -43,12 +47,13 @@ class TextFieldWidget: NSObject, SingleWidgetType, WidgetAssistedType, UITextFie
         
         // Create and set value
         let textField = UITextField()
+        self.textField = textField
         textField.frame = UIUtil.dimensionToCGRect(dimensions!)
         textField.placeholder = placeholder?.platformValue
-        textField.text = value?.toString()
+        updateElement()
         
         textField.tag = widgetId.rawValue
-        textField.addTarget(OnChangeHandler.instance, action: "fire:", forControlEvents: UIControlEvents.ValueChanged)
+        textField.addTarget(self, action: "onUpdate", forControlEvents: UIControlEvents.ValueChanged)
         
         // Set styling
         textField.backgroundColor = UIColor.whiteColor()
@@ -129,5 +134,17 @@ class TextFieldWidget: NSObject, SingleWidgetType, WidgetAssistedType, UITextFie
     func disable() {
         self.textField?.enabled = false
     }
-
+    
+    // Event from itself
+    func onUpdate() {
+        if let _ = self.textField {
+            self.value = MD2String(self.textField!.text)
+            WidgetRegistry.instance.getWidget(widgetId)?.setValue(self.value)
+        }
+    }
+    
+    func updateElement() {
+        self.textField?.text = value.toString()
+    }
+    
 }

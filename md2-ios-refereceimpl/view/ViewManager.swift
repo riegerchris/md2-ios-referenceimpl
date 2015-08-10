@@ -10,6 +10,8 @@ import UIKit
 
 class ViewManager {
     
+    static let instance: ViewManager = ViewManager()
+    
     var window: UIWindow?
     
     var navigationController: UINavigationController?

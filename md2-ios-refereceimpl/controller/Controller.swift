@@ -123,7 +123,7 @@ class Controller {
         locationDetectionView_previousDummy.color = MD2String("#007AFF")
         locationDetectionView_navbar.addWidget(locationDetectionView_previousDummy)
         let locationDetectionView_wrapper_previousDummy = WidgetWrapper(widget: locationDetectionView_previousDummy)
-        locationDetectionView_wrapper_previousDummy.disabled = MD2Boolean(false)
+        locationDetectionView_wrapper_previousDummy.isElementDisabled = false
         widgetRegistry.add(locationDetectionView_wrapper_previousDummy)
 
         let locationDetectionView_cancel = ButtonWidget(widgetId: WidgetMapping.LocationDetectionView_Cancel, initialValue: MD2String("Cancel"))
@@ -132,7 +132,7 @@ class Controller {
         locationDetectionView_cancel.color = MD2String("#007AFF")
         locationDetectionView_navbar.addWidget(locationDetectionView_cancel)
         let locationDetectionView_wrapper_cancel = WidgetWrapper(widget: locationDetectionView_cancel)
-        locationDetectionView_wrapper_cancel.disabled = MD2Boolean(false)
+        locationDetectionView_wrapper_cancel.setDisabled(false)
         widgetRegistry.add(locationDetectionView_wrapper_cancel)
         
         let locationDetectionView_next = ButtonWidget(widgetId: WidgetMapping.LocationDetectionView_Next, initialValue: MD2String("Next"))
@@ -141,7 +141,7 @@ class Controller {
         locationDetectionView_next.color = MD2String("#007AFF")
         locationDetectionView_navbar.addWidget(locationDetectionView_next)
         let locationDetectionView_wrapper_next = WidgetWrapper(widget: locationDetectionView_next)
-        locationDetectionView_wrapper_next.disabled = MD2Boolean(false)
+        locationDetectionView_wrapper_next.setDisabled(false)
         widgetRegistry.add(locationDetectionView_wrapper_next)
         
 
@@ -246,7 +246,7 @@ class Controller {
         locationVerifyView_previous.color = MD2String("#007AFF")
         locationVerifyView_navbar.addWidget(locationVerifyView_previous)
         let locationVerifyView_wrapper_previous = WidgetWrapper(widget: locationVerifyView_previous)
-        locationVerifyView_wrapper_previous.disabled = MD2Boolean(false)
+        locationVerifyView_wrapper_previous.setDisabled(false)
         widgetRegistry.add(locationVerifyView_wrapper_previous)
         
         let locationVerifyView_cancel2 = ButtonWidget(widgetId: WidgetMapping.LocationVerifyView_Cancel2, initialValue: MD2String("Cancel"))
@@ -255,7 +255,7 @@ class Controller {
         locationVerifyView_cancel2.color = MD2String("#007AFF")
         locationVerifyView_navbar.addWidget(locationVerifyView_cancel2)
         let locationVerifyView_wrapper_cancel2 = WidgetWrapper(widget: locationVerifyView_cancel2)
-        locationVerifyView_wrapper_cancel2.disabled = MD2Boolean(true)
+        locationVerifyView_wrapper_cancel2.setDisabled(false)
         widgetRegistry.add(locationVerifyView_wrapper_cancel2)
         
         let locationVerifyView_next2 = ButtonWidget(widgetId: WidgetMapping.LocationVerifyView_Next2, initialValue: MD2String("Next"))
@@ -264,7 +264,7 @@ class Controller {
         locationVerifyView_next2.color = MD2String("#007AFF")
         locationVerifyView_navbar.addWidget(locationVerifyView_next2)
         let locationVerifyView_wrapper_next2 = WidgetWrapper(widget: locationVerifyView_next2)
-        locationVerifyView_wrapper_next2.disabled = MD2Boolean(false)
+        locationVerifyView_wrapper_next2.setDisabled(false)
         widgetRegistry.add(locationVerifyView_wrapper_next2)
         
         /*
@@ -308,25 +308,22 @@ class Controller {
         //oneAddressContentProvider.load()
         
         // Initialize the view manager
-        var viewManager = ViewManager()
+        var viewManager = ViewManager.instance
         viewManager.window = window
         
         // Initialize all views
         viewManager.setupView(MD2String("LocationDetectionView"), view: locationDetectionView)
         viewManager.setupView(MD2String("LocationVerifyView"), view: locationVerifyView)
         
-        // Initialize data mapper
-        let dataMapper = DataMapper()
-                
         // Initialize and register Actions
-        let inputPageNextAction = GotoViewAction(actionSignature: MD2String("inputPageNextAction"), widgetRegistry: widgetRegistry, contentProviderRegistry: contentProviderRegistry, viewManager: viewManager, dataMapper: dataMapper, targetView: WidgetMapping.LocationVerifyView)
+        let inputPageNextAction = GotoViewAction(actionSignature: MD2String("inputPageNextAction"), targetView: WidgetMapping.LocationVerifyView)
         onTouchHandler.registerAction(inputPageNextAction, widget: locationDetectionView_wrapper_next)
         
-        let verifyViewPreviousAction = GotoViewAction(actionSignature: MD2String("verifyViewPreviousAction"), widgetRegistry: widgetRegistry, contentProviderRegistry: contentProviderRegistry, viewManager: viewManager, dataMapper: dataMapper, targetView: WidgetMapping.LocationDetectionView)
+        let verifyViewPreviousAction = GotoViewAction(actionSignature: MD2String("verifyViewPreviousAction"), targetView: WidgetMapping.LocationDetectionView)
         onTouchHandler.registerAction(verifyViewPreviousAction, widget: locationVerifyView_wrapper_previous)
         
         // Start initial action of the app
-        let initialAction = GotoViewAction(actionSignature: MD2String("initialAction"), widgetRegistry: widgetRegistry, contentProviderRegistry: contentProviderRegistry, viewManager: viewManager, dataMapper: dataMapper, targetView: WidgetMapping.LocationDetectionView)
+        let initialAction = GotoViewAction(actionSignature: MD2String("initialAction"), targetView: WidgetMapping.LocationDetectionView)
         initialAction.execute()
 
         println("[Controller] Startup completed")

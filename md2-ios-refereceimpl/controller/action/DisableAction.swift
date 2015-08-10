@@ -10,23 +10,10 @@ class DisableAction: ActionType {
     
     let actionSignature: MD2String
     
-    let widgetRegistry: WidgetRegistry
-    
-    let contentProviderRegistry: ContentProviderRegistry
-    
-    let viewManager: ViewManager
-    
-    let dataMapper: DataMapper
-    
     let viewElement: WidgetType
     
-    init(actionSignature: MD2String, widgetRegistry: WidgetRegistry, contentProviderRegistry: ContentProviderRegistry, viewManager: ViewManager, dataMapper: DataMapper, viewElement: WidgetType) {
-        
+    init(actionSignature: MD2String, viewElement: WidgetType) {
         self.actionSignature = actionSignature
-        self.widgetRegistry = widgetRegistry
-        self.contentProviderRegistry = contentProviderRegistry
-        self.viewManager = viewManager
-        self.dataMapper = dataMapper
         self.viewElement = viewElement
     }
     

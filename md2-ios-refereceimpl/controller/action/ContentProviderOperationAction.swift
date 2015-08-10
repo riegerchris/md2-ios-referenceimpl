@@ -10,25 +10,13 @@ class ContentProviderOperationAction: ActionType {
     
     let actionSignature: MD2String
     
-    let widgetRegistry: WidgetRegistry
-    
-    let contentProviderRegistry: ContentProviderRegistry
-    
-    let viewManager: ViewManager
-    
-    let dataMapper: DataMapper
-    
     let allowedOperation: AllowedOperation
     
     let contentProvider: ContentProviderType
     
-    init(actionSignature: MD2String, widgetRegistry: WidgetRegistry, contentProviderRegistry: ContentProviderRegistry, viewManager: ViewManager, dataMapper: DataMapper, allowedOperation: AllowedOperation, contentProvider: ContentProviderType) {
+    init(actionSignature: MD2String, allowedOperation: AllowedOperation, contentProvider: ContentProviderType) {
         
         self.actionSignature = actionSignature
-        self.widgetRegistry = widgetRegistry
-        self.contentProviderRegistry = contentProviderRegistry
-        self.viewManager = viewManager
-        self.dataMapper = dataMapper
         self.allowedOperation = allowedOperation
         self.contentProvider = contentProvider
     }

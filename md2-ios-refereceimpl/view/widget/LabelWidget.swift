@@ -12,7 +12,11 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
     
     let widgetId: WidgetMapping
     
-    var value: MD2Type? = MD2String("")
+    var value: MD2Type {
+        didSet {
+            updateElement()
+        }
+    }
     
     var dimensions: Dimension?
     
@@ -39,7 +43,8 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
         
         // Create and set value
         let label = UILabel()
-        label.text = value?.toString()
+        self.labelElement = label
+        updateElement()
         label.frame = UIUtil.dimensionToCGRect(dimensions!)
         
         // Set default styles
@@ -55,7 +60,6 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
         
         // Add to surrounding view
         view.addSubview(label)
-        self.labelElement = label
     }
     
     func calculateDimensions(bounds: Dimension) -> Dimension {
@@ -77,6 +81,10 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
     
     func disable() {
         self.labelElement?.enabled = false
+    }
+    
+    func updateElement() {
+        self.labelElement?.text = value.toString()
     }
 
 }

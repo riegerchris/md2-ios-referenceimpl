@@ -12,7 +12,11 @@ class ButtonWidget: SingleWidgetType, WidgetStyleType {
     
     let widgetId: WidgetMapping
     
-    var value: MD2Type? = MD2String("")
+    var value: MD2Type {
+        didSet {
+            updateElement()
+        }
+    }
     
     var dimensions: Dimension?
     
@@ -71,8 +75,9 @@ class ButtonWidget: SingleWidgetType, WidgetStyleType {
     func renderSystemButton(view: UIView) {
         // Create and set value
         let button = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        self.buttonElement = button // TODO refactor
         button.frame = UIUtil.dimensionToCGRect(dimensions!)
-        button.setTitle(self.value?.toString(), forState: .Normal)
+        updateElement()
         button.tag = widgetId.rawValue
         button.addTarget(OnTouchHandler.instance, action: "fire:", forControlEvents: UIControlEvents.TouchUpInside)
         
@@ -92,7 +97,6 @@ class ButtonWidget: SingleWidgetType, WidgetStyleType {
         
         // Add to surrounding view
         view.addSubview(button)
-        self.buttonElement = button
     }
     
     func renderInfoButton(view: UIView) {
@@ -108,4 +112,7 @@ class ButtonWidget: SingleWidgetType, WidgetStyleType {
         self.buttonElement = button
     }
     
+    func updateElement() {
+        buttonElement?.setTitle(self.value.toString(), forState: .Normal)
+    }
 }

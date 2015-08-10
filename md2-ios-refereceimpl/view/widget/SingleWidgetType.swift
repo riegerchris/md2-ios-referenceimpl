@@ -8,6 +8,6 @@
 
 protocol SingleWidgetType: WidgetType {
     
-    var value: MD2Type? { get set }
+    var value: MD2Type { get set }
 
 }

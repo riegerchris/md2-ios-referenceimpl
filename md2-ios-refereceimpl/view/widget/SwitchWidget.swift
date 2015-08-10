@@ -12,8 +12,17 @@ class SwitchWidget: SingleWidgetType, WidgetAssistedType {
     
     let widgetId: WidgetMapping
     
-    var value: MD2Type? = MD2Boolean(false)
-    
+    var value: MD2Type {
+        didSet (oldValue) {
+            // Check for type
+            if !(value is MD2Boolean) {
+                self.value = oldValue
+            }
+            
+            updateElement()
+        }
+    }
+
     var dimensions: Dimension?
     
     var switchElement: UISwitch?
@@ -37,7 +46,10 @@ class SwitchWidget: SingleWidgetType, WidgetAssistedType {
         
         // Create and set value
         let switchElement = UISwitch()
+        self.switchElement = switchElement
         switchElement.frame = UIUtil.dimensionToCGRect(dimensions!)
+        updateElement()
+        
         // TODO Label for caption
         if (value is MD2Boolean) && (value as! MD2Boolean).isSet() {
             switchElement.setOn((value as! MD2Boolean).platformValue!, animated: false)
@@ -46,14 +58,10 @@ class SwitchWidget: SingleWidgetType, WidgetAssistedType {
         }
         
         switchElement.tag = widgetId.rawValue
-        switchElement.addTarget(OnChangeHandler.instance, action: "fire:", forControlEvents: UIControlEvents.ValueChanged)
-        
-        // Set styling
-        // TODO styling
+        switchElement.addTarget(self, action: "onUpdate", forControlEvents: UIControlEvents.ValueChanged)
         
         // Add to surrounding view
         view.addSubview(switchElement)
-        self.switchElement = switchElement
     }
     
     func calculateDimensions(bounds: Dimension) -> Dimension {
@@ -75,6 +83,21 @@ class SwitchWidget: SingleWidgetType, WidgetAssistedType {
     
     func disable() {
         self.switchElement?.enabled = false
+    }
+    
+    // Event from itself
+    func onUpdate() {
+        if let _ = self.switchElement {
+            self.value = MD2Boolean(self.switchElement!.on)
+            WidgetRegistry.instance.getWidget(widgetId)?.setValue(self.value)
+        }
+    }
+    
+    func updateElement() {
+        // Update element
+        if (self.value as! MD2Boolean).isSet() {
+            self.switchElement?.on = ((self.value as! MD2Boolean).platformValue! as Bool)
+        }
     }
     
 }
