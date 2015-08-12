@@ -20,12 +20,14 @@ class MD2String: MD2DataType {
         // Nothing to initialize
     }
     
-    init(_ value: String) {
-        platformValue = value
+    required init(_ value: MD2String) {
+        if value.isSet() {
+            platformValue = value.platformValue!
+        }
     }
     
-    init(_ md2String: MD2String) {
-        platformValue = md2String.platformValue
+    init(_ value: String) {
+        platformValue = value
     }
     
     func isSet() -> Bool {

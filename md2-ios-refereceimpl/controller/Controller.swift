@@ -304,8 +304,12 @@ class Controller {
         let oneAddressContentProvider = AddressContentProvider(content: address)
         contentProviderRegistry.addContentProvider(oneAddressContentProvider)
         
-        //oneAddressContentProvider.save()
-        //oneAddressContentProvider.load()
+        oneAddressContentProvider.save()
+        
+        let secondAddressContentProvider = AddressContentProvider()
+        secondAddressContentProvider.load()
+        println(secondAddressContentProvider.content?.toString())
+        
         
         // Initialize the view manager
         var viewManager = ViewManager.instance

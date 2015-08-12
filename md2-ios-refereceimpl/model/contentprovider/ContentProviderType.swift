@@ -8,7 +8,7 @@
 
 protocol ContentProviderType: AnyObject {
     
-    var content: MD2EntityType { get set }
+    var content: MD2EntityType? { get set }
     
     var store: DataStoreType { get set }
     

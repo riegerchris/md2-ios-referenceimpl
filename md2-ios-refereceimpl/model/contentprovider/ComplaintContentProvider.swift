@@ -8,7 +8,7 @@
 
 class ComplaintContentProvider: ContentProviderType {
     
-    var content: MD2EntityType // managed entity instance
+    var content: MD2EntityType? // managed entity instance
     
     var store: DataStoreType
     
@@ -35,7 +35,7 @@ class ComplaintContentProvider: ContentProviderType {
     
     func registerObservedOnChange(attribute: String) {
         // Add observed attribute and remember current value
-        observedAttributes[attribute] = self.content.get(attribute)
+        observedAttributes[attribute] = self.content?.get(attribute)
     }
     
     func unregisterObservedOnChange(attribute: String) {
@@ -53,7 +53,7 @@ class ComplaintContentProvider: ContentProviderType {
         // Update value in entity and map
         let newValue = value.clone()
         observedAttributes[attribute] = newValue
-        content.set(attribute, value: newValue)
+        content?.set(attribute, value: newValue)
     }
     
     func checkForObserver(attribute: String, newValue: MD2Type) {
@@ -64,8 +64,10 @@ class ComplaintContentProvider: ContentProviderType {
     }
     
     func checkAllAttributesForObserver() {
-        for (attribute, _) in observedAttributes {
-            checkForObserver(attribute, newValue: content.get(attribute)!)
+        if let _ = content {
+            for (attribute, _) in observedAttributes {
+                checkForObserver(attribute, newValue: content!.get(attribute)!)
+            }
         }
     }
     

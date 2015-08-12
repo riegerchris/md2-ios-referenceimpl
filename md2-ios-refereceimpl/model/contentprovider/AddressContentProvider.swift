@@ -8,7 +8,7 @@
 
 class AddressContentProvider: ContentProviderType {
     
-    var content: MD2EntityType // managed entity instance
+    var content: MD2EntityType? // managed entity instance
     
     var store: DataStoreType
     
@@ -16,9 +16,13 @@ class AddressContentProvider: ContentProviderType {
     
     var filter: Filter?
     
-    init(content: MD2EntityType) {
-        self.content = content
+    init() {
         self.store = LocalStoreFactory<Address>().createStore()
+    }
+    
+    convenience init(content: MD2EntityType) {
+        self.init()
+        self.content = content
     }
     
     func getContent() -> MD2EntityType? {
@@ -35,7 +39,7 @@ class AddressContentProvider: ContentProviderType {
     
     func registerObservedOnChange(attribute: String) {
         // Add observed attribute and remember current value
-        observedAttributes[attribute] = self.content.get(attribute)
+        observedAttributes[attribute] = self.content?.get(attribute)
     }
     
     func unregisterObservedOnChange(attribute: String) {
@@ -53,7 +57,7 @@ class AddressContentProvider: ContentProviderType {
         // Update value in entity and map
         let newValue = value.clone()
         observedAttributes[attribute] = newValue
-        content.set(attribute, value: newValue)
+        content?.set(attribute, value: newValue)
     }
     
     func checkForObserver(attribute: String, newValue: MD2Type) {
@@ -64,8 +68,10 @@ class AddressContentProvider: ContentProviderType {
     }
     
     func checkAllAttributesForObserver() {
-        for (attribute, _) in observedAttributes {
-            checkForObserver(attribute, newValue: content.get(attribute)!)
+        if let _ = content {
+            for (attribute, _) in observedAttributes {
+                checkForObserver(attribute, newValue: content!.get(attribute)!)
+            }
         }
     }
     
@@ -76,17 +82,21 @@ class AddressContentProvider: ContentProviderType {
     
     func load() {
         println("LOAD start")
-        store.query(Query())
+        content = store.query(Query())
     }
     
     func save() {
         println("SAVE start")
-        store.put(content)
+        if let _ = content {
+            store.put(content!)
+        }
     }
     
     func remove() {
         println("REMOVE start")
-        store.remove(content.internalId)
+        if let _ = content {
+            store.remove(content!.internalId)
+        }
     }
     
 }

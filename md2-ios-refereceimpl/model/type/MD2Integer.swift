@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
+import Foundation
+
 class MD2Integer: MD2NumericType {
     
     var value: Any? {
@@ -22,6 +24,12 @@ class MD2Integer: MD2NumericType {
     
     init(_ value : Int){
         platformValue = value
+    }
+    
+    required init(_ value: MD2String) {
+        if value.isSet() && !value.equals(MD2String("")) {
+            platformValue = (value.platformValue! as NSString).integerValue
+        }
     }
     
     init(_ md2Integer: MD2Integer) {

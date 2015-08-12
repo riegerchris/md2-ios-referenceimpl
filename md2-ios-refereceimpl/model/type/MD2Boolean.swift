@@ -20,6 +20,14 @@ class MD2Boolean: MD2DataType {
         // Nothing to initialize
     }
     
+    required init(_ value: MD2String) {
+        if value.isSet() && value.equals(MD2String("true")) {
+            platformValue = true
+        } else if value.isSet() && value.equals(MD2String("false")) {
+            platformValue = false
+        }
+    }
+    
     init(_ value : Bool) {
         platformValue = value
     }

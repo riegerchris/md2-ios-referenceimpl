@@ -21,6 +21,8 @@ class LocalStore<T: MD2EntityType>: DataStoreType {
     }
     
     func query(query: Query) -> MD2EntityType? {
+        // TODO use query parameter
+        
         var request = NSFetchRequest(entityName: Util.getClassName(T()))
         request.returnsObjectsAsFaults = false
         
@@ -36,34 +38,37 @@ class LocalStore<T: MD2EntityType>: DataStoreType {
             
             // Convert native types
             var result: T = T()
-            result.internalId = MD2Integer(data.valueForKey("internalId") as! Int)
+            result.internalId = MD2Integer(MD2String(data.valueForKey("internalId") as! String))
             
             for (attributeKey, attributeValue) in result.containedTypes {
                 if data.valueForKey(attributeKey) == nil {
                     continue
                 }
                 
+                let stringValue = data.valueForKey(attributeKey) as! String
+                
                 if attributeValue is MD2EnumType {
-                    // TODO
+                    (attributeValue as! MD2EnumType).setValueFromString(MD2String(stringValue))
                     
                 } else if attributeValue is MD2EntityType {
+                    println(attributeValue)
                     // TODO
                     
                 } else if attributeValue is MD2DataType {
                     if attributeValue is MD2String {
-                        result.set(attributeKey, value: MD2String(data.valueForKey(attributeKey) as! String))
+                        result.set(attributeKey, value: MD2String(stringValue))
                     } else if attributeValue is MD2Boolean {
-                        result.set(attributeKey, value: MD2Boolean(data.valueForKey(attributeKey) as! Bool))
+                        result.set(attributeKey, value: MD2Boolean(MD2String(stringValue)))
                     } else if attributeValue is MD2Date {
-                        result.set(attributeKey, value: MD2Date(data.valueForKey(attributeKey) as! String))
+                        result.set(attributeKey, value: MD2Date(MD2String(stringValue)))
                     } else if attributeValue is MD2DateTime {
-                        result.set(attributeKey, value: MD2DateTime(data.valueForKey(attributeKey) as! String))
+                        result.set(attributeKey, value: MD2DateTime(MD2String(stringValue)))
                     } else if attributeValue is MD2Time {
-                        result.set(attributeKey, value: MD2Time(data.valueForKey(attributeKey) as! String))
+                        result.set(attributeKey, value: MD2Time(MD2String(stringValue)))
                     } else if attributeValue is MD2Float {
-                        result.set(attributeKey, value: MD2Float(data.valueForKey(attributeKey) as! Float))
+                        result.set(attributeKey, value: MD2Float(MD2String(stringValue)))
                     } else if attributeValue is MD2Integer {
-                        result.set(attributeKey, value: MD2Integer(data.valueForKey(attributeKey) as! Int))
+                        result.set(attributeKey, value: MD2Integer(MD2String(stringValue)))
                     }
                 }
             }
@@ -102,9 +107,9 @@ class LocalStore<T: MD2EntityType>: DataStoreType {
         
         let newObject = NSManagedObject(entity: entityClass!, insertIntoManagedObjectContext:managedContext)
         
-        let id = 1 // TODO
+        let id = 1 // TODO define unique id
         entity.internalId = MD2Integer(id)
-        newObject.setValue(id, forKey: "internalId")
+        newObject.setValue(entity.internalId.toString(), forKey: "internalId")
         
         // Set values
         for (attributeKey, attributeValue) in entity.containedTypes {
@@ -112,6 +117,7 @@ class LocalStore<T: MD2EntityType>: DataStoreType {
                 newObject.setValue(((attributeValue as! MD2EnumType).value as! String), forKey: attributeKey)
                 
             } else if attributeValue is MD2EntityType {
+                // TODO does it work?
                 newObject.setValue((attributeValue as! MD2EntityType), forKey: attributeKey)
                 
             } else if attributeValue is MD2DataType {
@@ -119,22 +125,7 @@ class LocalStore<T: MD2EntityType>: DataStoreType {
                     continue
                 }
                 
-                // Getting the platformType is currently only possible by manual casting to all known types, see protocol MD2DataType for details why platformValue variable is not possible in Swift (yet)
-                if attributeValue is MD2String {
-                    newObject.setValue(((attributeValue as! MD2DataType).value as! String), forKey: attributeKey)
-                } else if attributeValue is MD2Boolean {
-                    newObject.setValue(((attributeValue as! MD2DataType).value as! Bool), forKey: attributeKey)
-                } else if attributeValue is MD2Date {
-                    newObject.setValue((attributeValue as! MD2DataType).toString(), forKey: attributeKey)
-                } else if attributeValue is MD2DateTime {
-                    newObject.setValue((attributeValue as! MD2DataType).toString(), forKey: attributeKey)
-                } else if attributeValue is MD2Time {
-                    newObject.setValue((attributeValue as! MD2DataType).toString(), forKey: attributeKey)
-                } else if attributeValue is MD2Float {
-                    newObject.setValue(((attributeValue as! MD2DataType).value as! Float), forKey: attributeKey)
-                } else if attributeValue is MD2Integer {
-                    newObject.setValue(((attributeValue as! MD2DataType).value as! Int), forKey: attributeKey)
-                }
+                newObject.setValue((attributeValue as! MD2DataType).toString(), forKey: attributeKey)
             }
         }
         

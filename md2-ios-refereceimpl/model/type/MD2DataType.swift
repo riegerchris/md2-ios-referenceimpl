@@ -14,6 +14,9 @@ protocol MD2DataType: MD2Type {
     
     var value: Any? { get }
     
+    // Deserialize
+    init(_ value: MD2String)
+    
     func isSet() -> Bool
     
 }
