@@ -7,5 +7,15 @@
 //
 
 class Query {
-    // TODO
+    
+    var predicates: Array<(String, String)> = []
+    
+    init() {
+        // Nothing to initialize
+    }
+
+    // MARK for now only AND-Predicates are supported
+    func addPredicate(attribute: String, value: String) {
+        predicates.append((attribute, value))
+    }
 }

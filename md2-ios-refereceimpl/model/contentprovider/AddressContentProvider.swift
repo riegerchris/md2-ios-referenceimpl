@@ -82,7 +82,11 @@ class AddressContentProvider: ContentProviderType {
     
     func load() {
         println("LOAD start")
-        content = store.query(Query())
+        if let _ = content {
+            let query = Query()
+            query.addPredicate("internalId", value: content!.internalId.toString())
+            content = store.query(query)
+        }
     }
     
     func save() {

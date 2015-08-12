@@ -15,28 +15,17 @@ class LocalStore<T: MD2EntityType>: DataStoreType {
     
     init() {
         // Setup connection to data store managed context
-        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         managedContext = appDelegate.managedObjectContext!
     }
     
     func query(query: Query) -> MD2EntityType? {
-        // TODO use query parameter
-        
-        var request = NSFetchRequest(entityName: Util.getClassName(T()))
-        request.returnsObjectsAsFaults = false
-        
-        var error: NSError?
-        var results: NSArray = managedContext.executeFetchRequest(request, error: &error)!
-        
-        if error != nil {
-            println("Could not load \(error), \(error?.userInfo)")
-        }
+        let results = getManagedObject(query)
         
         if (results.count > 0) {
             var data: NSManagedObject = results[0] as! NSManagedObject
             
-            // Convert native types
+            // Convert attributes to their respective types
             var result: T = T()
             result.internalId = MD2Integer(MD2String(data.valueForKey("internalId") as! String))
             
@@ -53,6 +42,7 @@ class LocalStore<T: MD2EntityType>: DataStoreType {
                 } else if attributeValue is MD2EntityType {
                     println(attributeValue)
                     // TODO
+                    result.set(attributeKey, value: attributeValue)
                     
                 } else if attributeValue is MD2DataType {
                     if attributeValue is MD2String {
@@ -74,30 +64,69 @@ class LocalStore<T: MD2EntityType>: DataStoreType {
             }
             
             return result
-            
-        } else {
-            println("No results returned")
         }
         
+        println("No results returned")
         return nil
     }
     
     func put(entity: MD2EntityType) {
-        if getById(entity.internalId) == nil {
+        if let managedObject = getById(entity.internalId) {
+            // Exists -> update
+            updateData(managedObject, entity: entity)
+        } else {
             // New -> insert
             insertData(entity)
-        } else {
-            // Exists -> update
-            updateData(entity)
         }
     }
     
     func remove(internalId: MD2Integer) {
-        // TODO
+        if let object = getById(internalId) {
+            managedContext.deleteObject(object)
+        }
+        
+        saveManagedContext()
     }
     
-    private func getById(internalId: MD2Integer) -> MD2EntityType? {
-        // TODO query
+    private func getManagedObject(query: Query) -> NSArray {
+        var request = NSFetchRequest(entityName: Util.getClassName(T()))
+        request.returnsObjectsAsFaults = false
+        
+        // Construct predicates
+        var requestPredicates: Array<NSPredicate> = []
+        for (attribute, value) in query.predicates {
+            println("add query predicate: " + attribute + "==" + value)
+            requestPredicates.append(NSPredicate(format: attribute + " == %@", value))
+        }
+        
+        if(query.predicates.count == 1) {
+            request.predicate = requestPredicates[0]
+        } else if (query.predicates.count > 1) {
+            request.predicate = NSCompoundPredicate(type: NSCompoundPredicateType.OrPredicateType, subpredicates: requestPredicates)
+        }
+        
+        var error: NSError?
+        var results: NSArray = managedContext.executeFetchRequest(request, error: &error)!
+        
+        if error != nil {
+            println("Could not load \(error), \(error?.userInfo)")
+        }
+        
+        return results
+    }
+    
+    private func getById(internalId: MD2Integer) -> NSManagedObject? {
+        if internalId.isSet() && !internalId.equals(MD2Integer(0)) {
+            let query = Query()
+            query.addPredicate("internalId", value: internalId.toString())
+            
+            let results: NSArray = self.getManagedObject(query)
+            
+            if results.count > 0 {
+                return results[0] as? NSManagedObject
+            }
+        }
+        
         return nil
     }
     
@@ -107,37 +136,46 @@ class LocalStore<T: MD2EntityType>: DataStoreType {
         
         let newObject = NSManagedObject(entity: entityClass!, insertIntoManagedObjectContext:managedContext)
         
+        // Define unique id
         let id = 1 // TODO define unique id
         entity.internalId = MD2Integer(id)
         newObject.setValue(entity.internalId.toString(), forKey: "internalId")
         
-        // Set values
+        // Fill with data and save
+        setValues(newObject, entity: entity)
+        saveManagedContext()
+    }
+    
+    private func updateData(managedObject: NSManagedObject, entity: MD2EntityType) {
+        // Fill with data and save
+        setValues(managedObject, entity: entity)
+        saveManagedContext()
+    }
+    
+    private func setValues(object: NSManagedObject, entity: MD2EntityType) {
         for (attributeKey, attributeValue) in entity.containedTypes {
             if attributeValue is MD2EnumType {
-                newObject.setValue(((attributeValue as! MD2EnumType).value as! String), forKey: attributeKey)
+                object.setValue(((attributeValue as! MD2EnumType).value as! String), forKey: attributeKey)
                 
             } else if attributeValue is MD2EntityType {
                 // TODO does it work?
-                newObject.setValue((attributeValue as! MD2EntityType), forKey: attributeKey)
+                object.setValue((attributeValue as! MD2EntityType), forKey: attributeKey)
                 
             } else if attributeValue is MD2DataType {
                 if !(attributeValue as! MD2DataType).isSet() {
                     continue
                 }
                 
-                newObject.setValue((attributeValue as! MD2DataType).toString(), forKey: attributeKey)
+                object.setValue((attributeValue as! MD2DataType).toString(), forKey: attributeKey)
             }
         }
-        
-        // Save
+    }
+    
+    private func saveManagedContext() {
         var error: NSError?
         if !managedContext.save(&error) {
             println("Could not save \(error), \(error?.userInfo)")
         }
-    }
-    
-    private func updateData(entity: MD2EntityType) {
-        // TODO
     }
 
 }

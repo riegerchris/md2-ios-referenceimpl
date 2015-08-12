@@ -300,13 +300,14 @@ class Controller {
         contentProviderRegistry.addContentProvider(oneComplaintContentProvider)
         
         let address = Address()
+        address.internalId = MD2Integer(1)
         address.set("myCity", value: MD2String("Muenster"))
         let oneAddressContentProvider = AddressContentProvider(content: address)
         contentProviderRegistry.addContentProvider(oneAddressContentProvider)
         
-        oneAddressContentProvider.save()
+        //oneAddressContentProvider.save()
         
-        let secondAddressContentProvider = AddressContentProvider()
+        let secondAddressContentProvider = AddressContentProvider(content: address)
         secondAddressContentProvider.load()
         println(secondAddressContentProvider.content?.toString())
         
