@@ -34,9 +34,9 @@ class TextFieldWidget: NSObject, SingleWidgetType, WidgetAssistedType, UITextFie
     
     var width: Float?
     
-    init(widgetId: WidgetMapping, initialValue: MD2Type) {
+    init(widgetId: WidgetMapping) {
         self.widgetId = widgetId
-        self.value = initialValue
+        self.value = MD2String()
     }
     
     func render(view: UIView, controller: UIViewController) {
@@ -67,7 +67,7 @@ class TextFieldWidget: NSObject, SingleWidgetType, WidgetAssistedType, UITextFie
         
         // If tooltip info is available show info button
         if self.tooltip != nil && self.tooltip!.isSet() {
-            let infoButton = ButtonWidget(widgetId: self.widgetId, initialValue: MD2String())
+            let infoButton = ButtonWidget(widgetId: self.widgetId)
             infoButton.buttonType = UIButtonType.InfoLight
             infoButton.dimensions = self.tooltipDimensions
             infoButton.render(view, controller: controller)

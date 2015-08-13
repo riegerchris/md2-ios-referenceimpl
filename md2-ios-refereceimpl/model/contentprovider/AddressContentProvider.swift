@@ -54,7 +54,7 @@ class AddressContentProvider: ContentProviderType {
         // Update content
         let newValue = value.clone()
         if content != nil {
-            println("[AddressContentProvider] Update id=\(content!.internalId.toString()) from '\(content!.get(attribute)!.toString())' to '\(newValue.toString())'")
+            println("[AddressContentProvider] Update id=\(content!.internalId.toString()) set \(attribute) to '\(newValue.toString())'")
         }
         content?.set(attribute, value: newValue)
         

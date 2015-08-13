@@ -30,9 +30,9 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
     
     var width: Float?
     
-    init(widgetId: WidgetMapping, initialValue: MD2Type) {
+    init(widgetId: WidgetMapping) {
         self.widgetId = widgetId
-        self.value = initialValue
+        self.value = MD2String()
     }
     
     func render(view: UIView, controller: UIViewController) {

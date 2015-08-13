@@ -28,9 +28,9 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
     
     var width: Float?
     
-    init(widgetId: WidgetMapping, initialValue: MD2Type) {
+    init(widgetId: WidgetMapping) {
         self.widgetId = widgetId
-        self.value = initialValue
+        self.value = MD2String()
 
         // Default
         self.pickerMode = UIDatePickerMode.DateAndTime

@@ -18,6 +18,8 @@ class CustomAction_ButtonInit: ActionType {
         let action2 = GotoViewAction(actionSignature: actionSignature + "__2", targetView: WidgetMapping.LocationDetectionView)
         OnTouchHandler.instance.registerAction(action2, widget: WidgetRegistry.instance.getWidget(WidgetMapping.LocationVerifyView_Previous)!)
         
+        let action3 = CustomAction_GoOn()
+        OnTouchHandler.instance.registerAction(action3, widget: WidgetRegistry.instance.getWidget(WidgetMapping.LocationDetectionView_Next)!)
         
         // Mappings GUIElement -> ContentProvider
         // -

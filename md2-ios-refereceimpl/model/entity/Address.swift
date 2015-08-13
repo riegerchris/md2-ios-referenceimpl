@@ -20,7 +20,9 @@ class Address: MD2EntityType {
         containedTypes["myStreetNo"] = MD2String()
         containedTypes["myPostalCode"] = MD2String()
         containedTypes["myCity"] = MD2String()
-        //containedTypes["myLocation"] = Location()
+        containedTypes["myCountry"] = MD2String()
+        containedTypes["latitude"] = MD2Float()
+        containedTypes["longitude"] = MD2Float()
     }
     
     convenience init(md2Entity: Address) {
@@ -40,7 +42,9 @@ class Address: MD2EntityType {
             + ", myStreetNo: " + containedTypes["myStreetNo"]!.toString()
             + ", myPostalCode: " + containedTypes["myPostalCode"]!.toString()
             + ", myCity: " + containedTypes["myCity"]!.toString()
-        //    + ", myLocation: " + containedTypes["myLocation"]!.toString()
+            + ", myCountry: " + containedTypes["myCountry"]!.toString()
+            + ", latitude: " + containedTypes["latitude"]!.toString()
+            + ", longitude: " + containedTypes["longitude"]!.toString()
             + "])"
     }
     

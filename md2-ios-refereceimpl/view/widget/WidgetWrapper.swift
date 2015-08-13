@@ -31,14 +31,15 @@ class WidgetWrapper: Hashable {
         didSet (oldValue) {
             // Check that data is valid and reset value to old state if not
             if !validate(value) {
-                println("WidgetWrapper: Fire OnWrongValidationEvent")
+                println("[WidgetWrapper] Fire OnWrongValidationEvent")
                 OnWrongValidationHandler.instance.fire(self)
                 self.value = oldValue
-            } else if self.value.equals(oldValue) == false { // Important to avoid infinite loops of WidgetUpdate -> ContentProviderUpdate -> ...
+            } else if self.value.equals(oldValue) == false {
+                // Check is important to reduce unnecessary updates and especially to avoid infinite loops of WidgetUpdate -> ContentProviderUpdate -> WidgetUpdate -> ...
                 
                 // Ensure synchronized behavior with widget
                 widget?.value = value
-                println("WidgetWrapper: Value for \(widgetId.description) changed from '\(oldValue.toString())' to '\(self.value.toString())' -> fire OnWidgetChangeEvent")
+                println("[WidgetWrapper] Value for \(widgetId.description) changed from '\(oldValue.toString())' to '\(self.value.toString())' -> fire OnWidgetChangeEvent")
                 // Fire change event to inform about change
                 OnWidgetChangeHandler.instance.fire(self)
             }

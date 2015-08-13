@@ -33,9 +33,9 @@ class SwitchWidget: SingleWidgetType, WidgetAssistedType {
     
     var width: Float?
     
-    init(widgetId: WidgetMapping, initialValue: MD2Type) {
+    init(widgetId: WidgetMapping) {
         self.widgetId = widgetId
-        self.value = initialValue
+        self.value = MD2Boolean(false)
     }
     
     func render(view: UIView, controller: UIViewController) {

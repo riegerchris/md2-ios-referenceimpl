@@ -27,7 +27,6 @@ class UpdateContentProviderAction: ActionType {
         if let value = viewElement.getValue() {
             println("[UpdateContentProviderAction] Update " + actionSignature)
             self.contentProvider.setValue(attribute, value: value)
-            self.contentProvider.save()
         }
     }
     

@@ -24,8 +24,13 @@ class ViewManager {
                 // Show view
                 
                 if let _ = navigationController {
-                    // Controller exists, push view on top
-                    self.navigationController!.pushViewController(controller, animated: false)
+                    // Check if the view already exists in stack (pushing the same view controller instance more than once is not allowed)
+                    if let _ = controller.navigationController {
+                        self.navigationController!.popToViewController(controller, animated: true)
+                    } else {
+                        // Controller exists, push view on top
+                        self.navigationController!.pushViewController(controller, animated: true)
+                    }
                 } else {
                     // First view to show, create and initialize navigationController
                     showRootView(viewName)
