@@ -294,21 +294,19 @@ class Controller {
         let onTouchHandler = OnTouchHandler.instance
         
         // Initialize content providers
-        var contentProviderRegistry = ContentProviderRegistry()
-        
         let oneComplaintContentProvider = ComplaintContentProvider(content: Complaint())
-        contentProviderRegistry.addContentProvider(oneComplaintContentProvider)
+        ContentProviderRegistry.instance.addContentProvider("ComplaintProvider", provider: oneComplaintContentProvider)
         
         let address = Address()
-        address.internalId = MD2Integer(1)
+        //address.internalId = MD2Integer(1)
         address.set("myCity", value: MD2String("Muenster"))
         let oneAddressContentProvider = AddressContentProvider(content: address)
-        contentProviderRegistry.addContentProvider(oneAddressContentProvider)
+        ContentProviderRegistry.instance.addContentProvider("AddressProvider", provider: oneAddressContentProvider)
         
         //oneAddressContentProvider.save()
         
         let secondAddressContentProvider = AddressContentProvider(content: address)
-        secondAddressContentProvider.load()
+        //secondAddressContentProvider.load()
         println(secondAddressContentProvider.content?.toString())
         
         
@@ -320,16 +318,11 @@ class Controller {
         viewManager.setupView(MD2String("LocationDetectionView"), view: locationDetectionView)
         viewManager.setupView(MD2String("LocationVerifyView"), view: locationVerifyView)
         
-        // Initialize and register Actions
-        let inputPageNextAction = GotoViewAction(actionSignature: MD2String("inputPageNextAction"), targetView: WidgetMapping.LocationVerifyView)
-        onTouchHandler.registerAction(inputPageNextAction, widget: locationDetectionView_wrapper_next)
-        
-        let verifyViewPreviousAction = GotoViewAction(actionSignature: MD2String("verifyViewPreviousAction"), targetView: WidgetMapping.LocationDetectionView)
-        onTouchHandler.registerAction(verifyViewPreviousAction, widget: locationVerifyView_wrapper_previous)
-        
         // Start initial action of the app
-        let initialAction = GotoViewAction(actionSignature: MD2String("initialAction"), targetView: WidgetMapping.LocationDetectionView)
-        initialAction.execute()
+        CustomAction_Init().execute()
+        CustomAction_ButtonInit().execute()
+        
+        GotoViewAction(actionSignature: "initialAction", targetView: WidgetMapping.LocationDetectionView).execute()
 
         println("[Controller] Startup completed")
     }

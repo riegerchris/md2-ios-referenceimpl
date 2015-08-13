@@ -8,11 +8,11 @@
 
 class ProcessChainGotoAction: ActionType {
     
-    let actionSignature: MD2String
+    let actionSignature: String
     
-    let targetStep: MD2String
+    let targetStep: String
     
-    init(actionSignature: MD2String, targetStep: MD2String) {
+    init(actionSignature: String, targetStep: String) {
         self.actionSignature = actionSignature
         self.targetStep = targetStep
     }
@@ -22,7 +22,7 @@ class ProcessChainGotoAction: ActionType {
     }
     
     func equals(anotherAction: ActionType) -> Bool {
-        return actionSignature.equals(anotherAction.actionSignature)
+        return actionSignature == anotherAction.actionSignature
     }
     
 }

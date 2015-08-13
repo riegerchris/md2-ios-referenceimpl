@@ -8,11 +8,11 @@
 
 class FireEventAction: ActionType {
     
-    let actionSignature: MD2String
+    let actionSignature: String
     
-    let event: MD2String // TODO WorkflowEvent
+    let event: String // TODO WorkflowEvent
     
-    init(actionSignature: MD2String, event: MD2String) {
+    init(actionSignature: String, event: String) {
         self.actionSignature = actionSignature
         self.event = event
     }
@@ -22,7 +22,7 @@ class FireEventAction: ActionType {
     }
     
     func equals(anotherAction: ActionType) -> Bool {
-        return actionSignature.equals(anotherAction.actionSignature)
+        return actionSignature == anotherAction.actionSignature
     }
     
 }

@@ -47,6 +47,10 @@ class MD2String: MD2DataType {
     }
     
     func equals(value : MD2Type) -> Bool {
+        if platformValue == nil {
+            return "" == value.toString()
+        }
+        
         return platformValue == value.toString()
     }
 }

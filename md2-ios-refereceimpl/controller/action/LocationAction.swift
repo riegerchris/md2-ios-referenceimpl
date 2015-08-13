@@ -8,11 +8,11 @@
 
 class LocationAction: ActionType {
     
-    let actionSignature: MD2String
+    let actionSignature: String
     
     let location: Location
     
-    init(actionSignature: MD2String, location: Location) {
+    init(actionSignature: String, location: Location) {
         self.actionSignature = actionSignature
         self.location = location
     }
@@ -22,7 +22,7 @@ class LocationAction: ActionType {
     }
     
     func equals(anotherAction: ActionType) -> Bool {
-        return actionSignature.equals(anotherAction.actionSignature)
+        return actionSignature == anotherAction.actionSignature
     }
     
 }

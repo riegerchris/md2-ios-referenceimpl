@@ -53,7 +53,7 @@ class TextFieldWidget: NSObject, SingleWidgetType, WidgetAssistedType, UITextFie
         updateElement()
         
         textField.tag = widgetId.rawValue
-        textField.addTarget(self, action: "onUpdate", forControlEvents: UIControlEvents.ValueChanged)
+        textField.addTarget(self, action: "onUpdate", forControlEvents: (UIControlEvents.EditingDidEnd | UIControlEvents.EditingDidEndOnExit))
         
         // Set styling
         textField.backgroundColor = UIColor.whiteColor()

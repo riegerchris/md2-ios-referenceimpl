@@ -8,14 +8,16 @@
 
 class ContentProviderRegistry {
     
-    var contentProviders: Array<ContentProviderType> = []
+    static let instance: ContentProviderRegistry = ContentProviderRegistry()
     
-    init() {
-        
+    var contentProviders: Dictionary<String, ContentProviderType> = [:]
+    
+    func addContentProvider(contentProviderName: String, provider: ContentProviderType) {
+        contentProviders[contentProviderName] = provider
     }
     
-    func addContentProvider(provider: ContentProviderType) {
-        contentProviders.append(provider)
+    func getContentProvider(contentProviderName: String) -> ContentProviderType? {
+        return contentProviders[contentProviderName]
     }
     
 }

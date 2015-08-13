@@ -8,11 +8,11 @@
 
 class ContentProviderResetAction: ActionType {
     
-    let actionSignature: MD2String
+    let actionSignature: String
     
     let contentProvider: ContentProviderType
     
-    init(actionSignature: MD2String, contentProvider: ContentProviderType) {
+    init(actionSignature: String, contentProvider: ContentProviderType) {
         
         self.actionSignature = actionSignature
         self.contentProvider = contentProvider
@@ -23,7 +23,7 @@ class ContentProviderResetAction: ActionType {
     }
     
     func equals(anotherAction: ActionType) -> Bool {
-        return actionSignature.equals(anotherAction.actionSignature)
+        return actionSignature == anotherAction.actionSignature
     }
     
 }

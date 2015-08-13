@@ -8,9 +8,9 @@
 
 class ProcessChainReverseAction: ActionType {
     
-    let actionSignature: MD2String
+    let actionSignature: String
     
-    init(actionSignature: MD2String) {
+    init(actionSignature: String) {
         self.actionSignature = actionSignature
     }
     
@@ -19,7 +19,7 @@ class ProcessChainReverseAction: ActionType {
     }
     
     func equals(anotherAction: ActionType) -> Bool {
-        return actionSignature.equals(anotherAction.actionSignature)
+        return actionSignature == anotherAction.actionSignature
     }
     
 }

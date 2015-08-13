@@ -8,11 +8,11 @@
 
 class GotoViewAction: ActionType {
     
-    let actionSignature: MD2String
+    let actionSignature: String
     
     let targetView: WidgetMapping
     
-    init(actionSignature: MD2String, targetView: WidgetMapping) {
+    init(actionSignature: String, targetView: WidgetMapping) {
         self.actionSignature = actionSignature
         self.targetView = targetView
     }
@@ -22,7 +22,7 @@ class GotoViewAction: ActionType {
     }
     
     func equals(anotherAction: ActionType) -> Bool {
-        return actionSignature.equals(anotherAction.actionSignature)
+        return actionSignature == anotherAction.actionSignature
     }
 
 }

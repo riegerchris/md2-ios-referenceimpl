@@ -47,21 +47,26 @@ class AddressContentProvider: ContentProviderType {
     }
     
     func getValue(attribute: String) -> MD2Type? {
-        return observedAttributes[attribute]
+        return content?.get(attribute)
     }
     
     func setValue(attribute: String, value: MD2Type) {
-        // Check is attribute is observed and fire event accordingly
+        // Update content
+        let newValue = value.clone()
+        if content != nil {
+            println("[AddressContentProvider] Update id=\(content!.internalId.toString()) from '\(content!.get(attribute)!.toString())' to '\(newValue.toString())'")
+        }
+        content?.set(attribute, value: newValue)
+        
+        // Check if attribute is observed and fire event accordingly
         checkForObserver(attribute, newValue: value)
         
-        // Update value in entity and map
-        let newValue = value.clone()
+        // Update value in map
         observedAttributes[attribute] = newValue
-        content?.set(attribute, value: newValue)
     }
     
     func checkForObserver(attribute: String, newValue: MD2Type) {
-        // Check is attribute is observed
+        // Check if attribute is observed
         if observedAttributes[attribute] != nil && !observedAttributes[attribute]!.equals(newValue) {
             OnContentChangeHandler.instance.fire(self, attribute: attribute)
         }
@@ -81,8 +86,8 @@ class AddressContentProvider: ContentProviderType {
     }
     
     func load() {
-        println("LOAD start")
         if let _ = content {
+            println("LOAD entity \(content!.internalId.toString())")
             let query = Query()
             query.addPredicate("internalId", value: content!.internalId.toString())
             content = store.query(query)
@@ -90,15 +95,15 @@ class AddressContentProvider: ContentProviderType {
     }
     
     func save() {
-        println("SAVE start")
         if let _ = content {
+            println("SAVE entity \(content!.internalId.toString())")
             store.put(content!)
         }
     }
     
     func remove() {
-        println("REMOVE start")
         if let _ = content {
+            println("REMOVE entity \(content!.internalId.toString())")
             store.remove(content!.internalId)
         }
     }

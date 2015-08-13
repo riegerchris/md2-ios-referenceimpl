@@ -47,13 +47,18 @@ class ComplaintContentProvider: ContentProviderType {
     }
     
     func setValue(attribute: String, value: MD2Type) {
-        // Check is attribute is observed and fire event accordingly
+        // Update content
+        let newValue = value.clone()
+        if content != nil {
+            println("[ComplaintContentProvider] Update id=\(content!.internalId.toString()) from '\(content!.get(attribute)!.toString())' to '\(newValue.toString())'")
+        }
+        content?.set(attribute, value: newValue)
+        
+        // Check if attribute is observed and fire event accordingly
         checkForObserver(attribute, newValue: value)
         
-        // Update value in entity and map
-        let newValue = value.clone()
+        // Update value in map
         observedAttributes[attribute] = newValue
-        content?.set(attribute, value: newValue)
     }
     
     func checkForObserver(attribute: String, newValue: MD2Type) {
@@ -77,15 +82,26 @@ class ComplaintContentProvider: ContentProviderType {
     }
     
     func load() {
-        // TODO
+        if let _ = content {
+            println("LOAD entity \(content!.internalId.toString())")
+            let query = Query()
+            query.addPredicate("internalId", value: content!.internalId.toString())
+            content = store.query(query)
+        }
     }
     
     func save() {
-        // TODO
+        if let _ = content {
+            println("SAVE entity \(content!.internalId.toString())")
+            store.put(content!)
+        }
     }
     
     func remove() {
-        // TODO where to get internalId from?
+        if let _ = content {
+            println("REMOVE entity \(content!.internalId.toString())")
+            store.remove(content!.internalId)
+        }
     }
     
 }

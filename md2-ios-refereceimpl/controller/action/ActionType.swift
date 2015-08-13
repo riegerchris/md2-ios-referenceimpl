@@ -8,7 +8,7 @@
 
 protocol ActionType {
     
-    var actionSignature: MD2String { get }
+    var actionSignature: String { get }
     
     func execute()
     

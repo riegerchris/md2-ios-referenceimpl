@@ -17,13 +17,13 @@ class OnWrongValidationHandler: WidgetEventHandlerType {
     var actions: Dictionary<String,actionWidgetTuple> = [:]
     
     func registerAction(action: ActionType, widget: WidgetWrapper) {
-        actions[action.actionSignature.platformValue!] = (action, widget)
+        actions[action.actionSignature] = (action, widget)
         //println("registered action \(action.actionSignature.platformValue!)")
     }
     
     func unregisterAction(action: ActionType, widget: WidgetWrapper) {
         for (key, value) in actions {
-            if MD2String(key).equals(action.actionSignature) {
+            if key == action.actionSignature {
                 actions[key] = nil
                 break
             }
@@ -31,11 +31,11 @@ class OnWrongValidationHandler: WidgetEventHandlerType {
     }
     
     @objc
-    func fire(sender: UIControl) {
-        //println("Event fired to OnClickHandler: " + String(sender.tag) + "=" + WidgetMapping.fromRawValue(sender.tag).description)
+    func fire(sender: WidgetWrapper) {
+        //println("Event fired to OnWrongValidationHandler: " + sender.widgetId.description)
         
         for (_, (action, widget)) in actions {
-            if widget.widgetId == WidgetMapping.fromRawValue(sender.tag) {
+            if widget.widgetId == sender.widgetId {
                 action.execute()
             }
         }

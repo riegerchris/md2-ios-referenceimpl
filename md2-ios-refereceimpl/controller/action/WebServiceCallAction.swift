@@ -8,11 +8,11 @@
 
 class WebServiceCallAction: ActionType {
     
-    let actionSignature: MD2String
+    let actionSignature: String
     
-    let webServiceCall: MD2String // TODO WebServiceCall
+    let webServiceCall: String // TODO WebServiceCall
     
-    init(actionSignature: MD2String, webServiceCall: MD2String) {
+    init(actionSignature: String, webServiceCall: String) {
         self.actionSignature = actionSignature
         self.webServiceCall = webServiceCall
     }
@@ -22,7 +22,7 @@ class WebServiceCallAction: ActionType {
     }
     
     func equals(anotherAction: ActionType) -> Bool {
-        return actionSignature.equals(anotherAction.actionSignature)
+        return actionSignature == anotherAction.actionSignature
     }
     
 }

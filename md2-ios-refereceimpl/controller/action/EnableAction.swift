@@ -8,11 +8,11 @@
 
 class EnableAction: ActionType {
     
-    let actionSignature: MD2String
+    let actionSignature: String
     
     let viewElement: WidgetType
     
-    init(actionSignature: MD2String, viewElement: WidgetType) {
+    init(actionSignature: String, viewElement: WidgetType) {
         self.actionSignature = actionSignature
         self.viewElement = viewElement
     }
@@ -22,7 +22,7 @@ class EnableAction: ActionType {
     }
     
     func equals(anotherAction: ActionType) -> Bool {
-        return actionSignature.equals(anotherAction.actionSignature)
+        return actionSignature == anotherAction.actionSignature
     }
     
 }

@@ -30,6 +30,10 @@
 		59C3D5ED1B6FAB4B00C5A613 /* GridLayoutPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5EC1B6FAB4B00C5A613 /* GridLayoutPane.swift */; };
 		59C3D5EF1B6FBA2700C5A613 /* OptionWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5EE1B6FBA2700C5A613 /* OptionWidget.swift */; };
 		59C3D5F11B6FBF6C00C5A613 /* DateTimePickerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5F01B6FBF6C00C5A613 /* DateTimePickerWidget.swift */; };
+		59C6A0D21B7B92190038E056 /* CustomAction_Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C6A0D11B7B92180038E056 /* CustomAction_Init.swift */; };
+		59C6A0D41B7B9FEF0038E056 /* UpdateWidgetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C6A0D31B7B9FEF0038E056 /* UpdateWidgetAction.swift */; };
+		59C6A0D61B7BA54B0038E056 /* UpdateContentProviderAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C6A0D51B7BA54B0038E056 /* UpdateContentProviderAction.swift */; };
+		59C6A0D81B7BABE70038E056 /* CustomAction_ButtonInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C6A0D71B7BABE70038E056 /* CustomAction_ButtonInit.swift */; };
 		59CB70721B5E9889001D312F /* MD2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70701B5E9889001D312F /* MD2ViewController.swift */; };
 		59CB70731B5E9889001D312F /* InitialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59CB70711B5E9889001D312F /* InitialView.xib */; };
 		59CB707E1B5EAE2D001D312F /* MD2Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB707D1B5EAE2D001D312F /* MD2Type.swift */; };
@@ -74,7 +78,7 @@
 		59CE101F1B60E89000ACE1E7 /* GlobalEventHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE101E1B60E89000ACE1E7 /* GlobalEventHandlerType.swift */; };
 		59CE10211B60E8F500ACE1E7 /* WidgetEventHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE10201B60E8F500ACE1E7 /* WidgetEventHandlerType.swift */; };
 		59CE10231B60E95500ACE1E7 /* ContentProviderEventHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE10221B60E95500ACE1E7 /* ContentProviderEventHandlerType.swift */; };
-		59CE10251B60E9EA00ACE1E7 /* OnChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE10241B60E9EA00ACE1E7 /* OnChangeHandler.swift */; };
+		59CE10251B60E9EA00ACE1E7 /* OnWidgetChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE10241B60E9EA00ACE1E7 /* OnWidgetChangeHandler.swift */; };
 		59D007061B6FCE5400FA922D /* WidgetTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D007051B6FCE5400FA922D /* WidgetTextStyle.swift */; };
 		59D0070A1B6FCFFA00FA922D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D007091B6FCFFA00FA922D /* UIColorExtension.swift */; };
 		59D0070C1B6FD87600FA922D /* WidgetStyleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D0070B1B6FD87600FA922D /* WidgetStyleType.swift */; };
@@ -146,6 +150,10 @@
 		59C3D5EC1B6FAB4B00C5A613 /* GridLayoutPane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayoutPane.swift; sourceTree = "<group>"; };
 		59C3D5EE1B6FBA2700C5A613 /* OptionWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionWidget.swift; sourceTree = "<group>"; };
 		59C3D5F01B6FBF6C00C5A613 /* DateTimePickerWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePickerWidget.swift; sourceTree = "<group>"; };
+		59C6A0D11B7B92180038E056 /* CustomAction_Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAction_Init.swift; sourceTree = "<group>"; };
+		59C6A0D31B7B9FEF0038E056 /* UpdateWidgetAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateWidgetAction.swift; sourceTree = "<group>"; };
+		59C6A0D51B7BA54B0038E056 /* UpdateContentProviderAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateContentProviderAction.swift; sourceTree = "<group>"; };
+		59C6A0D71B7BABE70038E056 /* CustomAction_ButtonInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAction_ButtonInit.swift; sourceTree = "<group>"; };
 		59CB70701B5E9889001D312F /* MD2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2ViewController.swift; sourceTree = "<group>"; };
 		59CB70711B5E9889001D312F /* InitialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialView.xib; sourceTree = "<group>"; };
 		59CB707D1B5EAE2D001D312F /* MD2Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Type.swift; sourceTree = "<group>"; };
@@ -194,7 +202,7 @@
 		59CE101E1B60E89000ACE1E7 /* GlobalEventHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalEventHandlerType.swift; sourceTree = "<group>"; };
 		59CE10201B60E8F500ACE1E7 /* WidgetEventHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetEventHandlerType.swift; sourceTree = "<group>"; };
 		59CE10221B60E95500ACE1E7 /* ContentProviderEventHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentProviderEventHandlerType.swift; sourceTree = "<group>"; };
-		59CE10241B60E9EA00ACE1E7 /* OnChangeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnChangeHandler.swift; sourceTree = "<group>"; };
+		59CE10241B60E9EA00ACE1E7 /* OnWidgetChangeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnWidgetChangeHandler.swift; sourceTree = "<group>"; };
 		59D007051B6FCE5400FA922D /* WidgetTextStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetTextStyle.swift; sourceTree = "<group>"; };
 		59D007091B6FCFFA00FA922D /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		59D0070B1B6FD87600FA922D /* WidgetStyleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetStyleType.swift; sourceTree = "<group>"; };
@@ -370,7 +378,7 @@
 				59CE101E1B60E89000ACE1E7 /* GlobalEventHandlerType.swift */,
 				59CE10201B60E8F500ACE1E7 /* WidgetEventHandlerType.swift */,
 				59CE10221B60E95500ACE1E7 /* ContentProviderEventHandlerType.swift */,
-				59CE10241B60E9EA00ACE1E7 /* OnChangeHandler.swift */,
+				59CE10241B60E9EA00ACE1E7 /* OnWidgetChangeHandler.swift */,
 				59C3D5DF1B698C9800C5A613 /* OnTouchHandler.swift */,
 				59DF706F1B7363E800F6F0A3 /* TooltipHandler.swift */,
 				59DF704B1B7264C100F6F0A3 /* OnLeftSwipeHandler.swift */,
@@ -424,6 +432,8 @@
 			children = (
 				59CB70A91B5FDD63001D312F /* ActionType.swift */,
 				59CB70AB1B5FDE9F001D312F /* GotoViewAction.swift */,
+				59C6A0D11B7B92180038E056 /* CustomAction_Init.swift */,
+				59C6A0D71B7BABE70038E056 /* CustomAction_ButtonInit.swift */,
 				59DF703D1B7259E000F6F0A3 /* ProcessChainProceedAction.swift */,
 				59DF703F1B725A4400F6F0A3 /* ProcessChainReverseAction.swift */,
 				59DF70411B725A6400F6F0A3 /* ProcessChainGotoAction.swift */,
@@ -437,6 +447,8 @@
 				59DF70491B72643900F6F0A3 /* SetProcessChainAction.swift */,
 				59DF70551B72687300F6F0A3 /* DisableAction.swift */,
 				59DF70571B72698B00F6F0A3 /* EnableAction.swift */,
+				59C6A0D31B7B9FEF0038E056 /* UpdateWidgetAction.swift */,
+				59C6A0D51B7BA54B0038E056 /* UpdateContentProviderAction.swift */,
 				59DF70591B7269AC00F6F0A3 /* DisplayMessageAction.swift */,
 			);
 			path = action;
@@ -638,6 +650,7 @@
 				59D0070C1B6FD87600FA922D /* WidgetStyleType.swift in Sources */,
 				59DF70561B72687400F6F0A3 /* DisableAction.swift in Sources */,
 				59CE10191B60E31000ACE1E7 /* TimeRangeValidator.swift in Sources */,
+				59C6A0D21B7B92190038E056 /* CustomAction_Init.swift in Sources */,
 				59CB70AC1B5FDEA0001D312F /* GotoViewAction.swift in Sources */,
 				59DF70701B7363E800F6F0A3 /* TooltipHandler.swift in Sources */,
 				59C3D5CB1B68B26000C5A613 /* Address.swift in Sources */,
@@ -666,6 +679,7 @@
 				59DF70721B7394F900F6F0A3 /* ComplaintContentProvider.swift in Sources */,
 				59CB709C1B5FB7B3001D312F /* Filter.swift in Sources */,
 				59DF70421B725A6400F6F0A3 /* ProcessChainGotoAction.swift in Sources */,
+				59C6A0D41B7B9FEF0038E056 /* UpdateWidgetAction.swift in Sources */,
 				59DF70401B725A4400F6F0A3 /* ProcessChainReverseAction.swift in Sources */,
 				59D363E91B77BCF700E51E19 /* AddressContentProvider.swift in Sources */,
 				59CB709E1B5FB82B001D312F /* Query.swift in Sources */,
@@ -685,6 +699,7 @@
 				59CE101B1B60E35500ACE1E7 /* DateTimeValidator.swift in Sources */,
 				59C3D5EB1B6F84EA00C5A613 /* SpacerWidget.swift in Sources */,
 				59DF703E1B7259E000F6F0A3 /* ProcessChainProceedAction.swift in Sources */,
+				59C6A0D81B7BABE70038E056 /* CustomAction_ButtonInit.swift in Sources */,
 				59C3D5D41B69260D00C5A613 /* ButtonWidget.swift in Sources */,
 				59CB70B71B60CDE6001D312F /* StringRangeValidator.swift in Sources */,
 				59DF70601B726AE600F6F0A3 /* WebServiceCallAction.swift in Sources */,
@@ -697,6 +712,7 @@
 				59DF70641B726EB300F6F0A3 /* OnWrongValidationHandler.swift in Sources */,
 				59C3D5BB1B67FC0C00C5A613 /* WidgetRegistry.swift in Sources */,
 				59C3D5ED1B6FAB4B00C5A613 /* GridLayoutPane.swift in Sources */,
+				59C6A0D61B7BA54B0038E056 /* UpdateContentProviderAction.swift in Sources */,
 				59CB709A1B5FB6E5001D312F /* DataStoreType.swift in Sources */,
 				59DF704A1B72643900F6F0A3 /* SetProcessChainAction.swift in Sources */,
 				59DF706A1B72711100F6F0A3 /* MD2TemporalType.swift in Sources */,
@@ -707,7 +723,7 @@
 				59CB70A41B5FBC6A001D312F /* LocalStore.swift in Sources */,
 				59C3D5C31B680E4400C5A613 /* FlowLayoutPane.swift in Sources */,
 				59CB70801B5EB15C001D312F /* MD2DataType.swift in Sources */,
-				59CE10251B60E9EA00ACE1E7 /* OnChangeHandler.swift in Sources */,
+				59CE10251B60E9EA00ACE1E7 /* OnWidgetChangeHandler.swift in Sources */,
 				59CB70881B5EB72B001D312F /* MD2Boolean.swift in Sources */,
 				59CB708C1B5F8E23001D312F /* MD2Float.swift in Sources */,
 				59CE101F1B60E89000ACE1E7 /* GlobalEventHandlerType.swift in Sources */,

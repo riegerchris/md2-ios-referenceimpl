@@ -8,13 +8,13 @@
 
 class ContentProviderOperationAction: ActionType {
     
-    let actionSignature: MD2String
+    let actionSignature: String
     
     let allowedOperation: AllowedOperation
     
     let contentProvider: ContentProviderType
     
-    init(actionSignature: MD2String, allowedOperation: AllowedOperation, contentProvider: ContentProviderType) {
+    init(actionSignature: String, allowedOperation: AllowedOperation, contentProvider: ContentProviderType) {
         
         self.actionSignature = actionSignature
         self.allowedOperation = allowedOperation
@@ -31,7 +31,7 @@ class ContentProviderOperationAction: ActionType {
     }
     
     func equals(anotherAction: ActionType) -> Bool {
-        return actionSignature.equals(anotherAction.actionSignature)
+        return actionSignature == anotherAction.actionSignature
     }
     
     enum AllowedOperation {

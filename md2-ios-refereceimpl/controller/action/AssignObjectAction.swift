@@ -8,15 +8,15 @@
 
 class AssignObjectAction: ActionType {
     
-    let actionSignature: MD2String
+    let actionSignature: String
     
     let assignContentProvider: ContentProviderType
     
     let toContentProvider: ContentProviderType
     
-    let attribute: MD2String
+    let attribute: String
     
-    init(actionSignature: MD2String, assignContentProvider: ContentProviderType, toContentProvider: ContentProviderType, attribute: MD2String) {
+    init(actionSignature: String, assignContentProvider: ContentProviderType, toContentProvider: ContentProviderType, attribute: String) {
         
         self.actionSignature = actionSignature
         self.assignContentProvider = assignContentProvider
@@ -29,7 +29,7 @@ class AssignObjectAction: ActionType {
     }
     
     func equals(anotherAction: ActionType) -> Bool {
-        return actionSignature.equals(anotherAction.actionSignature)
+        return actionSignature == anotherAction.actionSignature
     }
     
 }
