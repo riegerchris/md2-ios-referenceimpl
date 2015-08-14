@@ -21,7 +21,7 @@ class ImageWidget: SingleWidgetType {
     
     var dimensions: Dimension?
     
-    var imageElement: UIImageView?
+    var widgetElement: UIImageView
     
     var height: Float?
     
@@ -30,6 +30,7 @@ class ImageWidget: SingleWidgetType {
     init(widgetId: WidgetMapping) {
         self.widgetId = widgetId
         self.value = MD2String()
+        self.widgetElement = UIImageView()
     }
     
     func render(view: UIView, controller: UIViewController) {
@@ -38,13 +39,11 @@ class ImageWidget: SingleWidgetType {
             return
         }
         
-        // Create and set value
-        let imageElement = UIImageView()
-        self.imageElement = imageElement
+        // Set value
         updateElement()
         
         // Add to surrounding view
-        view.addSubview(imageElement)
+        view.addSubview(widgetElement)
     }
     
     func calculateDimensions(bounds: Dimension) -> Dimension {
@@ -69,8 +68,8 @@ class ImageWidget: SingleWidgetType {
     }
     
     func updateElement() {
-        imageElement?.frame = UIUtil.dimensionToCGRect(dimensions!)
+        widgetElement.frame = UIUtil.dimensionToCGRect(dimensions!)
         let image = UIImage(named: value.toString())
-        imageElement?.image = image
+        widgetElement.image = image
     }
 }

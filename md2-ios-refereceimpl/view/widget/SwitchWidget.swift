@@ -25,7 +25,7 @@ class SwitchWidget: SingleWidgetType, WidgetAssistedType {
 
     var dimensions: Dimension?
     
-    var switchElement: UISwitch?
+    var widgetElement: UISwitch
     
     var label: MD2String?
     
@@ -36,6 +36,7 @@ class SwitchWidget: SingleWidgetType, WidgetAssistedType {
     init(widgetId: WidgetMapping) {
         self.widgetId = widgetId
         self.value = MD2Boolean(false)
+        self.widgetElement = UISwitch()
     }
     
     func render(view: UIView, controller: UIViewController) {
@@ -44,24 +45,22 @@ class SwitchWidget: SingleWidgetType, WidgetAssistedType {
             return
         }
         
-        // Create and set value
-        let switchElement = UISwitch()
-        self.switchElement = switchElement
-        switchElement.frame = UIUtil.dimensionToCGRect(dimensions!)
+        // Set value
+        widgetElement.frame = UIUtil.dimensionToCGRect(dimensions!)
         updateElement()
         
         // TODO Label for caption
         if (value is MD2Boolean) && (value as! MD2Boolean).isSet() {
-            switchElement.setOn((value as! MD2Boolean).platformValue!, animated: false)
+            widgetElement.setOn((value as! MD2Boolean).platformValue!, animated: false)
         } else {
-            switchElement.setOn(false, animated: false)
+            widgetElement.setOn(false, animated: false)
         }
         
-        switchElement.tag = widgetId.rawValue
-        switchElement.addTarget(self, action: "onUpdate", forControlEvents: UIControlEvents.ValueChanged)
+        widgetElement.tag = widgetId.rawValue
+        widgetElement.addTarget(self, action: "onUpdate", forControlEvents: UIControlEvents.ValueChanged)
         
         // Add to surrounding view
-        view.addSubview(switchElement)
+        view.addSubview(widgetElement)
     }
     
     func calculateDimensions(bounds: Dimension) -> Dimension {
@@ -78,25 +77,23 @@ class SwitchWidget: SingleWidgetType, WidgetAssistedType {
     }
     
     func enable() {
-        self.switchElement?.enabled = true
+        self.widgetElement.enabled = true
     }
     
     func disable() {
-        self.switchElement?.enabled = false
+        self.widgetElement.enabled = false
     }
     
     // Event from itself
     func onUpdate() {
-        if let _ = self.switchElement {
-            self.value = MD2Boolean(self.switchElement!.on)
-            WidgetRegistry.instance.getWidget(widgetId)?.setValue(self.value)
-        }
+        self.value = MD2Boolean(self.widgetElement.on)
+        WidgetRegistry.instance.getWidget(widgetId)?.setValue(self.value)
     }
     
     func updateElement() {
         // Update element
         if (self.value as! MD2Boolean).isSet() {
-            self.switchElement?.on = ((self.value as! MD2Boolean).platformValue! as Bool)
+            self.widgetElement.on = ((self.value as! MD2Boolean).platformValue! as Bool)
         }
     }
     

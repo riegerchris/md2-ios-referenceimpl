@@ -22,7 +22,7 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
     
     var pickerElement: UIDatePicker?
     
-    var resultElement: UITextField?
+    var widgetElement: UITextField
    
     var pickerMode: UIDatePickerMode?
     
@@ -31,6 +31,7 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
     init(widgetId: WidgetMapping) {
         self.widgetId = widgetId
         self.value = MD2String()
+        self.widgetElement = UITextField()
 
         // Default
         self.pickerMode = UIDatePickerMode.DateAndTime
@@ -43,21 +44,19 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
         }
         
         // Text field to display result
-        let textField = UITextField()
-        self.resultElement = textField
-        textField.frame = UIUtil.dimensionToCGRect(dimensions!)
-        textField.placeholder = ViewConfig.OPTION_WIDGET_PLACEHOLDER
+        widgetElement.frame = UIUtil.dimensionToCGRect(dimensions!)
+        widgetElement.placeholder = ViewConfig.OPTION_WIDGET_PLACEHOLDER
         
-        textField.tag = widgetId.rawValue
-        textField.addTarget(self, action: "onUpdate", forControlEvents: UIControlEvents.ValueChanged)
+        widgetElement.tag = widgetId.rawValue
+        widgetElement.addTarget(self, action: "onUpdate", forControlEvents: UIControlEvents.ValueChanged)
         
         // Set styling
-        textField.backgroundColor = UIColor(rgba: "#fff")
-        textField.borderStyle = UITextBorderStyle.RoundedRect
-        textField.font = UIFont(name: ViewConfig.FONT_NAME.rawValue, size: CGFloat(ViewConfig.FONT_SIZE))
+        widgetElement.backgroundColor = UIColor(rgba: "#fff")
+        widgetElement.borderStyle = UITextBorderStyle.RoundedRect
+        widgetElement.font = UIFont(name: ViewConfig.FONT_NAME.rawValue, size: CGFloat(ViewConfig.FONT_SIZE))
         
         // Add to surrounding view
-        view.addSubview(textField)
+        view.addSubview(widgetElement)
         
         // Create and set value
         let pickerElement = UIDatePicker()
@@ -69,7 +68,7 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
         pickerElement.tag = widgetId.rawValue
         pickerElement.addTarget(self, action: "updateTextField", forControlEvents: UIControlEvents.ValueChanged)
         
-        textField.inputView = pickerElement
+        widgetElement.inputView = pickerElement
         self.pickerElement = pickerElement
         
         let tapRecognizer = UITapGestureRecognizer()
@@ -98,7 +97,7 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
     func pickerViewTapped() {
         updateTextField()
         // Hide picker element
-        self.resultElement!.resignFirstResponder()
+        self.widgetElement.resignFirstResponder()
     }
     
     // Some other delegate tries to get the tap first -> allow simultaneous processing
@@ -116,27 +115,25 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
         default:                            formatter.dateFormat = ViewConfig.DATE_TIME_FORMAT
         }
         
-        self.resultElement!.text = formatter.stringFromDate(self.pickerElement!.date)
+        self.widgetElement.text = formatter.stringFromDate(self.pickerElement!.date)
     }
     
     func enable() {
-        self.resultElement?.enabled = true
+        self.widgetElement.enabled = true
     }
     
     func disable() {
-        self.resultElement?.enabled = false
+        self.widgetElement.enabled = false
     }
     
     // Event from itself
     func onUpdate() {
-        if let _ = self.resultElement {
-            self.value = MD2String(self.resultElement!.text)
-            WidgetRegistry.instance.getWidget(widgetId)?.setValue(self.value)
-        }
+        self.value = MD2String(self.widgetElement.text)
+        WidgetRegistry.instance.getWidget(widgetId)?.setValue(self.value)
     }
     
     func updateElement() {
-        self.resultElement?.text = value.toString()
+        self.widgetElement.text = value.toString()
         
         let formatter = NSDateFormatter()
         switch self.pickerMode! {

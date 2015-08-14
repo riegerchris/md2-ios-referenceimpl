@@ -22,7 +22,7 @@ class ButtonWidget: SingleWidgetType, WidgetStyleType {
     
     var buttonType: UIButtonType = UIButtonType.System
     
-    var buttonElement: UIButton?
+    var widgetElement: UIButton?
     
     var color: MD2String?
     
@@ -65,38 +65,38 @@ class ButtonWidget: SingleWidgetType, WidgetStyleType {
     }
     
     func enable() {
-        self.buttonElement?.enabled = true
+        self.widgetElement?.enabled = true
     }
     
     func disable() {
-        self.buttonElement?.enabled = false
+        self.widgetElement?.enabled = false
     }
     
     func renderSystemButton(view: UIView) {
         // Create and set value
-        let button = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-        self.buttonElement = button // TODO refactor
-        button.frame = UIUtil.dimensionToCGRect(dimensions!)
+        widgetElement = (UIButton.buttonWithType(UIButtonType.System) as! UIButton)
+        widgetElement!.frame = UIUtil.dimensionToCGRect(dimensions!)
         updateElement()
-        button.tag = widgetId.rawValue
-        button.addTarget(OnTouchHandler.instance, action: "fire:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        widgetElement!.tag = widgetId.rawValue
+        widgetElement!.addTarget(OnTouchHandler.instance, action: "fire:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // Set default styles
-        button.layer.borderWidth = 1
-        button.layer.cornerRadius = 15
-        button.titleLabel!.textAlignment=NSTextAlignment.Center
+        widgetElement!.layer.borderWidth = 1
+        widgetElement!.layer.cornerRadius = 15
+        widgetElement!.titleLabel!.textAlignment=NSTextAlignment.Center
         
         // Set custom styles
         if color?.isSet() == true {
-            button.tintColor = UIColor(rgba: color!.platformValue!)
+            widgetElement!.tintColor = UIColor(rgba: color!.platformValue!)
         }
         
         // Set more defaults
-        button.layer.borderColor = button.tintColor?.CGColor
-        button.titleLabel!.font = UIFont(name: textStyle.rawValue, size: CGFloat(Float(ViewConfig.FONT_SIZE) * fontSize!.platformValue!))
+        widgetElement!.layer.borderColor = widgetElement!.tintColor?.CGColor
+        widgetElement!.titleLabel!.font = UIFont(name: textStyle.rawValue, size: CGFloat(Float(ViewConfig.FONT_SIZE) * fontSize!.platformValue!))
         
         // Add to surrounding view
-        view.addSubview(button)
+        view.addSubview(widgetElement!)
     }
     
     func renderInfoButton(view: UIView) {
@@ -109,10 +109,10 @@ class ButtonWidget: SingleWidgetType, WidgetStyleType {
         
         // Add to surrounding view
         view.addSubview(button)
-        self.buttonElement = button
+        self.widgetElement = button
     }
     
     func updateElement() {
-        buttonElement?.setTitle(self.value.toString(), forState: .Normal)
+        widgetElement?.setTitle(self.value.toString(), forState: .Normal)
     }
 }

@@ -20,7 +20,7 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
     
     var dimensions: Dimension?
     
-    var labelElement: UILabel?
+    var widgetElement: UILabel
     
     var color: MD2String?
     
@@ -33,6 +33,7 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
     init(widgetId: WidgetMapping) {
         self.widgetId = widgetId
         self.value = MD2String()
+        self.widgetElement = UILabel()
     }
     
     func render(view: UIView, controller: UIViewController) {
@@ -41,11 +42,9 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
             return
         }
         
-        // Create and set value
-        let label = UILabel()
-        self.labelElement = label
+        // Set value
         updateElement()
-        label.frame = UIUtil.dimensionToCGRect(dimensions!)
+        widgetElement.frame = UIUtil.dimensionToCGRect(dimensions!)
         
         // Set default styles
         //label.textAlignment = .Center
@@ -53,13 +52,13 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
         
         // Set custom styles
         if color?.isSet() == true {
-            label.textColor = UIColor(rgba: color!.platformValue!)
+            widgetElement.textColor = UIColor(rgba: color!.platformValue!)
         }
         
-        label.font = UIFont(name: textStyle.rawValue, size: CGFloat(Float(ViewConfig.FONT_SIZE) * fontSize!.platformValue!))
+        widgetElement.font = UIFont(name: textStyle.rawValue, size: CGFloat(Float(ViewConfig.FONT_SIZE) * fontSize!.platformValue!))
         
         // Add to surrounding view
-        view.addSubview(label)
+        view.addSubview(widgetElement)
     }
     
     func calculateDimensions(bounds: Dimension) -> Dimension {
@@ -76,15 +75,15 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
     }
     
     func enable() {
-        self.labelElement?.enabled = true
+        self.widgetElement.enabled = true
     }
     
     func disable() {
-        self.labelElement?.enabled = false
+        self.widgetElement.enabled = false
     }
     
     func updateElement() {
-        self.labelElement?.text = value.toString()
+        self.widgetElement.text = value.toString()
     }
 
 }
