@@ -18,7 +18,7 @@ class LocationAction: ActionType {
     }
     
     func execute() {
-        // TODO include in later version
+        // MARK include in later version
         fatalError("Location actions are not implemented!")
     }
     
