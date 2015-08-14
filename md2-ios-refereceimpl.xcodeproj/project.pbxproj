@@ -16,6 +16,8 @@
 		595E26EB1B7D1DF2004F484A /* ProcessChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595E26EA1B7D1DF2004F484A /* ProcessChain.swift */; };
 		595E26ED1B7D1F6A004F484A /* ProcessChainRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595E26EC1B7D1F6A004F484A /* ProcessChainRegistry.swift */; };
 		595E26EF1B7D2212004F484A /* ProcessChainStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595E26EE1B7D2212004F484A /* ProcessChainStep.swift */; };
+		59C1EA2D1B7E45E3003DADDF /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C1EA2C1B7E45E3003DADDF /* EventType.swift */; };
+		59C1EA2F1B7E5751003DADDF /* WorkflowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C1EA2E1B7E5750003DADDF /* WorkflowManager.swift */; };
 		59C3D5B91B67E86400C5A613 /* WidgetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5B81B67E86300C5A613 /* WidgetType.swift */; };
 		59C3D5BB1B67FC0C00C5A613 /* WidgetRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5BA1B67FC0C00C5A613 /* WidgetRegistry.swift */; };
 		59C3D5BD1B67FDFB00C5A613 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5BC1B67FDFB00C5A613 /* ViewManager.swift */; };
@@ -145,6 +147,8 @@
 		595E26EA1B7D1DF2004F484A /* ProcessChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessChain.swift; sourceTree = "<group>"; };
 		595E26EC1B7D1F6A004F484A /* ProcessChainRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessChainRegistry.swift; sourceTree = "<group>"; };
 		595E26EE1B7D2212004F484A /* ProcessChainStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessChainStep.swift; sourceTree = "<group>"; };
+		59C1EA2C1B7E45E3003DADDF /* EventType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
+		59C1EA2E1B7E5750003DADDF /* WorkflowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkflowManager.swift; sourceTree = "<group>"; };
 		59C3D5B81B67E86300C5A613 /* WidgetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetType.swift; sourceTree = "<group>"; };
 		59C3D5BA1B67FC0C00C5A613 /* WidgetRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetRegistry.swift; sourceTree = "<group>"; };
 		59C3D5BC1B67FDFB00C5A613 /* ViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
@@ -282,6 +286,7 @@
 				595E26E11B7D135D004F484A /* WorkflowEventHandler.swift */,
 				595E26E71B7D197C004F484A /* WorkflowActionType.swift */,
 				595E26E31B7D1433004F484A /* WorkflowElement.swift */,
+				59C1EA2E1B7E5750003DADDF /* WorkflowManager.swift */,
 				595E26E51B7D14DF004F484A /* WorkflowEvent.swift */,
 			);
 			path = workflow;
@@ -429,6 +434,7 @@
 				59DF70531B7265E800F6F0A3 /* OnLocationUpdateHandler.swift */,
 				59DF704D1B7264DD00F6F0A3 /* OnRightSwipeHandler.swift */,
 				59DF70631B726EB300F6F0A3 /* OnWrongValidationHandler.swift */,
+				59C1EA2C1B7E45E3003DADDF /* EventType.swift */,
 			);
 			path = eventhandler;
 			sourceTree = "<group>";
@@ -727,6 +733,7 @@
 				59C6A0D41B7B9FEF0038E056 /* UpdateWidgetAction.swift in Sources */,
 				59DF70401B725A4400F6F0A3 /* ProcessChainReverseAction.swift in Sources */,
 				59D363E91B77BCF700E51E19 /* AddressContentProvider.swift in Sources */,
+				59C1EA2F1B7E5751003DADDF /* WorkflowManager.swift in Sources */,
 				59CB709E1B5FB82B001D312F /* Query.swift in Sources */,
 				59CB70B01B5FE271001D312F /* WidgetWrapper.swift in Sources */,
 				59DF70741B73C73A00F6F0A3 /* OnContentChangeHandler.swift in Sources */,
@@ -740,6 +747,7 @@
 				59CE10211B60E8F500ACE1E7 /* WidgetEventHandlerType.swift in Sources */,
 				59C3D5F11B6FBF6C00C5A613 /* DateTimePickerWidget.swift in Sources */,
 				59CB70961B5FA283001D312F /* Location.swift in Sources */,
+				59C1EA2D1B7E45E3003DADDF /* EventType.swift in Sources */,
 				59C3D5BD1B67FDFB00C5A613 /* ViewManager.swift in Sources */,
 				59CB707E1B5EAE2D001D312F /* MD2Type.swift in Sources */,
 				59CE101B1B60E35500ACE1E7 /* DateTimeValidator.swift in Sources */,

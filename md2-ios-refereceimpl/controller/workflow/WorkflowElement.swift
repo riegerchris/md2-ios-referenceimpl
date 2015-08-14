@@ -18,12 +18,15 @@ class WorkflowElement {
     
     var processChains: Array<ProcessChain> = []
     
+    var currentProcessChain: ProcessChain?
+    
     // MARK invoke not implemented
     
     init(name: String, onInit: ActionType, defaultProcessChain: ProcessChain) {
         self.name = name
         self.onInit.append(onInit)
         self.defaultProcessChain = defaultProcessChain
+        self.processChains.append(defaultProcessChain)
     }
     
     func addInitialAction(initialAction: ActionType) {
@@ -31,7 +34,7 @@ class WorkflowElement {
     }
     
     func start() {
-        // TODO stop previous process chain or workflow?
+        println("[WorkflowElement] Start workflow element '\(name)'")
         
         for action in onInit {
             action.execute()
@@ -40,11 +43,15 @@ class WorkflowElement {
         // Start default process chain
         // TODO when are different process chains used?
         if(defaultProcessChain.steps.count > 0) {
-            defaultProcessChain.steps[0].execute()
+            currentProcessChain = defaultProcessChain
         }
+        
+        currentProcessChain?.start()
     }
     
     func end() {
-        // TODO
+        println("[WorkflowElement] End workflow element '\(name)'")
+        
+        currentProcessChain?.end()
     }
 }

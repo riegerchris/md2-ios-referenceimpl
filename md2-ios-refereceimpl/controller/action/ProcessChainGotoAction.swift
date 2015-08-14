@@ -12,13 +12,16 @@ class ProcessChainGotoAction: ActionType {
     
     let processChain: ProcessChain
     
-    init(actionSignature: String, processChain: ProcessChain) {
+    let goTo: ProcessChainStep
+    
+    init(actionSignature: String, processChain: ProcessChain, goTo: ProcessChainStep) {
         self.actionSignature = actionSignature
         self.processChain = processChain
+        self.goTo = goTo
     }
     
     func execute() {
-        // TODO
+        processChain.goTo(self.goTo)
     }
     
     func equals(anotherAction: ActionType) -> Bool {

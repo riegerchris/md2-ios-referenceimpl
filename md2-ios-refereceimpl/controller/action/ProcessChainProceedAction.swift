@@ -18,7 +18,7 @@ class ProcessChainProceedAction: ActionType {
     }
     
     func execute() {
-        // TODO
+        processChain.proceed()
     }
     
     func equals(anotherAction: ActionType) -> Bool {

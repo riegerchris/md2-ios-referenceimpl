@@ -340,12 +340,26 @@ class Controller {
         
         // Initialize process chains and workflowElements
         let pcLocationDetection_LocationProcessChain = ProcessChain(processChainSignature: "LocationDetection_LocationProcessChain")
-        pcLocationDetection_LocationProcessChain.addProcessChainStep("LocationDetection", viewName: "LocationDetectionView")
-        pcLocationDetection_LocationProcessChain.addProcessChainStep("LocationVerify", viewName: "LocationVerifyView")
+        let step1 = pcLocationDetection_LocationProcessChain.addProcessChainStep("LocationDetection", viewName: "LocationDetectionView")
+        step1.addGoTo(ProcessChainStep.GoToType.Proceed, eventType: EventType.OnClick, widget: WidgetMapping.LocationDetectionView_Next, action: CustomAction_SaveComplaint(), goToStep: nil)
+        
+        let step2 = pcLocationDetection_LocationProcessChain.addProcessChainStep("LocationVerify", viewName: "LocationVerifyView")
+        step2.addGoTo(ProcessChainStep.GoToType.Reverse, eventType: EventType.OnClick, widget: WidgetMapping.LocationVerifyView_Previous, action: nil, goToStep: nil)
+        
         ProcessChainRegistry.instance.addProcessChain(pcLocationDetection_LocationProcessChain)
         
         let wfeLocationDetection = WorkflowElement(name: "LocationDetection", onInit: CustomAction_Init(), defaultProcessChain: pcLocationDetection_LocationProcessChain)
         wfeLocationDetection.addInitialAction(CustomAction_ButtonInit())
+        
+        // Register workflowEvents
+        WorkflowEventHandler.instance.registerWorkflowElement(
+            WorkflowEvent.LocationDetection_DoneEvent,
+            actionType: WorkflowActionType.End,
+            workflowElement: wfeLocationDetection)
+        WorkflowEventHandler.instance.registerWorkflowElement(
+            WorkflowEvent.LocationDetection_CancelWorkflowEvent,
+            actionType: WorkflowActionType.End,
+            workflowElement: wfeLocationDetection)
         
         // Start initial workflow of the app
         wfeLocationDetection.start()

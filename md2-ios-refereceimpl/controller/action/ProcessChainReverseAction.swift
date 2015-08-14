@@ -18,7 +18,7 @@ class ProcessChainReverseAction: ActionType {
     }
     
     func execute() {
-        // TODO
+        processChain.reverse()
     }
     
     func equals(anotherAction: ActionType) -> Bool {

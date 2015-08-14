@@ -6,15 +6,17 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
+import Foundation
+
 // Make class visible for Objective-C to work with Core Data persistence framework
 @objc(Address)
-class Address: MD2EntityType {
+class Address: NSObject, MD2EntityType {
     
     var internalId: MD2Integer = MD2Integer()
     
     var containedTypes: Dictionary<String,MD2Type> = [:]
     
-    required init() {
+    required override init() {
         // Initialize address fields
         containedTypes["myStreet"] = MD2String()
         containedTypes["myStreetNo"] = MD2String()

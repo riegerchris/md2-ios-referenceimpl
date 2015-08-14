@@ -42,7 +42,7 @@ class LocalStore<T: MD2EntityType>: DataStoreType {
                 } else if attributeValue is MD2EntityType {
                     println(attributeValue)
                     // TODO
-                    result.set(attributeKey, value: attributeValue)
+                    //result.set(attributeKey, value: attributeValue)
                     
                 } else if attributeValue is MD2DataType {
                     if attributeValue is MD2String {
@@ -154,12 +154,12 @@ class LocalStore<T: MD2EntityType>: DataStoreType {
     
     private func setValues(object: NSManagedObject, entity: MD2EntityType) {
         for (attributeKey, attributeValue) in entity.containedTypes {
-            if attributeValue is MD2EnumType {
-                object.setValue(((attributeValue as! MD2EnumType).value as! String), forKey: attributeKey)
+            if attributeValue is MD2EnumType && (attributeValue as! MD2EnumType).value != nil {
+                object.setValue(attributeValue.toString(), forKey: attributeKey)
                 
             } else if attributeValue is MD2EntityType {
-                // TODO does it work?
-                object.setValue((attributeValue as! MD2EntityType), forKey: attributeKey)
+                // TODO not working yet
+                //object.setValue((attributeValue as! MD2EntityType), forKey: attributeKey)
                 
             } else if attributeValue is MD2DataType {
                 if !(attributeValue as! MD2DataType).isSet() {
