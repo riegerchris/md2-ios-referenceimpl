@@ -102,7 +102,7 @@
 		59DF70441B725A7E00F6F0A3 /* ContentProviderOperationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF70431B725A7E00F6F0A3 /* ContentProviderOperationAction.swift */; };
 		59DF70461B725C0300F6F0A3 /* NewObjectAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF70451B725C0300F6F0A3 /* NewObjectAction.swift */; };
 		59DF70481B7260FB00F6F0A3 /* AssignObjectAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF70471B7260FB00F6F0A3 /* AssignObjectAction.swift */; };
-		59DF704A1B72643900F6F0A3 /* SetProcessChainAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF70491B72643900F6F0A3 /* SetProcessChainAction.swift */; };
+		59DF704A1B72643900F6F0A3 /* SetWorkflowElementAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF70491B72643900F6F0A3 /* SetWorkflowElementAction.swift */; };
 		59DF704C1B7264C100F6F0A3 /* OnLeftSwipeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF704B1B7264C100F6F0A3 /* OnLeftSwipeHandler.swift */; };
 		59DF704E1B7264DE00F6F0A3 /* OnRightSwipeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF704D1B7264DD00F6F0A3 /* OnRightSwipeHandler.swift */; };
 		59DF70501B72650B00F6F0A3 /* OnConnectionLostHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF704F1B72650B00F6F0A3 /* OnConnectionLostHandler.swift */; };
@@ -237,7 +237,7 @@
 		59DF70431B725A7E00F6F0A3 /* ContentProviderOperationAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentProviderOperationAction.swift; sourceTree = "<group>"; };
 		59DF70451B725C0300F6F0A3 /* NewObjectAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewObjectAction.swift; sourceTree = "<group>"; };
 		59DF70471B7260FB00F6F0A3 /* AssignObjectAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignObjectAction.swift; sourceTree = "<group>"; };
-		59DF70491B72643900F6F0A3 /* SetProcessChainAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetProcessChainAction.swift; sourceTree = "<group>"; };
+		59DF70491B72643900F6F0A3 /* SetWorkflowElementAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetWorkflowElementAction.swift; sourceTree = "<group>"; };
 		59DF704B1B7264C100F6F0A3 /* OnLeftSwipeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnLeftSwipeHandler.swift; sourceTree = "<group>"; };
 		59DF704D1B7264DD00F6F0A3 /* OnRightSwipeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnRightSwipeHandler.swift; sourceTree = "<group>"; };
 		59DF704F1B72650B00F6F0A3 /* OnConnectionLostHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnConnectionLostHandler.swift; sourceTree = "<group>"; };
@@ -493,7 +493,7 @@
 				59DF70611B726B3100F6F0A3 /* LocationAction.swift */,
 				59DF70451B725C0300F6F0A3 /* NewObjectAction.swift */,
 				59DF70471B7260FB00F6F0A3 /* AssignObjectAction.swift */,
-				59DF70491B72643900F6F0A3 /* SetProcessChainAction.swift */,
+				59DF70491B72643900F6F0A3 /* SetWorkflowElementAction.swift */,
 				59DF70551B72687300F6F0A3 /* DisableAction.swift */,
 				59DF70571B72698B00F6F0A3 /* EnableAction.swift */,
 				59C6A0D31B7B9FEF0038E056 /* UpdateWidgetAction.swift */,
@@ -771,7 +771,7 @@
 				59C3D5ED1B6FAB4B00C5A613 /* GridLayoutPane.swift in Sources */,
 				59C6A0D61B7BA54B0038E056 /* UpdateContentProviderAction.swift in Sources */,
 				59CB709A1B5FB6E5001D312F /* DataStoreType.swift in Sources */,
-				59DF704A1B72643900F6F0A3 /* SetProcessChainAction.swift in Sources */,
+				59DF704A1B72643900F6F0A3 /* SetWorkflowElementAction.swift in Sources */,
 				59DF706A1B72711100F6F0A3 /* MD2TemporalType.swift in Sources */,
 				59CB70921B5F9932001D312F /* MD2DateTime.swift in Sources */,
 				59CB70B51B5FE4C3001D312F /* NotNullValidator.swift in Sources */,

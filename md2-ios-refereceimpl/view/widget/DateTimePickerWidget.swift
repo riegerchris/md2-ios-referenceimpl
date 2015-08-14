@@ -63,7 +63,6 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
         pickerElement.datePickerMode = pickerMode!
         pickerElement.frame = UIUtil.dimensionToCGRect(dimensions!)
         pickerElement.backgroundColor = UIColor(rgba: "#dfdfdf")
-        // TODO set initial picker value
         
         pickerElement.tag = widgetId.rawValue
         pickerElement.addTarget(self, action: "updateTextField", forControlEvents: UIControlEvents.ValueChanged)
@@ -148,4 +147,5 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
             self.pickerElement!.setDate(date!, animated: false)
         }
     }
+    
 }

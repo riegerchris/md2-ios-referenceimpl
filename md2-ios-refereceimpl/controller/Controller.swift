@@ -359,10 +359,8 @@ class Controller {
             workflowElement: wfeLocationDetection)
         
         // Start initial workflow of the app
-        wfeLocationDetection.start()
+        SetWorkflowElementAction(actionSignature: "InitialAction", workflowElement: wfeLocationDetection).execute()
         
-        GotoViewAction(actionSignature: "initialAction", targetView: WidgetMapping.LocationDetectionView).execute()
-
         println("[Controller] Startup completed")
     }
 }
