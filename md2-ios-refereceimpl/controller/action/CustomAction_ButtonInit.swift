@@ -14,22 +14,22 @@ class CustomAction_ButtonInit: ActionType {
         // Bindings Event -> Action
         /* In Process Chain now
         let action1 = GotoViewAction(actionSignature: actionSignature + "__1", targetView: WidgetMapping.LocationVerifyView)
-        OnTouchHandler.instance.registerAction(action1, widget: WidgetRegistry.instance.getWidget(WidgetMapping.LocationDetectionView_Next)!)
+        OnClickHandler.instance.registerAction(action1, widget: WidgetRegistry.instance.getWidget(WidgetMapping.LocationDetectionView_Next)!)
         
         let action2 = GotoViewAction(actionSignature: actionSignature + "__2", targetView: WidgetMapping.LocationDetectionView)
-        OnTouchHandler.instance.registerAction(action2, widget: WidgetRegistry.instance.getWidget(WidgetMapping.LocationVerifyView_Previous)!)
+        OnClickHandler.instance.registerAction(action2, widget: WidgetRegistry.instance.getWidget(WidgetMapping.LocationVerifyView_Previous)!)
         */
         let action3 = CustomAction_GoOn()
-        OnTouchHandler.instance.registerAction(action3, widget: WidgetRegistry.instance.getWidget(WidgetMapping.LocationDetectionView_Next)!)
+        OnClickHandler.instance.registerAction(action3, widget: WidgetRegistry.instance.getWidget(WidgetMapping.LocationDetectionView_Next)!)
         
         let action4 = FireEventAction(actionSignature: actionSignature + "__4", event: WorkflowEvent.LocationDetection_DoneEvent)
-        OnTouchHandler.instance.registerAction(action4, widget: WidgetRegistry.instance.getWidget(WidgetMapping.LocationVerifyView_Next2)!)
+        OnClickHandler.instance.registerAction(action4, widget: WidgetRegistry.instance.getWidget(WidgetMapping.LocationVerifyView_Next2)!)
         
         let action5 = FireEventAction(actionSignature: actionSignature + "__5", event: WorkflowEvent.LocationDetection_CancelWorkflowEvent)
-        OnTouchHandler.instance.registerAction(action5, widget: WidgetRegistry.instance.getWidget(WidgetMapping.LocationDetectionView_Cancel)!)
+        OnClickHandler.instance.registerAction(action5, widget: WidgetRegistry.instance.getWidget(WidgetMapping.LocationDetectionView_Cancel)!)
         
         let action6 = FireEventAction(actionSignature: actionSignature + "__6", event: WorkflowEvent.LocationDetection_CancelWorkflowEvent)
-        OnTouchHandler.instance.registerAction(action6, widget: WidgetRegistry.instance.getWidget(WidgetMapping.LocationVerifyView_Cancel2)!)
+        OnClickHandler.instance.registerAction(action6, widget: WidgetRegistry.instance.getWidget(WidgetMapping.LocationVerifyView_Cancel2)!)
         
         // Mappings GUIElement -> ContentProvider
         // -

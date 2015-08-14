@@ -24,7 +24,7 @@ enum EventType {
     
     func getEventHandler() -> EventHandlerType {
         switch self {
-        case OnClick: return OnTouchHandler.instance
+        case OnClick: return OnClickHandler.instance
         case OnWidgetChange: return OnWidgetChangeHandler.instance
         case OnLeftSwipe: return OnLeftSwipeHandler.instance
         case OnRightSwipe: return OnRightSwipeHandler.instance
@@ -33,7 +33,7 @@ enum EventType {
         case OnConnectionLost: return OnConnectionLostHandler.instance
         case OnConnectionRegained: return OnConnectionRegainedHandler.instance
         case OnLocationUpdate: return OnLocationUpdateHandler.instance
-        default: return OnTouchHandler.instance
+        default: return OnClickHandler.instance
         }
     }
     

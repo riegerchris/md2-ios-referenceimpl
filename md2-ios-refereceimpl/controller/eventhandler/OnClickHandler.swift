@@ -8,11 +8,11 @@
 
 import UIKit
 
-class OnTouchHandler: WidgetEventHandlerType {
+class OnClickHandler: WidgetEventHandlerType {
     
     typealias actionWidgetTuple = (ActionType,WidgetWrapper)
     
-    static let instance:OnTouchHandler = OnTouchHandler()
+    static let instance:OnClickHandler = OnClickHandler()
     
     var actions: Dictionary<String,actionWidgetTuple> = [:]
     

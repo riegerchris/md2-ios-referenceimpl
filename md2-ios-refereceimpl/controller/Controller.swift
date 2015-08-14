@@ -310,9 +310,6 @@ class Controller {
         widgetRegistry.add(switchWidgetWrapper)
         */
         
-        // Initialize event handlers
-        let onTouchHandler = OnTouchHandler.instance
-        
         // Initialize content providers
         let oneComplaintContentProvider = ComplaintContentProvider(content: Complaint())
         ContentProviderRegistry.instance.addContentProvider("ComplaintProvider", provider: oneComplaintContentProvider)

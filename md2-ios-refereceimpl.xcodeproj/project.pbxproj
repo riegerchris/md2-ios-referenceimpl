@@ -32,7 +32,7 @@
 		59C3D5D61B6966C000C5A613 /* TextFieldWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5D51B6966BF00C5A613 /* TextFieldWidget.swift */; };
 		59C3D5D81B69681300C5A613 /* SwitchWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5D71B69681300C5A613 /* SwitchWidget.swift */; };
 		59C3D5DC1B696FDF00C5A613 /* ImageWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5DB1B696FDF00C5A613 /* ImageWidget.swift */; };
-		59C3D5E01B698C9900C5A613 /* OnTouchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5DF1B698C9800C5A613 /* OnTouchHandler.swift */; };
+		59C3D5E01B698C9900C5A613 /* OnClickHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5DF1B698C9800C5A613 /* OnClickHandler.swift */; };
 		59C3D5E21B6AB3DE00C5A613 /* WidgetMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5E11B6AB3DE00C5A613 /* WidgetMapping.swift */; };
 		59C3D5E51B6F736900C5A613 /* UIUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5E41B6F736900C5A613 /* UIUtil.swift */; };
 		59C3D5E71B6F739D00C5A613 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5E61B6F739D00C5A613 /* Dimension.swift */; };
@@ -163,7 +163,7 @@
 		59C3D5D51B6966BF00C5A613 /* TextFieldWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldWidget.swift; sourceTree = "<group>"; };
 		59C3D5D71B69681300C5A613 /* SwitchWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchWidget.swift; sourceTree = "<group>"; };
 		59C3D5DB1B696FDF00C5A613 /* ImageWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageWidget.swift; sourceTree = "<group>"; };
-		59C3D5DF1B698C9800C5A613 /* OnTouchHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTouchHandler.swift; sourceTree = "<group>"; };
+		59C3D5DF1B698C9800C5A613 /* OnClickHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnClickHandler.swift; sourceTree = "<group>"; };
 		59C3D5E11B6AB3DE00C5A613 /* WidgetMapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetMapping.swift; sourceTree = "<group>"; };
 		59C3D5E41B6F736900C5A613 /* UIUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtil.swift; sourceTree = "<group>"; };
 		59C3D5E61B6F739D00C5A613 /* Dimension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
@@ -425,7 +425,7 @@
 				59CE10201B60E8F500ACE1E7 /* WidgetEventHandlerType.swift */,
 				59CE10221B60E95500ACE1E7 /* ContentProviderEventHandlerType.swift */,
 				59CE10241B60E9EA00ACE1E7 /* OnWidgetChangeHandler.swift */,
-				59C3D5DF1B698C9800C5A613 /* OnTouchHandler.swift */,
+				59C3D5DF1B698C9800C5A613 /* OnClickHandler.swift */,
 				59DF706F1B7363E800F6F0A3 /* TooltipHandler.swift */,
 				59DF704B1B7264C100F6F0A3 /* OnLeftSwipeHandler.swift */,
 				59DF704F1B72650B00F6F0A3 /* OnConnectionLostHandler.swift */,
@@ -739,7 +739,7 @@
 				59DF70741B73C73A00F6F0A3 /* OnContentChangeHandler.swift in Sources */,
 				59CE10111B60D71400ACE1E7 /* NumberRangeValidator.swift in Sources */,
 				59CB70841B5EB321001D312F /* MD2EnumType.swift in Sources */,
-				59C3D5E01B698C9900C5A613 /* OnTouchHandler.swift in Sources */,
+				59C3D5E01B698C9900C5A613 /* OnClickHandler.swift in Sources */,
 				59C3D5D61B6966C000C5A613 /* TextFieldWidget.swift in Sources */,
 				595E26ED1B7D1F6A004F484A /* ProcessChainRegistry.swift in Sources */,
 				59CE101D1B60E87300ACE1E7 /* EventHandlerType.swift in Sources */,

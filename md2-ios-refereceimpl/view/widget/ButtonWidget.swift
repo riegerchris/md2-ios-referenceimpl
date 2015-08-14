@@ -79,7 +79,7 @@ class ButtonWidget: SingleWidgetType, WidgetStyleType {
         updateElement()
         
         widgetElement!.tag = widgetId.rawValue
-        widgetElement!.addTarget(OnTouchHandler.instance, action: "fire:", forControlEvents: UIControlEvents.TouchUpInside)
+        widgetElement!.addTarget(OnClickHandler.instance, action: "fire:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // Set default styles
         widgetElement!.layer.borderWidth = 1
