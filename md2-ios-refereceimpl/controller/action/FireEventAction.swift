@@ -10,15 +10,15 @@ class FireEventAction: ActionType {
     
     let actionSignature: String
     
-    let event: String // TODO WorkflowEvent
+    let event: WorkflowEvent
     
-    init(actionSignature: String, event: String) {
+    init(actionSignature: String, event: WorkflowEvent) {
         self.actionSignature = actionSignature
         self.event = event
     }
     
     func execute() {
-        // TODO
+        WorkflowEventHandler.instance.fire(event)
     }
     
     func equals(anotherAction: ActionType) -> Bool {

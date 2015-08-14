@@ -47,7 +47,6 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
         self.resultElement = textField
         textField.frame = UIUtil.dimensionToCGRect(dimensions!)
         textField.placeholder = ViewConfig.OPTION_WIDGET_PLACEHOLDER
-        updateElement()
         
         textField.tag = widgetId.rawValue
         textField.addTarget(self, action: "onUpdate", forControlEvents: UIControlEvents.ValueChanged)
@@ -77,6 +76,9 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
         tapRecognizer.addTarget(self, action: "pickerViewTapped")
         tapRecognizer.delegate = self
         self.pickerElement!.addGestureRecognizer(tapRecognizer)
+        
+        // Set value
+        updateElement()
     }
     
     func calculateDimensions(bounds: Dimension) -> Dimension {
@@ -135,5 +137,18 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
     
     func updateElement() {
         self.resultElement?.text = value.toString()
+        
+        let formatter = NSDateFormatter()
+        switch self.pickerMode! {
+        case UIDatePickerMode.DateAndTime:  formatter.dateFormat = ViewConfig.DATE_TIME_FORMAT
+        case UIDatePickerMode.Date:         formatter.dateFormat = ViewConfig.DATE_FORMAT
+        case UIDatePickerMode.Time:         formatter.dateFormat = ViewConfig.TIME_FORMAT
+        default:                            formatter.dateFormat = ViewConfig.DATE_TIME_FORMAT
+        }
+        
+        let date: NSDate? = formatter.dateFromString(self.value.toString())
+        if let _ = date {
+            self.pickerElement!.setDate(date!, animated: false)
+        }
     }
 }

@@ -18,7 +18,7 @@ class GotoViewAction: ActionType {
     }
     
     func execute() {
-        ViewManager.instance.goto(MD2String(targetView.description))
+        ViewManager.instance.goto(targetView.description)
     }
     
     func equals(anotherAction: ActionType) -> Bool {

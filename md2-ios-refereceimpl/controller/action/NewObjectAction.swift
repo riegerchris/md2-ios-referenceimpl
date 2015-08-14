@@ -18,7 +18,7 @@ class NewObjectAction: ActionType {
     }
     
     func execute() {
-        // TODO
+        contentProvider.setContent()
     }
     
     func equals(anotherAction: ActionType) -> Bool {

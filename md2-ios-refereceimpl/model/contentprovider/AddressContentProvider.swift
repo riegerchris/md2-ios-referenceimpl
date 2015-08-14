@@ -8,11 +8,15 @@
 
 class AddressContentProvider: ContentProviderType {
     
+    let contentType = Address.self
+    
     var content: MD2EntityType? // managed entity instance
     
     var store: DataStoreType
     
     var observedAttributes: Dictionary<String, MD2Type> = [:]
+    
+    var attributeContentProviders: Dictionary<String, ContentProviderType> = [:]
     
     var filter: Filter?
     
@@ -29,12 +33,30 @@ class AddressContentProvider: ContentProviderType {
         return content
     }
     
-    func setContent(content: MD2EntityType) {
+    func setContent() {
+        // Create new object
+        self.content = contentType()
+        
         // Check all observed properties
         checkAllAttributesForObserver()
         
+        // Update values in map
+        for (attribute, _) in observedAttributes {
+            observedAttributes[attribute] = self.content?.get(attribute)
+        }
+    }
+    
+    func setContent(content: MD2EntityType) {
         // Update full entity by cloning
         self.content = (content.clone() as! MD2EntityType)
+        
+        // Check all observed properties
+        checkAllAttributesForObserver()
+        
+        // Update values in map
+        for (attribute, _) in observedAttributes {
+            observedAttributes[attribute] = self.content?.get(attribute)
+        }
     }
     
     func registerObservedOnChange(attribute: String) {
@@ -106,6 +128,10 @@ class AddressContentProvider: ContentProviderType {
             println("REMOVE entity \(content!.internalId.toString())")
             store.remove(content!.internalId)
         }
+    }
+    
+    func registerAttributeContentProvider(attribute: String, contentProvider: ContentProviderType) {
+        attributeContentProviders[attribute] = contentProvider
     }
     
 }

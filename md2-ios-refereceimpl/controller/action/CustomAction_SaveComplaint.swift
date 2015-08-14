@@ -18,11 +18,14 @@ class CustomAction_SaveComplaint: ActionType {
         // -
         
         // Call action / Set content provider / Conditions
-        // TODO set
-        //ContentProviderRegistry.instance.getContentProvider("ComplaintProvider")!.
-        
-        let action1 = ContentProviderOperationAction(actionSignature: actionSignature + "__1", allowedOperation: ContentProviderOperationAction.AllowedOperation.Save, contentProvider: ContentProviderRegistry.instance.getContentProvider("ComplaintProvider")!)
+        let action1 = AssignObjectAction(actionSignature: actionSignature + "__1",
+            assignContentProvider: ContentProviderRegistry.instance.getContentProvider("AddressProvider")!,
+            toContentProvider: ContentProviderRegistry.instance.getContentProvider("ComplaintProvider")!,
+            attribute: "loc")
         action1.execute()
+        
+        let action2 = ContentProviderOperationAction(actionSignature: actionSignature + "__2", allowedOperation: ContentProviderOperationAction.AllowedOperation.Save, contentProvider: ContentProviderRegistry.instance.getContentProvider("ComplaintProvider")!)
+        action2.execute()
     }
     
     func equals(anotherAction: ActionType) -> Bool {

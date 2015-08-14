@@ -18,9 +18,9 @@ class ViewManager {
     
     var views: Dictionary<String, MD2ViewController> = [:]
     
-    func goto(viewName: MD2String) {
+    func goto(viewName: String) {
         for (name, controller) in views {
-            if viewName.toString() == name {
+            if viewName == name {
                 // Show view
                 
                 if let _ = navigationController {
@@ -41,7 +41,7 @@ class ViewManager {
         }
     }
     
-    func setupView(viewName: MD2String, view: LayoutType) {
+    func setupView(viewName: String, view: LayoutType) {
         // Called once at start-up of the app for each view
         
         // Create view controller with view and add to list
@@ -51,12 +51,12 @@ class ViewManager {
         controller.calculateDimensions()
         
         // Register viewName in internal data structure
-        views[viewName.toString()] = controller
+        views[viewName] = controller
     }
     
-    func showRootView(viewName:MD2String) {
+    func showRootView(viewName:String) {
         for (name, controller) in views {
-            if viewName.toString() == name {
+            if viewName == name {
                 
                 // Define navigation controller
                 navigationController = UINavigationController(rootViewController: controller)

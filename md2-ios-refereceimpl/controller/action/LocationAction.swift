@@ -18,7 +18,8 @@ class LocationAction: ActionType {
     }
     
     func execute() {
-        // TODO
+        // TODO include in later version
+        fatalError("Location actions are not implemented!")
     }
     
     func equals(anotherAction: ActionType) -> Bool {

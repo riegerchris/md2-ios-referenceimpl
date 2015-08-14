@@ -335,12 +335,20 @@ class Controller {
         viewManager.window = window
         
         // Initialize all views
-        viewManager.setupView(MD2String("LocationDetectionView"), view: locationDetectionView)
-        viewManager.setupView(MD2String("LocationVerifyView"), view: locationVerifyView)
+        viewManager.setupView("LocationDetectionView", view: locationDetectionView)
+        viewManager.setupView("LocationVerifyView", view: locationVerifyView)
         
-        // Start initial action of the app
-        CustomAction_Init().execute()
-        CustomAction_ButtonInit().execute()
+        // Initialize process chains and workflowElements
+        let pcLocationDetection_LocationProcessChain = ProcessChain(processChainSignature: "LocationDetection_LocationProcessChain")
+        pcLocationDetection_LocationProcessChain.addProcessChainStep("LocationDetection", viewName: "LocationDetectionView")
+        pcLocationDetection_LocationProcessChain.addProcessChainStep("LocationVerify", viewName: "LocationVerifyView")
+        ProcessChainRegistry.instance.addProcessChain(pcLocationDetection_LocationProcessChain)
+        
+        let wfeLocationDetection = WorkflowElement(name: "LocationDetection", onInit: CustomAction_Init(), defaultProcessChain: pcLocationDetection_LocationProcessChain)
+        wfeLocationDetection.addInitialAction(CustomAction_ButtonInit())
+        
+        // Start initial workflow of the app
+        wfeLocationDetection.start()
         
         GotoViewAction(actionSignature: "initialAction", targetView: WidgetMapping.LocationDetectionView).execute()
 

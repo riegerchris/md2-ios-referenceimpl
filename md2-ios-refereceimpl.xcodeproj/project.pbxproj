@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		595E26DD1B7C9827004F484A /* CustomAction_GoOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595E26DC1B7C9826004F484A /* CustomAction_GoOn.swift */; };
 		595E26DF1B7C99F7004F484A /* CustomAction_SaveComplaint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595E26DE1B7C99F7004F484A /* CustomAction_SaveComplaint.swift */; };
+		595E26E21B7D135D004F484A /* WorkflowEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595E26E11B7D135D004F484A /* WorkflowEventHandler.swift */; };
+		595E26E41B7D1433004F484A /* WorkflowElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595E26E31B7D1433004F484A /* WorkflowElement.swift */; };
+		595E26E61B7D14DF004F484A /* WorkflowEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595E26E51B7D14DF004F484A /* WorkflowEvent.swift */; };
+		595E26E81B7D197C004F484A /* WorkflowActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595E26E71B7D197C004F484A /* WorkflowActionType.swift */; };
+		595E26EB1B7D1DF2004F484A /* ProcessChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595E26EA1B7D1DF2004F484A /* ProcessChain.swift */; };
+		595E26ED1B7D1F6A004F484A /* ProcessChainRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595E26EC1B7D1F6A004F484A /* ProcessChainRegistry.swift */; };
+		595E26EF1B7D2212004F484A /* ProcessChainStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595E26EE1B7D2212004F484A /* ProcessChainStep.swift */; };
 		59C3D5B91B67E86400C5A613 /* WidgetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5B81B67E86300C5A613 /* WidgetType.swift */; };
 		59C3D5BB1B67FC0C00C5A613 /* WidgetRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5BA1B67FC0C00C5A613 /* WidgetRegistry.swift */; };
 		59C3D5BD1B67FDFB00C5A613 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3D5BC1B67FDFB00C5A613 /* ViewManager.swift */; };
@@ -131,6 +138,13 @@
 /* Begin PBXFileReference section */
 		595E26DC1B7C9826004F484A /* CustomAction_GoOn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAction_GoOn.swift; sourceTree = "<group>"; };
 		595E26DE1B7C99F7004F484A /* CustomAction_SaveComplaint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAction_SaveComplaint.swift; sourceTree = "<group>"; };
+		595E26E11B7D135D004F484A /* WorkflowEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkflowEventHandler.swift; sourceTree = "<group>"; };
+		595E26E31B7D1433004F484A /* WorkflowElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkflowElement.swift; sourceTree = "<group>"; };
+		595E26E51B7D14DF004F484A /* WorkflowEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkflowEvent.swift; sourceTree = "<group>"; };
+		595E26E71B7D197C004F484A /* WorkflowActionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkflowActionType.swift; sourceTree = "<group>"; };
+		595E26EA1B7D1DF2004F484A /* ProcessChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessChain.swift; sourceTree = "<group>"; };
+		595E26EC1B7D1F6A004F484A /* ProcessChainRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessChainRegistry.swift; sourceTree = "<group>"; };
+		595E26EE1B7D2212004F484A /* ProcessChainStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessChainStep.swift; sourceTree = "<group>"; };
 		59C3D5B81B67E86300C5A613 /* WidgetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetType.swift; sourceTree = "<group>"; };
 		59C3D5BA1B67FC0C00C5A613 /* WidgetRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetRegistry.swift; sourceTree = "<group>"; };
 		59C3D5BC1B67FDFB00C5A613 /* ViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
@@ -262,6 +276,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		595E26E01B7D1214004F484A /* workflow */ = {
+			isa = PBXGroup;
+			children = (
+				595E26E11B7D135D004F484A /* WorkflowEventHandler.swift */,
+				595E26E71B7D197C004F484A /* WorkflowActionType.swift */,
+				595E26E31B7D1433004F484A /* WorkflowElement.swift */,
+				595E26E51B7D14DF004F484A /* WorkflowEvent.swift */,
+			);
+			path = workflow;
+			sourceTree = "<group>";
+		};
+		595E26E91B7D1DE3004F484A /* processChain */ = {
+			isa = PBXGroup;
+			children = (
+				595E26EA1B7D1DF2004F484A /* ProcessChain.swift */,
+				595E26EE1B7D2212004F484A /* ProcessChainStep.swift */,
+				595E26EC1B7D1F6A004F484A /* ProcessChainRegistry.swift */,
+			);
+			name = processChain;
+			sourceTree = "<group>";
+		};
 		59C3D5C41B681C1E00C5A613 /* viewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +349,8 @@
 		59CB70751B5E9E11001D312F /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				595E26E91B7D1DE3004F484A /* processChain */,
+				595E26E01B7D1214004F484A /* workflow */,
 				59C3D5C41B681C1E00C5A613 /* viewController */,
 				59CB70B11B5FE396001D312F /* validator */,
 				59CB707C1B5EADFE001D312F /* action */,
@@ -638,6 +675,7 @@
 				59CB70A01B5FBBAF001D312F /* DataStoreFactory.swift in Sources */,
 				59CB70A21B5FBC01001D312F /* LocalStoreFactory.swift in Sources */,
 				59DF705C1B726A2900F6F0A3 /* ContentProviderResetAction.swift in Sources */,
+				595E26E41B7D1433004F484A /* WorkflowElement.swift in Sources */,
 				59C3D5D81B69681300C5A613 /* SwitchWidget.swift in Sources */,
 				59C3D5DC1B696FDF00C5A613 /* ImageWidget.swift in Sources */,
 				59CB70AA1B5FDD63001D312F /* ActionType.swift in Sources */,
@@ -672,6 +710,7 @@
 				59DF70581B72698B00F6F0A3 /* EnableAction.swift in Sources */,
 				59C3D5C91B68B25800C5A613 /* Complaint.swift in Sources */,
 				59DF70761B73C82600F6F0A3 /* ContentProviderAttributeIdentity.swift in Sources */,
+				595E26E61B7D14DF004F484A /* WorkflowEvent.swift in Sources */,
 				59DF70621B726B3100F6F0A3 /* LocationAction.swift in Sources */,
 				59DF706C1B7283D600F6F0A3 /* ModelConfig.swift in Sources */,
 				59C3D5CF1B68B2D100C5A613 /* ComplaintStatus.swift in Sources */,
@@ -695,6 +734,7 @@
 				59CB70841B5EB321001D312F /* MD2EnumType.swift in Sources */,
 				59C3D5E01B698C9900C5A613 /* OnTouchHandler.swift in Sources */,
 				59C3D5D61B6966C000C5A613 /* TextFieldWidget.swift in Sources */,
+				595E26ED1B7D1F6A004F484A /* ProcessChainRegistry.swift in Sources */,
 				59CE101D1B60E87300ACE1E7 /* EventHandlerType.swift in Sources */,
 				59CE10171B60DFAC00ACE1E7 /* RegEx.swift in Sources */,
 				59CE10211B60E8F500ACE1E7 /* WidgetEventHandlerType.swift in Sources */,
@@ -706,7 +746,9 @@
 				59C3D5EB1B6F84EA00C5A613 /* SpacerWidget.swift in Sources */,
 				59DF703E1B7259E000F6F0A3 /* ProcessChainProceedAction.swift in Sources */,
 				59C6A0D81B7BABE70038E056 /* CustomAction_ButtonInit.swift in Sources */,
+				595E26E21B7D135D004F484A /* WorkflowEventHandler.swift in Sources */,
 				59C3D5D41B69260D00C5A613 /* ButtonWidget.swift in Sources */,
+				595E26EF1B7D2212004F484A /* ProcessChainStep.swift in Sources */,
 				59CB70B71B60CDE6001D312F /* StringRangeValidator.swift in Sources */,
 				59DF70601B726AE600F6F0A3 /* WebServiceCallAction.swift in Sources */,
 				59C3D5D21B691FC100C5A613 /* LabelWidget.swift in Sources */,
@@ -727,11 +769,13 @@
 				59CB70B51B5FE4C3001D312F /* NotNullValidator.swift in Sources */,
 				59D007061B6FCE5400FA922D /* WidgetTextStyle.swift in Sources */,
 				59CB708A1B5EB78D001D312F /* MD2Integer.swift in Sources */,
+				595E26EB1B7D1DF2004F484A /* ProcessChain.swift in Sources */,
 				59CB70A41B5FBC6A001D312F /* LocalStore.swift in Sources */,
 				59C3D5C31B680E4400C5A613 /* FlowLayoutPane.swift in Sources */,
 				59CB70801B5EB15C001D312F /* MD2DataType.swift in Sources */,
 				59CE10251B60E9EA00ACE1E7 /* OnWidgetChangeHandler.swift in Sources */,
 				595E26DF1B7C99F7004F484A /* CustomAction_SaveComplaint.swift in Sources */,
+				595E26E81B7D197C004F484A /* WorkflowActionType.swift in Sources */,
 				59CB70881B5EB72B001D312F /* MD2Boolean.swift in Sources */,
 				59CB708C1B5F8E23001D312F /* MD2Float.swift in Sources */,
 				59CE101F1B60E89000ACE1E7 /* GlobalEventHandlerType.swift in Sources */,

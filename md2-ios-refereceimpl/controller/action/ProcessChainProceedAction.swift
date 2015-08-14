@@ -10,8 +10,11 @@ class ProcessChainProceedAction: ActionType {
     
     let actionSignature: String
 
-    init(actionSignature: String) {
+    let processChain: ProcessChain
+    
+    init(actionSignature: String, processChain: ProcessChain) {
         self.actionSignature = actionSignature
+        self.processChain = processChain
     }
     
     func execute() {

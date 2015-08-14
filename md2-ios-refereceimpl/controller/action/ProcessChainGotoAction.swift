@@ -10,11 +10,11 @@ class ProcessChainGotoAction: ActionType {
     
     let actionSignature: String
     
-    let targetStep: String
+    let processChain: ProcessChain
     
-    init(actionSignature: String, targetStep: String) {
+    init(actionSignature: String, processChain: ProcessChain) {
         self.actionSignature = actionSignature
-        self.targetStep = targetStep
+        self.processChain = processChain
     }
     
     func execute() {

@@ -25,7 +25,7 @@ class AssignObjectAction: ActionType {
     }
     
     func execute() {
-        // TODO
+        toContentProvider.registerAttributeContentProvider(attribute, contentProvider: assignContentProvider)
     }
     
     func equals(anotherAction: ActionType) -> Bool {

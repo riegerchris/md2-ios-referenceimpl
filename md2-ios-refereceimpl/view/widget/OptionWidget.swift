@@ -48,7 +48,6 @@ class OptionWidget: NSObject, SingleWidgetType, WidgetAssistedType, UIPickerView
         self.optionElement = textField
         textField.frame = UIUtil.dimensionToCGRect(dimensions!)
         textField.placeholder = ViewConfig.OPTION_WIDGET_PLACEHOLDER
-        updateElement()
         
         textField.tag = widgetId.rawValue
         textField.addTarget(self, action: "onUpdate", forControlEvents: UIControlEvents.ValueChanged)
@@ -73,7 +72,7 @@ class OptionWidget: NSObject, SingleWidgetType, WidgetAssistedType, UIPickerView
         tapRecognizer.delegate = self
         self.picker.addGestureRecognizer(tapRecognizer)
         
-         // TODO preselect value
+        updateElement()
     }
     
     func calculateDimensions(bounds: Dimension) -> Dimension {
@@ -139,6 +138,10 @@ class OptionWidget: NSObject, SingleWidgetType, WidgetAssistedType, UIPickerView
     
     func updateElement() {
         self.optionElement?.text = value.toString()
+        
+        var defaultRowIndex = find(options!, self.value.toString())
+        if(defaultRowIndex == nil) { defaultRowIndex = 0 }
+        self.picker.selectRow(defaultRowIndex!, inComponent: 0, animated: false)
     }
     
 }
