@@ -13,13 +13,13 @@ class OnLocationUpdateHandler: GlobalEventHandlerType {
     var actions: Dictionary<String,ActionType> = [:]
     
     func registerAction(action: ActionType) {
-        actions[action.actionSignature.platformValue!] = action
+        actions[action.actionSignature] = action
         //println("registered action \(action.actionSignature.platformValue!)")
     }
     
     func unregisterAction(action: ActionType) {
         for (key, value) in actions {
-            if MD2String(key).equals(action.actionSignature) {
+            if key == action.actionSignature {
                 actions[key] = nil
                 break
             }

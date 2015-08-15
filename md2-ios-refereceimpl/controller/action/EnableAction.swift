@@ -8,25 +8,12 @@
 
 class EnableAction: ActionType {
     
-    let actionSignature: MD2String
-    
-    let widgetRegistry: WidgetRegistry
-    
-    let contentProviderRegistry: ContentProviderRegistry
-    
-    let viewManager: ViewManager
-    
-    let dataMapper: DataMapper
+    let actionSignature: String
     
     let viewElement: WidgetType
     
-    init(actionSignature: MD2String, widgetRegistry: WidgetRegistry, contentProviderRegistry: ContentProviderRegistry, viewManager: ViewManager, dataMapper: DataMapper, viewElement: WidgetType) {
-        
+    init(actionSignature: String, viewElement: WidgetType) {
         self.actionSignature = actionSignature
-        self.widgetRegistry = widgetRegistry
-        self.contentProviderRegistry = contentProviderRegistry
-        self.viewManager = viewManager
-        self.dataMapper = dataMapper
         self.viewElement = viewElement
     }
     
@@ -35,7 +22,7 @@ class EnableAction: ActionType {
     }
     
     func equals(anotherAction: ActionType) -> Bool {
-        return actionSignature.equals(anotherAction.actionSignature)
+        return actionSignature == anotherAction.actionSignature
     }
     
 }

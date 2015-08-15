@@ -28,6 +28,7 @@ class OnContentChangeHandler: ContentProviderEventHandlerType {
     func fire(contentProvider: ContentProviderType, attribute: String) {
         for (cpaIdentity, action) in actions {
             if cpaIdentity == ContentProviderAttributeIdentity(contentProvider, attribute) {
+                println("[OnContentChangeHandler] Execute action")
                 action.execute()
             }
         }

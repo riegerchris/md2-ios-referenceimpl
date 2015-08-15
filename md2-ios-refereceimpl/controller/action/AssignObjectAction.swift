@@ -8,40 +8,28 @@
 
 class AssignObjectAction: ActionType {
     
-    let actionSignature: MD2String
-    
-    let widgetRegistry: WidgetRegistry
-    
-    let contentProviderRegistry: ContentProviderRegistry
-    
-    let viewManager: ViewManager
-    
-    let dataMapper: DataMapper
+    let actionSignature: String
     
     let assignContentProvider: ContentProviderType
     
     let toContentProvider: ContentProviderType
     
-    let attribute: MD2String
+    let attribute: String
     
-    init(actionSignature: MD2String, widgetRegistry: WidgetRegistry, contentProviderRegistry: ContentProviderRegistry, viewManager: ViewManager, dataMapper: DataMapper,assignContentProvider: ContentProviderType, toContentProvider: ContentProviderType, attribute: MD2String) {
+    init(actionSignature: String, assignContentProvider: ContentProviderType, toContentProvider: ContentProviderType, attribute: String) {
         
         self.actionSignature = actionSignature
-        self.widgetRegistry = widgetRegistry
-        self.contentProviderRegistry = contentProviderRegistry
-        self.viewManager = viewManager
-        self.dataMapper = dataMapper
         self.assignContentProvider = assignContentProvider
         self.toContentProvider = toContentProvider
         self.attribute = attribute
     }
     
     func execute() {
-        // TODO
+        toContentProvider.registerAttributeContentProvider(attribute, contentProvider: assignContentProvider)
     }
     
     func equals(anotherAction: ActionType) -> Bool {
-        return actionSignature.equals(anotherAction.actionSignature)
+        return actionSignature == anotherAction.actionSignature
     }
     
 }

@@ -65,22 +65,35 @@ class GridLayoutPane: LayoutType {
         let rowHeight = bounds.height / Float(rows!.platformValue!)
         let columnWidth = bounds.width / Float(columns!.platformValue!)
         
-        // TODO colspan/rowspan
+        var currentY = bounds.y
+        
         for var currentRow = 0; currentRow < rows!.platformValue!; currentRow++ {
+            var maxHeight: Float = 0.0
+            
             for var currentColumn = 0; currentColumn < columns!.platformValue!; currentColumn++ {
-                
                 let subDimensions = Dimension(
                     x: bounds.x + Float(currentColumn) * columnWidth,
-                    y: bounds.y + Float(currentRow) * rowHeight,
+                    y: currentY,
                     width: columnWidth,
                     height: rowHeight)
                 
-                //println(widgets[(currentRow * columns!.platformValue!) + currentColumn].widgetId.description + ": " + subDimensions.toString())
-                widgets[(currentRow * columns!.platformValue!) + currentColumn].calculateDimensions(subDimensions)
+                // println(widgets[(currentRow * columns!.platformValue!) + currentColumn].widgetId.description + ": " + subDimensions.toString())
+                let acceptedDimension = widgets[(currentRow * columns!.platformValue!) + currentColumn].calculateDimensions(subDimensions)
+                
+                if acceptedDimension.height > maxHeight {
+                    maxHeight = acceptedDimension.height
+                }
             }
+            
+            // Prepare next row
+            currentY += maxHeight
         }
         
-        return bounds
+        return Dimension(
+            x: bounds.x,
+            y: bounds.y,
+            width: bounds.width,
+            height: currentY - bounds.y)
     }
     
     func enable() {

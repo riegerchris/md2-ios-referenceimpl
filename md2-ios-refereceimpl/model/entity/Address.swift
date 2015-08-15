@@ -6,20 +6,30 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class Address: MD2EntityType {
+import Foundation
+
+// Make class visible for Objective-C to work with Core Data persistence framework
+@objc(Address)
+class Address: NSObject, MD2EntityType {
+    
+    var internalId: MD2Integer = MD2Integer()
     
     var containedTypes: Dictionary<String,MD2Type> = [:]
     
-    init() {
+    required override init() {
         // Initialize address fields
         containedTypes["myStreet"] = MD2String()
         containedTypes["myStreetNo"] = MD2String()
         containedTypes["myPostalCode"] = MD2String()
         containedTypes["myCity"] = MD2String()
-        containedTypes["myLocation"] = Location()
+        containedTypes["myCountry"] = MD2String()
+        containedTypes["latitude"] = MD2Float()
+        containedTypes["longitude"] = MD2Float()
     }
     
-    init(md2Entity: Address) {
+    convenience init(md2Entity: Address) {
+        self.init()
+        
         for (typeName, typeValue) in md2Entity.containedTypes {
             containedTypes[typeName] = typeValue.clone()
         }
@@ -34,7 +44,9 @@ class Address: MD2EntityType {
             + ", myStreetNo: " + containedTypes["myStreetNo"]!.toString()
             + ", myPostalCode: " + containedTypes["myPostalCode"]!.toString()
             + ", myCity: " + containedTypes["myCity"]!.toString()
-            + ", myLocation: " + containedTypes["myLocation"]!.toString()
+            + ", myCountry: " + containedTypes["myCountry"]!.toString()
+            + ", latitude: " + containedTypes["latitude"]!.toString()
+            + ", longitude: " + containedTypes["longitude"]!.toString()
             + "])"
     }
     

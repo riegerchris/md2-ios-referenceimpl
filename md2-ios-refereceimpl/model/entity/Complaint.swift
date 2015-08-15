@@ -8,9 +8,11 @@
 
 class Complaint: MD2EntityType {
     
+    var internalId: MD2Integer = MD2Integer()
+    
     var containedTypes: Dictionary<String,MD2Type> = [:]
     
-    init() {
+    required init() {
         // Initialize complaint fields
         containedTypes["loc"] = Address()
         containedTypes["descriptions"] = MD2String()
@@ -18,7 +20,9 @@ class Complaint: MD2EntityType {
         containedTypes["status"] = ComplaintStatus()
     }
     
-    init(md2Entity: Complaint) {
+    convenience init(md2Entity: Complaint) {
+        self.init()
+        
         for (typeName, typeValue) in md2Entity.containedTypes {
             containedTypes[typeName] = typeValue.clone()
         }

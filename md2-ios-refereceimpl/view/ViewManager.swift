@@ -10,20 +10,27 @@ import UIKit
 
 class ViewManager {
     
+    static let instance: ViewManager = ViewManager()
+    
     var window: UIWindow?
     
     var navigationController: UINavigationController?
     
     var views: Dictionary<String, MD2ViewController> = [:]
     
-    func goto(viewName: MD2String) {
+    func goto(viewName: String) {
         for (name, controller) in views {
-            if viewName.toString() == name {
+            if viewName == name {
                 // Show view
                 
                 if let _ = navigationController {
-                    // Controller exists, push view on top
-                    self.navigationController!.pushViewController(controller, animated: false)
+                    // Check if the view already exists in stack (pushing the same view controller instance more than once is not allowed)
+                    if let _ = controller.navigationController {
+                        self.navigationController!.popToViewController(controller, animated: true)
+                    } else {
+                        // Controller exists, push view on top
+                        self.navigationController!.pushViewController(controller, animated: true)
+                    }
                 } else {
                     // First view to show, create and initialize navigationController
                     showRootView(viewName)
@@ -34,7 +41,7 @@ class ViewManager {
         }
     }
     
-    func setupView(viewName: MD2String, view: LayoutType) {
+    func setupView(viewName: String, view: LayoutType) {
         // Called once at start-up of the app for each view
         
         // Create view controller with view and add to list
@@ -44,12 +51,12 @@ class ViewManager {
         controller.calculateDimensions()
         
         // Register viewName in internal data structure
-        views[viewName.toString()] = controller
+        views[viewName] = controller
     }
     
-    func showRootView(viewName:MD2String) {
+    func showRootView(viewName:String) {
         for (name, controller) in views {
-            if viewName.toString() == name {
+            if viewName == name {
                 
                 // Define navigation controller
                 navigationController = UINavigationController(rootViewController: controller)

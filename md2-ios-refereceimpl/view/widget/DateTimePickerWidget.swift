@@ -12,21 +12,26 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
     
     let widgetId: WidgetMapping
     
-    var value: MD2Type?
+    var value: MD2Type {
+        didSet {
+            updateElement()
+        }
+    }
     
     var dimensions: Dimension?
     
     var pickerElement: UIDatePicker?
     
-    var resultElement: UITextField?
+    var widgetElement: UITextField
    
     var pickerMode: UIDatePickerMode?
     
     var width: Float?
     
-    init(widgetId: WidgetMapping, initialValue: MD2Type) {
+    init(widgetId: WidgetMapping) {
         self.widgetId = widgetId
-        self.value = initialValue
+        self.value = MD2String()
+        self.widgetElement = UITextField()
 
         // Default
         self.pickerMode = UIDatePickerMode.DateAndTime
@@ -39,42 +44,39 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
         }
         
         // Text field to display result
-        let textField = UITextField()
-        textField.frame = UIUtil.dimensionToCGRect(dimensions!)
-        textField.placeholder = ViewConfig.OPTION_WIDGET_PLACEHOLDER
-        //textField.text = value?.toString()
+        widgetElement.frame = UIUtil.dimensionToCGRect(dimensions!)
+        widgetElement.placeholder = ViewConfig.OPTION_WIDGET_PLACEHOLDER
         
-        textField.tag = widgetId.rawValue
-        textField.addTarget(OnChangeHandler.instance, action: "fire:", forControlEvents: UIControlEvents.ValueChanged)
+        widgetElement.tag = widgetId.rawValue
+        widgetElement.addTarget(self, action: "onUpdate", forControlEvents: UIControlEvents.ValueChanged)
         
         // Set styling
-        textField.backgroundColor = UIColor(rgba: "#fff")
-        textField.borderStyle = UITextBorderStyle.RoundedRect
-        textField.font = UIFont(name: ViewConfig.FONT_NAME.rawValue, size: CGFloat(ViewConfig.FONT_SIZE))
+        widgetElement.backgroundColor = UIColor(rgba: "#fff")
+        widgetElement.borderStyle = UITextBorderStyle.RoundedRect
+        widgetElement.font = UIFont(name: ViewConfig.FONT_NAME.rawValue, size: CGFloat(ViewConfig.FONT_SIZE))
         
         // Add to surrounding view
-        view.addSubview(textField)
-        self.resultElement = textField
+        view.addSubview(widgetElement)
         
         // Create and set value
         let pickerElement = UIDatePicker()
         pickerElement.datePickerMode = pickerMode!
         pickerElement.frame = UIUtil.dimensionToCGRect(dimensions!)
         pickerElement.backgroundColor = UIColor(rgba: "#dfdfdf")
-        // TODO set initial picker value
         
         pickerElement.tag = widgetId.rawValue
         pickerElement.addTarget(self, action: "updateTextField", forControlEvents: UIControlEvents.ValueChanged)
         
-        textField.inputView = pickerElement
-        
-        // Add to surrounding view
+        widgetElement.inputView = pickerElement
         self.pickerElement = pickerElement
         
         let tapRecognizer = UITapGestureRecognizer()
         tapRecognizer.addTarget(self, action: "pickerViewTapped")
         tapRecognizer.delegate = self
         self.pickerElement!.addGestureRecognizer(tapRecognizer)
+        
+        // Set value
+        updateElement()
     }
     
     func calculateDimensions(bounds: Dimension) -> Dimension {
@@ -94,7 +96,7 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
     func pickerViewTapped() {
         updateTextField()
         // Hide picker element
-        self.resultElement!.resignFirstResponder()
+        self.widgetElement.resignFirstResponder()
     }
     
     // Some other delegate tries to get the tap first -> allow simultaneous processing
@@ -112,14 +114,38 @@ class DateTimePickerWidget: NSObject, SingleWidgetType, UIGestureRecognizerDeleg
         default:                            formatter.dateFormat = ViewConfig.DATE_TIME_FORMAT
         }
         
-        self.resultElement!.text = formatter.stringFromDate(self.pickerElement!.date)
+        self.widgetElement.text = formatter.stringFromDate(self.pickerElement!.date)
     }
     
     func enable() {
-        self.resultElement?.enabled = true
+        self.widgetElement.enabled = true
     }
     
     func disable() {
-        self.resultElement?.enabled = false
+        self.widgetElement.enabled = false
     }
+    
+    // Event from itself
+    func onUpdate() {
+        self.value = MD2String(self.widgetElement.text)
+        WidgetRegistry.instance.getWidget(widgetId)?.setValue(self.value)
+    }
+    
+    func updateElement() {
+        self.widgetElement.text = value.toString()
+        
+        let formatter = NSDateFormatter()
+        switch self.pickerMode! {
+        case UIDatePickerMode.DateAndTime:  formatter.dateFormat = ViewConfig.DATE_TIME_FORMAT
+        case UIDatePickerMode.Date:         formatter.dateFormat = ViewConfig.DATE_FORMAT
+        case UIDatePickerMode.Time:         formatter.dateFormat = ViewConfig.TIME_FORMAT
+        default:                            formatter.dateFormat = ViewConfig.DATE_TIME_FORMAT
+        }
+        
+        let date: NSDate? = formatter.dateFromString(self.value.toString())
+        if let _ = date {
+            self.pickerElement!.setDate(date!, animated: false)
+        }
+    }
+    
 }

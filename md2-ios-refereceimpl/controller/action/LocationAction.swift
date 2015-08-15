@@ -8,34 +8,22 @@
 
 class LocationAction: ActionType {
     
-    let actionSignature: MD2String
-    
-    let widgetRegistry: WidgetRegistry
-    
-    let contentProviderRegistry: ContentProviderRegistry
-    
-    let viewManager: ViewManager
-    
-    let dataMapper: DataMapper
+    let actionSignature: String
     
     let location: Location
     
-    init(actionSignature: MD2String, widgetRegistry: WidgetRegistry, contentProviderRegistry: ContentProviderRegistry, viewManager: ViewManager, dataMapper: DataMapper, location: Location) {
-        
+    init(actionSignature: String, location: Location) {
         self.actionSignature = actionSignature
-        self.widgetRegistry = widgetRegistry
-        self.contentProviderRegistry = contentProviderRegistry
-        self.viewManager = viewManager
-        self.dataMapper = dataMapper
         self.location = location
     }
     
     func execute() {
-        // TODO
+        // MARK include in later version
+        fatalError("Location actions are not implemented!")
     }
     
     func equals(anotherAction: ActionType) -> Bool {
-        return actionSignature.equals(anotherAction.actionSignature)
+        return actionSignature == anotherAction.actionSignature
     }
     
 }

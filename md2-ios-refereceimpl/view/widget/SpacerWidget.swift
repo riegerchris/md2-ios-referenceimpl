@@ -12,7 +12,7 @@ class SpacerWidget: SingleWidgetType {
     
     let widgetId: WidgetMapping
     
-    var value: MD2Type? = MD2String("")
+    var value: MD2Type = MD2String("")
     
     var dimensions: Dimension?
     

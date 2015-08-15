@@ -8,10 +8,24 @@
 
 class MD2Boolean: MD2DataType {
     
+    var value: Any? {
+        get {
+            return platformValue
+        }
+    }
+    
     var platformValue: Bool?
     
     init() {
         // Nothing to initialize
+    }
+    
+    required init(_ value: MD2String) {
+        if value.isSet() && value.equals(MD2String("true")) {
+            platformValue = true
+        } else if value.isSet() && value.equals(MD2String("false")) {
+            platformValue = false
+        }
     }
     
     init(_ value : Bool) {

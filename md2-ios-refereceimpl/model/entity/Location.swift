@@ -8,15 +8,19 @@
 
 class Location: MD2EntityType {
     
+    var internalId: MD2Integer = MD2Integer()
+    
     var containedTypes: Dictionary<String,MD2Type> = [:]
     
-    init() {
+    required init() {
         // Initialize location fields
         containedTypes["longitude"] = MD2Float(0.0)
         containedTypes["latitude"] = MD2Float(0.0)
     }
     
-    init(md2Entity: Location) {
+    convenience init(md2Entity: Location) {
+        self.init()
+        
         for (typeName, typeValue) in md2Entity.containedTypes {
             containedTypes[typeName] = typeValue.clone()
         }

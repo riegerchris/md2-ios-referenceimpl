@@ -67,7 +67,7 @@ class FlowLayoutPane: LayoutType {
             var currentX = bounds.x
             
             for var currentElem = 0; currentElem < numUiElements; currentElem++ {
-                var subDimensions: Dimension
+                var subDimensions: Dimension = Dimension()
                 
                 if sum > 1.0 {
                     // Reduce overall sizes if widths are too large
@@ -90,8 +90,9 @@ class FlowLayoutPane: LayoutType {
                     numNonSpecifiedWidths--
                 }
                 
+                // println(widgets[currentElem].widgetId.description + ": " + subDimensions.toString())
                 let acceptedDimensions = widgets[currentElem].calculateDimensions(subDimensions)
-                    
+                
                 if maxHeight < acceptedDimensions.height {
                     maxHeight = acceptedDimensions.height
                 }
@@ -118,8 +119,8 @@ class FlowLayoutPane: LayoutType {
                     x: bounds.x,
                     y: currentY,
                     width: bounds.width,
-                    // Equal proportion of remaining height
-                    height: (bounds.height - (currentY - bounds.y)) / Float(numUiElements - currentElem))
+                    // Remaining height
+                    height: (bounds.height - (currentY - bounds.y)))
                 
                 let acceptedDimensions = widgets[currentElem].calculateDimensions(subDimensions)
                 
@@ -143,7 +144,7 @@ class FlowLayoutPane: LayoutType {
         
         return Dimension()
         
-/* Naive equi-sized calculation
+        /* Naive equi-sized calculation
         // Set own dimensions
         dimensions = bounds
         
@@ -172,7 +173,7 @@ class FlowLayoutPane: LayoutType {
         }
         
         return dimensions!
-*/
+        */
     }
     
     func enable() {

@@ -8,7 +8,11 @@
 
 class MD2String: MD2DataType {
     
-    typealias ValueType = String
+    var value: Any? {
+        get {
+            return platformValue
+        }
+    }
     
     var platformValue: String?
     
@@ -16,12 +20,14 @@ class MD2String: MD2DataType {
         // Nothing to initialize
     }
     
-    init(_ value: String) {
-        platformValue = value
+    required init(_ value: MD2String) {
+        if value.isSet() {
+            platformValue = value.platformValue!
+        }
     }
     
-    init(_ md2String: MD2String) {
-        platformValue = md2String.platformValue
+    init(_ value: String) {
+        platformValue = value
     }
     
     func isSet() -> Bool {
@@ -41,6 +47,10 @@ class MD2String: MD2DataType {
     }
     
     func equals(value : MD2Type) -> Bool {
+        if platformValue == nil {
+            return "" == value.toString()
+        }
+        
         return platformValue == value.toString()
     }
 }

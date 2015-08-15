@@ -6,22 +6,60 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class WidgetWrapper {
+// Needed to implement Equatable protocol as supertype of Hashable
+func ==(lhs: WidgetWrapper, rhs: WidgetWrapper) -> Bool {
+    return lhs.widgetId == rhs.widgetId
+}
+
+// Make visible to Objective-C to allow as sender in event handling
+@objc
+// Implement Hashable interface to use as dictionary key in Data Mapper
+class WidgetWrapper: Hashable {
     
     var widget: SingleWidgetType?
     
-    var widgetId: WidgetMapping?
+    var widgetId: WidgetMapping
     
-    var disabled: MD2Boolean? = MD2Boolean(false)//TODO
+    var isElementDisabled: Bool {
+        // Ensure synchronized behavior with widget
+        didSet {
+            isElementDisabled ? widget?.disable() : widget?.enable()
+        }
+    }
     
-    var value: MD2Type? // TODO
+    var value: MD2Type {
+        didSet (oldValue) {
+            // Check that data is valid and reset value to old state if not
+            if !validate(value) {
+                println("[WidgetWrapper] Fire OnWrongValidationEvent")
+                OnWrongValidationHandler.instance.fire(self)
+                self.value = oldValue
+            } else if self.value.equals(oldValue) == false {
+                // Check is important to reduce unnecessary updates and especially to avoid infinite loops of WidgetUpdate -> ContentProviderUpdate -> WidgetUpdate -> ...
+                
+                // Ensure synchronized behavior with widget
+                widget?.value = value
+                println("[WidgetWrapper] Value for \(widgetId.description) changed from '\(oldValue.toString())' to '\(self.value.toString())' -> fire OnWidgetChangeEvent")
+                // Fire change event to inform about change
+                OnWidgetChangeHandler.instance.fire(self)
+            }
+        }
+    }
     
     var validators: Array<ValidatorType> = []
+    
+    // Required by hashable interface
+    var hashValue: Int {
+        get {
+            return widgetId.rawValue
+        }
+    }
     
     init(widget: SingleWidgetType){
         self.widget = widget
         self.widgetId = widget.widgetId
         self.value = widget.value
+        self.isElementDisabled = false
     }
     
     func setWidget(widget: SingleWidgetType){
@@ -43,13 +81,12 @@ class WidgetWrapper {
         widget = nil
     }
     
-    func setDisabled(isDisabled: MD2Boolean) {
-        disabled = isDisabled
-        widget?.disable()
+    func setDisabled(isDisabled: Bool) {
+        isElementDisabled = isDisabled // property observer will care about the rest
     }
     
     func isDisabled() -> Bool {
-        return disabled != nil && disabled!.isSet() == true && disabled!.equals(MD2Boolean(false))
+        return isElementDisabled
     }
     
     func getValue() -> MD2Type? {
@@ -57,7 +94,7 @@ class WidgetWrapper {
     }
     
     func setValue(value: MD2Type) {
-        widget?.value = value
+        self.value = value  // property observer will care about the rest
     }
     
     func addValidator(validator: ValidatorType) {
@@ -75,4 +112,15 @@ class WidgetWrapper {
         }
     }
     
+    func validate(value: MD2Type) -> Bool {
+        var validationResult: Bool = true
+        
+        for validator in validators {
+            if !validator.isValid(value) {
+                validationResult = false
+            }
+        }
+            
+        return validationResult
+    }
 }

@@ -37,7 +37,7 @@ class MD2ViewController: UIViewController {
     func calculateDimensions() {
         // Add small padding on top of screen
         let screen = UIUtil.CGRectToDimension(UIScreen.mainScreen().bounds)
-        layout.calculateDimensions(screen + Dimension(x: 0.0, y: 10.0, width: 0.0, height: 0.0))
+        layout.calculateDimensions(screen + Dimension(x: ViewConfig.GUTTER, y: 2 * ViewConfig.GUTTER, width: -1 * ViewConfig.GUTTER, height: -1 * ViewConfig.GUTTER))
     }
     
 }

@@ -12,13 +12,17 @@ class TextFieldWidget: NSObject, SingleWidgetType, WidgetAssistedType, UITextFie
     
     let widgetId: WidgetMapping
     
-    var value: MD2Type? = MD2String("")
+    var value: MD2Type {
+        didSet {
+            updateElement()
+        }
+    }
     
     var dimensions: Dimension?
     
     var placeholder: MD2String?
     
-    var textField: UITextField?
+    var widgetElement: UITextField
     
     var label: MD2String?
     
@@ -30,9 +34,10 @@ class TextFieldWidget: NSObject, SingleWidgetType, WidgetAssistedType, UITextFie
     
     var width: Float?
     
-    init(widgetId: WidgetMapping, initialValue: MD2Type) {
+    init(widgetId: WidgetMapping) {
         self.widgetId = widgetId
-        self.value = initialValue
+        self.value = MD2String()
+        self.widgetElement = UITextField()
     }
     
     func render(view: UIView, controller: UIViewController) {
@@ -41,28 +46,26 @@ class TextFieldWidget: NSObject, SingleWidgetType, WidgetAssistedType, UITextFie
             return
         }
         
-        // Create and set value
-        let textField = UITextField()
-        textField.frame = UIUtil.dimensionToCGRect(dimensions!)
-        textField.placeholder = placeholder?.platformValue
-        textField.text = value?.toString()
+        // Set value
+        widgetElement.frame = UIUtil.dimensionToCGRect(dimensions!)
+        widgetElement.placeholder = placeholder?.platformValue
+        updateElement()
         
-        textField.tag = widgetId.rawValue
-        textField.addTarget(OnChangeHandler.instance, action: "fire:", forControlEvents: UIControlEvents.ValueChanged)
+        widgetElement.tag = widgetId.rawValue
+        widgetElement.addTarget(self, action: "onUpdate", forControlEvents: (UIControlEvents.EditingDidEnd | UIControlEvents.EditingDidEndOnExit))
         
         // Set styling
-        textField.backgroundColor = UIColor.whiteColor()
-        textField.borderStyle = UITextBorderStyle.RoundedRect
-        textField.font = UIFont(name: ViewConfig.FONT_NAME.rawValue, size: CGFloat(ViewConfig.FONT_SIZE))
+        widgetElement.backgroundColor = UIColor.whiteColor()
+        widgetElement.borderStyle = UITextBorderStyle.RoundedRect
+        widgetElement.font = UIFont(name: ViewConfig.FONT_NAME.rawValue, size: CGFloat(ViewConfig.FONT_SIZE))
         
         // Add to surrounding view
-        textField.delegate = self
-        view.addSubview(textField)
-        self.textField = textField
+        widgetElement.delegate = self
+        view.addSubview(widgetElement)
         
         // If tooltip info is available show info button
         if self.tooltip != nil && self.tooltip!.isSet() {
-            let infoButton = ButtonWidget(widgetId: self.widgetId, initialValue: MD2String())
+            let infoButton = ButtonWidget(widgetId: self.widgetId)
             infoButton.buttonType = UIButtonType.InfoLight
             infoButton.dimensions = self.tooltipDimensions
             infoButton.render(view, controller: controller)
@@ -118,16 +121,26 @@ class TextFieldWidget: NSObject, SingleWidgetType, WidgetAssistedType, UITextFie
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        self.textField?.resignFirstResponder()
+        self.widgetElement.resignFirstResponder()
         return true
     }
     
     func enable() {
-        self.textField?.enabled = true
+        self.widgetElement.enabled = true
     }
     
     func disable() {
-        self.textField?.enabled = false
+        self.widgetElement.enabled = false
     }
-
+    
+    // Event from itself
+    func onUpdate() {
+        self.value = MD2String(self.widgetElement.text)
+        WidgetRegistry.instance.getWidget(widgetId)?.setValue(self.value)
+    }
+    
+    func updateElement() {
+        self.widgetElement.text = value.toString()
+    }
+    
 }

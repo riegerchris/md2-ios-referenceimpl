@@ -6,12 +6,26 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
+import Foundation
+
 class MD2Float: MD2NumericType {
+    
+    var value: Any? {
+        get {
+            return platformValue
+        }
+    }
     
     var platformValue: Float?
     
     init() {
         // Nothing to initialize
+    }
+    
+    required init(_ value: MD2String) {
+        if value.isSet() && !value.equals(MD2String("")) {
+            platformValue = (value.platformValue! as NSString).floatValue
+        }
     }
     
     init(_ value: Float) {

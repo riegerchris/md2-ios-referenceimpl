@@ -8,34 +8,56 @@
 
 class ComplaintContentProvider: ContentProviderType {
     
-    var content: MD2EntityType // managed entity instance
+    let contentType = Complaint.self
+    
+    var content: MD2EntityType? // managed entity instance
     
     var store: DataStoreType
     
     var observedAttributes: Dictionary<String, MD2Type> = [:]
     
+    var attributeContentProviders: Dictionary<String, ContentProviderType> = [:]
+    
     var filter: Filter?
     
     init(content: MD2EntityType) {
         self.content = content
-        self.store = LocalStoreFactory().createStore()
+        self.store = LocalStoreFactory<Complaint>().createStore()
     }
     
     func getContent() -> MD2EntityType? {
         return content
     }
     
-    func setContent(content: MD2EntityType) {
+    func setContent() {
+        // Create new object
+        self.content = contentType()
+        
         // Check all observed properties
         checkAllAttributesForObserver()
         
+        // Update values in map
+        for (attribute, _) in observedAttributes {
+            observedAttributes[attribute] = self.content?.get(attribute)
+        }
+    }
+    
+    func setContent(content: MD2EntityType) {
         // Update full entity by cloning
         self.content = (content.clone() as! MD2EntityType)
+        
+        // Check all observed properties
+        checkAllAttributesForObserver()
+        
+        // Update values in map
+        for (attribute, _) in observedAttributes {
+            observedAttributes[attribute] = self.content?.get(attribute)
+        }
     }
     
     func registerObservedOnChange(attribute: String) {
         // Add observed attribute and remember current value
-        observedAttributes[attribute] = self.content.get(attribute)
+        observedAttributes[attribute] = self.content?.get(attribute)
     }
     
     func unregisterObservedOnChange(attribute: String) {
@@ -47,13 +69,18 @@ class ComplaintContentProvider: ContentProviderType {
     }
     
     func setValue(attribute: String, value: MD2Type) {
-        // Check is attribute is observed and fire event accordingly
+        // Update content
+        let newValue = value.clone()
+        if content != nil {
+            println("[ComplaintContentProvider] Update id=\(content!.internalId.toString()) from '\(content!.get(attribute)!.toString())' to '\(newValue.toString())'")
+        }
+        content?.set(attribute, value: newValue)
+        
+        // Check if attribute is observed and fire event accordingly
         checkForObserver(attribute, newValue: value)
         
-        // Update value in entity and map
-        let newValue = value.clone()
+        // Update value in map
         observedAttributes[attribute] = newValue
-        content.set(attribute, value: newValue)
     }
     
     func checkForObserver(attribute: String, newValue: MD2Type) {
@@ -64,8 +91,10 @@ class ComplaintContentProvider: ContentProviderType {
     }
     
     func checkAllAttributesForObserver() {
-        for (attribute, _) in observedAttributes {
-            checkForObserver(attribute, newValue: content.get(attribute)!)
+        if let _ = content {
+            for (attribute, _) in observedAttributes {
+                checkForObserver(attribute, newValue: content!.get(attribute)!)
+            }
         }
     }
     
@@ -75,15 +104,30 @@ class ComplaintContentProvider: ContentProviderType {
     }
     
     func load() {
-        // TODO
+        if let _ = content {
+            println("LOAD entity \(content!.internalId.toString())")
+            let query = Query()
+            query.addPredicate("internalId", value: content!.internalId.toString())
+            content = store.query(query)
+        }
     }
     
     func save() {
-        // TODO
+        if let _ = content {
+            println("SAVE entity \(content!.internalId.toString())")
+            store.put(content!)
+        }
     }
     
     func remove() {
-        // TODO where to get internalId from?
+        if let _ = content {
+            println("REMOVE entity \(content!.internalId.toString())")
+            store.remove(content!.internalId)
+        }
+    }
+    
+    func registerAttributeContentProvider(attribute: String, contentProvider: ContentProviderType) {
+        attributeContentProviders[attribute] = contentProvider
     }
     
 }

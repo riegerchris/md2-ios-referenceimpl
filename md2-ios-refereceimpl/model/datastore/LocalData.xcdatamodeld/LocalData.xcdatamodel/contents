@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14C109" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Address" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="internalId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="myCity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="myCountry" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="myPostalCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="myStreet" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="myStreetNo" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Complaint" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="descriptions" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="feedback" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="internalId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="loc" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Address" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="Complaint" positionX="-344" positionY="18" width="128" height="120"/>
+    </elements>
+</model>

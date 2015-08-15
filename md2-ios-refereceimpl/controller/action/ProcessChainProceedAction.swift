@@ -8,31 +8,21 @@
 
 class ProcessChainProceedAction: ActionType {
     
-    let actionSignature: MD2String
+    let actionSignature: String
+
+    let processChain: ProcessChain
     
-    let widgetRegistry: WidgetRegistry
-    
-    let contentProviderRegistry: ContentProviderRegistry
-    
-    let viewManager: ViewManager
-    
-    let dataMapper: DataMapper
-    
-    init(actionSignature: MD2String, widgetRegistry: WidgetRegistry, contentProviderRegistry: ContentProviderRegistry, viewManager: ViewManager, dataMapper: DataMapper) {
-        
+    init(actionSignature: String, processChain: ProcessChain) {
         self.actionSignature = actionSignature
-        self.widgetRegistry = widgetRegistry
-        self.contentProviderRegistry = contentProviderRegistry
-        self.viewManager = viewManager
-        self.dataMapper = dataMapper
+        self.processChain = processChain
     }
     
     func execute() {
-        // TODO
+        processChain.proceed()
     }
     
     func equals(anotherAction: ActionType) -> Bool {
-        return actionSignature.equals(anotherAction.actionSignature)
+        return actionSignature == anotherAction.actionSignature
     }
     
 }

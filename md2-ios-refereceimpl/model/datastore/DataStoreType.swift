@@ -8,10 +8,10 @@
 
 protocol DataStoreType {
     
-    func query(query: Query) -> MD2EntityType
+    func query(query: Query) -> MD2EntityType?
     
     func put(entity: MD2EntityType)
     
-    func remove(internalId: Int)
+    func remove(internalId: MD2Integer)
     
 }

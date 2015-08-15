@@ -10,6 +10,12 @@ import Foundation
 
 class MD2Date: MD2TemporalType {
     
+    var value: Any? {
+        get {
+            return platformValue
+        }
+    }
+    
     let stringFormat = "yyyy-MM-dd"
 
     var platformValue: NSDate?
@@ -18,12 +24,18 @@ class MD2Date: MD2TemporalType {
         // Nothing to initialize
     }
     
-    init(_ value: String) {
-        var dateFormatter = NSDateFormatter()
-        dateFormatter.timeZone = NSTimeZone.defaultTimeZone()
-        dateFormatter.dateFormat = stringFormat
-        
-        platformValue = dateFormatter.dateFromString(value)
+    required init(_ value: MD2String) {
+        if value.isSet() && !value.equals(MD2String("")) {
+            var dateFormatter = NSDateFormatter()
+            dateFormatter.timeZone = NSTimeZone.defaultTimeZone()
+            dateFormatter.dateFormat = stringFormat
+            
+            platformValue = dateFormatter.dateFromString(value.platformValue!)
+        }
+    }
+    
+    convenience init(_ value: String) {
+        self.init(MD2String(value))
     }
     
     init(_ md2Date: MD2Date) {

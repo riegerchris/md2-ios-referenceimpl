@@ -8,9 +8,23 @@
 
 class ComplaintStatus: MD2EnumType {
     
-    typealias T = ComplaintStatus.EnumType
+    var value: Any? {
+        get {
+            return platformValue
+        }
+    }
     
     var platformValue: ComplaintStatus.EnumType?
+    
+    init() {
+        // Nothing to initialize
+    }
+    
+    func setValueFromString(value: MD2String) {
+        if value.isSet() && !value.equals(MD2String("")) {
+            platformValue = EnumType.fromRawValue(value.toString())
+        }
+    }
     
     func clone() -> MD2Type {
         var newComplaintStatus = ComplaintStatus()
@@ -20,9 +34,9 @@ class ComplaintStatus: MD2EnumType {
     
     func toString() -> String {
         if let _ = platformValue {
-            return platformValue!.rawValue
+            return "ComplaintStatus: [" + platformValue!.rawValue + "]"
         } else {
-            return ""
+            return "ComplaintStatus: []"
         }
     }
     
@@ -39,6 +53,16 @@ class ComplaintStatus: MD2EnumType {
         case Elem4 = "Complaint has been handled by the administration"
         
         static let allValues = [Elem1, Elem2, Elem3, Elem4]
+        
+        static func fromRawValue(value: String) -> EnumType? {
+            switch value {
+            case "User is filling out complaint": return Elem1
+            case "Complaint is sent to administration": return Elem2
+            case "Complaint is in process": return Elem3
+            case "Complaint has been handled by the administration": return Elem4
+            default: return nil
+            }
+        }
     }
     
     func getAllValues() -> Array<String> {
@@ -48,4 +72,13 @@ class ComplaintStatus: MD2EnumType {
         }
         return array
     }
+    
+    func getValue() -> String {
+        if let _ = platformValue {
+            return platformValue!.rawValue
+        } else {
+            return ""
+        }
+    }
+    
 }

@@ -12,11 +12,15 @@ class OptionWidget: NSObject, SingleWidgetType, WidgetAssistedType, UIPickerView
     
     let widgetId: WidgetMapping
     
-    var value: MD2Type?
+    var value: MD2Type {
+        didSet {
+            updateElement()
+        }
+    }
     
     var dimensions: Dimension?
     
-    var optionElement: UITextField?
+    var widgetElement: UITextField
     
     var label: MD2String?
     
@@ -28,9 +32,10 @@ class OptionWidget: NSObject, SingleWidgetType, WidgetAssistedType, UIPickerView
     
     var width: Float?
     
-    init(widgetId: WidgetMapping, initialValue: MD2Type) {
+    init(widgetId: WidgetMapping) {
         self.widgetId = widgetId
-        self.value = initialValue
+        self.value = MD2String()
+        self.widgetElement = UITextField()
     }
     
     func render(view: UIView, controller: UIViewController) {
@@ -40,28 +45,25 @@ class OptionWidget: NSObject, SingleWidgetType, WidgetAssistedType, UIPickerView
         }
         
         // Text field to display result
-        let textField = UITextField()
-        textField.frame = UIUtil.dimensionToCGRect(dimensions!)
-        textField.placeholder = ViewConfig.OPTION_WIDGET_PLACEHOLDER
-        //textField.text = value?.toString()
+        widgetElement.frame = UIUtil.dimensionToCGRect(dimensions!)
+        widgetElement.placeholder = ViewConfig.OPTION_WIDGET_PLACEHOLDER
         
-        textField.tag = widgetId.rawValue
-        textField.addTarget(OnChangeHandler.instance, action: "fire:", forControlEvents: UIControlEvents.ValueChanged)
+        widgetElement.tag = widgetId.rawValue
+        widgetElement.addTarget(self, action: "onUpdate", forControlEvents: UIControlEvents.ValueChanged)
         
         // Set styling
-        textField.backgroundColor = UIColor(rgba: "#fff")
-        textField.borderStyle = UITextBorderStyle.RoundedRect
-        textField.font = UIFont(name: ViewConfig.FONT_NAME.rawValue, size: CGFloat(ViewConfig.FONT_SIZE))
+        widgetElement.backgroundColor = UIColor(rgba: "#fff")
+        widgetElement.borderStyle = UITextBorderStyle.RoundedRect
+        widgetElement.font = UIFont(name: ViewConfig.FONT_NAME.rawValue, size: CGFloat(ViewConfig.FONT_SIZE))
         
         // Add to surrounding view
-        view.addSubview(textField)
-        self.optionElement = textField
-
+        view.addSubview(widgetElement)
+        
         // Picker to select value
         picker.delegate = self
         picker.dataSource = self
         picker.backgroundColor = UIColor(rgba: "#dfdfdf")
-        self.optionElement!.inputView = picker
+        self.widgetElement.inputView = picker
         
         // Add tap recognizer on picker field manually
         let tapRecognizer = UITapGestureRecognizer()
@@ -69,7 +71,7 @@ class OptionWidget: NSObject, SingleWidgetType, WidgetAssistedType, UIPickerView
         tapRecognizer.delegate = self
         self.picker.addGestureRecognizer(tapRecognizer)
         
-         // TODO preselect value
+        updateElement()
     }
     
     func calculateDimensions(bounds: Dimension) -> Dimension {
@@ -102,14 +104,14 @@ class OptionWidget: NSObject, SingleWidgetType, WidgetAssistedType, UIPickerView
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // Update text field on scrolling
-        self.optionElement!.text = options![row]
+        self.widgetElement.text = options![row]
     }
     
     // Action method to capture single click on picker view element
     func pickerViewTapped() {
-        self.optionElement!.text = options![self.picker.selectedRowInComponent(0)]
+        self.widgetElement.text = options![self.picker.selectedRowInComponent(0)]
         // Hide picker element
-        self.optionElement!.resignFirstResponder()
+        self.widgetElement.resignFirstResponder()
     }
 
     // Some other delegate tries to get the tap first -> allow simultaneous processing
@@ -118,11 +120,25 @@ class OptionWidget: NSObject, SingleWidgetType, WidgetAssistedType, UIPickerView
     }
     
     func enable() {
-        self.optionElement?.enabled = true
+        self.widgetElement.enabled = true
     }
     
     func disable() {
-        self.optionElement?.enabled = false
+        self.widgetElement.enabled = false
+    }
+    
+    // Event from itself
+    func onUpdate() {
+        self.value = MD2String(self.widgetElement.text)
+        WidgetRegistry.instance.getWidget(widgetId)?.setValue(self.value)
+    }
+    
+    func updateElement() {
+        self.widgetElement.text = value.toString()
+        
+        var defaultRowIndex = find(options!, self.value.toString())
+        if(defaultRowIndex == nil) { defaultRowIndex = 0 }
+        self.picker.selectRow(defaultRowIndex!, inComponent: 0, animated: false)
     }
     
 }

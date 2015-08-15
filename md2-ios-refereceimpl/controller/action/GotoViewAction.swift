@@ -8,34 +8,21 @@
 
 class GotoViewAction: ActionType {
     
-    let actionSignature: MD2String
-    
-    let widgetRegistry: WidgetRegistry
-    
-    let contentProviderRegistry: ContentProviderRegistry
-    
-    let viewManager: ViewManager
-    
-    let dataMapper: DataMapper
+    let actionSignature: String
     
     let targetView: WidgetMapping
     
-    init(actionSignature: MD2String, widgetRegistry: WidgetRegistry, contentProviderRegistry: ContentProviderRegistry, viewManager: ViewManager, dataMapper: DataMapper, targetView: WidgetMapping) {
-        
+    init(actionSignature: String, targetView: WidgetMapping) {
         self.actionSignature = actionSignature
-        self.widgetRegistry = widgetRegistry
-        self.contentProviderRegistry = contentProviderRegistry
-        self.viewManager = viewManager
-        self.dataMapper = dataMapper
         self.targetView = targetView
     }
     
     func execute() {
-        viewManager.goto(MD2String(targetView.description))
+        ViewManager.instance.goto(targetView.description)
     }
     
     func equals(anotherAction: ActionType) -> Bool {
-        return actionSignature.equals(anotherAction.actionSignature)
+        return actionSignature == anotherAction.actionSignature
     }
 
 }

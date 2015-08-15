@@ -9,7 +9,7 @@
 class ViewConfig {
     
     // Distance between elements in pixels
-    static let GUTTER: Float = 10.0
+    static let GUTTER: Float = 5.0
     
     // Font defaults
     static let FONT_NAME: WidgetTextStyle = WidgetTextStyle.Normal
@@ -30,13 +30,13 @@ class ViewConfig {
     static let TOOLTIP_WIDTH: Float = 35.0
     
     // Default dimensions
-    static let DIMENSION_TEXTFIELD_HEIGHT: Float = 60.0
-    static let DIMENSION_LABEL_HEIGHT: Float = 60.0
+    static let DIMENSION_TEXTFIELD_HEIGHT: Float = 50.0
+    static let DIMENSION_LABEL_HEIGHT: Float = 50.0
     static let DIMENSION_SPACER_HEIGHT: Float = 50.0
-    static let DIMENSION_BUTTON_HEIGHT: Float = 60.0
-    static let DIMENSION_DATE_TIME_PICKER_HEIGHT: Float = 60.0
-    static let DIMENSION_OPTION_HEIGHT: Float = 60.0
-    static let DIMENSION_SWITCH_HEIGHT: Float = 60.0
-    static let DIMENSION_IMAGE_HEIGHT: Float = 170.0
+    static let DIMENSION_BUTTON_HEIGHT: Float = 50.0
+    static let DIMENSION_DATE_TIME_PICKER_HEIGHT: Float = 50.0
+    static let DIMENSION_OPTION_HEIGHT: Float = 50.0
+    static let DIMENSION_SWITCH_HEIGHT: Float = 50.0
+    static let DIMENSION_IMAGE_HEIGHT: Float = 150.0
     
 }

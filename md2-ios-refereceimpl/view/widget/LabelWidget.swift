@@ -12,11 +12,15 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
     
     let widgetId: WidgetMapping
     
-    var value: MD2Type? = MD2String("")
+    var value: MD2Type {
+        didSet {
+            updateElement()
+        }
+    }
     
     var dimensions: Dimension?
     
-    var labelElement: UILabel?
+    var widgetElement: UILabel
     
     var color: MD2String?
     
@@ -26,9 +30,10 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
     
     var width: Float?
     
-    init(widgetId: WidgetMapping, initialValue: MD2Type) {
+    init(widgetId: WidgetMapping) {
         self.widgetId = widgetId
-        self.value = initialValue
+        self.value = MD2String()
+        self.widgetElement = UILabel()
     }
     
     func render(view: UIView, controller: UIViewController) {
@@ -37,10 +42,9 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
             return
         }
         
-        // Create and set value
-        let label = UILabel()
-        label.text = value?.toString()
-        label.frame = UIUtil.dimensionToCGRect(dimensions!)
+        // Set value
+        updateElement()
+        widgetElement.frame = UIUtil.dimensionToCGRect(dimensions!)
         
         // Set default styles
         //label.textAlignment = .Center
@@ -48,14 +52,13 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
         
         // Set custom styles
         if color?.isSet() == true {
-            label.textColor = UIColor(rgba: color!.platformValue!)
+            widgetElement.textColor = UIColor(rgba: color!.platformValue!)
         }
         
-        label.font = UIFont(name: textStyle.rawValue, size: CGFloat(Float(ViewConfig.FONT_SIZE) * fontSize!.platformValue!))
+        widgetElement.font = UIFont(name: textStyle.rawValue, size: CGFloat(Float(ViewConfig.FONT_SIZE) * fontSize!.platformValue!))
         
         // Add to surrounding view
-        view.addSubview(label)
-        self.labelElement = label
+        view.addSubview(widgetElement)
     }
     
     func calculateDimensions(bounds: Dimension) -> Dimension {
@@ -72,11 +75,15 @@ class LabelWidget: SingleWidgetType, WidgetStyleType {
     }
     
     func enable() {
-        self.labelElement?.enabled = true
+        self.widgetElement.enabled = true
     }
     
     func disable() {
-        self.labelElement?.enabled = false
+        self.widgetElement.enabled = false
+    }
+    
+    func updateElement() {
+        self.widgetElement.text = value.toString()
     }
 
 }

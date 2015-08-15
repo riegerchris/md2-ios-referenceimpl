@@ -12,13 +12,17 @@ class ButtonWidget: SingleWidgetType, WidgetStyleType {
     
     let widgetId: WidgetMapping
     
-    var value: MD2Type? = MD2String("")
+    var value: MD2Type {
+        didSet {
+            updateElement()
+        }
+    }
     
     var dimensions: Dimension?
     
     var buttonType: UIButtonType = UIButtonType.System
     
-    var buttonElement: UIButton?
+    var widgetElement: UIButton?
     
     var color: MD2String?
     
@@ -28,9 +32,9 @@ class ButtonWidget: SingleWidgetType, WidgetStyleType {
     
     var width: Float?
     
-    init(widgetId: WidgetMapping, initialValue: MD2Type) {
+    init(widgetId: WidgetMapping) {
         self.widgetId = widgetId
-        self.value = initialValue
+        self.value = MD2String()
     }
     
     func render(view: UIView, controller: UIViewController) {
@@ -61,38 +65,38 @@ class ButtonWidget: SingleWidgetType, WidgetStyleType {
     }
     
     func enable() {
-        self.buttonElement?.enabled = true
+        self.widgetElement?.enabled = true
     }
     
     func disable() {
-        self.buttonElement?.enabled = false
+        self.widgetElement?.enabled = false
     }
     
     func renderSystemButton(view: UIView) {
         // Create and set value
-        let button = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-        button.frame = UIUtil.dimensionToCGRect(dimensions!)
-        button.setTitle(self.value?.toString(), forState: .Normal)
-        button.tag = widgetId.rawValue
-        button.addTarget(OnTouchHandler.instance, action: "fire:", forControlEvents: UIControlEvents.TouchUpInside)
+        widgetElement = (UIButton.buttonWithType(UIButtonType.System) as! UIButton)
+        widgetElement!.frame = UIUtil.dimensionToCGRect(dimensions!)
+        updateElement()
+        
+        widgetElement!.tag = widgetId.rawValue
+        widgetElement!.addTarget(OnClickHandler.instance, action: "fire:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // Set default styles
-        button.layer.borderWidth = 1
-        button.layer.cornerRadius = 15
-        button.titleLabel!.textAlignment=NSTextAlignment.Center
+        widgetElement!.layer.borderWidth = 1
+        widgetElement!.layer.cornerRadius = 15
+        widgetElement!.titleLabel!.textAlignment=NSTextAlignment.Center
         
         // Set custom styles
         if color?.isSet() == true {
-            button.tintColor = UIColor(rgba: color!.platformValue!)
+            widgetElement!.tintColor = UIColor(rgba: color!.platformValue!)
         }
         
         // Set more defaults
-        button.layer.borderColor = button.tintColor?.CGColor
-        button.titleLabel!.font = UIFont(name: textStyle.rawValue, size: CGFloat(Float(ViewConfig.FONT_SIZE) * fontSize!.platformValue!))
+        widgetElement!.layer.borderColor = widgetElement!.tintColor?.CGColor
+        widgetElement!.titleLabel!.font = UIFont(name: textStyle.rawValue, size: CGFloat(Float(ViewConfig.FONT_SIZE) * fontSize!.platformValue!))
         
         // Add to surrounding view
-        view.addSubview(button)
-        self.buttonElement = button
+        view.addSubview(widgetElement!)
     }
     
     func renderInfoButton(view: UIView) {
@@ -105,7 +109,10 @@ class ButtonWidget: SingleWidgetType, WidgetStyleType {
         
         // Add to surrounding view
         view.addSubview(button)
-        self.buttonElement = button
+        self.widgetElement = button
     }
     
+    func updateElement() {
+        widgetElement?.setTitle(self.value.toString(), forState: .Normal)
+    }
 }

@@ -8,34 +8,21 @@
 
 class NewObjectAction: ActionType {
     
-    let actionSignature: MD2String
-    
-    let widgetRegistry: WidgetRegistry
-    
-    let contentProviderRegistry: ContentProviderRegistry
-    
-    let viewManager: ViewManager
-    
-    let dataMapper: DataMapper
+    let actionSignature: String
     
     let contentProvider: ContentProviderType
     
-    init(actionSignature: MD2String, widgetRegistry: WidgetRegistry, contentProviderRegistry: ContentProviderRegistry, viewManager: ViewManager, dataMapper: DataMapper, contentProvider: ContentProviderType) {
-        
+    init(actionSignature: String, contentProvider: ContentProviderType) {
         self.actionSignature = actionSignature
-        self.widgetRegistry = widgetRegistry
-        self.contentProviderRegistry = contentProviderRegistry
-        self.viewManager = viewManager
-        self.dataMapper = dataMapper
         self.contentProvider = contentProvider
     }
     
     func execute() {
-        // TODO
+        contentProvider.setContent()
     }
     
     func equals(anotherAction: ActionType) -> Bool {
-        return actionSignature.equals(anotherAction.actionSignature)
+        return actionSignature == anotherAction.actionSignature
     }
     
 }
