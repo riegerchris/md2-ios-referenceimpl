@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.makeKeyAndVisible()
    
         // Initialize MD2 application
-        var md2Controller = Controller()
+        var md2Controller = MD2Controller()
         md2Controller.run(window!)
         
         return true
