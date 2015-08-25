@@ -1,23 +1,22 @@
 //
-//  MD2WorkflowEvent.swift
-//  md2-ios-refereceimpl
+//  WorkflowEvent.swift
 //
-//  Created by Christoph Rieger on 13.08.15.
-//  Copyright (c) 2015 Christoph Rieger. All rights reserved.
+//  Generated code by class 'IOSWorkflowEvent' on 26.08.2015
+//
+// 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
 
-// Make visible to Objective-C to allow use as Dictionary key (e.g. in WorkflowEventHandler)
+// Make visible to Objective-C to allow use as Dictionary key (e.g. in MD2WorkflowEventHandler)
 @objc
 enum MD2WorkflowEvent: Int {
-    // Pattern: WorkflowElement_EventName
-    case LocationDetection_DoneEvent = 1
-    case LocationDetection_CancelWorkflowEvent = 2
+	case DoneEvent = 1
+	case CancelWorkflowEvent = 2
     
     var description: String {
         switch self {
-        case .LocationDetection_DoneEvent: return "LocationDetection_DoneEvent"
-        case .LocationDetection_CancelWorkflowEvent: return "LocationDetection_CancelWorkflowEvent"
-        default: return "NotFound"
+        case .DoneEvent: return "DoneEvent"
+        case .CancelWorkflowEvent: return "CancelWorkflowEvent"
+    	default: return "NotFound"
         }
     }
 }

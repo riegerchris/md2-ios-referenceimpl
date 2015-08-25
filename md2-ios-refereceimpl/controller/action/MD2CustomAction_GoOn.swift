@@ -1,17 +1,22 @@
 //
-//  MD2CustomAction_GoOn.swift
-//  md2-ios-refereceimpl
+//  MD2CustomAction_LocationDetection_GoOn.swift
 //
-//  Created by Christoph Rieger on 13.08.15.
-//  Copyright (c) 2015 Christoph Rieger. All rights reserved.
+//  Generated code by class 'IOSCustomAction' on 26.08.2015
+//
+// 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015
 //
 
 class MD2CustomAction_GoOn: MD2ActionType {
     
-    let actionSignature: String = "MD2CustomAction_GoOn"
+    let actionSignature: String = "MD2CustomAction_LocationDetection_GoOn"
     
     func execute() {
-        let action1 = MD2DisplayMessageAction(actionSignature: actionSignature + "__1", message: "Why the hell have you visited " + MD2WidgetRegistry.instance.getWidget(MD2WidgetMapping.LocationDetectionView_CityValue)!.value.toString() + "???")
+        // Bindings/ Mappings / Call action / Set content provider / Conditions
+        
+        let codeFragment1 = MD2DisplayMessageAction(actionSignature: "MD2CustomAction_LocationDetection_GoOn_1",
+            message: "Why the hell have you visited " + MD2WidgetRegistry.instance.getWidget(MD2WidgetMapping.LocationDetectionView_AddressData___ContainercityValue_cityValue)!.value.toString() + "???")
+        codeFragment1.execute()
+        
     }
     
     func equals(anotherAction: MD2ActionType) -> Bool {

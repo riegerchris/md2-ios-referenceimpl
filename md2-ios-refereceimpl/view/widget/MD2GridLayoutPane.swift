@@ -77,11 +77,13 @@ class MD2GridLayoutPane: MD2LayoutType {
                     width: columnWidth,
                     height: rowHeight)
                 
-                // println(widgets[(currentRow * columns!.platformValue!) + currentColumn].widgetId.description + ": " + subDimensions.toString())
-                let acceptedDimension = widgets[(currentRow * columns!.platformValue!) + currentColumn].calculateDimensions(subDimensions)
+                // Avoid problems when rows/columns are not completely filled
+                if (currentRow * columns!.platformValue!) + currentColumn < widgets.count {
+                    let acceptedDimension = widgets[(currentRow * columns!.platformValue!) + currentColumn].calculateDimensions(subDimensions)
                 
-                if acceptedDimension.height > maxHeight {
-                    maxHeight = acceptedDimension.height
+                    if acceptedDimension.height > maxHeight {
+                        maxHeight = acceptedDimension.height
+                    }
                 }
             }
             
