@@ -14,7 +14,7 @@ class MD2NotNullValidator: MD2ValidatorType {
     
     var defaultMessage: MD2String = MD2String("This value must not be empty!")
     
-    init(identifier: MD2String, message: () -> MD2String) {
+    init(identifier: MD2String, message: (() -> MD2String)?) {
         self.identifier = identifier
         self.message = message
     }

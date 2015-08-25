@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class MD2RegExValidator {
+class MD2RegExValidator: MD2ValidatorType {
     
     let identifier: MD2String
     
@@ -20,7 +20,7 @@ class MD2RegExValidator {
     
     let regEx: MD2RegEx
     
-    init(identifier: MD2String, message: () -> MD2String, regEx: MD2String) {
+    init(identifier: MD2String, message: (() -> MD2String)?, regEx: MD2String) {
         self.identifier = identifier
         self.message = message
         self.regEx = MD2RegEx(pattern: regEx)

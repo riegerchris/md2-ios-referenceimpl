@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class MD2DateTimeRangeValidator {
+class MD2DateTimeRangeValidator: MD2ValidatorType {
     
     let identifier: MD2String
     
@@ -22,7 +22,7 @@ class MD2DateTimeRangeValidator {
     
     let max: MD2DateTime
     
-    init(identifier: MD2String, message: () -> MD2String, min: MD2DateTime, max: MD2DateTime) {
+    init(identifier: MD2String, message: (() -> MD2String)?, min: MD2DateTime, max: MD2DateTime) {
         self.identifier = identifier
         self.message = message
         self.min = min

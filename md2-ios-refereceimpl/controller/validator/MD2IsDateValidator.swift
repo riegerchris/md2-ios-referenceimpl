@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class MD2IsDateValidator {
+class MD2IsDateValidator: MD2ValidatorType {
     
     let identifier: MD2String
     
@@ -18,7 +18,7 @@ class MD2IsDateValidator {
         }
     }
     
-    init(identifier: MD2String, message: () -> MD2String) {
+    init(identifier: MD2String, message: (() -> MD2String)?) {
         self.identifier = identifier
         self.message = message
     }

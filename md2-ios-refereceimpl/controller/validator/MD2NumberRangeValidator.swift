@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class MD2NumberRangeValidator {
+class MD2NumberRangeValidator: MD2ValidatorType {
     
     let identifier: MD2String
     
@@ -22,7 +22,7 @@ class MD2NumberRangeValidator {
     
     let max: MD2Float
     
-    init(identifier: MD2String, message: () -> MD2String, min: MD2Float, max: MD2Float) {
+    init(identifier: MD2String, message: (() -> MD2String)?, min: MD2Float, max: MD2Float) {
         self.identifier = identifier
         self.message = message
         self.min = min
