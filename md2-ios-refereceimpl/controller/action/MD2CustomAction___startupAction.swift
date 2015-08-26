@@ -1,14 +1,14 @@
 //
-//  MD2CustomAction_LocationDetection___startupAction.swift
+//  MD2CustomAction___startupAction.swift
 //
 //  Generated code by class 'IOSCustomAction' on 26.08.2015
 //
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
 
-class MD2CustomAction_LocationDetection___startupAction: MD2ActionType {
+class MD2CustomAction___startupAction: MD2ActionType {
     
-    let actionSignature: String = "MD2CustomAction_LocationDetection___startupAction"
+    let actionSignature: String = "MD2CustomAction___startupAction"
     
     func execute() {
         // Bindings/ Mappings / Call action / Set content provider / Conditions

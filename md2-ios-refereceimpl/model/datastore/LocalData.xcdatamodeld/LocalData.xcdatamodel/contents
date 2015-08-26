@@ -5,7 +5,6 @@
         <attribute name="descriptions" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="feedback" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="picture" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="loc" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MD2Entity_Address" syncable="YES"/>
     </entity>
     <entity name="MD2Entity_Address" representedClassName="NSManagedObject" syncable="YES">

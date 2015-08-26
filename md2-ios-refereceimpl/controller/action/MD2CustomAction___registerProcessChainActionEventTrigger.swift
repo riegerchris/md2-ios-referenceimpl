@@ -1,5 +1,5 @@
 //
-//  MD2CustomAction_LocationDetection___registerProcessChainActionEventTrigger.swift
+//  MD2CustomAction___registerProcessChainActionEventTrigger.swift
 //
 //  Generated code by class 'IOSCustomAction' on 26.08.2015
 //
@@ -8,7 +8,7 @@
 
 class MD2CustomAction___registerProcessChainActionEventTrigger: MD2ActionType {
     
-    let actionSignature: String = "MD2CustomAction_LocationDetection___registerProcessChainActionEventTrigger"
+    let actionSignature: String = "MD2CustomAction___registerProcessChainActionEventTrigger"
     
     func execute() {
         // Bindings/ Mappings / Call action / Set content provider / Conditions

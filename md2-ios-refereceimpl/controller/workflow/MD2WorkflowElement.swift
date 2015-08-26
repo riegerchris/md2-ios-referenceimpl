@@ -10,7 +10,14 @@ class MD2WorkflowElement {
     
     let name: String
     
-    let defaultProcessChain: MD2ProcessChain
+    init(name2: String) {
+        self.name = name2
+    }
+    
+    func start() {}
+    func end() {}
+    
+/*    let defaultProcessChain: MD2ProcessChain
 
     var actions: Array<MD2ActionType> = []
     
@@ -53,5 +60,5 @@ class MD2WorkflowElement {
         println("[WorkflowElement] End workflow element '\(name)'")
         
         currentProcessChain?.end()
-    }
+    }*/
 }

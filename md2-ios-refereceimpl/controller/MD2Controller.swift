@@ -32,8 +32,8 @@ class MD2Controller {
         widgetRegistry.add(MD2WidgetWrapper(widget: locationDetectionView_TitleLbl))
         
         
-        let locationDetectionView_Spacer370713 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		locationDetectionView.addWidget(locationDetectionView_Spacer370713)
+        let locationDetectionView_Spacer403256 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
+        		locationDetectionView.addWidget(locationDetectionView_Spacer403256)
         
         
         let locationDetectionView_AddressData = MD2GridLayoutPane(widgetId: MD2WidgetMapping.LocationDetectionView_AddressData)
@@ -137,9 +137,9 @@ class MD2Controller {
         
         
         
-        let locationDetectionView_AddressData_Spacer34895 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		locationDetectionView_AddressData_Spacer34895.width = Float(1/100 * 50)
-        		locationDetectionView_AddressData.addWidget(locationDetectionView_AddressData_Spacer34895)
+        let locationDetectionView_AddressData_Spacer247110 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
+        		locationDetectionView_AddressData_Spacer247110.width = Float(1/100 * 50)
+        		locationDetectionView_AddressData.addWidget(locationDetectionView_AddressData_Spacer247110)
         
         
         let locationDetectionView_AddressData___ContainercountryValue = MD2GridLayoutPane(widgetId: MD2WidgetMapping.LocationDetectionView_AddressData___ContainercountryValue)
@@ -166,14 +166,14 @@ class MD2Controller {
         
         
         
-        let locationDetectionView_AddressData_Spacer3554 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		locationDetectionView_AddressData_Spacer3554.width = Float(1/100 * 50)
-        		locationDetectionView_AddressData.addWidget(locationDetectionView_AddressData_Spacer3554)
+        let locationDetectionView_AddressData_Spacer713718 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
+        		locationDetectionView_AddressData_Spacer713718.width = Float(1/100 * 50)
+        		locationDetectionView_AddressData.addWidget(locationDetectionView_AddressData_Spacer713718)
         
         
-        let locationDetectionView_AddressData_Spacer759232 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		locationDetectionView_AddressData_Spacer759232.width = Float(1/100 * 50)
-        		locationDetectionView_AddressData.addWidget(locationDetectionView_AddressData_Spacer759232)
+        let locationDetectionView_AddressData_Spacer28150 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
+        		locationDetectionView_AddressData_Spacer28150.width = Float(1/100 * 50)
+        		locationDetectionView_AddressData.addWidget(locationDetectionView_AddressData_Spacer28150)
         
         
         let locationDetectionView_AddressData___ContainerlatitudeValue = MD2GridLayoutPane(widgetId: MD2WidgetMapping.LocationDetectionView_AddressData___ContainerlatitudeValue)
@@ -238,8 +238,8 @@ class MD2Controller {
         
         
         
-        let locationDetectionView_Spacer551242 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		locationDetectionView.addWidget(locationDetectionView_Spacer551242)
+        let locationDetectionView_Spacer236853 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
+        		locationDetectionView.addWidget(locationDetectionView_Spacer236853)
         
         
         let locationDetectionView_Navbar = MD2GridLayoutPane(widgetId: MD2WidgetMapping.LocationDetectionView_Navbar)
@@ -247,9 +247,9 @@ class MD2Controller {
         locationDetectionView_Navbar.rows = MD2Integer(2)
         locationDetectionView_Navbar.width = Float(1/100 * 100)
         locationDetectionView.addWidget(locationDetectionView_Navbar)
-        let locationDetectionView_Navbar_Spacer390321 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		locationDetectionView_Navbar_Spacer390321.width = Float(1/100 * 34)
-        		locationDetectionView_Navbar.addWidget(locationDetectionView_Navbar_Spacer390321)
+        let locationDetectionView_Navbar_Spacer319101 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
+        		locationDetectionView_Navbar_Spacer319101.width = Float(1/100 * 34)
+        		locationDetectionView_Navbar.addWidget(locationDetectionView_Navbar_Spacer319101)
         
         
         let locationDetectionView_Navbar_DetectLocationBtn = MD2LabelWidget(widgetId: MD2WidgetMapping.LocationDetectionView_Navbar_DetectLocationBtn)
@@ -263,9 +263,9 @@ class MD2Controller {
         widgetRegistry.add(wrapper_locationDetectionView_Navbar_DetectLocationBtn)
         
         
-        let locationDetectionView_Navbar_Spacer840931 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		locationDetectionView_Navbar_Spacer840931.width = Float(1/100 * 33)
-        		locationDetectionView_Navbar.addWidget(locationDetectionView_Navbar_Spacer840931)
+        let locationDetectionView_Navbar_Spacer85038 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
+        		locationDetectionView_Navbar_Spacer85038.width = Float(1/100 * 33)
+        		locationDetectionView_Navbar.addWidget(locationDetectionView_Navbar_Spacer85038)
         
         
         let locationDetectionView_Navbar_PreviousDummy = MD2LabelWidget(widgetId: MD2WidgetMapping.LocationDetectionView_Navbar_PreviousDummy)
@@ -388,14 +388,14 @@ class MD2Controller {
         widgetRegistry.add(MD2WidgetWrapper(widget: locationVerifyView_AddressView_cityValue))
         
         
-        let locationVerifyView_AddressView_Spacer703473 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		locationVerifyView_AddressView_Spacer703473.width = Float(1/100 * 25)
-        		locationVerifyView_AddressView.addWidget(locationVerifyView_AddressView_Spacer703473)
+        let locationVerifyView_AddressView_Spacer781764 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
+        		locationVerifyView_AddressView_Spacer781764.width = Float(1/100 * 25)
+        		locationVerifyView_AddressView.addWidget(locationVerifyView_AddressView_Spacer781764)
         
         
-        let locationVerifyView_AddressView_Spacer982852 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		locationVerifyView_AddressView_Spacer982852.width = Float(1/100 * 25)
-        		locationVerifyView_AddressView.addWidget(locationVerifyView_AddressView_Spacer982852)
+        let locationVerifyView_AddressView_Spacer449526 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
+        		locationVerifyView_AddressView_Spacer449526.width = Float(1/100 * 25)
+        		locationVerifyView_AddressView.addWidget(locationVerifyView_AddressView_Spacer449526)
         
         
         let locationVerifyView_AddressView_countryLbl = MD2LabelWidget(widgetId: MD2WidgetMapping.LocationVerifyView_AddressView_countryLbl)
@@ -455,8 +455,8 @@ class MD2Controller {
         
         
         
-        let locationVerifyView_Spacer728980 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		locationVerifyView.addWidget(locationVerifyView_Spacer728980)
+        let locationVerifyView_Spacer437100 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
+        		locationVerifyView.addWidget(locationVerifyView_Spacer437100)
         
         
         let locationVerifyView_Buttons = MD2GridLayoutPane(widgetId: MD2WidgetMapping.LocationVerifyView_Buttons)

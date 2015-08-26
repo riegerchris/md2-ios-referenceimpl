@@ -22,7 +22,6 @@ class MD2Entity_Complaint: NSObject, MD2EntityType {
         containedTypes["descriptions"] = MD2String()
         containedTypes["feedback"] = MD2String()
         containedTypes["status"] = MD2Enum_ComplaintStatus()
-        containedTypes["picture"] = MD2String()
     }
     
     convenience init(md2Entity: MD2Entity_Complaint) {
@@ -41,8 +40,7 @@ class MD2Entity_Complaint: NSObject, MD2EntityType {
         return "(MD2Entity_Complaint: [loc: " + containedTypes["loc"]!.toString()
         + ", descriptions: " + containedTypes["descriptions"]!.toString()
         + ", feedback: " + containedTypes["feedback"]!.toString()
-        + ", status: " + containedTypes["status"]!.toString()
-        + ", picture: " + containedTypes["picture"]!.toString() 
+        + ", status: " + containedTypes["status"]!.toString() 
 	        + "])"
     }
     
