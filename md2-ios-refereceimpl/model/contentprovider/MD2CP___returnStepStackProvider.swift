@@ -1,14 +1,14 @@
 //
-//  MD2CP_AddressProvider.swift
+//  MD2CP___returnStepStackProvider.swift
 //
 //  Generated code by class 'IOSContentProvider' on 27.08.2015
 //
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
 
-class MD2CP_AddressProvider: MD2ContentProviderType {
+class MD2CP___returnStepStackProvider: MD2ContentProviderType {
     
-    let contentType = MD2Entity_Address.self
+    let contentType = MD2Entity___ReturnStepStack.self
     
     var content: MD2EntityType? // managed entity instance
     
@@ -21,7 +21,7 @@ class MD2CP_AddressProvider: MD2ContentProviderType {
     var filter: MD2Filter?
     
     init() {
-        self.store = MD2LocalStoreFactory<MD2Entity_Address>().createStore()
+        self.store = MD2LocalStoreFactory<MD2Entity___ReturnStepStack>().createStore()
     }
     
     convenience init(content: MD2EntityType) {
@@ -76,7 +76,7 @@ class MD2CP_AddressProvider: MD2ContentProviderType {
         // Update content
         let newValue = value.clone()
         if content != nil {
-            println("[MD2CP_AddressProvider] Update id=\(content!.internalId.toString()) set \(attribute) to '\(newValue.toString())'")
+            println("[MD2CP___returnStepStackProvider] Update id=\(content!.internalId.toString()) set \(attribute) to '\(newValue.toString())'")
         }
         content?.set(attribute, value: newValue)
         

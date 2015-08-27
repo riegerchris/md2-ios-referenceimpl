@@ -1,7 +1,7 @@
 //
 //  MD2CustomAction___processChainActionEventTrigger_e88c73ce2748b8aeb8b5d149045638d5eebb94d1.swift
 //
-//  Generated code by class 'IOSCustomAction' on 26.08.2015
+//  Generated code by class 'IOSCustomAction' on 27.08.2015
 //
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //

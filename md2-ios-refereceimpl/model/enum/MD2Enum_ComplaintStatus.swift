@@ -1,7 +1,7 @@
 //
 //  MD2Enum_ComplaintStatus.swift
 //
-//  Generated code by class 'IOSEnum' on 26.08.2015
+//  Generated code by class 'IOSEnum' on 27.08.2015
 //
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
@@ -40,6 +40,18 @@ class MD2Enum_ComplaintStatus: MD2EnumType {
         }
     }
     
+    func toInt() -> Int {
+        if let _ = platformValue {
+            return platformValue!.toInt
+        } else {
+            return 0
+        }
+    }
+    
+    func setValueFromInt(value: Int) {
+        platformValue = EnumType.fromInt(value)
+    }
+    
     func equals(value : MD2Type) -> Bool {
         return platformValue != nil
                 && value is MD2Enum_ComplaintStatus
@@ -61,6 +73,25 @@ class MD2Enum_ComplaintStatus: MD2EnumType {
             	case "Complaint is in process": return Elem3
             	case "Complaint has been handled by the administration": return Elem4
             	default: return nil
+            }
+        }
+        
+        var toInt: Int {
+            switch self {
+            case Elem1: return 1
+            case Elem2: return 2
+            case Elem3: return 3
+            case Elem4: return 4
+            }
+        }
+        
+        static func fromInt(value: Int) -> EnumType? {
+            switch value {
+            case 1: return Elem1
+            case 2: return Elem2
+            case 3: return Elem3
+            case 4: return Elem4
+            default: return nil
             }
         }
     }

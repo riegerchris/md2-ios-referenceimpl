@@ -14,9 +14,12 @@ protocol MD2EnumType: MD2Type {
     
     var value: Any? { get }
     
-    // Deserialize
     func setValueFromString(value: MD2String)
     
     func getAllValues() -> Array<String>
     
+    // Serialization
+    func toInt() -> Int
+    
+    func setValueFromInt(value: Int)
 }

@@ -23,7 +23,9 @@ class MD2Integer: MD2NumericType {
     }
     
     init(_ value : Int){
-        platformValue = value
+        if value > 0 {
+            platformValue = value
+        }
     }
     
     required init(_ value: MD2String) {

@@ -1,7 +1,7 @@
 //
 //  MD2Entity___ReturnStepStack.swift
 //
-//  Generated code by class 'IOSEntity' on 26.08.2015
+//  Generated code by class 'IOSEntity' on 27.08.2015
 //
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
@@ -21,7 +21,7 @@ class MD2Entity___ReturnStepStack: NSObject, MD2EntityType {
         containedTypes["returnStep"] = MD2String()
         containedTypes["returnAndReverseStep"] = MD2String()
         containedTypes["returnAndProceedStep"] = MD2String()
-        containedTypes["tail"] = MD2Entity___ReturnStepStack()
+        containedTypes["tail"] = MD2String() //MD2Entity___ReturnStepStack()
     }
     
     convenience init(md2Entity: MD2Entity___ReturnStepStack) {
@@ -40,7 +40,7 @@ class MD2Entity___ReturnStepStack: NSObject, MD2EntityType {
         return "(MD2Entity___ReturnStepStack: [returnStep: " + containedTypes["returnStep"]!.toString()
         + ", returnAndReverseStep: " + containedTypes["returnAndReverseStep"]!.toString()
         + ", returnAndProceedStep: " + containedTypes["returnAndProceedStep"]!.toString()
-        + ", tail: " + containedTypes["tail"]!.toString() 
+        + ", tail: " + containedTypes["tail"]!.toString()
 	        + "])"
     }
     
