@@ -21,7 +21,7 @@ class MD2Entity___ReturnStepStack: NSObject, MD2EntityType {
         containedTypes["returnStep"] = MD2String()
         containedTypes["returnAndReverseStep"] = MD2String()
         containedTypes["returnAndProceedStep"] = MD2String()
-        containedTypes["tail"] = MD2String() //MD2Entity___ReturnStepStack()
+        containedTypes["tail"] = MD2String()
     }
     
     convenience init(md2Entity: MD2Entity___ReturnStepStack) {
@@ -37,10 +37,10 @@ class MD2Entity___ReturnStepStack: NSObject, MD2EntityType {
     }
     
     func toString() -> String {
-        return "(MD2Entity___ReturnStepStack: [returnStep: " + containedTypes["returnStep"]!.toString()
-        + ", returnAndReverseStep: " + containedTypes["returnAndReverseStep"]!.toString()
-        + ", returnAndProceedStep: " + containedTypes["returnAndProceedStep"]!.toString()
-        + ", tail: " + containedTypes["tail"]!.toString()
+    return "(MD2Entity___ReturnStepStack: [returnStep: " + containedTypes["returnStep"]!.toString()
+    + ", returnAndReverseStep: " + containedTypes["returnAndReverseStep"]!.toString()
+    + ", returnAndProceedStep: " + containedTypes["returnAndProceedStep"]!.toString()
+    + ", tail: " + containedTypes["tail"]!.toString() 
 	        + "])"
     }
     

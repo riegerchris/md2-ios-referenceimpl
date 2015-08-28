@@ -21,7 +21,7 @@ class MD2CP___processChainControllerStateProvider: MD2ContentProviderType {
     var filter: MD2Filter?
     
     init() {
-        self.store = MD2LocalStoreFactory<MD2Entity___ProcessChainControllerState>().createStore()
+    self.store = MD2LocalStoreFactory<MD2Entity___ProcessChainControllerState>().createStore()
     }
     
     convenience init(content: MD2EntityType) {

@@ -9,10 +9,10 @@
 class MD2RemoteStore<T: MD2EntityType>: MD2DataStoreType {
     
     // e.g. http://localhost:8080/CitizenApp.ios/service/address/
-    let entityPath: String
+    var entityPath: String = ""
     
-    init(entityPath: String) {
-        self.entityPath = entityPath
+    init() {
+        // Nothing to initialize
     }
     
     func query(query: MD2Query) -> MD2EntityType? {
@@ -23,7 +23,6 @@ class MD2RemoteStore<T: MD2EntityType>: MD2DataStoreType {
         let results = json["results"]
         if results.count > 0 {
             for (index: String, subJson: JSON) in results {
-                
                 return JSONToEntity(subJson, entity: T())
             }
         }

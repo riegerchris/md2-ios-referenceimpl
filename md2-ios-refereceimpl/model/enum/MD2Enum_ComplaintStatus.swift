@@ -78,20 +78,20 @@ class MD2Enum_ComplaintStatus: MD2EnumType {
         
         var toInt: Int {
             switch self {
-            case Elem1: return 1
-            case Elem2: return 2
-            case Elem3: return 3
-            case Elem4: return 4
+	            case Elem1: return 1
+	            case Elem2: return 2
+	            case Elem3: return 3
+	            case Elem4: return 4
             }
         }
         
         static func fromInt(value: Int) -> EnumType? {
             switch value {
-            case 1: return Elem1
-            case 2: return Elem2
-            case 3: return Elem3
-            case 4: return Elem4
-            default: return nil
+            	case 1: return Elem1
+            	case 2: return Elem2
+            	case 3: return Elem3
+            	case 4: return Elem4
+            	default: return nil
             }
         }
     }

@@ -21,7 +21,7 @@ class MD2CP___returnStepStackProvider: MD2ContentProviderType {
     var filter: MD2Filter?
     
     init() {
-        self.store = MD2LocalStoreFactory<MD2Entity___ReturnStepStack>().createStore()
+    self.store = MD2LocalStoreFactory<MD2Entity___ReturnStepStack>().createStore()
     }
     
     convenience init(content: MD2EntityType) {

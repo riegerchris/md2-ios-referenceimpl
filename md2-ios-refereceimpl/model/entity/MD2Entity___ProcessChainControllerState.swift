@@ -35,8 +35,8 @@ class MD2Entity___ProcessChainControllerState: NSObject, MD2EntityType {
     }
     
     func toString() -> String {
-        return "(MD2Entity___ProcessChainControllerState: [currentProcessChainStep: " + containedTypes["currentProcessChainStep"]!.toString()
-        + ", lastEventFired: " + containedTypes["lastEventFired"]!.toString() 
+    return "(MD2Entity___ProcessChainControllerState: [currentProcessChainStep: " + containedTypes["currentProcessChainStep"]!.toString()
+    + ", lastEventFired: " + containedTypes["lastEventFired"]!.toString() 
 	        + "])"
     }
     

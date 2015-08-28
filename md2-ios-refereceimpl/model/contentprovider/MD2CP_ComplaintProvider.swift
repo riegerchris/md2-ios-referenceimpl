@@ -21,7 +21,8 @@ class MD2CP_ComplaintProvider: MD2ContentProviderType {
     var filter: MD2Filter?
     
     init() {
-        self.store = MD2LocalStoreFactory<MD2Entity_Complaint>().createStore()
+    self.store = MD2RemoteStoreFactory<MD2Entity_Complaint>().createStore()
+    (self.store as! MD2RemoteStore<MD2Entity_Complaint>).entityPath = "http://192.168.2.138:8080/CitizenApp.backend/service/Complaint/"
     }
     
     convenience init(content: MD2EntityType) {

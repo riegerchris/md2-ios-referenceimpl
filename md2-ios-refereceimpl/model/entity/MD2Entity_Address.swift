@@ -40,13 +40,13 @@ class MD2Entity_Address: NSObject, MD2EntityType {
     }
     
     func toString() -> String {
-        return "(MD2Entity_Address: [myStreet: " + containedTypes["myStreet"]!.toString()
-        + ", myStreetNo: " + containedTypes["myStreetNo"]!.toString()
-        + ", myPostalCode: " + containedTypes["myPostalCode"]!.toString()
-        + ", myCity: " + containedTypes["myCity"]!.toString()
-        + ", myCountry: " + containedTypes["myCountry"]!.toString()
-        + ", myLatitude: " + containedTypes["myLatitude"]!.toString()
-        + ", myLongitude: " + containedTypes["myLongitude"]!.toString() 
+    return "(MD2Entity_Address: [myStreet: " + containedTypes["myStreet"]!.toString()
+    + ", myStreetNo: " + containedTypes["myStreetNo"]!.toString()
+    + ", myPostalCode: " + containedTypes["myPostalCode"]!.toString()
+    + ", myCity: " + containedTypes["myCity"]!.toString()
+    + ", myCountry: " + containedTypes["myCountry"]!.toString()
+    + ", myLatitude: " + containedTypes["myLatitude"]!.toString()
+    + ", myLongitude: " + containedTypes["myLongitude"]!.toString() 
 	        + "])"
     }
     

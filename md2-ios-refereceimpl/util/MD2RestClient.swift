@@ -38,7 +38,7 @@ class MD2RestClient: NSObject {
     }
     
     /* MARK SendSynchronousRequest will not be available in Swift2. Options:
-        1) Modify reference architecture to represent asynchronous calls (recommended to stop blocking the main thread!)
+        1) Modify reference architecture to allow asynchronous calls (recommended to also avoid blocking the main thread!)
         2) Use workarounds like MD2Util.syncFromAsync()
     */
     func makeHTTPGetRequestSync(path: String) -> JSON {
@@ -105,4 +105,14 @@ class MD2RestClient: NSObject {
         })
         task.resume()
     }
+    
+    func testModelVersion(version: String, basePath: String) -> Bool {
+        println(basePath + "md2_model_version/is_valid?version=" + version)
+        let result = makeHTTPGetRequestSync(basePath + "md2_model_version/is_valid?version=" + version)
+        
+        println(result["isValid"])
+        println( result["isValid"].bool == true)
+        return result["isValid"].bool == true
+    }
+    
 }
