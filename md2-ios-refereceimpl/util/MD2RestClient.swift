@@ -10,21 +10,30 @@
 
 import Foundation
 
+/**
+    A REST client for backend communication.
+    
+    For now, only JSON requests are supported.
+*/
 class MD2RestClient: NSObject {
     
+	/// Alias as simplification for responses
     typealias ServiceResponse = (JSON, NSError?) -> Void
     
+	/// Singleton instance of the REST client
     static let instance = MD2RestClient()
-        
-    static var baseURL = "http://api.randomuser.me/"
-        
-    func getRandomUser(onCompletion: (JSON) -> Void) {
-        let route = MD2RestClient.baseURL
-        makeHTTPGetRequest(route, onCompletion: { json, err in
-            onCompletion(json as JSON)
-        })
+    
+    /// Private initializer for the singleton instance
+    private init() {
+        // Nothing to initialize
     }
     
+    /**
+        Send an asnychronous GET request to the given path.
+        
+        :param: path The full URL of the requested resource.
+        :param: onCompletion The callback fuction to call after completing the request.
+    */
     func makeHTTPGetRequest(path: String, onCompletion: ServiceResponse) {
         let request = NSMutableURLRequest(URL: NSURL(string: path)!)
         
@@ -37,9 +46,16 @@ class MD2RestClient: NSObject {
         task.resume()
     }
     
-    /* MARK SendSynchronousRequest will not be available in Swift2. Options:
+    /**
+        Send a snychronous GET request to the given path.
+        
+        *Notice* SendSynchronousRequest function will not be available in Swift2. Options:
         1) Modify reference architecture to allow asynchronous calls (recommended to also avoid blocking the main thread!)
         2) Use workarounds like MD2Util.syncFromAsync()
+		
+        :param: path The full URL of the requested resource.
+
+        :returns: The JSON response or null if no response.
     */
     func makeHTTPGetRequestSync(path: String) -> JSON {
         let request = NSURLRequest(URL: NSURL(string: path)!)
@@ -55,6 +71,13 @@ class MD2RestClient: NSObject {
         return JSON(data: urlData!)
     }
     
+    /**
+        Send an asnychronous POST request to the given path.
+        
+        :param: path The full URL of the requested resource.
+        :param: body A key-value array which will be encoded as JSON and passed as request body.
+        :param: onCompletion The callback fuction to call after completing the request.
+    */
     func makeHTTPPostRequest(path: String, body: [String: AnyObject], onCompletion: ServiceResponse) {
         var err: NSError?
         let request = NSMutableURLRequest(URL: NSURL(string: path)!)
@@ -71,7 +94,14 @@ class MD2RestClient: NSObject {
         })
         task.resume()
     }
-    
+   
+    /**
+        Send an asnychronous PUT request to the given path.
+        
+        :param: path The full URL of the requested resource.
+        :param: body A key-value array which will be encoded as JSON and passed as request body.
+        :param: onCompletion The callback fuction to call after completing the request.
+    */
     func makeHTTPPutRequest(path: String, body: Dictionary<String, AnyObject>, onCompletion: ServiceResponse) {
         var err: NSError?
         let request = NSMutableURLRequest(URL: NSURL(string: path)!)
@@ -88,7 +118,14 @@ class MD2RestClient: NSObject {
         })
         task.resume()
     }
-    
+
+    /**
+        Send an asnychronous DELETE request to the given path.
+        
+        :param: path The full URL of the requested resource.
+        :param: body A key-value array which will be encoded as JSON and passed as request body.
+        :param: onCompletion The callback fuction to call after completing the request.
+    */
     func makeHTTPDeleteRequest(path: String, body: [String: AnyObject], onCompletion: ServiceResponse) {
         var err: NSError?
         let request = NSMutableURLRequest(URL: NSURL(string: path)!)
@@ -106,13 +143,20 @@ class MD2RestClient: NSObject {
         task.resume()
     }
     
+    /**
+        Test whether the model version of the app is supported by the backend server.
+        
+        Needs to be checked on startup of the app if there are remote content providers.
+        
+        :param: version The version of the app model
+        :param: basePath The base path of the remote server
+
+        :returns: Whether the model version is supported by the backend server or not.
+    */
     func testModelVersion(version: String, basePath: String) -> Bool {
-        println(basePath + "md2_model_version/is_valid?version=" + version)
         let result = makeHTTPGetRequestSync(basePath + "md2_model_version/is_valid?version=" + version)
         
-        println(result["isValid"])
-        println( result["isValid"].bool == true)
+        println("The model version was checked for validity: " + result["isValid"].stringValue)
         return result["isValid"].bool == true
     }
-    
 }
