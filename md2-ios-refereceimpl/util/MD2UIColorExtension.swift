@@ -13,11 +13,11 @@ import UIKit
 /// Extension to the UIColor class which allows setting a hex color as UIColor
 extension UIColor {
 
-	/**
-	Add a convenience initializer that takes the an rgba hex string and transforms it to a UIColor.
-	
-	:param: rgba The hex string
-	*/
+    /**
+    Add a convenience initializer that takes the an rgba hex string and transforms it to a UIColor.
+    
+    :param: rgba The hex string
+    */
     public convenience init(rgba: String) {
         var red:   CGFloat = 0.0
         var green: CGFloat = 0.0
