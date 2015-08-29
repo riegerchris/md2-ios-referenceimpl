@@ -6,11 +6,12 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
+/// Configuration values for the app's model
 class MD2ModelConfig {
     
-    // Error threshold to allow comparisons on floating point variables
+    /// Error threshold to allow comparisons on floating point variables
     static let FLOATING_ERROR: Float = 0.0000001
     
-    // The encoded whitespace for URLs
+    /// The URL encoded string for a whitespace character
     static let URL_WHITESPACE: String = "%20"
 }
