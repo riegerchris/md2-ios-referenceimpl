@@ -123,7 +123,7 @@ class MD2FlowLayoutPane: MD2LayoutType {
                     height: (bounds.height - (currentY - bounds.y)))
                 
                 let acceptedDimensions = widgets[currentElem].calculateDimensions(subDimensions)
-                
+
                 if maxWidth < acceptedDimensions.width {
                     maxWidth = acceptedDimensions.width
                 }

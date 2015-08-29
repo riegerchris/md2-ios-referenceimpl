@@ -26,7 +26,7 @@ class MD2ViewManager {
     var views: Dictionary<String, MD2ViewController> = [:]
     
     /// Singleton initializer
-    private func init() {
+    private init() {
         // Nothing to initialize
     }
     
