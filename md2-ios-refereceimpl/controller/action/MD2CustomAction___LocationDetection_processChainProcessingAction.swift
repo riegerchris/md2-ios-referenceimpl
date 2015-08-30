@@ -1,14 +1,14 @@
 //
-//  MD2CustomAction___processChainProcessingAction.swift
+//  MD2CustomAction___LocationDetection_processChainProcessingAction.swift
 //
-//  Generated code by class 'IOSCustomAction' on 27.08.2015
+//  Generated code by class 'IOSCustomAction' on 30.08.2015
 //
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
 
-class MD2CustomAction___processChainProcessingAction: MD2ActionType {
+class MD2CustomAction___LocationDetection_processChainProcessingAction: MD2ActionType {
     
-    let actionSignature: String = "MD2CustomAction___processChainProcessingAction"
+    let actionSignature: String = "MD2CustomAction___LocationDetection_processChainProcessingAction"
     
     func execute() {
         // Bindings/ Mappings / Call action / Set content provider / Conditions
@@ -23,11 +23,8 @@ class MD2CustomAction___processChainProcessingAction: MD2ActionType {
 			)
 					
 			
-			let codeFragment1_if_0_if_1 = MD2CustomAction___processChainExecuteStepAction()
+			let codeFragment1_if_0_if_1 = MD2CustomAction___LocationDetection_processChainExecuteStepAction()
 			codeFragment1_if_0_if_1.execute()
-			
-			let codeFragment1_if_0_if_2 = MD2CustomAction_SaveComplaint()
-			codeFragment1_if_0_if_2.execute()
 		}
 		else {
 		}
@@ -42,7 +39,7 @@ class MD2CustomAction___processChainProcessingAction: MD2ActionType {
 			)
 					
 			
-			let codeFragment1_elseif_0_0_if_1 = MD2CustomAction___processChainExecuteStepAction()
+			let codeFragment1_elseif_0_0_if_1 = MD2CustomAction___LocationDetection_processChainExecuteStepAction()
 			codeFragment1_elseif_0_0_if_1.execute()
 		}
 		else {
