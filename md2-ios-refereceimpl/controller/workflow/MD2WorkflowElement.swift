@@ -10,8 +10,11 @@ class MD2WorkflowElement {
     
     let name: String
     
-    init(name2: String) {
-        self.name = name2
+    var onInit: Array<MD2ActionType> = []
+    
+    init(name: String, onInit: MD2ActionType) {
+        self.name = name
+        self.onInit.append(onInit)
     }
     
     func start() {}

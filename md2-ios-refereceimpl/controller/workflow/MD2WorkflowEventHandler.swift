@@ -8,18 +8,32 @@
 
 class MD2WorkflowEventHandler {
     
+    typealias WorkflowEventEntry = (MD2WorkflowEvent, MD2WorkflowActionType, MD2WorkflowElement)
+    
     static let instance: MD2WorkflowEventHandler = MD2WorkflowEventHandler()
     
-    var workflowElements: Dictionary<MD2WorkflowEvent,(MD2WorkflowActionType, MD2WorkflowElement)> = [:]
+    var workflowElements: Array<WorkflowEventEntry> = []
+    
+    private init() {
+        // Nothing to initialize
+    }
     
     func registerWorkflowElement(workflowEvent: MD2WorkflowEvent, actionType: MD2WorkflowActionType, workflowElement: MD2WorkflowElement) {
-        workflowElements[workflowEvent] = (actionType, workflowElement)
+        
+        for (event, action, element) in workflowElements {
+            if event == workflowEvent && action == actionType && element === workflowElement {
+                // Already exists
+                return
+            }
+        }
+        
+        workflowElements.append(workflowEvent, actionType, workflowElement)
     }
     
     func unregisterWorkflowElement(workflowEvent: MD2WorkflowEvent, actionType: MD2WorkflowActionType, workflowElement: MD2WorkflowElement) {
-        for (key, value) in workflowElements {
-            if key == workflowEvent {
-                workflowElements[key] = nil
+        for (index, (event, action, element)) in enumerate(workflowElements) {
+            if event == workflowEvent && action == actionType && element === workflowElement {
+                workflowElements.removeAtIndex(index)
                 break
             }
         }
@@ -27,9 +41,9 @@ class MD2WorkflowEventHandler {
     
     @objc
     func fire(sender: MD2WorkflowEvent) {
-        //println("Event fired to WorkflowEventHandler: " + String(sender.description)
+        println("Event fired to WorkflowEventHandler: " + String(sender.description))
         
-        for (event, (actionType, workflowElement)) in workflowElements {
+        for (event, actionType, workflowElement) in self.workflowElements {
             if event == sender {
                 // Determine workflow action
                 if actionType == MD2WorkflowActionType.Start {
