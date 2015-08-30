@@ -59,6 +59,7 @@ class MD2RestClient: NSObject {
     */
     func makeHTTPGetRequestSync(path: String) -> JSON {
         let request = NSURLRequest(URL: NSURL(string: path)!)
+        println("Request to " + path)
         
         var response: NSURLResponse?
         var error: NSError?
@@ -68,7 +69,12 @@ class MD2RestClient: NSObject {
             println(httpResponse.statusCode)
         }
         
-        return JSON(data: urlData!)
+        if let urlData = urlData {
+            return JSON(data: urlData)
+        } else {
+            println("empty response")
+            return JSON("")
+        }
     }
     
     /**
@@ -126,9 +132,13 @@ class MD2RestClient: NSObject {
             
             if let httpResponse = response as? NSHTTPURLResponse {
                 println("Response code: " + String(httpResponse.statusCode))
+                if httpResponse.statusCode == 204 {
+                    onCompletion(JSON(["result":true]), err)
+                    return
+                }
             }
             
-            onCompletion(JSON(""), err)
+            onCompletion(JSON(["result":false]), err)
         })
         task.resume()
     }

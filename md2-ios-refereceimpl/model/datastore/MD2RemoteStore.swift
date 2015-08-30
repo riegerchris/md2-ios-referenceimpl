@@ -31,38 +31,30 @@ class MD2RemoteStore<T: MD2EntityType>: MD2DataStoreType {
     }
     
     func put(entity: MD2EntityType) {
+        getById(MD2Integer(3))
         self.saveData(entity)
     }
     
     func remove(internalId: MD2Integer) {
-        let fullPath = entityPath + internalId.toString()
+        let fullPath = entityPath + "?id=" + internalId.toString()
         
-        MD2RestClient.instance.makeHTTPDeleteRequest(fullPath, body: [:], onCompletion: { json, err in
-            println("[RemoteStore] Deleted entity with internalId \(internalId.toString)")
+        MD2RestClient.instance.makeHTTPDeleteRequest(fullPath, body: JSON(""), onCompletion: { json, err in
+            if json["result"].bool == true {
+                println("[RemoteStore] Deleted entity with internalId \(internalId.toString())")
+            } else {
+                println("[RemoteStore] Deletion of entity with internalId \(internalId.toString()) failed")
+            }
         })
     }
     
-    private func getById(internalId: MD2Integer, callback: (JSON?) -> Void) -> JSON? {
+    private func getById(internalId: MD2Integer) -> MD2EntityType? {
         if internalId.isSet() && !internalId.equals(MD2Integer(0)) {
             
-            let query = MD2Query()
-            query.addPredicate("__internalId", value: internalId.toString())
+            let fullPath = entityPath + internalId.toString() + "/"
             
-            let fullPath = entityPath + queryToFilterString(query)
-            
-            MD2RestClient.instance.makeHTTPGetRequest(fullPath, onCompletion: { json, err in
-                let results = json["results"]
-                if results.count > 0 {
-                    for (index: String, subJson: JSON) in results {
-                        //let user: AnyObject = subJson["user"].object
-                        println(subJson["user"]["username"].string)
-                        callback(subJson)
-                        break
-                    }
-                } else {
-                    callback(nil)
-                }
-            })
+            var json = MD2RestClient.instance.makeHTTPGetRequestSync(fullPath)
+            let x = JSONToEntity(json, entity: T())
+            return JSONToEntity(json, entity: T())
         }
         
         return nil
@@ -71,7 +63,7 @@ class MD2RemoteStore<T: MD2EntityType>: MD2DataStoreType {
     private func saveData(entity: MD2EntityType) {
         // Single entities are also tranferred as array
         let body = JSON([[MD2Util.getBackendClassName(entity):entityToDict(entity)]])
-        
+    
         MD2RestClient.instance.makeHTTPPostRequest(entityPath, body: body, onCompletion: { json, err in
             let newId = json[0]["__internalId"].int
             if let newId = newId {
