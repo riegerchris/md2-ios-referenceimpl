@@ -18,20 +18,16 @@ class MD2RemoteStore<T: MD2EntityType>: MD2DataStoreType {
     func query(query: MD2Query) -> MD2EntityType? {
         let fullPath = entityPath + queryToFilterString(query)
         
-        var json = MD2RestClient.instance.makeHTTPGetRequestSync(fullPath)
+        let json = MD2RestClient.instance.makeHTTPGetRequestSync(fullPath)
         
-        let results = json["results"]
-        if results.count > 0 {
-            for (index: String, subJson: JSON) in results {
-                return JSONToEntity(subJson, entity: T())
-            }
-        }
-        println("No results returned")
-        return nil
+        // Maximum one entity result expected
+        return JSONToEntity(json[0], entity: T())
     }
     
     func put(entity: MD2EntityType) {
-        getById(MD2Integer(3))
+        let q = MD2Query()
+        q.addPredicate("myCountry", value: "bla")
+        query(q)
         self.saveData(entity)
     }
     
@@ -52,8 +48,8 @@ class MD2RemoteStore<T: MD2EntityType>: MD2DataStoreType {
             
             let fullPath = entityPath + internalId.toString() + "/"
             
-            var json = MD2RestClient.instance.makeHTTPGetRequestSync(fullPath)
-            let x = JSONToEntity(json, entity: T())
+            let json = MD2RestClient.instance.makeHTTPGetRequestSync(fullPath)
+            
             return JSONToEntity(json, entity: T())
         }
         
@@ -152,23 +148,22 @@ class MD2RemoteStore<T: MD2EntityType>: MD2DataStoreType {
     // TODO currently subset of filter/query possibilities using only strictly equals
     private func queryToFilterString(query: MD2Query) -> String {
         
-        var filterString: String = "?filter="
+        var filterString: String = ""
         var isFirst = true
         
         for (attribute, value) in query.predicates {
             if !isFirst {
-                filterString += MD2ModelConfig.URL_WHITESPACE + "and" + MD2ModelConfig.URL_WHITESPACE
+                filterString += " and "
             }
             
             filterString += attribute
-                + MD2ModelConfig.URL_WHITESPACE
-                + "equals"
-                + MD2ModelConfig.URL_WHITESPACE
-                + value
+                + " equals "
+                + "\"" + value + "\""
             isFirst = false
         }
         
-        return filterString
+        // URL-encode quotes, whitespaces etc.
+        return "?filter=" + filterString.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!
     }
 
 }

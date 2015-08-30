@@ -12,6 +12,4 @@ class MD2ModelConfig {
     /// Error threshold to allow comparisons on floating point variables
     static let FLOATING_ERROR: Float = 0.0000001
     
-    /// The URL encoded string for a whitespace character
-    static let URL_WHITESPACE: String = "%20"
 }
