@@ -22,7 +22,7 @@ class MD2CP_AddressProvider: MD2ContentProviderType {
     
     init() {
     self.store = MD2RemoteStoreFactory<MD2Entity_Address>().createStore()
-    (self.store as! MD2RemoteStore<MD2Entity_Address>).entityPath = "http://192.168.2.138:8080/CitizenApp.backend/service/Address/"
+    (self.store as! MD2RemoteStore<MD2Entity_Address>).entityPath = "http://192.168.2.138:8080/CitizenApp.backend/service/address/"
     }
     
     convenience init(content: MD2EntityType) {

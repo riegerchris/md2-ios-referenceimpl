@@ -23,7 +23,7 @@ class MD2CustomAction_SaveComplaint: MD2ActionType {
 	let codeFragment2 = MD2ContentProviderOperationAction(actionSignature: "MD2CustomAction_SaveComplaint_2", 
 		allowedOperation: MD2ContentProviderOperationAction.AllowedOperation.Save,
 		contentProvider: MD2ContentProviderRegistry.instance.getContentProvider(
-		"ComplaintProvider"
+		"AddressProvider"
 		)!)
 	codeFragment2.execute()
        

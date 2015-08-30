@@ -69,27 +69,27 @@ class MD2RemoteStore<T: MD2EntityType>: MD2DataStoreType {
     }
     
     private func saveData(entity: MD2EntityType) {
-        MD2RestClient.instance.makeHTTPPutRequest(entityPath, body: entityToJSON(entity), onCompletion: { json, err in
-            let results = json["results"]
-            if results.count > 0 {
-                for (index: String, subJson: JSON) in results {
-                    // TODO get internalId from response
-                    //entity.internalId = MD2Integer(id)
-                }
+        // Single entities are also tranferred as array
+        let body = JSON([[MD2Util.getBackendClassName(entity):entityToDict(entity)]])
+        
+        MD2RestClient.instance.makeHTTPPostRequest(entityPath, body: body, onCompletion: { json, err in
+            let newId = json[0]["__internalId"].int
+            if let newId = newId {
+                entity.internalId = MD2Integer(newId)
             } else {
-                println("Warning: RemoteStore.saveData returned unexpected response: " + json.stringValue)
+                println("Warning: RemoteStore.saveData returned unexpected response!")
             }
         })
     }
     
-    private func entityToJSON(entity: MD2EntityType) -> Dictionary<String, AnyObject> {
+    private func entityToDict(entity: MD2EntityType) -> Dictionary<String, AnyObject> {
         var dict: Dictionary<String, AnyObject> = [:]
         
         for (attributeKey, attributeValue) in entity.containedTypes {
             if attributeValue is MD2EnumType && (attributeValue as! MD2EnumType).value != nil {
                 dict[attributeKey] = (attributeValue as! MD2EnumType).toInt()
             } else if attributeValue is MD2EntityType {
-                dict[attributeKey] = entityToJSON(attributeValue as! MD2EntityType)
+                dict[attributeKey] = entityToDict(attributeValue as! MD2EntityType)
             } else if attributeValue is MD2DataType {
                 if !(attributeValue as! MD2DataType).isSet() {
                     continue

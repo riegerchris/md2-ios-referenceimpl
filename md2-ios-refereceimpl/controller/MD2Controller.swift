@@ -42,7 +42,7 @@ class MD2Controller {
         addressData.width = Float(1/100 * 100)
         locationDetectionView.addWidget(addressData)
         let __ContainerstreetValue = MD2GridLayoutPane(widgetId: MD2WidgetMapping.__ContainerstreetValue)
-        __ContainerstreetValue.columns = MD2Integer(3)
+        __ContainerstreetValue.columns = MD2Integer(2)
         __ContainerstreetValue.rows = MD2Integer(1)
         __ContainerstreetValue.width = Float(1/100 * 100)
         addressData.addWidget(__ContainerstreetValue)
@@ -66,7 +66,7 @@ class MD2Controller {
         
         
         let __ContainerstreetNoValue = MD2GridLayoutPane(widgetId: MD2WidgetMapping.__ContainerstreetNoValue)
-        __ContainerstreetNoValue.columns = MD2Integer(3)
+        __ContainerstreetNoValue.columns = MD2Integer(2)
         __ContainerstreetNoValue.rows = MD2Integer(1)
         __ContainerstreetNoValue.width = Float(1/100 * 100)
         addressData.addWidget(__ContainerstreetNoValue)
@@ -90,7 +90,7 @@ class MD2Controller {
         
         
         let __ContainerzipValue = MD2GridLayoutPane(widgetId: MD2WidgetMapping.__ContainerzipValue)
-        __ContainerzipValue.columns = MD2Integer(3)
+        __ContainerzipValue.columns = MD2Integer(2)
         __ContainerzipValue.rows = MD2Integer(1)
         __ContainerzipValue.width = Float(1/100 * 100)
         addressData.addWidget(__ContainerzipValue)
@@ -114,7 +114,7 @@ class MD2Controller {
         
         
         let __ContainercityValue = MD2GridLayoutPane(widgetId: MD2WidgetMapping.__ContainercityValue)
-        __ContainercityValue.columns = MD2Integer(3)
+        __ContainercityValue.columns = MD2Integer(2)
         __ContainercityValue.rows = MD2Integer(1)
         __ContainercityValue.width = Float(1/100 * 100)
         addressData.addWidget(__ContainercityValue)
@@ -136,13 +136,8 @@ class MD2Controller {
         
         
         
-        
-        let addressData_Spacer163632 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		addressData.addWidget(addressData_Spacer163632)
-        
-        
         let __ContainercountryValue = MD2GridLayoutPane(widgetId: MD2WidgetMapping.__ContainercountryValue)
-        __ContainercountryValue.columns = MD2Integer(3)
+        __ContainercountryValue.columns = MD2Integer(2)
         __ContainercountryValue.rows = MD2Integer(1)
         __ContainercountryValue.width = Float(1/100 * 100)
         addressData.addWidget(__ContainercountryValue)
@@ -169,12 +164,8 @@ class MD2Controller {
         		addressData.addWidget(addressData_Spacer816363)
         
         
-        let addressData_Spacer198900 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		addressData.addWidget(addressData_Spacer198900)
-        
-        
         let __ContainerlatitudeValue = MD2GridLayoutPane(widgetId: MD2WidgetMapping.__ContainerlatitudeValue)
-        __ContainerlatitudeValue.columns = MD2Integer(3)
+        __ContainerlatitudeValue.columns = MD2Integer(2)
         __ContainerlatitudeValue.rows = MD2Integer(1)
         __ContainerlatitudeValue.width = Float(1/100 * 100)
         addressData.addWidget(__ContainerlatitudeValue)
@@ -204,7 +195,7 @@ class MD2Controller {
         
         
         let __ContainerlongitudeValue = MD2GridLayoutPane(widgetId: MD2WidgetMapping.__ContainerlongitudeValue)
-        __ContainerlongitudeValue.columns = MD2Integer(3)
+        __ContainerlongitudeValue.columns = MD2Integer(2)
         __ContainerlongitudeValue.rows = MD2Integer(1)
         __ContainerlongitudeValue.width = Float(1/100 * 100)
         addressData.addWidget(__ContainerlongitudeValue)

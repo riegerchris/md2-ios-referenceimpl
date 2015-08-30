@@ -24,7 +24,7 @@ class MD2RestClient: NSObject {
     static let instance = MD2RestClient()
     
     /// Private initializer for the singleton instance
-    private init() {
+    private override init() {
         // Nothing to initialize
     }
     
@@ -78,47 +78,30 @@ class MD2RestClient: NSObject {
         :param: body A key-value array which will be encoded as JSON and passed as request body.
         :param: onCompletion The callback fuction to call after completing the request.
     */
-    func makeHTTPPostRequest(path: String, body: [String: AnyObject], onCompletion: ServiceResponse) {
-        var err: NSError?
+    func makeHTTPPostRequest(path: String, body: JSON, onCompletion: ServiceResponse) {
+        var err: NSError? = NSError()
         let request = NSMutableURLRequest(URL: NSURL(string: path)!)
         
         request.HTTPMethod = "POST"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         
         // Set the POST body for the request
-        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(body, options: nil, error: &err)
-        let session = NSURLSession.sharedSession()
+        let data = body.rawString()?.dataUsingEncoding(NSUTF8StringEncoding)
         
-        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+        let session = NSURLSession.sharedSession()
+        let task = session.uploadTaskWithRequest(request, fromData: data, completionHandler: {data, response, error -> Void in
+            
+            if let httpResponse = response as? NSHTTPURLResponse {
+                println("Response code: " + String(httpResponse.statusCode))
+            }
+            
             let json:JSON = JSON(data: data)
+            println(json.rawString())
             onCompletion(json, err)
         })
         task.resume()
     }
    
-    /**
-        Send an asnychronous PUT request to the given path.
-        
-        :param: path The full URL of the requested resource.
-        :param: body A key-value array which will be encoded as JSON and passed as request body.
-        :param: onCompletion The callback fuction to call after completing the request.
-    */
-    func makeHTTPPutRequest(path: String, body: Dictionary<String, AnyObject>, onCompletion: ServiceResponse) {
-        var err: NSError?
-        let request = NSMutableURLRequest(URL: NSURL(string: path)!)
-        
-        request.HTTPMethod = "PUT"
-        
-        // Set the PUT body for the request
-        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(body, options: nil, error: &err)
-        let session = NSURLSession.sharedSession()
-        
-        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            let json:JSON = JSON(data: data)
-            onCompletion(json, err)
-        })
-        task.resume()
-    }
-
     /**
         Send an asnychronous DELETE request to the given path.
         
@@ -126,19 +109,26 @@ class MD2RestClient: NSObject {
         :param: body A key-value array which will be encoded as JSON and passed as request body.
         :param: onCompletion The callback fuction to call after completing the request.
     */
-    func makeHTTPDeleteRequest(path: String, body: [String: AnyObject], onCompletion: ServiceResponse) {
+    func makeHTTPDeleteRequest(path: String, body: JSON, onCompletion: ServiceResponse) {
         var err: NSError?
         let request = NSMutableURLRequest(URL: NSURL(string: path)!)
         
-        request.HTTPMethod = "DEL"
+        request.HTTPMethod = "DELETE"
+        
+        // Set the DELETE body for the request
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         
         // Set the POST body for the request
-        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(body, options: nil, error: &err)
-        let session = NSURLSession.sharedSession()
+        let data = body.rawString()?.dataUsingEncoding(NSUTF8StringEncoding)
         
-        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            let json:JSON = JSON(data: data)
-            onCompletion(json, err)
+        let session = NSURLSession.sharedSession()
+        let task = session.uploadTaskWithRequest(request, fromData: data, completionHandler: {data, response, error -> Void in
+            
+            if let httpResponse = response as? NSHTTPURLResponse {
+                println("Response code: " + String(httpResponse.statusCode))
+            }
+            
+            onCompletion(JSON(""), err)
         })
         task.resume()
     }

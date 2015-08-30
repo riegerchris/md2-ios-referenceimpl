@@ -24,6 +24,10 @@ class MD2Util {
         return _stdlib_getDemangledTypeName(object).componentsSeparatedByString(".").last!
     }
     
+    static func getBackendClassName(object: MD2EntityType) -> String {
+        return getClassName(object).componentsSeparatedByString("MD2Entity_").last!
+    }
+    
     /**
     Generic function to transform an asynchronous operation to a synchonous one.
     
