@@ -56,19 +56,22 @@ class MD2GridLayoutPane: MD2LayoutType {
         } else if rows?.isSet() == true {
             columns = MD2Integer(numUiElements / rows!.platformValue!)
             
-        } else { // Nothing set, specify both
+        } else { // Nothing set, set both to 1
             columns = MD2Integer(1)
             rows = MD2Integer(1)
             
         }
         
-        let rowHeight = bounds.height / Float(rows!.platformValue!)
-        let columnWidth = bounds.width / Float(columns!.platformValue!)
-        
         var currentY = bounds.y
+        let columnWidth = bounds.width / Float(columns!.platformValue!)
         
         for var currentRow = 0; currentRow < rows!.platformValue!; currentRow++ {
             var maxHeight: Float = 0.0
+            
+            // Strict calculation of cell maximum sizes
+            // let rowHeight = bounds.height / Float(rows!.platformValue!)
+            // Allow different row height
+            let rowHeight = bounds.y + bounds.height - currentY
             
             for var currentColumn = 0; currentColumn < columns!.platformValue!; currentColumn++ {
                 let subDimensions = MD2Dimension(

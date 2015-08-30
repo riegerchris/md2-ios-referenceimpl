@@ -1,7 +1,7 @@
 //
 //  MD2Entity_Address.swift
 //
-//  Generated code by class 'IOSEntity' on 26.08.2015
+//  Generated code by class 'IOSEntity' on 27.08.2015
 //
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
@@ -40,13 +40,13 @@ class MD2Entity_Address: NSObject, MD2EntityType {
     }
     
     func toString() -> String {
-        return "(MD2Entity_Address: [myStreet: " + containedTypes["myStreet"]!.toString()
-        + ", myStreetNo: " + containedTypes["myStreetNo"]!.toString()
-        + ", myPostalCode: " + containedTypes["myPostalCode"]!.toString()
-        + ", myCity: " + containedTypes["myCity"]!.toString()
-        + ", myCountry: " + containedTypes["myCountry"]!.toString()
-        + ", myLatitude: " + containedTypes["myLatitude"]!.toString()
-        + ", myLongitude: " + containedTypes["myLongitude"]!.toString() 
+    return "(MD2Entity_Address: [myStreet: " + containedTypes["myStreet"]!.toString()
+    + ", myStreetNo: " + containedTypes["myStreetNo"]!.toString()
+    + ", myPostalCode: " + containedTypes["myPostalCode"]!.toString()
+    + ", myCity: " + containedTypes["myCity"]!.toString()
+    + ", myCountry: " + containedTypes["myCountry"]!.toString()
+    + ", myLatitude: " + containedTypes["myLatitude"]!.toString()
+    + ", myLongitude: " + containedTypes["myLongitude"]!.toString() 
 	        + "])"
     }
     

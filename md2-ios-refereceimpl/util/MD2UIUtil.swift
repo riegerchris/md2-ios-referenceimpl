@@ -8,8 +8,16 @@
 
 import UIKit
 
+/// Utility class for view-related functions
 class MD2UIUtil {
     
+    /**
+    Transform the CGRect object of view elements to a dimension object for easier handling. 
+
+    :param: bounds The rectangle object.
+    
+    :returns: The dimension object.
+    */
     static func CGRectToDimension(bounds: CGRect) -> MD2Dimension {
         let dimension = MD2Dimension(
                         x: Float(bounds.origin.x),
@@ -20,6 +28,13 @@ class MD2UIUtil {
         return dimension
     }
     
+    /**
+    Transform the dimension object to a CGRect object to set within a view element. 
+
+    :param: dimension The dimension object.
+    
+    :returns: The rectangle object.
+    */
     static func dimensionToCGRect(dimension: MD2Dimension) -> CGRect {
         let rect = CGRect(x: Double(dimension.x),
                         y: Double(dimension.y),
@@ -28,6 +43,12 @@ class MD2UIUtil {
         return rect
     }
     
+    /**
+    Show a message in an overlay popup. 
+
+    :param: message The message to show.
+    :param: title The popup title.
+    */
     static func showMessage(message: String, title: String) {
         var alertView = UIAlertView()
         alertView.title = title
@@ -36,6 +57,13 @@ class MD2UIUtil {
         alertView.show()
     }
 
+    /**
+    Return the inner dimensions of a view element by applying the gutter margin to an outer margin. 
+
+    :param: outerDimension The outer dimension object.
+    
+    :returns: The inner dimension.
+    */
     static func innerDimensionsWithGutter(outerDimensions: MD2Dimension) -> MD2Dimension {
         return outerDimensions + MD2Dimension(
             x: MD2ViewConfig.GUTTER,

@@ -1,7 +1,7 @@
 //
 //  MD2CP_AddressProvider.swift
 //
-//  Generated code by class 'IOSContentProvider' on 26.08.2015
+//  Generated code by class 'IOSContentProvider' on 27.08.2015
 //
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
@@ -21,7 +21,8 @@ class MD2CP_AddressProvider: MD2ContentProviderType {
     var filter: MD2Filter?
     
     init() {
-        self.store = MD2LocalStoreFactory<MD2Entity_Address>().createStore()
+    self.store = MD2RemoteStoreFactory<MD2Entity_Address>().createStore()
+    (self.store as! MD2RemoteStore<MD2Entity_Address>).entityPath = "http://192.168.2.138:8080/CitizenApp.backend/service/address/"
     }
     
     convenience init(content: MD2EntityType) {

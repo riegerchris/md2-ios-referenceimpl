@@ -1,7 +1,7 @@
 //
 //  MD2Entity___ProcessChainControllerState.swift
 //
-//  Generated code by class 'IOSEntity' on 26.08.2015
+//  Generated code by class 'IOSEntity' on 27.08.2015
 //
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
@@ -35,8 +35,8 @@ class MD2Entity___ProcessChainControllerState: NSObject, MD2EntityType {
     }
     
     func toString() -> String {
-        return "(MD2Entity___ProcessChainControllerState: [currentProcessChainStep: " + containedTypes["currentProcessChainStep"]!.toString()
-        + ", lastEventFired: " + containedTypes["lastEventFired"]!.toString() 
+    return "(MD2Entity___ProcessChainControllerState: [currentProcessChainStep: " + containedTypes["currentProcessChainStep"]!.toString()
+    + ", lastEventFired: " + containedTypes["lastEventFired"]!.toString() 
 	        + "])"
     }
     

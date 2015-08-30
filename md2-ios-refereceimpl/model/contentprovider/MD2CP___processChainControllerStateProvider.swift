@@ -1,14 +1,14 @@
 //
-//  MD2CP_ComplaintProvider.swift
+//  MD2CP___processChainControllerStateProvider.swift
 //
 //  Generated code by class 'IOSContentProvider' on 27.08.2015
 //
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
 
-class MD2CP_ComplaintProvider: MD2ContentProviderType {
+class MD2CP___processChainControllerStateProvider: MD2ContentProviderType {
     
-    let contentType = MD2Entity_Complaint.self
+    let contentType = MD2Entity___ProcessChainControllerState.self
     
     var content: MD2EntityType? // managed entity instance
     
@@ -21,8 +21,7 @@ class MD2CP_ComplaintProvider: MD2ContentProviderType {
     var filter: MD2Filter?
     
     init() {
-    self.store = MD2RemoteStoreFactory<MD2Entity_Complaint>().createStore()
-    (self.store as! MD2RemoteStore<MD2Entity_Complaint>).entityPath = "http://192.168.2.138:8080/CitizenApp.backend/service/complaint/"
+    self.store = MD2LocalStoreFactory<MD2Entity___ProcessChainControllerState>().createStore()
     }
     
     convenience init(content: MD2EntityType) {
@@ -77,7 +76,7 @@ class MD2CP_ComplaintProvider: MD2ContentProviderType {
         // Update content
         let newValue = value.clone()
         if content != nil {
-            println("[MD2CP_ComplaintProvider] Update id=\(content!.internalId.toString()) set \(attribute) to '\(newValue.toString())'")
+            println("[MD2CP___processChainControllerStateProvider] Update id=\(content!.internalId.toString()) set \(attribute) to '\(newValue.toString())'")
         }
         content?.set(attribute, value: newValue)
         

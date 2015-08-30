@@ -9,12 +9,13 @@
 import UIKit
 import CoreData
 
+/// The main application starts here
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    //var navigationController: UINavigationController?
     
+	/// Main entry function of the application which sets up the Controller instance.
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         // Create window object and pass it to the view manager
@@ -23,12 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.backgroundColor = UIColor.whiteColor()
         self.window!.makeKeyAndVisible()
    
-        // Initialize MD2 application
+        // Initialize the MD2 application
         var md2Controller = MD2Controller()
         md2Controller.run(window!)
         
         return true
-        
     }
     
     func applicationWillResignActive(application: UIApplication) {

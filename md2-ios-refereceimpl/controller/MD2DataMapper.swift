@@ -6,15 +6,44 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-// MARK may also bypass the actions instead
+/**
+    A data mapping mechanism for two-way synchronization of changes between input fields and content providers.
+    
+    *Notice* The class may bypass the event/action construct and use a direct form synchronization instead.
+*/
 class MD2DataMapper {
     
-    static let instance: MD2DataMapper = MD2DataMapper()
+    /// Singleton instance of the REST client
+    static let instance = MD2DataMapper()
     
-    // Bidirectional data structure as two maps (no native bidirectional data structure available and overhead is acceptable as only references are stored)
+    /// Private initializer for the singleton instance
+    private init() {
+        // Nothing to initialize
+    }
+    
+    /**
+        Content provider and attribute to widget association.
+        
+        *Notice* There is no native bidirectional data structure available and the overhead is acceptable because only object references are stored.
+    */
     var contentProviderToWidgetMapping: Dictionary<MD2ContentProviderAttributeIdentity, MD2WidgetWrapper> = [:]
+    
+    /**
+        Widget to content provider and attribute association.
+        
+        *Notice* There is no native bidirectional data structure available and the overhead is acceptable because only object references are stored.
+    */
     var widgetToContentProviderMapping: Dictionary<MD2WidgetWrapper, MD2ContentProviderAttributeIdentity> = [:]
     
+    /**
+        Install the binding between a widget wrapper and a content provider and attribute combination.
+        
+        On change of the input field or the content provider a respective event is fired to update the mapping partner.
+        
+        :param: widget The widget wrapper of the input field.
+        :param: contentProvider The content provider for data storage.
+        :param: attribute The attribute to specify the field of the content provider.
+    */
     func map(widget: MD2WidgetWrapper, contentProvider: MD2ContentProviderType, attribute: String) {
         contentProviderToWidgetMapping[MD2ContentProviderAttributeIdentity(contentProvider, attribute)] = widget
         
@@ -40,6 +69,13 @@ class MD2DataMapper {
         MD2OnWidgetChangeHandler.instance.registerAction(fieldChangeAction, widget: widget)
     }
 
+    /**
+        Revoke the binding between a widget wrapper and a content provider and attribute combination.
+        
+        :param: widget The widget wrapper of the input field.
+        :param: contentProvider The content provider for data storage.
+        :param: attribute The attribute to specify the field of the content provider.
+    */
     func unmap(widget: MD2WidgetWrapper, contentProvider: MD2ContentProviderType, attribute: String) {
         contentProviderToWidgetMapping.removeValueForKey(MD2ContentProviderAttributeIdentity(contentProvider, attribute))
         
@@ -57,10 +93,25 @@ class MD2DataMapper {
         widgetToContentProviderMapping.removeValueForKey(widget)
     }
     
+    /**
+        Retrieve the widget wrapper for a content provider and attribute combination.
+        
+        :param: contentProvider The content provider for data storage.
+        :param: attribute The attribute to specify the field of the content provider.
+        
+        :returns: The respective widget wrapper if found.
+    */
     func getWidgetForContentProvider(contentProvider: MD2ContentProviderType, attribute: String) -> MD2WidgetWrapper? {
         return contentProviderToWidgetMapping[MD2ContentProviderAttributeIdentity(contentProvider, attribute)]
     }
     
+    /**
+        Retrieve the content provider for a widget wrapper.
+        
+        :param: widget The widget wrapper of the input field.
+        
+        :returns: The respective content provider and attribute combination if found.
+    */
     func getContentProviderForWidget(widget: MD2WidgetWrapper) -> MD2ContentProviderAttributeIdentity? {
         return widgetToContentProviderMapping[widget]
     }

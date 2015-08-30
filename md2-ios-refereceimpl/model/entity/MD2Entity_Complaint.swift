@@ -1,7 +1,7 @@
 //
 //  MD2Entity_Complaint.swift
 //
-//  Generated code by class 'IOSEntity' on 26.08.2015
+//  Generated code by class 'IOSEntity' on 27.08.2015
 //
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
@@ -18,10 +18,10 @@ class MD2Entity_Complaint: NSObject, MD2EntityType {
     
     required override init() {
         // Initialize fields
-        containedTypes["loc"] = MD2Entity_Address()
+        containedTypes["loc"] = MD2String()
         containedTypes["descriptions"] = MD2String()
         containedTypes["feedback"] = MD2String()
-        containedTypes["status"] = MD2Enum_ComplaintStatus()
+        containedTypes["status"] = MD2String()
     }
     
     convenience init(md2Entity: MD2Entity_Complaint) {
@@ -37,10 +37,10 @@ class MD2Entity_Complaint: NSObject, MD2EntityType {
     }
     
     func toString() -> String {
-        return "(MD2Entity_Complaint: [loc: " + containedTypes["loc"]!.toString()
-        + ", descriptions: " + containedTypes["descriptions"]!.toString()
-        + ", feedback: " + containedTypes["feedback"]!.toString()
-        + ", status: " + containedTypes["status"]!.toString() 
+    return "(MD2Entity_Complaint: [loc: " + containedTypes["loc"]!.toString()
+    + ", descriptions: " + containedTypes["descriptions"]!.toString()
+    + ", feedback: " + containedTypes["feedback"]!.toString()
+    + ", status: " + containedTypes["status"]!.toString() 
 	        + "])"
     }
     
