@@ -10,9 +10,9 @@ import UIKit
 
 class MD2ViewController: UIViewController {
 
-    var layout: LayoutType
+    var layout: MD2LayoutType
     
-    init(layout: LayoutType) {
+    init(layout: MD2LayoutType) {
         self.layout = layout
         super.init(nibName: nil, bundle: nil)
     }
@@ -36,8 +36,8 @@ class MD2ViewController: UIViewController {
     
     func calculateDimensions() {
         // Add small padding on top of screen
-        let screen = UIUtil.CGRectToDimension(UIScreen.mainScreen().bounds)
-        layout.calculateDimensions(screen + Dimension(x: ViewConfig.GUTTER, y: 2 * ViewConfig.GUTTER, width: -1 * ViewConfig.GUTTER, height: -1 * ViewConfig.GUTTER))
+        let screen = MD2UIUtil.CGRectToDimension(UIScreen.mainScreen().bounds)
+        layout.calculateDimensions(screen + MD2Dimension(x: MD2ViewConfig.GUTTER, y: 2 * MD2ViewConfig.GUTTER, width: -1 * MD2ViewConfig.GUTTER, height: -1 * MD2ViewConfig.GUTTER))
     }
     
 }

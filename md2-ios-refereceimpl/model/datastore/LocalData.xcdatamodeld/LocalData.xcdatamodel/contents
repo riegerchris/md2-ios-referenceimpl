@@ -1,24 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14C109" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Address" representedClassName="NSManagedObject" syncable="YES">
+    <entity name="MD2Entity_Complaint" representedClassName="NSManagedObject" syncable="YES">
         <attribute name="internalId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="myCity" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="myCountry" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="myPostalCode" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="myStreet" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="myStreetNo" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="Complaint" representedClassName="NSManagedObject" syncable="YES">
         <attribute name="descriptions" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="feedback" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="internalId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="loc" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" syncable="YES"/>
+        <relationship name="loc" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MD2Entity_Address" syncable="YES"/>
+    </entity>
+    <entity name="MD2Entity_Address" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="internalId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="myStreet" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="myStreetNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="myPostalCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="myCity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="myCountry" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="myLatitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="myLongitude" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="MD2Entity___ReturnStepStack" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="internalId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="returnStep" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="returnAndReverseStep" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="returnAndProceedStep" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MD2Entity___ReturnStepStack" syncable="YES"/>
+    </entity>
+    <entity name="MD2Entity___ProcessChainControllerState" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="internalId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currentProcessChainStep" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastEventFired" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Address" positionX="-63" positionY="-18" width="128" height="165"/>
-        <element name="Complaint" positionX="-344" positionY="18" width="128" height="120"/>
+    	<element name="MD2Entity_Complaint" positionX="0" positionY="0" width="150" height="150"/>
+    	<element name="MD2Entity_Address" positionX="0" positionY="0" width="150" height="150"/>
+    	<element name="MD2Entity___ReturnStepStack" positionX="0" positionY="0" width="150" height="150"/>
+    	<element name="MD2Entity___ProcessChainControllerState" positionX="0" positionY="0" width="150" height="150"/>
     </elements>
 </model>
