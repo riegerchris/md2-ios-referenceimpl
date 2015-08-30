@@ -62,8 +62,8 @@ class MD2RemoteStore<T: MD2EntityType>: MD2DataStoreType {
     
     private func saveData(entity: MD2EntityType) {
         // Single entities are also tranferred as array
-        let body = JSON([[MD2Util.getBackendClassName(entity):entityToDict(entity)]])
-    
+        let body = JSON([entityToDict(entity)])
+        
         MD2RestClient.instance.makeHTTPPostRequest(entityPath, body: body, onCompletion: { json, err in
             let newId = json[0]["__internalId"].int
             if let newId = newId {
