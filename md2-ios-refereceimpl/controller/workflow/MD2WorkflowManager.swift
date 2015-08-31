@@ -31,6 +31,9 @@ class MD2WorkflowManager {
 
         workflowElement.end()
         currentWorkflow = nil
+        
+        // Go back to startup screen
+        MD2ViewManager.instance.goToStartView()
     }
     
 }

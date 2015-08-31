@@ -64,7 +64,7 @@ class MD2TextFieldWidget: NSObject, MD2SingleWidgetType, MD2WidgetAssistedType, 
         view.addSubview(widgetElement)
         
         // If tooltip info is available show info button
-        if self.tooltip != nil && self.tooltip!.isSet() {
+        if tooltip != nil && tooltip!.isSet() && !tooltip!.equals(MD2String("")) {
             let infoButton = MD2ButtonWidget(widgetId: self.widgetId)
             infoButton.buttonType = UIButtonType.InfoLight
             infoButton.dimensions = self.tooltipDimensions
@@ -76,7 +76,7 @@ class MD2TextFieldWidget: NSObject, MD2SingleWidgetType, MD2WidgetAssistedType, 
         var outerDimensions: MD2Dimension = bounds
         
         // If tooltip info is available show info button
-        if self.tooltip != nil && self.tooltip!.isSet() {
+        if tooltip != nil && tooltip!.isSet() && !tooltip!.equals(MD2String("")) {
             outerDimensions = MD2Dimension(
                 x: bounds.x,
                 y: bounds.y,

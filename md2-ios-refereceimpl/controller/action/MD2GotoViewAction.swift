@@ -18,7 +18,7 @@ class MD2GotoViewAction: MD2ActionType {
     }
     
     func execute() {
-        MD2ViewManager.instance.goto(targetView.description)
+        MD2ViewManager.instance.goTo(targetView.description)
     }
     
     func equals(anotherAction: MD2ActionType) -> Bool {
