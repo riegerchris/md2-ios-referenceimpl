@@ -35,7 +35,7 @@ class MD2ViewManager {
     
     :param: viewName The name of the view, i.e. the outermost layout name.
     */
-    func goto(viewName: String) {
+    func goTo(viewName: String) {
         for (name, controller) in views {
             if viewName == name {
                 // View found -> show
@@ -51,10 +51,19 @@ class MD2ViewManager {
                     }
                 } else {
                     // First view to show, create and initialize navigationController
-                    showRootView(viewName)
+                    showStartView(viewName)
                 }
                 break
             }
+        }
+    }
+    
+    /**
+    Go back to start view.
+    */
+    func goToStartView() {
+        if let _ = navigationController {
+            navigationController?.popToRootViewControllerAnimated(true)
         }
     }
     
@@ -84,7 +93,7 @@ class MD2ViewManager {
     
     :param: viewName The name of the view, i.e. the outermost layout name.
     */
-    func showRootView(viewName:String) {
+    func showStartView(viewName:String) {
         for (name, controller) in views {
             if viewName == name {
                 
