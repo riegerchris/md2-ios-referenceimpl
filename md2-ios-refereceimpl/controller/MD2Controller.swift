@@ -655,19 +655,10 @@ class MD2Controller {
         
         /***************************************************
 		 * 
-		 * Initialize process chains and workflowElements
+		 * Initialize workflow elements
 		 * 
 		 ***************************************************/
-        /*
-        let pcLocationDetection_LocationProcessChain = ProcessChain(processChainSignature: "LocationDetection_LocationProcessChain")
-        let step1 = pcLocationDetection_LocationProcessChain.addProcessChainStep("LocationDetection", viewName: "LocationDetectionView")
-        step1.addGoTo(ProcessChainStep.GoToType.Proceed, eventType: EventType.OnClick, widget: WidgetMapping.LocationDetectionView_Next, action: CustomAction_SaveComplaint(), goToStep: nil)
         
-        let step2 = pcLocationDetection_LocationProcessChain.addProcessChainStep("LocationVerify", viewName: "LocationVerifyView")
-        step2.addGoTo(ProcessChainStep.GoToType.Reverse, eventType: EventType.OnClick, widget: WidgetMapping.LocationVerifyView_Previous, action: nil, goToStep: nil)
-        
-        ProcessChainRegistry.instance.addProcessChain(pcLocationDetection_LocationProcessChain)
-        */
         let wfeLocationDetection = MD2WorkflowElement(name: "LocationDetection", onInit: MD2CustomAction___LocationDetection_startupAction())
         
         let wfeSubmitEvent = MD2WorkflowElement(name: "SubmitComplaint", onInit: MD2CustomAction___SubmitComplaint_startupAction())
@@ -675,16 +666,19 @@ class MD2Controller {
         // Register workflowEvents
         MD2WorkflowEventHandler.instance.registerWorkflowElement(
             MD2WorkflowEvent.DoneEvent,
-            actionType: MD2WorkflowActionType.End,
-            workflowElement: wfeLocationDetection)
-        MD2WorkflowEventHandler.instance.registerWorkflowElement(
-            MD2WorkflowEvent.SubmitEvent,
             actionType: MD2WorkflowActionType.Start,
             workflowElement: wfeSubmitEvent)
+        
         MD2WorkflowEventHandler.instance.registerWorkflowElement(
-            MD2WorkflowEvent.DoneEvent,
+            MD2WorkflowEvent.CancelWorkflowEvent,
+            actionType: MD2WorkflowActionType.End,
+            workflowElement: wfeLocationDetection)
+        
+        MD2WorkflowEventHandler.instance.registerWorkflowElement(
+            MD2WorkflowEvent.SubmitEvent,
             actionType: MD2WorkflowActionType.End,
             workflowElement: wfeSubmitEvent)
+        
         MD2WorkflowEventHandler.instance.registerWorkflowElement(
             MD2WorkflowEvent.CancelComplaintWorkflowEvent,
             actionType: MD2WorkflowActionType.End,
@@ -698,9 +692,8 @@ class MD2Controller {
 		 
 		// Execute startup action for first WFE
 		// TODO Construct workflow element selection screen
-		MD2CustomAction___LocationDetection_startupAction().execute()
 		
-        //SetWorkflowElementAction(actionSignature: "InitialAction", workflowElement: wfeLocationDetection).execute()
+        MD2SetWorkflowElementAction(actionSignature: "LocationDetectionAction", workflowElement: wfeLocationDetection).execute()
         
 		println("[Controller] Startup completed")
     }

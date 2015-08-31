@@ -10,6 +10,7 @@ class MD2WorkflowElement {
     
     let name: String
     
+    // Currently preprocessing leaves only one action MD2CustomAction__<WfeName>_startupAction
     var onInit: Array<MD2ActionType> = []
     
     init(name: String, onInit: MD2ActionType) {
@@ -17,51 +18,15 @@ class MD2WorkflowElement {
         self.onInit.append(onInit)
     }
     
-    func start() {}
-    func end() {}
-    
-/*    let defaultProcessChain: MD2ProcessChain
-
-    var actions: Array<MD2ActionType> = []
-    
-    var onInit: Array<MD2ActionType> = []
-    
-    var processChains: Array<MD2ProcessChain> = []
-    
-    var currentProcessChain: MD2ProcessChain?
-    
-    // MARK invoke not implemented
-    
-    init(name: String, onInit: MD2ActionType, defaultProcessChain: MD2ProcessChain) {
-        self.name = name
-        self.onInit.append(onInit)
-        self.defaultProcessChain = defaultProcessChain
-        self.processChains.append(defaultProcessChain)
-    }
-    
-    func addInitialAction(initialAction: MD2ActionType) {
-        onInit.append(initialAction)
-    }
-    
     func start() {
-        println("[WorkflowElement] Start workflow element '\(name)'")
-        
-        for action in onInit {
-            action.execute()
+        for initAction in onInit {
+            initAction.execute()
         }
-        
-        // Start default process chain
-        // MARK when are different process chains used?
-        if(defaultProcessChain.steps.count > 0) {
-            currentProcessChain = defaultProcessChain
-        }
-        
-        currentProcessChain?.start()
     }
     
     func end() {
-        println("[WorkflowElement] End workflow element '\(name)'")
-        
-        currentProcessChain?.end()
-    }*/
+        // Currently nothing to do
+        // There might have some unmapping etc. in future
+    }
+    
 }

@@ -47,9 +47,9 @@ class MD2WorkflowEventHandler {
             if event == sender {
                 // Determine workflow action
                 if actionType == MD2WorkflowActionType.Start {
-                    workflowElement.start()
+                    MD2WorkflowManager.instance.goToWorkflow(workflowElement)
                 } else if actionType == MD2WorkflowActionType.End {
-                    workflowElement.end()
+                    MD2WorkflowManager.instance.endWorkflow(workflowElement)
                 }
             }
         }

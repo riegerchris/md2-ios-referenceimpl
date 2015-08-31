@@ -12,6 +12,10 @@ class MD2WorkflowManager {
     
     var currentWorkflow: MD2WorkflowElement?
     
+    private init() {
+        // Private initializer for singleton object
+    }
+    
     func goToWorkflow(workflowElement: MD2WorkflowElement) {
         println("[WorkflowManager] Switch workflow into '\(workflowElement.name)'")
         
@@ -21,4 +25,12 @@ class MD2WorkflowManager {
         currentWorkflow = workflowElement
         currentWorkflow!.start()
     }
+    
+    func endWorkflow(workflowElement: MD2WorkflowElement) {
+        println("[WorkflowManager] End workflow '\(workflowElement.name)'")
+
+        workflowElement.end()
+        currentWorkflow = nil
+    }
+    
 }
