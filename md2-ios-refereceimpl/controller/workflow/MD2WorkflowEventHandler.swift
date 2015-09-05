@@ -6,20 +6,31 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
+/// The workflow event handler to hook the workflow layer into the MD2 event system.
 class MD2WorkflowEventHandler {
     
+    /// Convenience typealias for the tuple of workflow event, action and element.
     typealias WorkflowEventEntry = (MD2WorkflowEvent, MD2WorkflowActionType, MD2WorkflowElement)
     
+    /// The singleton instance.
     static let instance: MD2WorkflowEventHandler = MD2WorkflowEventHandler()
     
+    /// The list of registered workflow event-action-element tuples.
     var workflowElements: Array<WorkflowEventEntry> = []
     
+    /// Singleton initializer.
     private init() {
         // Nothing to initialize
     }
     
+    /**
+    Register workflow elements for a specific event and action.
+    
+    :param: workflowEvent The workflow event to react to.
+    :param: actionType The type of action (start/end) to perform.
+    :param: workflowElement The workflow element to start or end.
+    */
     func registerWorkflowElement(workflowEvent: MD2WorkflowEvent, actionType: MD2WorkflowActionType, workflowElement: MD2WorkflowElement) {
-        
         for (event, action, element) in workflowElements {
             if event == workflowEvent && action == actionType && element === workflowElement {
                 // Already exists
@@ -30,6 +41,13 @@ class MD2WorkflowEventHandler {
         workflowElements.append(workflowEvent, actionType, workflowElement)
     }
     
+    /**
+    Unregister workflow elements for a specific event and action.
+    
+    :param: workflowEvent The workflow event to react to.
+    :param: actionType The type of action (start/end) to perform.
+    :param: workflowElement The workflow element to start or end.
+    */
     func unregisterWorkflowElement(workflowEvent: MD2WorkflowEvent, actionType: MD2WorkflowActionType, workflowElement: MD2WorkflowElement) {
         for (index, (event, action, element)) in enumerate(workflowElements) {
             if event == workflowEvent && action == actionType && element === workflowElement {
@@ -39,6 +57,11 @@ class MD2WorkflowEventHandler {
         }
     }
     
+    /**
+    Function to trigger the event.
+    
+    :param: sender The workflow event to be fired.
+    */
     @objc
     func fire(sender: MD2WorkflowEvent) {
         println("Event fired to WorkflowEventHandler: " + String(sender.description))
@@ -54,5 +77,4 @@ class MD2WorkflowEventHandler {
             }
         }
     }
-    
 }

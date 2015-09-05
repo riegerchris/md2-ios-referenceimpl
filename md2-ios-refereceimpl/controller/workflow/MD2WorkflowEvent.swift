@@ -8,12 +8,14 @@
 
 // Make visible to Objective-C to allow use as Dictionary key (e.g. in MD2WorkflowEventHandler)
 @objc
+/// Constants to uniquely reference all workflow elements.
 enum MD2WorkflowEvent: Int {
 	case DoneEvent = 1
 	case CancelWorkflowEvent = 2
 	case SubmitEvent = 3
 	case CancelComplaintWorkflowEvent = 4
     
+    /// String representation of the workflow element.
     var description: String {
         switch self {
         case .DoneEvent: return "DoneEvent"
