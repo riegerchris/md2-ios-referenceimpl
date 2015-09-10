@@ -31,7 +31,7 @@ class MD2SpacerWidget: MD2SingleWidgetType {
             x: bounds.x,
             y: bounds.y,
             width: bounds.width,
-            height: min(bounds.height, MD2ViewConfig.DIMENSION_SPACER_HEIGHT))
+            height: MD2ViewConfig.DIMENSION_SPACER_HEIGHT)
         
         return self.dimensions!
     }

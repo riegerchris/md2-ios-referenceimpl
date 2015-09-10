@@ -29,6 +29,22 @@ class MD2UIUtil {
     }
     
     /**
+    Transform the CGSize object of view elements to a dimension object for easier handling.
+    
+    :param: size The size object.
+    
+    :returns: The dimension object.
+    */
+    static func CGSizeToDimension(size: CGSize) -> MD2Dimension {
+        let dimension = MD2Dimension(
+                        x: Float(0),
+                        y: Float(0),
+                        width: Float(size.width),
+                        height: Float(size.height))
+        return dimension
+    }
+    
+    /**
     Transform the dimension object to a CGRect object to set within a view element. 
 
     :param: dimension The dimension object.
@@ -44,7 +60,21 @@ class MD2UIUtil {
     }
     
     /**
-    Show a message in an overlay popup. 
+    Transform the dimension object to a CGSize object.
+    
+    :param: dimension The dimension object.
+    
+    :returns: The size object.
+    */
+    static func dimensionToCGSize(dimension: MD2Dimension) -> CGSize {
+        let size = CGSize(
+            width: Double(dimension.width),
+            height: Double(dimension.height))
+        return size
+    }
+    
+    /**
+    Show a message in an overlay popup.
 
     :param: message The message to show.
     :param: title The popup title.

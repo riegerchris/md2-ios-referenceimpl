@@ -44,7 +44,6 @@ class MD2DateTimePickerWidget: NSObject, MD2SingleWidgetType, UIGestureRecognize
         }
         
         // Text field to display result
-        widgetElement.frame = MD2UIUtil.dimensionToCGRect(dimensions!)
         widgetElement.placeholder = MD2ViewConfig.OPTION_WIDGET_PLACEHOLDER
         
         widgetElement.tag = widgetId.rawValue
@@ -84,10 +83,11 @@ class MD2DateTimePickerWidget: NSObject, MD2SingleWidgetType, UIGestureRecognize
             x: bounds.x,
             y: bounds.y,
             width: bounds.width,
-            height: min(bounds.height, MD2ViewConfig.DIMENSION_DATE_TIME_PICKER_HEIGHT))
+            height: MD2ViewConfig.DIMENSION_DATE_TIME_PICKER_HEIGHT)
         
         // Add gutter
         self.dimensions = MD2UIUtil.innerDimensionsWithGutter(outerDimensions)
+        widgetElement.frame = MD2UIUtil.dimensionToCGRect(dimensions!)
         
         return outerDimensions
     }

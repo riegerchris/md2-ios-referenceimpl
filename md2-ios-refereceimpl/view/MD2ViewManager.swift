@@ -107,5 +107,17 @@ class MD2ViewManager {
                 break
             }
         }
-    }    
+    }
+    
+    /**
+    Recalculate the view element positions when a screen orientation change occurs.
+    */
+    func rotateScreen(size: CGSize) {
+        println("Screen rotation detected! New screen dimensions: " + MD2UIUtil.CGSizeToDimension(size).toString())
+        
+        for (_, viewController) in views {
+            viewController.calculateDimensions(MD2UIUtil.CGSizeToDimension(size))
+            viewController.view.setNeedsDisplay()
+        }
+    }
 }

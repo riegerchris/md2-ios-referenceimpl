@@ -44,7 +44,6 @@ class MD2LabelWidget: MD2SingleWidgetType, MD2WidgetStyleType {
         
         // Set value
         updateElement()
-        widgetElement.frame = MD2UIUtil.dimensionToCGRect(dimensions!)
         
         // Set default styles
         //label.textAlignment = .Center
@@ -66,10 +65,11 @@ class MD2LabelWidget: MD2SingleWidgetType, MD2WidgetStyleType {
             x: bounds.x,
             y: bounds.y,
             width: bounds.width,
-            height: min(bounds.height, MD2ViewConfig.DIMENSION_LABEL_HEIGHT))
+            height: MD2ViewConfig.DIMENSION_LABEL_HEIGHT)
         
         // Add gutter
-        self.dimensions = MD2UIUtil.innerDimensionsWithGutter(outerDimensions)
+        dimensions = MD2UIUtil.innerDimensionsWithGutter(outerDimensions)
+        widgetElement.frame = MD2UIUtil.dimensionToCGRect(dimensions!)
         
         return outerDimensions
     }

@@ -34,10 +34,13 @@ class MD2TextFieldWidget: NSObject, MD2SingleWidgetType, MD2WidgetAssistedType, 
     
     var width: Float?
     
+    var infoButton: MD2ButtonWidget
+    
     init(widgetId: MD2WidgetMapping) {
         self.widgetId = widgetId
         self.value = MD2String()
         self.widgetElement = UITextField()
+        self.infoButton = MD2ButtonWidget(widgetId: self.widgetId)
     }
     
     func render(view: UIView, controller: UIViewController) {
@@ -47,7 +50,6 @@ class MD2TextFieldWidget: NSObject, MD2SingleWidgetType, MD2WidgetAssistedType, 
         }
         
         // Set value
-        widgetElement.frame = MD2UIUtil.dimensionToCGRect(dimensions!)
         widgetElement.placeholder = placeholder?.platformValue
         updateElement()
         
@@ -65,7 +67,6 @@ class MD2TextFieldWidget: NSObject, MD2SingleWidgetType, MD2WidgetAssistedType, 
         
         // If tooltip info is available show info button
         if tooltip != nil && tooltip!.isSet() && !tooltip!.equals(MD2String("")) {
-            let infoButton = MD2ButtonWidget(widgetId: self.widgetId)
             infoButton.buttonType = UIButtonType.InfoLight
             infoButton.dimensions = self.tooltipDimensions
             infoButton.render(view, controller: controller)
@@ -81,7 +82,7 @@ class MD2TextFieldWidget: NSObject, MD2SingleWidgetType, MD2WidgetAssistedType, 
                 x: bounds.x,
                 y: bounds.y,
                 width: bounds.width,
-                height: min(bounds.height, MD2ViewConfig.DIMENSION_TEXTFIELD_HEIGHT))
+                height: MD2ViewConfig.DIMENSION_TEXTFIELD_HEIGHT)
             
             var textFieldDimensions = outerDimensions - MD2Dimension(
                 x: Float(0.0),
@@ -91,6 +92,7 @@ class MD2TextFieldWidget: NSObject, MD2SingleWidgetType, MD2WidgetAssistedType, 
             
             // Add gutter
             self.dimensions = MD2UIUtil.innerDimensionsWithGutter(textFieldDimensions)
+            widgetElement.frame = MD2UIUtil.dimensionToCGRect(dimensions!)
             
             self.tooltipDimensions = MD2Dimension(
                 x: (outerDimensions.x + outerDimensions.width) - Float(MD2ViewConfig.TOOLTIP_WIDTH) - MD2ViewConfig.GUTTER / 2,
@@ -98,6 +100,7 @@ class MD2TextFieldWidget: NSObject, MD2SingleWidgetType, MD2WidgetAssistedType, 
                 y: textFieldDimensions.y + (textFieldDimensions.height - MD2ViewConfig.TOOLTIP_WIDTH) / 2,
                 width: MD2ViewConfig.TOOLTIP_WIDTH,
                 height: MD2ViewConfig.TOOLTIP_WIDTH)
+            infoButton.widgetElement?.frame = MD2UIUtil.dimensionToCGRect(tooltipDimensions!)
             
             return outerDimensions
             
@@ -107,10 +110,11 @@ class MD2TextFieldWidget: NSObject, MD2SingleWidgetType, MD2WidgetAssistedType, 
                 x: bounds.x,
                 y: bounds.y,
                 width: bounds.width,
-                height: min(bounds.height, MD2ViewConfig.DIMENSION_TEXTFIELD_HEIGHT))
+                height: MD2ViewConfig.DIMENSION_TEXTFIELD_HEIGHT)
             
             // Add gutter
             self.dimensions = MD2UIUtil.innerDimensionsWithGutter(outerDimensions)
+            widgetElement.frame = MD2UIUtil.dimensionToCGRect(dimensions!)
             
             return outerDimensions
         }
