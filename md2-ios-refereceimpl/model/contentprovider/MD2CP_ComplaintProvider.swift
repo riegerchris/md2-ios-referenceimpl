@@ -8,7 +8,7 @@
 
 class MD2CP_ComplaintProvider: MD2ContentProvider {
     
-    let contentType = MD2Entity_Complaint.self
+    typealias contentType = MD2Entity_Complaint
     
     var content: MD2Entity? // managed entity instance
     
@@ -20,8 +20,10 @@ class MD2CP_ComplaintProvider: MD2ContentProvider {
     
     var filter: MD2Filter?
     
+    var entityPath: String = ""
+    
     init() {
-    self.store = MD2LocalStoreFactory<MD2Entity_Complaint>().createStore()
+        self.store = MD2DataStoreFactory<contentType>().createStore(entityPath)
     }
     
     convenience init(content: MD2Entity) {

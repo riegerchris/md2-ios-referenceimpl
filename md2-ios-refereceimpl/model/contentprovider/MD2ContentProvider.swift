@@ -18,6 +18,8 @@ protocol MD2ContentProvider: AnyObject {
     
     var filter: MD2Filter? { get set }
     
+    var entityPath: String { get }
+    
     func getContent() -> MD2Entity?
     
     // Create new object to manage

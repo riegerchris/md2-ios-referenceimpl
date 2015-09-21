@@ -9,10 +9,10 @@
 class MD2RemoteStore<T: MD2Entity>: MD2DataStore {
     
     // e.g. http://localhost:8080/CitizenApp.ios/service/address/
-    var entityPath: String = ""
+    var entityPath: String
     
-    init() {
-        // Nothing to initialize
+    init(entityPath: String) {
+        self.entityPath = entityPath
     }
     
     func query(query: MD2Query) -> MD2Entity? {

@@ -60,11 +60,10 @@
 		59CB70941B5F9995001D312F /* MD2Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70931B5F9995001D312F /* MD2Entity.swift */; };
 		59CB70961B5FA283001D312F /* MD2Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70951B5FA282001D312F /* MD2Location.swift */; };
 		59CB70981B5FB25B001D312F /* MD2ContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70971B5FB25B001D312F /* MD2ContentProvider.swift */; };
-		59CB709A1B5FB6E5001D312F /* MD2DataStoree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70991B5FB6E5001D312F /* MD2DataStoree.swift */; };
+		59CB709A1B5FB6E5001D312F /* MD2DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70991B5FB6E5001D312F /* MD2DataStore.swift */; };
 		59CB709C1B5FB7B3001D312F /* MD2Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB709B1B5FB7B3001D312F /* MD2Filter.swift */; };
 		59CB709E1B5FB82B001D312F /* MD2Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB709D1B5FB82B001D312F /* MD2Query.swift */; };
 		59CB70A01B5FBBAF001D312F /* MD2DataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB709F1B5FBBAF001D312F /* MD2DataStoreFactory.swift */; };
-		59CB70A21B5FBC01001D312F /* MD2LocalStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70A11B5FBC01001D312F /* MD2LocalStoreFactory.swift */; };
 		59CB70A41B5FBC6A001D312F /* MD2LocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70A31B5FBC6A001D312F /* MD2LocalStore.swift */; };
 		59CB70A61B5FCC95001D312F /* MD2ContentProviderRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70A51B5FCC95001D312F /* MD2ContentProviderRegistry.swift */; };
 		59CB70A81B5FDD37001D312F /* MD2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB70A71B5FDD37001D312F /* MD2Controller.swift */; };
@@ -139,7 +138,6 @@
 		59DF70761B73C82600F6F0A3 /* MD2ContentProviderAttributeIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF70751B73C82600F6F0A3 /* MD2ContentProviderAttributeIdentity.swift */; };
 		59FA44841B8F41640000CF02 /* MD2RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FA44831B8F41630000CF02 /* MD2RestClient.swift */; };
 		59FA44861B8F42430000CF02 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FA44851B8F42430000CF02 /* SwiftyJSON.swift */; };
-		59FA44881B8F54810000CF02 /* MD2RemoteStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FA44871B8F54810000CF02 /* MD2RemoteStoreFactory.swift */; };
 		59FA448A1B8F54AE0000CF02 /* MD2RemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FA44891B8F54AE0000CF02 /* MD2RemoteStore.swift */; };
 /* End PBXBuildFile section */
 
@@ -207,11 +205,10 @@
 		59CB70931B5F9995001D312F /* MD2Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Entity.swift; sourceTree = "<group>"; };
 		59CB70951B5FA282001D312F /* MD2Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Location.swift; sourceTree = "<group>"; };
 		59CB70971B5FB25B001D312F /* MD2ContentProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2ContentProvider.swift; sourceTree = "<group>"; };
-		59CB70991B5FB6E5001D312F /* MD2DataStoree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2DataStoree.swift; sourceTree = "<group>"; };
+		59CB70991B5FB6E5001D312F /* MD2DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2DataStore.swift; sourceTree = "<group>"; };
 		59CB709B1B5FB7B3001D312F /* MD2Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Filter.swift; sourceTree = "<group>"; };
 		59CB709D1B5FB82B001D312F /* MD2Query.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Query.swift; sourceTree = "<group>"; };
 		59CB709F1B5FBBAF001D312F /* MD2DataStoreFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2DataStoreFactory.swift; sourceTree = "<group>"; };
-		59CB70A11B5FBC01001D312F /* MD2LocalStoreFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2LocalStoreFactory.swift; sourceTree = "<group>"; };
 		59CB70A31B5FBC6A001D312F /* MD2LocalStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2LocalStore.swift; sourceTree = "<group>"; };
 		59CB70A51B5FCC95001D312F /* MD2ContentProviderRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2ContentProviderRegistry.swift; sourceTree = "<group>"; };
 		59CB70A71B5FDD37001D312F /* MD2Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Controller.swift; sourceTree = "<group>"; };
@@ -290,7 +287,6 @@
 		59DF70751B73C82600F6F0A3 /* MD2ContentProviderAttributeIdentity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2ContentProviderAttributeIdentity.swift; sourceTree = "<group>"; };
 		59FA44831B8F41630000CF02 /* MD2RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2RestClient.swift; sourceTree = "<group>"; };
 		59FA44851B8F42430000CF02 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		59FA44871B8F54810000CF02 /* MD2RemoteStoreFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2RemoteStoreFactory.swift; sourceTree = "<group>"; };
 		59FA44891B8F54AE0000CF02 /* MD2RemoteStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2RemoteStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -424,12 +420,10 @@
 		59CB70781B5EAD19001D312F /* store */ = {
 			isa = PBXGroup;
 			children = (
-				59CB70991B5FB6E5001D312F /* MD2DataStoree.swift */,
+				59CB70991B5FB6E5001D312F /* MD2DataStore.swift */,
 				59CB709F1B5FBBAF001D312F /* MD2DataStoreFactory.swift */,
-				59CB70A11B5FBC01001D312F /* MD2LocalStoreFactory.swift */,
 				59CB70A31B5FBC6A001D312F /* MD2LocalStore.swift */,
 				59D363E51B77AAB200E51E19 /* LocalData.xcdatamodeld */,
-				59FA44871B8F54810000CF02 /* MD2RemoteStoreFactory.swift */,
 				59FA44891B8F54AE0000CF02 /* MD2RemoteStore.swift */,
 			);
 			name = store;
@@ -712,7 +706,6 @@
 				59DF704C1B7264C100F6F0A3 /* MD2OnLeftSwipeHandler.swift in Sources */,
 				59D057F81B938111004F7D92 /* MD2CustomAction___LocationDetection_registerProcessChainActionEventTrigger.swift in Sources */,
 				59CB70A01B5FBBAF001D312F /* MD2DataStoreFactory.swift in Sources */,
-				59CB70A21B5FBC01001D312F /* MD2LocalStoreFactory.swift in Sources */,
 				59DF705C1B726A2900F6F0A3 /* MD2ContentProviderResetAction.swift in Sources */,
 				595E26E41B7D1433004F484A /* MD2WorkflowElement.swift in Sources */,
 				59C3D5D81B69681300C5A613 /* MD2SwitchWidget.swift in Sources */,
@@ -815,7 +808,7 @@
 				59C3D5BB1B67FC0C00C5A613 /* MD2WidgetRegistry.swift in Sources */,
 				59C3D5ED1B6FAB4B00C5A613 /* MD2GridLayoutPane.swift in Sources */,
 				59C6A0D61B7BA54B0038E056 /* MD2UpdateContentProviderAction.swift in Sources */,
-				59CB709A1B5FB6E5001D312F /* MD2DataStoree.swift in Sources */,
+				59CB709A1B5FB6E5001D312F /* MD2DataStore.swift in Sources */,
 				59FA44841B8F41640000CF02 /* MD2RestClient.swift in Sources */,
 				59DF704A1B72643900F6F0A3 /* MD2SetWorkflowElementAction.swift in Sources */,
 				59DF706A1B72711100F6F0A3 /* MD2TemporalType.swift in Sources */,
@@ -836,7 +829,6 @@
 				59CE101F1B60E89000ACE1E7 /* MD2GlobalEventHandler.swift in Sources */,
 				59DF705E1B726A6900F6F0A3 /* MD2FireEventAction.swift in Sources */,
 				59DF70481B7260FB00F6F0A3 /* MD2AssignObjectAction.swift in Sources */,
-				59FA44881B8F54810000CF02 /* MD2RemoteStoreFactory.swift in Sources */,
 				59CB70821B5EB281001D312F /* MD2NumericType.swift in Sources */,
 				59C3D5E91B6F840300C5A613 /* MD2ViewConfig.swift in Sources */,
 			);
