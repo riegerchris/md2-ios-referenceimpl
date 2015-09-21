@@ -10,25 +10,25 @@ import Foundation
 
 // Make class visible for Objective-C to work with Core Data persistence framework
 @objc(MD2Entity___ReturnStepStack)
-class MD2Entity___ReturnStepStack: NSObject, MD2EntityType {
+class MD2Entity___ReturnStepStack: NSObject, MD2Entity {
 
 	var internalId: MD2Integer = MD2Integer()
     
-    var containedTypes: Dictionary<String, MD2Type> = [:]
+    var containeds: Dictionary<String, MD2Type> = [:]
     
     required override init() {
         // Initialize fields
-        containedTypes["returnStep"] = MD2String()
-        containedTypes["returnAndReverseStep"] = MD2String()
-        containedTypes["returnAndProceedStep"] = MD2String()
-        containedTypes["tail"] = MD2String()
+        containeds["returnStep"] = MD2String()
+        containeds["returnAndReverseStep"] = MD2String()
+        containeds["returnAndProceedStep"] = MD2String()
+        containeds["tail"] = MD2String()
     }
     
     convenience init(md2Entity: MD2Entity___ReturnStepStack) {
         self.init()
         
-        for (typeName, typeValue) in md2Entity.containedTypes {
-            containedTypes[typeName] = typeValue.clone()
+        for (typeName, typeValue) in md2Entity.containeds {
+            containeds[typeName] = typeValue.clone()
         }
     }
     
@@ -37,10 +37,10 @@ class MD2Entity___ReturnStepStack: NSObject, MD2EntityType {
     }
     
     func toString() -> String {
-    return "(MD2Entity___ReturnStepStack: [returnStep: " + containedTypes["returnStep"]!.toString()
-    + ", returnAndReverseStep: " + containedTypes["returnAndReverseStep"]!.toString()
-    + ", returnAndProceedStep: " + containedTypes["returnAndProceedStep"]!.toString()
-    + ", tail: " + containedTypes["tail"]!.toString() 
+    return "(MD2Entity___ReturnStepStack: [returnStep: " + containeds["returnStep"]!.toString()
+    + ", returnAndReverseStep: " + containeds["returnAndReverseStep"]!.toString()
+    + ", returnAndProceedStep: " + containeds["returnAndProceedStep"]!.toString()
+    + ", tail: " + containeds["tail"]!.toString() 
 	        + "])"
     }
     
@@ -51,8 +51,8 @@ class MD2Entity___ReturnStepStack: NSObject, MD2EntityType {
         
         var isEqual = true
         
-        for (typeName, typeValue) in (value as! MD2Entity___ReturnStepStack).containedTypes {
-            if !(containedTypes[typeName] != nil && containedTypes[typeName]!.equals(typeValue)) {
+        for (typeName, typeValue) in (value as! MD2Entity___ReturnStepStack).containeds {
+            if !(containeds[typeName] != nil && containeds[typeName]!.equals(typeValue)) {
                 isEqual = false
                 break
             }
@@ -62,14 +62,14 @@ class MD2Entity___ReturnStepStack: NSObject, MD2EntityType {
     }
     
     func get(attribute: String) -> MD2Type? {
-        return containedTypes[attribute]
+        return containeds[attribute]
     }
     
     func set(attribute: String, value: MD2Type) {
     	// Check if attribute exists
-    	if containedTypes[attribute] == nil {
+    	if containeds[attribute] == nil {
     		fatalError("Tried to set non-existing attribute in entity type MD2Entity___ReturnStepStack")
     	}
-        containedTypes[attribute] = value
+        containeds[attribute] = value
     }
 }

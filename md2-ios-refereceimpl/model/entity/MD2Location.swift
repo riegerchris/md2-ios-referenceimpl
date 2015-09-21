@@ -6,23 +6,23 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class MD2Location: MD2EntityType {
+class MD2Location: MD2Entity {
     
     var internalId: MD2Integer = MD2Integer()
     
-    var containedTypes: Dictionary<String,MD2Type> = [:]
+    var containeds: Dictionary<String,MD2Type> = [:]
     
     required init() {
         // Initialize location fields
-        containedTypes["longitude"] = MD2Float(0.0)
-        containedTypes["latitude"] = MD2Float(0.0)
+        containeds["longitude"] = MD2Float(0.0)
+        containeds["latitude"] = MD2Float(0.0)
     }
     
     convenience init(md2Entity: MD2Location) {
         self.init()
         
-        for (typeName, typeValue) in md2Entity.containedTypes {
-            containedTypes[typeName] = typeValue.clone()
+        for (typeName, typeValue) in md2Entity.containeds {
+            containeds[typeName] = typeValue.clone()
         }
     }
     
@@ -31,8 +31,8 @@ class MD2Location: MD2EntityType {
     }
     
     func toString() -> String {
-        return "(Location: [longitude: " + containedTypes["longitude"]!.toString()
-            + ", latitude: " + containedTypes["latitude"]!.toString()
+        return "(Location: [longitude: " + containeds["longitude"]!.toString()
+            + ", latitude: " + containeds["latitude"]!.toString()
             + "])"
     }
     
@@ -43,8 +43,8 @@ class MD2Location: MD2EntityType {
 
         var isEqual = true
         
-        for (typeName, typeValue) in (value as! MD2Location).containedTypes {
-            if !(containedTypes[typeName] != nil && containedTypes[typeName]!.equals(typeValue)) {
+        for (typeName, typeValue) in (value as! MD2Location).containeds {
+            if !(containeds[typeName] != nil && containeds[typeName]!.equals(typeValue)) {
                 isEqual = false
                 break
             }
@@ -54,11 +54,11 @@ class MD2Location: MD2EntityType {
     }
     
     func get(attribute: String) -> MD2Type? {
-        return containedTypes[attribute]
+        return containeds[attribute]
     }
     
     func set(attribute: String, value: MD2Type) {
-        containedTypes[attribute] = value
+        containeds[attribute] = value
     }
     
 }

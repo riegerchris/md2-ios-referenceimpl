@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class MD2ContentProviderResetAction: MD2ActionType {
+class MD2ContentProviderResetAction: MD2Action {
     
     let actionSignature: String
     
-    let contentProvider: MD2ContentProviderType
+    let contentProvider: MD2ContentProvider
     
-    init(actionSignature: String, contentProvider: MD2ContentProviderType) {
+    init(actionSignature: String, contentProvider: MD2ContentProvider) {
         
         self.actionSignature = actionSignature
         self.contentProvider = contentProvider
@@ -22,7 +22,7 @@ class MD2ContentProviderResetAction: MD2ActionType {
         self.contentProvider.reset()
     }
     
-    func equals(anotherAction: MD2ActionType) -> Bool {
+    func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature
     }
     

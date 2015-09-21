@@ -6,16 +6,16 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class MD2RemoteStore<T: MD2EntityType>: MD2DataStoreType {
+class MD2RemoteStore<T: MD2Entity>: MD2DataStore {
     
     // e.g. http://localhost:8080/CitizenApp.ios/service/address/
-    var entityPath: String = ""
+    var entityPath: String
     
-    init() {
-        // Nothing to initialize
+    init(entityPath: String) {
+        self.entityPath = entityPath
     }
     
-    func query(query: MD2Query) -> MD2EntityType? {
+    func query(query: MD2Query) -> MD2Entity? {
         let fullPath = entityPath + queryToFilterString(query)
         
         let json = MD2RestClient.instance.makeHTTPGetRequestSync(fullPath)
@@ -24,7 +24,7 @@ class MD2RemoteStore<T: MD2EntityType>: MD2DataStoreType {
         return JSONToEntity(json[0], entity: T())
     }
     
-    func put(entity: MD2EntityType) {
+    func put(entity: MD2Entity) {
         let q = MD2Query()
         q.addPredicate("myCountry", value: "bla")
         query(q)
@@ -43,7 +43,7 @@ class MD2RemoteStore<T: MD2EntityType>: MD2DataStoreType {
         })
     }
     
-    private func getById(internalId: MD2Integer) -> MD2EntityType? {
+    private func getById(internalId: MD2Integer) -> MD2Entity? {
         if internalId.isSet() && !internalId.equals(MD2Integer(0)) {
             
             let fullPath = entityPath + internalId.toString() + "/"
@@ -56,7 +56,7 @@ class MD2RemoteStore<T: MD2EntityType>: MD2DataStoreType {
         return nil
     }
     
-    private func saveData(entity: MD2EntityType) {
+    private func saveData(entity: MD2Entity) {
         // Single entities are also tranferred as array
         let body = JSON([entityToDict(entity)])
         
@@ -70,14 +70,14 @@ class MD2RemoteStore<T: MD2EntityType>: MD2DataStoreType {
         })
     }
     
-    private func entityToDict(entity: MD2EntityType) -> Dictionary<String, AnyObject> {
+    private func entityToDict(entity: MD2Entity) -> Dictionary<String, AnyObject> {
         var dict: Dictionary<String, AnyObject> = [:]
         
-        for (attributeKey, attributeValue) in entity.containedTypes {
-            if attributeValue is MD2EnumType && (attributeValue as! MD2EnumType).value != nil {
-                dict[attributeKey] = (attributeValue as! MD2EnumType).toInt()
-            } else if attributeValue is MD2EntityType {
-                dict[attributeKey] = entityToDict(attributeValue as! MD2EntityType)
+        for (attributeKey, attributeValue) in entity.containeds {
+            if attributeValue is MD2Enum && (attributeValue as! MD2Enum).value != nil {
+                dict[attributeKey] = (attributeValue as! MD2Enum).toInt()
+            } else if attributeValue is MD2Entity {
+                dict[attributeKey] = entityToDict(attributeValue as! MD2Entity)
             } else if attributeValue is MD2DataType {
                 if !(attributeValue as! MD2DataType).isSet() {
                     continue
@@ -104,22 +104,22 @@ class MD2RemoteStore<T: MD2EntityType>: MD2DataStoreType {
         return dict
     }
     
-    private func JSONToEntity(json: JSON, entity:MD2EntityType) -> MD2EntityType {
+    private func JSONToEntity(json: JSON, entity:MD2Entity) -> MD2Entity {
         if json == nil {
             return entity
         }
         
         entity.internalId = MD2Integer(json["__internalId"].intValue)
         
-        for (attributeKey, attributeValue) in entity.containedTypes {
+        for (attributeKey, attributeValue) in entity.containeds {
             if json[attributeKey] == nil {
                 continue
             }
             
-            if attributeValue is MD2EnumType {
-                (attributeValue as! MD2EnumType).setValueFromInt(json[attributeKey].intValue)
+            if attributeValue is MD2Enum {
+                (attributeValue as! MD2Enum).setValueFromInt(json[attributeKey].intValue)
                 
-            } else if attributeValue is MD2EntityType {
+            } else if attributeValue is MD2Entity {
                 // TODO recursive usage
                 println("Nested entities not supported for key: " + attributeKey)
                 

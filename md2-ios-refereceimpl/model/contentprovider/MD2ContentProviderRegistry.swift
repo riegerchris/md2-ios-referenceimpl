@@ -10,13 +10,13 @@ class MD2ContentProviderRegistry {
     
     static let instance: MD2ContentProviderRegistry = MD2ContentProviderRegistry()
     
-    var contentProviders: Dictionary<String, MD2ContentProviderType> = [:]
+    var contentProviders: Dictionary<String, MD2ContentProvider> = [:]
     
-    func addContentProvider(contentProviderName: String, provider: MD2ContentProviderType) {
+    func addContentProvider(contentProviderName: String, provider: MD2ContentProvider) {
         contentProviders[contentProviderName] = provider
     }
     
-    func getContentProvider(contentProviderName: String) -> MD2ContentProviderType? {
+    func getContentProvider(contentProviderName: String) -> MD2ContentProvider? {
         return contentProviders[contentProviderName]
     }
     

@@ -14,7 +14,7 @@ class MD2Util {
     /**
     Get the class name as String. 
 
-    *Notice* Type inspection is very limited so a standard library function is needed instead.
+    *Notice*  inspection is very limited so a standard library function is needed instead.
     
     :param: object The object to inspect.
     
@@ -24,7 +24,7 @@ class MD2Util {
         return _stdlib_getDemangledTypeName(object).componentsSeparatedByString(".").last!
     }
     
-    static func getBackendClassName(object: MD2EntityType) -> String {
+    static func getBackendClassName(object: MD2Entity) -> String {
         return getClassName(object).componentsSeparatedByString("MD2Entity_").last!
     }
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MD2SwitchWidget: MD2SingleWidgetType, MD2WidgetAssistedType {
+class MD2SwitchWidget: MD2SingleWidget, MD2AssistedWidget {
     
     let widgetId: MD2WidgetMapping
     
@@ -46,7 +46,6 @@ class MD2SwitchWidget: MD2SingleWidgetType, MD2WidgetAssistedType {
         }
         
         // Set value
-        widgetElement.frame = MD2UIUtil.dimensionToCGRect(dimensions!)
         updateElement()
         
         // TODO Label for caption
@@ -68,10 +67,11 @@ class MD2SwitchWidget: MD2SingleWidgetType, MD2WidgetAssistedType {
             x: bounds.x,
             y: bounds.y,
             width: bounds.width,
-            height: min(bounds.height, MD2ViewConfig.DIMENSION_SWITCH_HEIGHT))
+            height: MD2ViewConfig.DIMENSION_SWITCH_HEIGHT)
         
         // Add gutter
         self.dimensions = MD2UIUtil.innerDimensionsWithGutter(outerDimensions)
+        widgetElement.frame = MD2UIUtil.dimensionToCGRect(dimensions!)
         
         return outerDimensions
     }

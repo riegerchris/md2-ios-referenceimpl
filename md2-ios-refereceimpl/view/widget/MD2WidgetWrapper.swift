@@ -16,7 +16,7 @@ func ==(lhs: MD2WidgetWrapper, rhs: MD2WidgetWrapper) -> Bool {
 // Implement Hashable interface to use as dictionary key in Data Mapper
 class MD2WidgetWrapper: Hashable {
     
-    var widget: MD2SingleWidgetType?
+    var widget: MD2SingleWidget?
     
     var widgetId: MD2WidgetMapping
     
@@ -46,7 +46,7 @@ class MD2WidgetWrapper: Hashable {
         }
     }
     
-    var validators: Array<MD2ValidatorType> = []
+    var validators: Array<MD2Validator> = []
     
     // Required by hashable interface
     var hashValue: Int {
@@ -55,14 +55,14 @@ class MD2WidgetWrapper: Hashable {
         }
     }
     
-    init(widget: MD2SingleWidgetType){
+    init(widget: MD2SingleWidget){
         self.widget = widget
         self.widgetId = widget.widgetId
         self.value = widget.value
         self.isElementDisabled = false
     }
     
-    func setWidget(widget: MD2SingleWidgetType){
+    func setWidget(widget: MD2SingleWidget){
         self.widget = widget
         widgetId = widget.widgetId
         
@@ -97,11 +97,11 @@ class MD2WidgetWrapper: Hashable {
         self.value = value  // property observer will care about the rest
     }
     
-    func addValidator(validator: MD2ValidatorType) {
+    func addValidator(validator: MD2Validator) {
         validators.append(validator)
     }
     
-    func removeValidator(validator: MD2ValidatorType){
+    func removeValidator(validator: MD2Validator){
         if validators.isEmpty { return }
         
         for i in 0..<count(validators) {

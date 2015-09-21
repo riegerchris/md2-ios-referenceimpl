@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MD2ImageWidget: MD2SingleWidgetType {
+class MD2ImageWidget: MD2SingleWidget {
     
     let widgetId: MD2WidgetMapping
     
@@ -51,10 +51,11 @@ class MD2ImageWidget: MD2SingleWidgetType {
             x: bounds.x,
             y: bounds.y,
             width: bounds.width,
-            height: min(bounds.height, MD2ViewConfig.DIMENSION_IMAGE_HEIGHT))
+            height: MD2ViewConfig.DIMENSION_IMAGE_HEIGHT)
         
         // Add gutter
         self.dimensions = MD2UIUtil.innerDimensionsWithGutter(outerDimensions)
+        widgetElement.frame = MD2UIUtil.dimensionToCGRect(dimensions!)
         
         return outerDimensions
     }
@@ -68,7 +69,6 @@ class MD2ImageWidget: MD2SingleWidgetType {
     }
     
     func updateElement() {
-        widgetElement.frame = MD2UIUtil.dimensionToCGRect(dimensions!)
         let image = UIImage(named: value.toString())
         widgetElement.image = image
     }

@@ -89,7 +89,7 @@ class MD2RestClient: NSObject {
         let request = NSMutableURLRequest(URL: NSURL(string: path)!)
         
         request.HTTPMethod = "POST"
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-")
         
         // Set the POST body for the request
         let data = body.rawString()?.dataUsingEncoding(NSUTF8StringEncoding)
@@ -122,7 +122,7 @@ class MD2RestClient: NSObject {
         request.HTTPMethod = "DELETE"
         
         // Set the DELETE body for the request
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-")
         
         // Set the POST body for the request
         let data = body.rawString()?.dataUsingEncoding(NSUTF8StringEncoding)

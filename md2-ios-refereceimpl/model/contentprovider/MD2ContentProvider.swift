@@ -1,29 +1,31 @@
 //
-//  MD2ContentProviderType.swift
+//  MD2ContentProvider.swift
 //  md2-ios-refereceimpl
 //
 //  Created by Christoph Rieger on 22.07.15.
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-protocol MD2ContentProviderType: AnyObject {
+protocol MD2ContentProvider: AnyObject {
     
-    var content: MD2EntityType? { get set }
+    var content: MD2Entity? { get set }
     
-    var store: MD2DataStoreType { get set }
+    var store: MD2DataStore { get set }
     
     var observedAttributes: Dictionary<String, MD2Type> { get set }
     
-    var attributeContentProviders: Dictionary<String, MD2ContentProviderType> { get set }
+    var attributeContentProviders: Dictionary<String, MD2ContentProvider> { get set }
     
     var filter: MD2Filter? { get set }
     
-    func getContent() -> MD2EntityType?
+    var entityPath: String { get }
+    
+    func getContent() -> MD2Entity?
     
     // Create new object to manage
     func setContent()
     
-    func setContent(content: MD2EntityType)
+    func setContent(content: MD2Entity)
     
     func registerObservedOnChange(attribute: String)
     
@@ -33,7 +35,7 @@ protocol MD2ContentProviderType: AnyObject {
     
     func setValue(attribute: String, value: MD2Type)
     
-    func registerAttributeContentProvider(attribute: String, contentProvider: MD2ContentProviderType)
+    func registerAttributeContentProvider(attribute: String, contentProvider: MD2ContentProvider)
     
     func reset()
     

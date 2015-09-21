@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class MD2RegExValidator: MD2ValidatorType {
+class MD2RegExValidator: MD2Validator {
     
     let identifier: MD2String
     

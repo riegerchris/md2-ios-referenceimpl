@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MD2ButtonWidget: MD2SingleWidgetType, MD2WidgetStyleType {
+class MD2ButtonWidget: MD2SingleWidget, MD2StylableWidget {
     
     let widgetId: MD2WidgetMapping
     
@@ -20,7 +20,7 @@ class MD2ButtonWidget: MD2SingleWidgetType, MD2WidgetStyleType {
     
     var dimensions: MD2Dimension?
     
-    var buttonType: UIButtonType = UIButtonType.System
+    var button: UIButtonType = UIButtonType.System
     
     var widgetElement: UIButton?
     
@@ -31,6 +31,8 @@ class MD2ButtonWidget: MD2SingleWidgetType, MD2WidgetStyleType {
     var textStyle: MD2WidgetTextStyle = MD2WidgetTextStyle.Normal
     
     var width: Float?
+    
+    var frame: CGRect?
     
     init(widgetId: MD2WidgetMapping) {
         self.widgetId = widgetId
@@ -43,7 +45,7 @@ class MD2ButtonWidget: MD2SingleWidgetType, MD2WidgetStyleType {
             return
         }
         
-        switch buttonType {
+        switch button {
         case UIButtonType.System: renderSystemButton(view)
         case UIButtonType.InfoLight: renderInfoButton(view)
         default: renderSystemButton(view)
@@ -56,10 +58,12 @@ class MD2ButtonWidget: MD2SingleWidgetType, MD2WidgetStyleType {
             x: bounds.x,
             y: bounds.y,
             width: bounds.width,
-            height: min(bounds.height, MD2ViewConfig.DIMENSION_BUTTON_HEIGHT))
+            height: MD2ViewConfig.DIMENSION_BUTTON_HEIGHT)
         
         // Add gutter
         self.dimensions = MD2UIUtil.innerDimensionsWithGutter(outerDimensions)
+        // If button already exists (=redraw on orientation change)
+        widgetElement?.frame = MD2UIUtil.dimensionToCGRect(dimensions!)
         
         return outerDimensions
     }
@@ -79,7 +83,7 @@ class MD2ButtonWidget: MD2SingleWidgetType, MD2WidgetStyleType {
         updateElement()
         
         widgetElement!.tag = widgetId.rawValue
-        widgetElement!.addTarget(MD2OnClickHandler.instance, action: "fire:", forControlEvents: UIControlEvents.TouchUpInside)
+        widgetElement!.addTarget(MD2Event.OnClick.getEventHandler(), action: Selector(MD2Event.OnClick.getTargetMethod()), forControlEvents: UIControlEvents.TouchUpInside)
         
         // Set default styles
         widgetElement!.layer.borderWidth = 1
@@ -100,16 +104,15 @@ class MD2ButtonWidget: MD2SingleWidgetType, MD2WidgetStyleType {
     }
     
     func renderInfoButton(view: UIView) {
-        let button = UIButton.buttonWithType(UIButtonType.InfoLight) as! UIButton
-        button.frame = MD2UIUtil.dimensionToCGRect(dimensions!)
-        button.tag = widgetId.rawValue
+        widgetElement = (UIButton.buttonWithType(UIButtonType.InfoLight) as! UIButton)
+        widgetElement!.frame = MD2UIUtil.dimensionToCGRect(dimensions!)
+        widgetElement!.tag = widgetId.rawValue
         
         // Add alert handler
-        button.addTarget(MD2TooltipHandler.instance, action: "fire:", forControlEvents: UIControlEvents.TouchUpInside)
+        widgetElement!.addTarget(MD2Event.OnTooltip.getEventHandler(), action: Selector(MD2Event.OnTooltip.getTargetMethod()), forControlEvents: UIControlEvents.TouchUpInside)
         
         // Add to surrounding view
-        view.addSubview(button)
-        self.widgetElement = button
+        view.addSubview(widgetElement!)
     }
     
     func updateElement() {

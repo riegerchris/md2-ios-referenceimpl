@@ -8,7 +8,15 @@
 
 import UIKit
 
+/// Main controller class to set up and start the app
 class MD2Controller {
+
+    /**
+    Main function that sets up the app. This includes creating and registering all view elements, content providers and workflows elements. 
+    Finally the initial workflow element selection screen is created to trigger the app flow.
+    
+    :param window The device screen object to render the views.
+    */
     func run(window: UIWindow) {
         // Initialize the widget registry
         var widgetRegistry = MD2WidgetRegistry.instance
@@ -668,22 +676,22 @@ class MD2Controller {
             
         MD2WorkflowEventHandler.instance.registerWorkflowElement(
             MD2WorkflowEvent.DoneEvent,
-            actionType: MD2WorkflowActionType.Start,
+            action: MD2WorkflowAction.Start,
             workflowElement: wfeSubmitComplaint)
             
         MD2WorkflowEventHandler.instance.registerWorkflowElement(
             MD2WorkflowEvent.CancelWorkflowEvent,
-            actionType: MD2WorkflowActionType.End,
+            action: MD2WorkflowAction.End,
             workflowElement: wfeLocationDetection)
             
         MD2WorkflowEventHandler.instance.registerWorkflowElement(
             MD2WorkflowEvent.SubmitEvent,
-            actionType: MD2WorkflowActionType.End,
+            action: MD2WorkflowAction.End,
             workflowElement: wfeSubmitComplaint)
             
         MD2WorkflowEventHandler.instance.registerWorkflowElement(
             MD2WorkflowEvent.CancelComplaintWorkflowEvent,
-            actionType: MD2WorkflowActionType.End,
+            action: MD2WorkflowAction.End,
             workflowElement: wfeSubmitComplaint)
         
         /***************************************************

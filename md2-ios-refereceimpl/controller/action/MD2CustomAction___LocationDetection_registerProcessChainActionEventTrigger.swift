@@ -6,7 +6,7 @@
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
 
-class MD2CustomAction___LocationDetection_registerProcessChainActionEventTrigger: MD2ActionType {
+class MD2CustomAction___LocationDetection_registerProcessChainActionEventTrigger: MD2Action {
     
     let actionSignature: String = "MD2CustomAction___LocationDetection_registerProcessChainActionEventTrigger"
     
@@ -21,7 +21,7 @@ class MD2CustomAction___LocationDetection_registerProcessChainActionEventTrigger
        
     }
     
-    func equals(anotherAction: MD2ActionType) -> Bool {
+    func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature
     }
 }

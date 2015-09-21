@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class MD2DisableAction: MD2ActionType {
+class MD2DisableAction: MD2Action {
     
     let actionSignature: String
     
-    let viewElement: MD2WidgetType
+    let viewElement: MD2Widget
     
-    init(actionSignature: String, viewElement: MD2WidgetType) {
+    init(actionSignature: String, viewElement: MD2Widget) {
         self.actionSignature = actionSignature
         self.viewElement = viewElement
     }
@@ -21,7 +21,7 @@ class MD2DisableAction: MD2ActionType {
         self.viewElement.disable()
     }
     
-    func equals(anotherAction: MD2ActionType) -> Bool {
+    func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature
     }
     

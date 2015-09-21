@@ -1,5 +1,5 @@
 //
-//  MD2WidgetType.swift
+//  MD2Widget.swift
 //  md2-ios-refereceimpl
 //
 //  Created by Christoph Rieger on 28.07.15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol MD2WidgetType: class {
+protocol MD2Widget: class {
     
     var widgetId: MD2WidgetMapping { get }
     

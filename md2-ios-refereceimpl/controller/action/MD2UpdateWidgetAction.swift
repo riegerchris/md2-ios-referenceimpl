@@ -6,17 +6,17 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class MD2UpdateWidgetAction: MD2ActionType {
+class MD2UpdateWidgetAction: MD2Action {
     
     let actionSignature: String
     
     let viewElement: MD2WidgetWrapper
     
-    let contentProvider: MD2ContentProviderType
+    let contentProvider: MD2ContentProvider
     
     let attribute: String
     
-    init(actionSignature: String, viewElement: MD2WidgetWrapper, contentProvider: MD2ContentProviderType, attribute: String) {
+    init(actionSignature: String, viewElement: MD2WidgetWrapper, contentProvider: MD2ContentProvider, attribute: String) {
         self.actionSignature = actionSignature
         self.viewElement = viewElement
         self.contentProvider = contentProvider
@@ -30,7 +30,7 @@ class MD2UpdateWidgetAction: MD2ActionType {
         }
     }
     
-    func equals(anotherAction: MD2ActionType) -> Bool {
+    func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature
     }
     

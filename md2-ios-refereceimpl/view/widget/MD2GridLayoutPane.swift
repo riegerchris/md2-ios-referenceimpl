@@ -8,11 +8,11 @@
 
 import UIKit
 
-class MD2GridLayoutPane: MD2LayoutType {
+class MD2GridLayoutPane: MD2Layout {
     
     let widgetId: MD2WidgetMapping
     
-    var widgets: Array<MD2WidgetType> = []
+    var widgets: Array<MD2Widget> = []
     
     var columns: MD2Integer?
     
@@ -37,7 +37,7 @@ class MD2GridLayoutPane: MD2LayoutType {
         }
     }
     
-    func addWidget(widget: MD2WidgetType) {
+    func addWidget(widget: MD2Widget) {
         widgets.append(widget)
     }
     

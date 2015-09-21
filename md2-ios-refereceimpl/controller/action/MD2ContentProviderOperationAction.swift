@@ -6,15 +6,15 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class MD2ContentProviderOperationAction: MD2ActionType {
+class MD2ContentProviderOperationAction: MD2Action {
     
     let actionSignature: String
     
     let allowedOperation: AllowedOperation
     
-    let contentProvider: MD2ContentProviderType
+    let contentProvider: MD2ContentProvider
     
-    init(actionSignature: String, allowedOperation: AllowedOperation, contentProvider: MD2ContentProviderType) {
+    init(actionSignature: String, allowedOperation: AllowedOperation, contentProvider: MD2ContentProvider) {
         
         self.actionSignature = actionSignature
         self.allowedOperation = allowedOperation
@@ -30,7 +30,7 @@ class MD2ContentProviderOperationAction: MD2ActionType {
         }
     }
     
-    func equals(anotherAction: MD2ActionType) -> Bool {
+    func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature
     }
     

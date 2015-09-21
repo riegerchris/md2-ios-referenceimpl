@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MD2LocalStore<T: MD2EntityType>: MD2DataStoreType {
+class MD2LocalStore<T: MD2Entity>: MD2DataStore {
     
     let managedContext : NSManagedObjectContext
     
@@ -19,7 +19,7 @@ class MD2LocalStore<T: MD2EntityType>: MD2DataStoreType {
         managedContext = appDelegate.managedObjectContext!
     }
     
-    func query(query: MD2Query) -> MD2EntityType? {
+    func query(query: MD2Query) -> MD2Entity? {
         let results = getManagedObject(query)
         
         if (results.count > 0) {
@@ -29,17 +29,17 @@ class MD2LocalStore<T: MD2EntityType>: MD2DataStoreType {
             var result: T = T()
             result.internalId = MD2Integer(MD2String(data.valueForKey("internalId") as! String))
             
-            for (attributeKey, attributeValue) in result.containedTypes {
+            for (attributeKey, attributeValue) in result.containeds {
                 if data.valueForKey(attributeKey) == nil {
                     continue
                 }
                 
                 let stringValue = data.valueForKey(attributeKey) as! String
                 
-                if attributeValue is MD2EnumType {
-                    (attributeValue as! MD2EnumType).setValueFromString(MD2String(stringValue))
+                if attributeValue is MD2Enum {
+                    (attributeValue as! MD2Enum).setValueFromString(MD2String(stringValue))
                     
-                } else if attributeValue is MD2EntityType {
+                } else if attributeValue is MD2Entity {
                     println(attributeValue)
                     // TODO
                     //result.set(attributeKey, value: attributeValue)
@@ -70,7 +70,7 @@ class MD2LocalStore<T: MD2EntityType>: MD2DataStoreType {
         return nil
     }
     
-    func put(entity: MD2EntityType) {
+    func put(entity: MD2Entity) {
         if let managedObject = getById(entity.internalId) {
             // Exists -> update
             updateData(managedObject, entity: entity)
@@ -130,7 +130,7 @@ class MD2LocalStore<T: MD2EntityType>: MD2DataStoreType {
         return nil
     }
     
-    private func insertData(entity: MD2EntityType) {
+    private func insertData(entity: MD2Entity) {
         // Get new managed object
         let entityClass = NSEntityDescription.entityForName(MD2Util.getClassName(entity), inManagedObjectContext: managedContext)
         
@@ -146,20 +146,20 @@ class MD2LocalStore<T: MD2EntityType>: MD2DataStoreType {
         saveManagedContext()
     }
     
-    private func updateData(managedObject: NSManagedObject, entity: MD2EntityType) {
+    private func updateData(managedObject: NSManagedObject, entity: MD2Entity) {
         // Fill with data and save
         setValues(managedObject, entity: entity)
         saveManagedContext()
     }
     
-    private func setValues(object: NSManagedObject, entity: MD2EntityType) {
-        for (attributeKey, attributeValue) in entity.containedTypes {
-            if attributeValue is MD2EnumType && (attributeValue as! MD2EnumType).value != nil {
+    private func setValues(object: NSManagedObject, entity: MD2Entity) {
+        for (attributeKey, attributeValue) in entity.containeds {
+            if attributeValue is MD2Enum && (attributeValue as! MD2Enum).value != nil {
                 object.setValue(attributeValue.toString(), forKey: attributeKey)
                 
-            } else if attributeValue is MD2EntityType {
+            } else if attributeValue is MD2Entity {
                 // TODO not working yet
-                //object.setValue((attributeValue as! MD2EntityType), forKey: attributeKey)
+                //object.setValue((attributeValue as! MD2Entity), forKey: attributeKey)
                 
             } else if attributeValue is MD2DataType {
                 if !(attributeValue as! MD2DataType).isSet() {

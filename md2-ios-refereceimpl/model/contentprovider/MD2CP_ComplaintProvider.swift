@@ -6,30 +6,32 @@
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
 
-class MD2CP_ComplaintProvider: MD2ContentProviderType {
+class MD2CP_ComplaintProvider: MD2ContentProvider {
     
-    let contentType = MD2Entity_Complaint.self
+    typealias contentType = MD2Entity_Complaint
     
-    var content: MD2EntityType? // managed entity instance
+    var content: MD2Entity? // managed entity instance
     
-    var store: MD2DataStoreType
+    var store: MD2DataStore
     
     var observedAttributes: Dictionary<String, MD2Type> = [:]
     
-    var attributeContentProviders: Dictionary<String, MD2ContentProviderType> = [:]
+    var attributeContentProviders: Dictionary<String, MD2ContentProvider> = [:]
     
     var filter: MD2Filter?
     
+    var entityPath: String = ""
+    
     init() {
-    self.store = MD2LocalStoreFactory<MD2Entity_Complaint>().createStore()
+        self.store = MD2DataStoreFactory<contentType>().createStore(entityPath)
     }
     
-    convenience init(content: MD2EntityType) {
+    convenience init(content: MD2Entity) {
         self.init()
         self.content = content
     }
     
-    func getContent() -> MD2EntityType? {
+    func getContent() -> MD2Entity? {
         return content
     }
     
@@ -46,9 +48,9 @@ class MD2CP_ComplaintProvider: MD2ContentProviderType {
         }
     }
     
-    func setContent(content: MD2EntityType) {
+    func setContent(content: MD2Entity) {
         // Update full entity by cloning
-        self.content = (content.clone() as! MD2EntityType)
+        self.content = (content.clone() as! MD2Entity)
         
         // Check all observed properties
         checkAllAttributesForObserver()
@@ -90,7 +92,7 @@ class MD2CP_ComplaintProvider: MD2ContentProviderType {
     func checkForObserver(attribute: String, newValue: MD2Type) {
         // Check if attribute is observed
         if observedAttributes[attribute] != nil && !observedAttributes[attribute]!.equals(newValue) {
-            MD2OnContentChangeHandler.instance.fire(self, attribute: attribute)
+            MD2OnContentChangeHandler.instance.fire(MD2ContentProviderAttributeIdentity(self, attribute))
         }
     }
     
@@ -130,7 +132,7 @@ class MD2CP_ComplaintProvider: MD2ContentProviderType {
         }
     }
     
-    func registerAttributeContentProvider(attribute: String, contentProvider: MD2ContentProviderType) {
+    func registerAttributeContentProvider(attribute: String, contentProvider: MD2ContentProvider) {
         attributeContentProviders[attribute] = contentProvider
     }
     

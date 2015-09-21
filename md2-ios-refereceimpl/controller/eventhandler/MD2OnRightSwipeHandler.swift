@@ -8,20 +8,20 @@
 
 import UIKit
 
-class MD2OnRightSwipeHandler: MD2WidgetEventHandlerType {
+class MD2OnRightSwipeHandler: MD2WidgetEventHandler {
     
-    typealias actionWidgetTuple = (MD2ActionType, MD2WidgetWrapper)
+    typealias actionWidgetTuple = (MD2Action, MD2WidgetWrapper)
     
     static let instance: MD2OnRightSwipeHandler = MD2OnRightSwipeHandler()
     
     var actions: Dictionary<String,actionWidgetTuple> = [:]
     
-    func registerAction(action: MD2ActionType, widget: MD2WidgetWrapper) {
+    func registerAction(action: MD2Action, widget: MD2WidgetWrapper) {
         actions[action.actionSignature] = (action, widget)
         //println("registered action \(action.actionSignature.platformValue!)")
     }
     
-    func unregisterAction(action: MD2ActionType, widget: MD2WidgetWrapper) {
+    func unregisterAction(action: MD2Action, widget: MD2WidgetWrapper) {
         for (key, value) in actions {
             if key == action.actionSignature {
                 actions[key] = nil

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class MD2DisplayMessageAction: MD2ActionType {
+class MD2DisplayMessageAction: MD2Action {
     
     let actionSignature: String
     
@@ -21,7 +21,7 @@ class MD2DisplayMessageAction: MD2ActionType {
         MD2UIUtil.showMessage(message, title: MD2ViewConfig.TOOLTIP_TITLE_MESSAGE)
     }
     
-    func equals(anotherAction: MD2ActionType) -> Bool {
+    func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature
     }
     
