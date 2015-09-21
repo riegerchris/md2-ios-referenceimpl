@@ -6,6 +6,6 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-protocol MD2EventHandler {
+protocol MD2EventHandler: class {
     
 }

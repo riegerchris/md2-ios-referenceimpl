@@ -83,7 +83,7 @@ class MD2ButtonWidget: MD2SingleWidget, MD2StylableWidget {
         updateElement()
         
         widgetElement!.tag = widgetId.rawValue
-        widgetElement!.addTarget(MD2OnClickHandler.instance, action: "fire:", forControlEvents: UIControlEvents.TouchUpInside)
+        widgetElement!.addTarget(MD2Event.OnClick.getEventHandler(), action: Selector(MD2Event.OnClick.getTargetMethod()), forControlEvents: UIControlEvents.TouchUpInside)
         
         // Set default styles
         widgetElement!.layer.borderWidth = 1
@@ -109,7 +109,7 @@ class MD2ButtonWidget: MD2SingleWidget, MD2StylableWidget {
         widgetElement!.tag = widgetId.rawValue
         
         // Add alert handler
-        widgetElement!.addTarget(MD2TooltipHandler.instance, action: "fire:", forControlEvents: UIControlEvents.TouchUpInside)
+        widgetElement!.addTarget(MD2Event.OnTooltip.getEventHandler(), action: Selector(MD2Event.OnTooltip.getTargetMethod()), forControlEvents: UIControlEvents.TouchUpInside)
         
         // Add to surrounding view
         view.addSubview(widgetElement!)

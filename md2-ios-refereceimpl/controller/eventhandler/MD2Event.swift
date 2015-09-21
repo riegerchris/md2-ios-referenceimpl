@@ -1,5 +1,5 @@
 //
-//  Event.swift
+//  MD2Event.swift
 //  md2-ios-refereceimpl
 //
 //  Created by Christoph Rieger on 14.08.15.
@@ -13,6 +13,7 @@ enum MD2Event {
     case OnLeftSwipe
     case OnRightSwipe
     case OnWrongValidation
+    case OnTooltip
     
     // ContentProviderEvents
     case OnContentChange
@@ -33,7 +34,22 @@ enum MD2Event {
         case OnConnectionLost: return MD2OnConnectionLostHandler.instance
         case OnConnectionRegained: return MD2OnConnectionRegainedHandler.instance
         case OnLocationUpdate: return MD2OnLocationUpdateHandler.instance
-        default: return MD2OnClickHandler.instance
+        case OnTooltip: return MD2TooltipHandler.instance
+        }
+    }
+    
+    func getTargetMethod() -> String {
+        switch self {
+        case OnClick: return "fire:"
+        case OnWidgetChange: return "fire:"
+        case OnLeftSwipe: return "fire:"
+        case OnRightSwipe: return "fire:"
+        case OnWrongValidation: return "fire:"
+        case OnContentChange: return "fire:"
+        case OnConnectionLost: return "fire" // no parameter
+        case OnConnectionRegained: return "fire" // no parameter
+        case OnLocationUpdate: return "fire" // no parameter
+        case OnTooltip: return "fire:"
         }
     }
     

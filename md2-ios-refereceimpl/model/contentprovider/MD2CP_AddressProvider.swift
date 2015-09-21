@@ -92,7 +92,7 @@ class MD2CP_AddressProvider: MD2ContentProvider {
     func checkForObserver(attribute: String, newValue: MD2Type) {
         // Check if attribute is observed
         if observedAttributes[attribute] != nil && !observedAttributes[attribute]!.equals(newValue) {
-            MD2OnContentChangeHandler.instance.fire(self, attribute: attribute)
+            MD2OnContentChangeHandler.instance.fire(MD2ContentProviderAttributeIdentity(self, attribute))
         }
     }
     

@@ -25,9 +25,9 @@ class MD2OnContentChangeHandler: MD2ContentProviderEventHandler {
         }
     }
     
-    func fire(contentProvider: MD2ContentProvider, attribute: String) {
+    func fire(contentProviderAttributeIdentity: MD2ContentProviderAttributeIdentity) {
         for (cpaIdentity, action) in actions {
-            if cpaIdentity == MD2ContentProviderAttributeIdentity(contentProvider, attribute) {
+            if cpaIdentity == contentProviderAttributeIdentity {
                 println("[OnContentChangeHandler] Execute action")
                 action.execute()
             }
