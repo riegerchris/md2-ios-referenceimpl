@@ -6,7 +6,7 @@
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
 
-class MD2CustomAction___SubmitComplaint_processChainProcessingAction: MD2ActionType {
+class MD2CustomAction___SubmitComplaint_processChainProcessingAction: MD2Action {
     
     let actionSignature: String = "MD2CustomAction___SubmitComplaint_processChainProcessingAction"
     
@@ -20,7 +20,7 @@ class MD2CustomAction___SubmitComplaint_processChainProcessingAction: MD2ActionT
        
     }
     
-    func equals(anotherAction: MD2ActionType) -> Bool {
+    func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MD2TextFieldWidget: NSObject, MD2SingleWidgetType, MD2WidgetAssistedType, UITextFieldDelegate {
+class MD2TextFieldWidget: NSObject, MD2SingleWidget, MD2WidgetAssisted, UITextFieldDelegate {
     
     let widgetId: MD2WidgetMapping
     
@@ -30,7 +30,7 @@ class MD2TextFieldWidget: NSObject, MD2SingleWidgetType, MD2WidgetAssistedType, 
     
     var tooltipDimensions: MD2Dimension?
     
-    var type: TextFieldType = TextFieldType.Standard
+    var type: TextField = TextField.Standard
     
     var width: Float?
     
@@ -67,7 +67,7 @@ class MD2TextFieldWidget: NSObject, MD2SingleWidgetType, MD2WidgetAssistedType, 
         
         // If tooltip info is available show info button
         if tooltip != nil && tooltip!.isSet() && !tooltip!.equals(MD2String("")) {
-            infoButton.buttonType = UIButtonType.InfoLight
+            infoButton.button = UIButtonType.InfoLight
             infoButton.dimensions = self.tooltipDimensions
             infoButton.render(view, controller: controller)
         }
@@ -120,7 +120,7 @@ class MD2TextFieldWidget: NSObject, MD2SingleWidgetType, MD2WidgetAssistedType, 
         }
     }
     
-    enum TextFieldType {
+    enum TextField {
         case Standard, Date, Time, Timestamp
     }
     

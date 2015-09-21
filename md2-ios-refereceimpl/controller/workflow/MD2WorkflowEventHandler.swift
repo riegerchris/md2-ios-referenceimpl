@@ -10,7 +10,7 @@
 class MD2WorkflowEventHandler {
     
     /// Convenience typealias for the tuple of workflow event, action and element.
-    typealias WorkflowEventEntry = (MD2WorkflowEvent, MD2WorkflowActionType, MD2WorkflowElement)
+    typealias WorkflowEventEntry = (MD2WorkflowEvent, MD2WorkflowAction, MD2WorkflowElement)
     
     /// The singleton instance.
     static let instance: MD2WorkflowEventHandler = MD2WorkflowEventHandler()
@@ -27,30 +27,30 @@ class MD2WorkflowEventHandler {
     Register workflow elements for a specific event and action.
     
     :param: workflowEvent The workflow event to react to.
-    :param: actionType The type of action (start/end) to perform.
+    :param: action The type of action (start/end) to perform.
     :param: workflowElement The workflow element to start or end.
     */
-    func registerWorkflowElement(workflowEvent: MD2WorkflowEvent, actionType: MD2WorkflowActionType, workflowElement: MD2WorkflowElement) {
+    func registerWorkflowElement(workflowEvent: MD2WorkflowEvent, action: MD2WorkflowAction, workflowElement: MD2WorkflowElement) {
         for (event, action, element) in workflowElements {
-            if event == workflowEvent && action == actionType && element === workflowElement {
+            if event == workflowEvent && action == action && element === workflowElement {
                 // Already exists
                 return
             }
         }
         
-        workflowElements.append(workflowEvent, actionType, workflowElement)
+        workflowElements.append(workflowEvent, action, workflowElement)
     }
     
     /**
     Unregister workflow elements for a specific event and action.
     
     :param: workflowEvent The workflow event to react to.
-    :param: actionType The type of action (start/end) to perform.
+    :param: action The type of action (start/end) to perform.
     :param: workflowElement The workflow element to start or end.
     */
-    func unregisterWorkflowElement(workflowEvent: MD2WorkflowEvent, actionType: MD2WorkflowActionType, workflowElement: MD2WorkflowElement) {
+    func unregisterWorkflowElement(workflowEvent: MD2WorkflowEvent, action: MD2WorkflowAction, workflowElement: MD2WorkflowElement) {
         for (index, (event, action, element)) in enumerate(workflowElements) {
-            if event == workflowEvent && action == actionType && element === workflowElement {
+            if event == workflowEvent && action == action && element === workflowElement {
                 workflowElements.removeAtIndex(index)
                 break
             }
@@ -66,12 +66,12 @@ class MD2WorkflowEventHandler {
     func fire(sender: MD2WorkflowEvent) {
         println("Event fired to WorkflowEventHandler: " + String(sender.description))
         
-        for (event, actionType, workflowElement) in self.workflowElements {
+        for (event, action, workflowElement) in self.workflowElements {
             if event == sender {
                 // Determine workflow action
-                if actionType == MD2WorkflowActionType.Start {
+                if action == MD2WorkflowAction.Start {
                     MD2WorkflowManager.instance.goToWorkflow(workflowElement)
-                } else if actionType == MD2WorkflowActionType.End {
+                } else if action == MD2WorkflowAction.End {
                     MD2WorkflowManager.instance.endWorkflow(workflowElement)
                 }
             }

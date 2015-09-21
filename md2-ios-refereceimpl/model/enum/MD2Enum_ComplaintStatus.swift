@@ -6,7 +6,7 @@
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
 
-class MD2Enum_ComplaintStatus: MD2EnumType {
+class MD2Enum_ComplaintStatus: MD2Enum {
     
     var value: Any? {
         get {
@@ -14,7 +14,7 @@ class MD2Enum_ComplaintStatus: MD2EnumType {
         }
     }
     
-    var platformValue: MD2Enum_ComplaintStatus.EnumType?
+    var platformValue: MD2Enum_ComplaintStatus.Enum?
     
     init() {
         // Nothing to initialize
@@ -22,7 +22,7 @@ class MD2Enum_ComplaintStatus: MD2EnumType {
     
     func setValueFromString(value: MD2String) {
         if value.isSet() && !value.equals(MD2String("")) {
-            platformValue = EnumType.fromRawValue(value.toString())
+            platformValue = Enum.fromRawValue(value.toString())
         }
     }
     
@@ -49,7 +49,7 @@ class MD2Enum_ComplaintStatus: MD2EnumType {
     }
     
     func setValueFromInt(value: Int) {
-        platformValue = EnumType.fromInt(value)
+        platformValue = Enum.fromInt(value)
     }
     
     func equals(value : MD2Type) -> Bool {
@@ -58,7 +58,7 @@ class MD2Enum_ComplaintStatus: MD2EnumType {
                 && platformValue?.rawValue == (value as! MD2Enum_ComplaintStatus).platformValue?.rawValue
     }
     
-    enum EnumType: String {
+    enum Enum: String {
     	case Elem1 = "User is filling out complaint"
     	case Elem2 = "Complaint is sent to administration"
     	case Elem3 = "Complaint is in process"
@@ -66,7 +66,7 @@ class MD2Enum_ComplaintStatus: MD2EnumType {
         
         static let allValues = [Elem1, Elem2, Elem3, Elem4]
         
-        static func fromRawValue(value: String) -> EnumType? {
+        static func fromRawValue(value: String) -> Enum? {
             switch value {
             	case "User is filling out complaint": return Elem1
             	case "Complaint is sent to administration": return Elem2
@@ -85,7 +85,7 @@ class MD2Enum_ComplaintStatus: MD2EnumType {
             }
         }
         
-        static func fromInt(value: Int) -> EnumType? {
+        static func fromInt(value: Int) -> Enum? {
             switch value {
             	case 1: return Elem1
             	case 2: return Elem2
@@ -98,7 +98,7 @@ class MD2Enum_ComplaintStatus: MD2EnumType {
     
     func getAllValues() -> Array<String> {
         var array: Array<String> = []
-        for elem in MD2Enum_ComplaintStatus.EnumType.allValues {
+        for elem in MD2Enum_ComplaintStatus.Enum.allValues {
             array.append(elem.rawValue)
         }
         return array

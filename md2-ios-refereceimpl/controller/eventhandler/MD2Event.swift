@@ -1,12 +1,12 @@
 //
-//  EventType.swift
+//  Event.swift
 //  md2-ios-refereceimpl
 //
 //  Created by Christoph Rieger on 14.08.15.
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-enum MD2EventType {
+enum MD2Event {
     // WidgetEvents
     case OnClick
     case OnWidgetChange
@@ -22,7 +22,7 @@ enum MD2EventType {
     case OnConnectionRegained
     case OnLocationUpdate
     
-    func getEventHandler() -> MD2EventHandlerType {
+    func getEventHandler() -> MD2EventHandler {
         switch self {
         case OnClick: return MD2OnClickHandler.instance
         case OnWidgetChange: return MD2OnWidgetChangeHandler.instance

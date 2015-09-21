@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-protocol MD2DataStoreFactoryType {
+protocol MD2DataStoreFactory {
     
-    func createStore() -> MD2DataStoreType
+    func createStore() -> MD2DataStore
 }

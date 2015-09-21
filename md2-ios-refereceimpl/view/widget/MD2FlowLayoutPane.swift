@@ -8,11 +8,11 @@
 
 import UIKit
 
-class MD2FlowLayoutPane: MD2LayoutType {
+class MD2FlowLayoutPane: MD2Layout {
     
     let widgetId: MD2WidgetMapping
 
-    var widgets: Array<MD2WidgetType> = []
+    var widgets: Array<MD2Widget> = []
     
     var orientation: Orientation
     
@@ -38,7 +38,7 @@ class MD2FlowLayoutPane: MD2LayoutType {
         }
     }
     
-    func addWidget(widget: MD2WidgetType) {
+    func addWidget(widget: MD2Widget) {
         widgets.append(widget)
     }
     

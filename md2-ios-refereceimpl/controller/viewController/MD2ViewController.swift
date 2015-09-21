@@ -10,13 +10,13 @@ import UIKit
 
 class MD2ViewController: UIViewController {
 
-    var layout: MD2LayoutType
+    var layout: MD2Layout
     
     var scrollView: UIScrollView
     
     var dimensions: MD2Dimension
     
-    init(layout: MD2LayoutType) {
+    init(layout: MD2Layout) {
         self.layout = layout
         self.scrollView = UIScrollView()
         self.dimensions = MD2UIUtil.CGRectToDimension(UIScreen.mainScreen().bounds)

@@ -75,7 +75,7 @@ class MD2ViewManager {
     :param: viewName The name of the view, i.e. the outermost layout name.
     :param: view The layout of the app to use as root view.
     */
-    func setupView(viewName: String, view: MD2LayoutType) {
+    func setupView(viewName: String, view: MD2Layout) {
         // Called once at start-up of the app for each view
         
         // Create view controller with view and add to list

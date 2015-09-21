@@ -6,17 +6,17 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class MD2OnContentChangeHandler: MD2ContentProviderEventHandlerType {
+class MD2OnContentChangeHandler: MD2ContentProviderEventHandler {
     
     static let instance: MD2OnContentChangeHandler = MD2OnContentChangeHandler()
     
-    var actions: Dictionary<MD2ContentProviderAttributeIdentity, MD2ActionType> = [:]
+    var actions: Dictionary<MD2ContentProviderAttributeIdentity, MD2Action> = [:]
     
-    func registerAction(action: MD2ActionType, contentProvider: MD2ContentProviderType, attribute: String) {
+    func registerAction(action: MD2Action, contentProvider: MD2ContentProvider, attribute: String) {
         actions[MD2ContentProviderAttributeIdentity(contentProvider, attribute)] = action
     }
     
-    func unregisterAction(action: MD2ActionType, contentProvider: MD2ContentProviderType, attribute: String) {
+    func unregisterAction(action: MD2Action, contentProvider: MD2ContentProvider, attribute: String) {
         for (cpaIdentity, value) in actions {
             if cpaIdentity == MD2ContentProviderAttributeIdentity(contentProvider, attribute) {
                 actions[cpaIdentity] = nil
@@ -25,7 +25,7 @@ class MD2OnContentChangeHandler: MD2ContentProviderEventHandlerType {
         }
     }
     
-    func fire(contentProvider: MD2ContentProviderType, attribute: String) {
+    func fire(contentProvider: MD2ContentProvider, attribute: String) {
         for (cpaIdentity, action) in actions {
             if cpaIdentity == MD2ContentProviderAttributeIdentity(contentProvider, attribute) {
                 println("[OnContentChangeHandler] Execute action")

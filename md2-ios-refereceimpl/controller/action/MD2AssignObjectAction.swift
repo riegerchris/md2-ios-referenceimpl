@@ -6,17 +6,17 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class MD2AssignObjectAction: MD2ActionType {
+class MD2AssignObjectAction: MD2Action {
     
     let actionSignature: String
     
-    let assignContentProvider: MD2ContentProviderType
+    let assignContentProvider: MD2ContentProvider
     
-    let toContentProvider: MD2ContentProviderType
+    let toContentProvider: MD2ContentProvider
     
     let attribute: String
     
-    init(actionSignature: String, assignContentProvider: MD2ContentProviderType, toContentProvider: MD2ContentProviderType, attribute: String) {
+    init(actionSignature: String, assignContentProvider: MD2ContentProvider, toContentProvider: MD2ContentProvider, attribute: String) {
         
         self.actionSignature = actionSignature
         self.assignContentProvider = assignContentProvider
@@ -28,7 +28,7 @@ class MD2AssignObjectAction: MD2ActionType {
         toContentProvider.registerAttributeContentProvider(attribute, contentProvider: assignContentProvider)
     }
     
-    func equals(anotherAction: MD2ActionType) -> Bool {
+    func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature
     }
     

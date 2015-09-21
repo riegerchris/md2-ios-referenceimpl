@@ -29,7 +29,7 @@ An object representing the combined identity of a content provider and an attrib
 class MD2ContentProviderAttributeIdentity: Hashable {
     
 	/// The content provider object
-    let contentProvider: MD2ContentProviderType
+    let contentProvider: MD2ContentProvider
     
 	/// The attribute string
     let attribute: String
@@ -50,7 +50,7 @@ class MD2ContentProviderAttributeIdentity: Hashable {
 	:param: contentProvider The content provider object.
 	:param: attribute The attribute string.
 	*/
-    init(_ contentProvider: MD2ContentProviderType, _ attribute: String) {
+    init(_ contentProvider: MD2ContentProvider, _ attribute: String) {
         self.contentProvider = contentProvider
         self.attribute = attribute
         self._hashValue = Int(arc4random_uniform(999999999))

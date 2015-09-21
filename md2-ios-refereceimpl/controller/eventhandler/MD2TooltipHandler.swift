@@ -8,15 +8,15 @@
 
 import UIKit
 
-class MD2TooltipHandler: MD2WidgetEventHandlerType {
+class MD2TooltipHandler: MD2WidgetEventHandler {
     
     static let instance: MD2TooltipHandler = MD2TooltipHandler()
     
-    func registerAction(action: MD2ActionType, widget: MD2WidgetWrapper) {
+    func registerAction(action: MD2Action, widget: MD2WidgetWrapper) {
         // Not neccessary
     }
     
-    func unregisterAction(action: MD2ActionType, widget: MD2WidgetWrapper) {
+    func unregisterAction(action: MD2Action, widget: MD2WidgetWrapper) {
         // Not neccessary
     }
     
@@ -24,12 +24,12 @@ class MD2TooltipHandler: MD2WidgetEventHandlerType {
     func fire(sender: UIControl) {
         let wrapper = MD2WidgetRegistry.instance.getWidget(MD2WidgetMapping.fromRawValue(sender.tag))
             
-        if wrapper == nil || wrapper?.widget == nil || !(wrapper!.widget is MD2WidgetAssistedType) {
+        if wrapper == nil || wrapper?.widget == nil || !(wrapper!.widget is MD2WidgetAssisted) {
             return
         }
         
-        if (wrapper!.widget as! MD2WidgetAssistedType).tooltip != nil {
-            MD2UIUtil.showMessage((wrapper!.widget as! MD2WidgetAssistedType).tooltip!.toString(),
+        if (wrapper!.widget as! MD2WidgetAssisted).tooltip != nil {
+            MD2UIUtil.showMessage((wrapper!.widget as! MD2WidgetAssisted).tooltip!.toString(),
                 title: MD2ViewConfig.TOOLTIP_TITLE_INFO)
         }
     }

@@ -44,7 +44,7 @@ class MD2DataMapper {
         :param: contentProvider The content provider for data storage.
         :param: attribute The attribute to specify the field of the content provider.
     */
-    func map(widget: MD2WidgetWrapper, contentProvider: MD2ContentProviderType, attribute: String) {
+    func map(widget: MD2WidgetWrapper, contentProvider: MD2ContentProvider, attribute: String) {
         contentProviderToWidgetMapping[MD2ContentProviderAttributeIdentity(contentProvider, attribute)] = widget
         
         // Add mapping
@@ -76,7 +76,7 @@ class MD2DataMapper {
         :param: contentProvider The content provider for data storage.
         :param: attribute The attribute to specify the field of the content provider.
     */
-    func unmap(widget: MD2WidgetWrapper, contentProvider: MD2ContentProviderType, attribute: String) {
+    func unmap(widget: MD2WidgetWrapper, contentProvider: MD2ContentProvider, attribute: String) {
         contentProviderToWidgetMapping.removeValueForKey(MD2ContentProviderAttributeIdentity(contentProvider, attribute))
         
         // Remove conent provider observer
@@ -101,7 +101,7 @@ class MD2DataMapper {
         
         :returns: The respective widget wrapper if found.
     */
-    func getWidgetForContentProvider(contentProvider: MD2ContentProviderType, attribute: String) -> MD2WidgetWrapper? {
+    func getWidgetForContentProvider(contentProvider: MD2ContentProvider, attribute: String) -> MD2WidgetWrapper? {
         return contentProviderToWidgetMapping[MD2ContentProviderAttributeIdentity(contentProvider, attribute)]
     }
     

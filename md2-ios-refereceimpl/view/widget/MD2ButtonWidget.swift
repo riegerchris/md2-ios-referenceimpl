@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MD2ButtonWidget: MD2SingleWidgetType, MD2WidgetStyleType {
+class MD2ButtonWidget: MD2SingleWidget, MD2WidgetStyle {
     
     let widgetId: MD2WidgetMapping
     
@@ -20,7 +20,7 @@ class MD2ButtonWidget: MD2SingleWidgetType, MD2WidgetStyleType {
     
     var dimensions: MD2Dimension?
     
-    var buttonType: UIButtonType = UIButtonType.System
+    var button: UIButtonType = UIButtonType.System
     
     var widgetElement: UIButton?
     
@@ -45,7 +45,7 @@ class MD2ButtonWidget: MD2SingleWidgetType, MD2WidgetStyleType {
             return
         }
         
-        switch buttonType {
+        switch button {
         case UIButtonType.System: renderSystemButton(view)
         case UIButtonType.InfoLight: renderInfoButton(view)
         default: renderSystemButton(view)

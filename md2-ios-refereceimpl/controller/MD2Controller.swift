@@ -676,22 +676,22 @@ class MD2Controller {
             
         MD2WorkflowEventHandler.instance.registerWorkflowElement(
             MD2WorkflowEvent.DoneEvent,
-            actionType: MD2WorkflowActionType.Start,
+            action: MD2WorkflowAction.Start,
             workflowElement: wfeSubmitComplaint)
             
         MD2WorkflowEventHandler.instance.registerWorkflowElement(
             MD2WorkflowEvent.CancelWorkflowEvent,
-            actionType: MD2WorkflowActionType.End,
+            action: MD2WorkflowAction.End,
             workflowElement: wfeLocationDetection)
             
         MD2WorkflowEventHandler.instance.registerWorkflowElement(
             MD2WorkflowEvent.SubmitEvent,
-            actionType: MD2WorkflowActionType.End,
+            action: MD2WorkflowAction.End,
             workflowElement: wfeSubmitComplaint)
             
         MD2WorkflowEventHandler.instance.registerWorkflowElement(
             MD2WorkflowEvent.CancelComplaintWorkflowEvent,
-            actionType: MD2WorkflowActionType.End,
+            action: MD2WorkflowAction.End,
             workflowElement: wfeSubmitComplaint)
         
         /***************************************************

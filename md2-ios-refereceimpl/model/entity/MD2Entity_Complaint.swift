@@ -10,24 +10,24 @@ import Foundation
 
 // Make class visible for Objective-C to work with Core Data persistence framework
 @objc(MD2Entity_Complaint)
-class MD2Entity_Complaint: NSObject, MD2EntityType {
+class MD2Entity_Complaint: NSObject, MD2Entity {
 
 	var internalId: MD2Integer = MD2Integer()
     
-    var containedTypes: Dictionary<String, MD2Type> = [:]
+    var containeds: Dictionary<String, MD2Type> = [:]
     
     required override init() {
         // Initialize fields
-        containedTypes["descriptions"] = MD2String()
-        containedTypes["feedback"] = MD2String()
-        containedTypes["status"] = MD2String()
+        containeds["descriptions"] = MD2String()
+        containeds["feedback"] = MD2String()
+        containeds["status"] = MD2String()
     }
     
     convenience init(md2Entity: MD2Entity_Complaint) {
         self.init()
         
-        for (typeName, typeValue) in md2Entity.containedTypes {
-            containedTypes[typeName] = typeValue.clone()
+        for (typeName, typeValue) in md2Entity.containeds {
+            containeds[typeName] = typeValue.clone()
         }
     }
     
@@ -36,9 +36,9 @@ class MD2Entity_Complaint: NSObject, MD2EntityType {
     }
     
     func toString() -> String {
-    return "(MD2Entity_Complaint: [descriptions: " + containedTypes["descriptions"]!.toString()
-    + ", feedback: " + containedTypes["feedback"]!.toString()
-    + ", status: " + containedTypes["status"]!.toString() 
+    return "(MD2Entity_Complaint: [descriptions: " + containeds["descriptions"]!.toString()
+    + ", feedback: " + containeds["feedback"]!.toString()
+    + ", status: " + containeds["status"]!.toString() 
 	        + "])"
     }
     
@@ -49,8 +49,8 @@ class MD2Entity_Complaint: NSObject, MD2EntityType {
         
         var isEqual = true
         
-        for (typeName, typeValue) in (value as! MD2Entity_Complaint).containedTypes {
-            if !(containedTypes[typeName] != nil && containedTypes[typeName]!.equals(typeValue)) {
+        for (typeName, typeValue) in (value as! MD2Entity_Complaint).containeds {
+            if !(containeds[typeName] != nil && containeds[typeName]!.equals(typeValue)) {
                 isEqual = false
                 break
             }
@@ -60,14 +60,14 @@ class MD2Entity_Complaint: NSObject, MD2EntityType {
     }
     
     func get(attribute: String) -> MD2Type? {
-        return containedTypes[attribute]
+        return containeds[attribute]
     }
     
     func set(attribute: String, value: MD2Type) {
     	// Check if attribute exists
-    	if containedTypes[attribute] == nil {
+    	if containeds[attribute] == nil {
     		fatalError("Tried to set non-existing attribute in entity type MD2Entity_Complaint")
     	}
-        containedTypes[attribute] = value
+        containeds[attribute] = value
     }
 }

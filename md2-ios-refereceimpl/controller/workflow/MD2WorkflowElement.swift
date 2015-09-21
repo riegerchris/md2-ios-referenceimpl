@@ -17,7 +17,7 @@ class MD2WorkflowElement {
     
     *Notice:* Currently preprocessing leaves only one action MD2CustomAction__<WfeName>_startupAction.
     */
-    var onInit: Array<MD2ActionType> = []
+    var onInit: Array<MD2Action> = []
 
     /**
     Object Constructor. The identifier and at least one action to trigger are required.
@@ -25,7 +25,7 @@ class MD2WorkflowElement {
     :param: name The workflow element name as identifier.
     :param: onInit The initial action to trigger when the workflow element is started.
     */    
-    init(name: String, onInit: MD2ActionType) {
+    init(name: String, onInit: MD2Action) {
         self.name = name
         self.onInit.append(onInit)
     }

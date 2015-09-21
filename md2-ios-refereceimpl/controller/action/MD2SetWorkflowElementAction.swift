@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class MD2SetWorkflowElementAction: MD2ActionType {
+class MD2SetWorkflowElementAction: MD2Action {
     
     let actionSignature: String
     
@@ -21,7 +21,7 @@ class MD2SetWorkflowElementAction: MD2ActionType {
         MD2WorkflowManager.instance.goToWorkflow(workflowElement)
     }
     
-    func equals(anotherAction: MD2ActionType) -> Bool {
+    func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature
     }
     

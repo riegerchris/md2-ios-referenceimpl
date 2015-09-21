@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MD2SpacerWidget: MD2SingleWidgetType {
+class MD2SpacerWidget: MD2SingleWidget {
     
     let widgetId: MD2WidgetMapping
     

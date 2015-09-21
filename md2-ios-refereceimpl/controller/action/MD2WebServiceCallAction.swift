@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class MD2WebServiceCallAction: MD2ActionType {
+class MD2WebServiceCallAction: MD2Action {
     
     let actionSignature: String
     
@@ -21,7 +21,7 @@ class MD2WebServiceCallAction: MD2ActionType {
         // TODO
     }
     
-    func equals(anotherAction: MD2ActionType) -> Bool {
+    func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature
     }
     

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class MD2FireEventAction: MD2ActionType {
+class MD2FireEventAction: MD2Action {
     
     let actionSignature: String
     
@@ -21,7 +21,7 @@ class MD2FireEventAction: MD2ActionType {
         MD2WorkflowEventHandler.instance.fire(event)
     }
     
-    func equals(anotherAction: MD2ActionType) -> Bool {
+    func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature
     }
     

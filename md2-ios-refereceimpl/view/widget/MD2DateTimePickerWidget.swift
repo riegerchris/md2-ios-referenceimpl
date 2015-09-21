@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MD2DateTimePickerWidget: NSObject, MD2SingleWidgetType, UIGestureRecognizerDelegate {
+class MD2DateTimePickerWidget: NSObject, MD2SingleWidget, UIGestureRecognizerDelegate {
     
     let widgetId: MD2WidgetMapping
     

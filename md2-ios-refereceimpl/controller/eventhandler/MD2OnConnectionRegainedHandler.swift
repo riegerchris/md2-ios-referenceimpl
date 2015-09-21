@@ -6,18 +6,18 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-class MD2OnConnectionRegainedHandler: MD2GlobalEventHandlerType {
+class MD2OnConnectionRegainedHandler: MD2GlobalEventHandler {
     
     static let instance: MD2OnConnectionRegainedHandler = MD2OnConnectionRegainedHandler()
     
-    var actions: Dictionary<String, MD2ActionType> = [:]
+    var actions: Dictionary<String, MD2Action> = [:]
     
-    func registerAction(action: MD2ActionType) {
+    func registerAction(action: MD2Action) {
         actions[action.actionSignature] = action
         //println("registered action \(action.actionSignature.platformValue!)")
     }
     
-    func unregisterAction(action: MD2ActionType) {
+    func unregisterAction(action: MD2Action) {
         for (key, value) in actions {
             if key == action.actionSignature {
                 actions[key] = nil

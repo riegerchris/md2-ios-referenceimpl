@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MD2ImageWidget: MD2SingleWidgetType {
+class MD2ImageWidget: MD2SingleWidget {
     
     let widgetId: MD2WidgetMapping
     

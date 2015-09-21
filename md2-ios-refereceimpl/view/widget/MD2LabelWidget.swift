@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MD2LabelWidget: MD2SingleWidgetType, MD2WidgetStyleType {
+class MD2LabelWidget: MD2SingleWidget, MD2WidgetStyle {
     
     let widgetId: MD2WidgetMapping
     

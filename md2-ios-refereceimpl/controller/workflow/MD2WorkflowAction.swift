@@ -1,5 +1,5 @@
 //
-//  WorkflowActionType.swift
+//  WorkflowAction.swift
 //  md2-ios-refereceimpl
 //
 //  Created by Christoph Rieger on 13.08.15.
@@ -7,6 +7,6 @@
 //
 
 /// Constants of possible workflow actions.
-enum MD2WorkflowActionType {
+enum MD2WorkflowAction {
     case Start, End
 }

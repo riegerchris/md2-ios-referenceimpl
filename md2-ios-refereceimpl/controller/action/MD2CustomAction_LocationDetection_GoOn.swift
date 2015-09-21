@@ -6,7 +6,7 @@
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
 
-class MD2CustomAction_LocationDetection_GoOn: MD2ActionType {
+class MD2CustomAction_LocationDetection_GoOn: MD2Action {
     
     let actionSignature: String = "MD2CustomAction_LocationDetection_GoOn"
     
@@ -19,7 +19,7 @@ class MD2CustomAction_LocationDetection_GoOn: MD2ActionType {
        
     }
     
-    func equals(anotherAction: MD2ActionType) -> Bool {
+    func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature
     }
 }
