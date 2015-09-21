@@ -7,7 +7,7 @@
 //
 
 /// The workflow event handler to hook the workflow layer into the MD2 event system.
-class MD2WorkflowEventHandler {
+class MD2WorkflowEventHandler: MD2EventHandler {
     
     /// Convenience typealias for the tuple of workflow event, action and element.
     typealias WorkflowEventEntry = (MD2WorkflowEvent, MD2WorkflowAction, MD2WorkflowElement)

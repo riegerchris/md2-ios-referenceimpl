@@ -315,21 +315,12 @@
 		595E26E01B7D1214004F484A /* workflow */ = {
 			isa = PBXGroup;
 			children = (
-				595E26E11B7D135D004F484A /* MD2WorkflowEventHandler.swift */,
 				595E26E71B7D197C004F484A /* MD2WorkflowAction.swift */,
 				595E26E31B7D1433004F484A /* MD2WorkflowElement.swift */,
 				59C1EA2E1B7E5750003DADDF /* MD2WorkflowManager.swift */,
 				595E26E51B7D14DF004F484A /* MD2WorkflowEvent.swift */,
 			);
 			path = workflow;
-			sourceTree = "<group>";
-		};
-		59C3D5C41B681C1E00C5A613 /* viewController */ = {
-			isa = PBXGroup;
-			children = (
-				59CB70701B5E9889001D312F /* MD2ViewController.swift */,
-			);
-			path = viewController;
 			sourceTree = "<group>";
 		};
 		59C3D5C71B68B1C800C5A613 /* entity */ = {
@@ -348,8 +339,6 @@
 			isa = PBXGroup;
 			children = (
 				59AF8FD91B8D1ED60079ECC5 /* MD2Enum_ComplaintStatus.swift */,
-				59C3D5E11B6AB3DE00C5A613 /* MD2WidgetMapping.swift */,
-				59D007051B6FCE5400FA922D /* MD2WidgetTextStyle.swift */,
 			);
 			path = enum;
 			sourceTree = "<group>";
@@ -369,6 +358,11 @@
 		59CB70741B5E9DF1001D312F /* view */ = {
 			isa = PBXGroup;
 			children = (
+				59D0070B1B6FD87600FA922D /* MD2WidgetStyle.swift */,
+				59DF706D1B73552B00F6F0A3 /* MD2WidgetAssistance.swift */,
+				59C3D5E11B6AB3DE00C5A613 /* MD2WidgetMapping.swift */,
+				59D007051B6FCE5400FA922D /* MD2WidgetTextStyle.swift */,
+				59C3D5E61B6F739D00C5A613 /* MD2Dimension.swift */,
 				59CB707B1B5EADE8001D312F /* widget */,
 				59CB70711B5E9889001D312F /* InitialView.xib */,
 				59C3D5BC1B67FDFB00C5A613 /* MD2ViewManager.swift */,
@@ -380,8 +374,7 @@
 		59CB70751B5E9E11001D312F /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				595E26E01B7D1214004F484A /* workflow */,
-				59C3D5C41B681C1E00C5A613 /* viewController */,
+				59CB70701B5E9889001D312F /* MD2ViewController.swift */,
 				59CB70B11B5FE396001D312F /* validator */,
 				59CB707C1B5EADFE001D312F /* action */,
 				59CB70791B5EAD52001D312F /* eventhandler */,
@@ -402,7 +395,6 @@
 				59CB70781B5EAD19001D312F /* store */,
 				59CB70771B5EACDC001D312F /* type */,
 				59CE10161B60DFAB00ACE1E7 /* MD2RegEx.swift */,
-				59C3D5E61B6F739D00C5A613 /* MD2Dimension.swift */,
 				59DF706B1B7283D600F6F0A3 /* MD2ModelConfig.swift */,
 				59DF70751B73C82600F6F0A3 /* MD2ContentProviderAttributeIdentity.swift */,
 			);
@@ -447,6 +439,7 @@
 		59CB70791B5EAD52001D312F /* eventhandler */ = {
 			isa = PBXGroup;
 			children = (
+				595E26E11B7D135D004F484A /* MD2WorkflowEventHandler.swift */,
 				59CE101C1B60E87300ACE1E7 /* MD2EventHandler.swift */,
 				59CE101E1B60E89000ACE1E7 /* MD2GlobalEventHandler.swift */,
 				59CE10201B60E8F500ACE1E7 /* MD2WidgetEventHandler.swift */,
@@ -493,12 +486,10 @@
 				59C3D5EA1B6F84EA00C5A613 /* MD2SpacerWidget.swift */,
 				59C3D5D31B69260D00C5A613 /* MD2ButtonWidget.swift */,
 				59C3D5D51B6966BF00C5A613 /* MD2TextFieldWidget.swift */,
-				59DF706D1B73552B00F6F0A3 /* MD2WidgetAssistance.swift */,
 				59C3D5F01B6FBF6C00C5A613 /* MD2DateTimePickerWidget.swift */,
 				59C3D5EE1B6FBA2700C5A613 /* MD2OptionWidget.swift */,
 				59C3D5D71B69681300C5A613 /* MD2SwitchWidget.swift */,
 				59C3D5DB1B696FDF00C5A613 /* MD2ImageWidget.swift */,
-				59D0070B1B6FD87600FA922D /* MD2WidgetStyle.swift */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -581,6 +572,7 @@
 		59CD55A21B5E8258007B9834 /* md2-ios-refereceimpl */ = {
 			isa = PBXGroup;
 			children = (
+				595E26E01B7D1214004F484A /* workflow */,
 				59C3D5E31B6F733E00C5A613 /* util */,
 				59CD55A51B5E8258007B9834 /* AppDelegate.swift */,
 				59CB70751B5E9E11001D312F /* controller */,
