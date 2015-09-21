@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MD2SwitchWidget: MD2SingleWidget, MD2WidgetAssisted {
+class MD2SwitchWidget: MD2SingleWidget, MD2AssistedWidget {
     
     let widgetId: MD2WidgetMapping
     

@@ -91,7 +91,7 @@
 		59CE10251B60E9EA00ACE1E7 /* MD2OnWidgetChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE10241B60E9EA00ACE1E7 /* MD2OnWidgetChangeHandler.swift */; };
 		59D007061B6FCE5400FA922D /* MD2WidgetTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D007051B6FCE5400FA922D /* MD2WidgetTextStyle.swift */; };
 		59D0070A1B6FCFFA00FA922D /* MD2UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D007091B6FCFFA00FA922D /* MD2UIColorExtension.swift */; };
-		59D0070C1B6FD87600FA922D /* MD2WidgetStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D0070B1B6FD87600FA922D /* MD2WidgetStyle.swift */; };
+		59D0070C1B6FD87600FA922D /* MD2StylableWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D0070B1B6FD87600FA922D /* MD2StylableWidget.swift */; };
 		59D057F61B938111004F7D92 /* MD2CustomAction___LocationDetection_processChainExecuteStepAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D057E41B938111004F7D92 /* MD2CustomAction___LocationDetection_processChainExecuteStepAction.swift */; };
 		59D057F71B938111004F7D92 /* MD2CustomAction___LocationDetection_processChainProcessingAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D057E51B938111004F7D92 /* MD2CustomAction___LocationDetection_processChainProcessingAction.swift */; };
 		59D057F81B938111004F7D92 /* MD2CustomAction___LocationDetection_registerProcessChainActionEventTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D057E61B938111004F7D92 /* MD2CustomAction___LocationDetection_registerProcessChainActionEventTrigger.swift */; };
@@ -133,7 +133,7 @@
 		59DF70681B7270A300F6F0A3 /* MD2IsDateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF70671B7270A300F6F0A3 /* MD2IsDateValidator.swift */; };
 		59DF706A1B72711100F6F0A3 /* MD2TemporalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF70691B72711100F6F0A3 /* MD2TemporalType.swift */; };
 		59DF706C1B7283D600F6F0A3 /* MD2ModelConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF706B1B7283D600F6F0A3 /* MD2ModelConfig.swift */; };
-		59DF706E1B73552B00F6F0A3 /* MD2WidgetAssistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF706D1B73552B00F6F0A3 /* MD2WidgetAssistance.swift */; };
+		59DF706E1B73552B00F6F0A3 /* MD2AssistedWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF706D1B73552B00F6F0A3 /* MD2AssistedWidget.swift */; };
 		59DF70701B7363E800F6F0A3 /* MD2TooltipHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF706F1B7363E800F6F0A3 /* MD2TooltipHandler.swift */; };
 		59DF70741B73C73A00F6F0A3 /* MD2OnContentChangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF70731B73C73A00F6F0A3 /* MD2OnContentChangeHandler.swift */; };
 		59DF70761B73C82600F6F0A3 /* MD2ContentProviderAttributeIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DF70751B73C82600F6F0A3 /* MD2ContentProviderAttributeIdentity.swift */; };
@@ -242,7 +242,7 @@
 		59CE10241B60E9EA00ACE1E7 /* MD2OnWidgetChangeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2OnWidgetChangeHandler.swift; sourceTree = "<group>"; };
 		59D007051B6FCE5400FA922D /* MD2WidgetTextStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2WidgetTextStyle.swift; sourceTree = "<group>"; };
 		59D007091B6FCFFA00FA922D /* MD2UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2UIColorExtension.swift; sourceTree = "<group>"; };
-		59D0070B1B6FD87600FA922D /* MD2WidgetStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2WidgetStyle.swift; sourceTree = "<group>"; };
+		59D0070B1B6FD87600FA922D /* MD2StylableWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2StylableWidget.swift; sourceTree = "<group>"; };
 		59D057E41B938111004F7D92 /* MD2CustomAction___LocationDetection_processChainExecuteStepAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MD2CustomAction___LocationDetection_processChainExecuteStepAction.swift"; sourceTree = "<group>"; };
 		59D057E51B938111004F7D92 /* MD2CustomAction___LocationDetection_processChainProcessingAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MD2CustomAction___LocationDetection_processChainProcessingAction.swift"; sourceTree = "<group>"; };
 		59D057E61B938111004F7D92 /* MD2CustomAction___LocationDetection_registerProcessChainActionEventTrigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MD2CustomAction___LocationDetection_registerProcessChainActionEventTrigger.swift"; sourceTree = "<group>"; };
@@ -284,7 +284,7 @@
 		59DF70671B7270A300F6F0A3 /* MD2IsDateValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2IsDateValidator.swift; sourceTree = "<group>"; };
 		59DF70691B72711100F6F0A3 /* MD2TemporalType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2TemporalType.swift; sourceTree = "<group>"; };
 		59DF706B1B7283D600F6F0A3 /* MD2ModelConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2ModelConfig.swift; sourceTree = "<group>"; };
-		59DF706D1B73552B00F6F0A3 /* MD2WidgetAssistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2WidgetAssistance.swift; sourceTree = "<group>"; };
+		59DF706D1B73552B00F6F0A3 /* MD2AssistedWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2AssistedWidget.swift; sourceTree = "<group>"; };
 		59DF706F1B7363E800F6F0A3 /* MD2TooltipHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2TooltipHandler.swift; sourceTree = "<group>"; };
 		59DF70731B73C73A00F6F0A3 /* MD2OnContentChangeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2OnContentChangeHandler.swift; sourceTree = "<group>"; };
 		59DF70751B73C82600F6F0A3 /* MD2ContentProviderAttributeIdentity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2ContentProviderAttributeIdentity.swift; sourceTree = "<group>"; };
@@ -358,8 +358,8 @@
 		59CB70741B5E9DF1001D312F /* view */ = {
 			isa = PBXGroup;
 			children = (
-				59D0070B1B6FD87600FA922D /* MD2WidgetStyle.swift */,
-				59DF706D1B73552B00F6F0A3 /* MD2WidgetAssistance.swift */,
+				59D0070B1B6FD87600FA922D /* MD2StylableWidget.swift */,
+				59DF706D1B73552B00F6F0A3 /* MD2AssistedWidget.swift */,
 				59C3D5E11B6AB3DE00C5A613 /* MD2WidgetMapping.swift */,
 				59D007051B6FCE5400FA922D /* MD2WidgetTextStyle.swift */,
 				59C3D5E61B6F739D00C5A613 /* MD2Dimension.swift */,
@@ -734,7 +734,7 @@
 				59CB70901B5F97A6001D312F /* MD2Time.swift in Sources */,
 				59AF8FD71B8D1E1A0079ECC5 /* MD2CP_AddressProvider.swift in Sources */,
 				59CB70B31B5FE3B9001D312F /* MD2Validator.swift in Sources */,
-				59D0070C1B6FD87600FA922D /* MD2WidgetStyle.swift in Sources */,
+				59D0070C1B6FD87600FA922D /* MD2StylableWidget.swift in Sources */,
 				59DF70561B72687400F6F0A3 /* MD2DisableAction.swift in Sources */,
 				59CE10191B60E31000ACE1E7 /* MD2TimeRangeValidator.swift in Sources */,
 				59CB70AC1B5FDEA0001D312F /* MD2GotoViewAction.swift in Sources */,
@@ -750,7 +750,7 @@
 				59CB708E1B5F8FE8001D312F /* MD2Date.swift in Sources */,
 				59D057FA1B938111004F7D92 /* MD2CustomAction___processChainActionEventTrigger_0d320e0de11118a0c2f06867736ad9a7c1bb6ef6.swift in Sources */,
 				59C3D5E21B6AB3DE00C5A613 /* MD2WidgetMapping.swift in Sources */,
-				59DF706E1B73552B00F6F0A3 /* MD2WidgetAssistance.swift in Sources */,
+				59DF706E1B73552B00F6F0A3 /* MD2AssistedWidget.swift in Sources */,
 				59FA44861B8F42430000CF02 /* SwiftyJSON.swift in Sources */,
 				59D057FC1B938111004F7D92 /* MD2CustomAction___processChainSetProcessChainComplaintProcessChainAction.swift in Sources */,
 				59DF70681B7270A300F6F0A3 /* MD2IsDateValidator.swift in Sources */,

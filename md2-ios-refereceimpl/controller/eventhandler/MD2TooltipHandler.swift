@@ -24,12 +24,12 @@ class MD2TooltipHandler: MD2WidgetEventHandler {
     func fire(sender: UIControl) {
         let wrapper = MD2WidgetRegistry.instance.getWidget(MD2WidgetMapping.fromRawValue(sender.tag))
             
-        if wrapper == nil || wrapper?.widget == nil || !(wrapper!.widget is MD2WidgetAssisted) {
+        if wrapper == nil || wrapper?.widget == nil || !(wrapper!.widget is MD2AssistedWidget) {
             return
         }
         
-        if (wrapper!.widget as! MD2WidgetAssisted).tooltip != nil {
-            MD2UIUtil.showMessage((wrapper!.widget as! MD2WidgetAssisted).tooltip!.toString(),
+        if (wrapper!.widget as! MD2AssistedWidget).tooltip != nil {
+            MD2UIUtil.showMessage((wrapper!.widget as! MD2AssistedWidget).tooltip!.toString(),
                 title: MD2ViewConfig.TOOLTIP_TITLE_INFO)
         }
     }

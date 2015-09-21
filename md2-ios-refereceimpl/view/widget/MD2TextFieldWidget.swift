@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MD2TextFieldWidget: NSObject, MD2SingleWidget, MD2WidgetAssisted, UITextFieldDelegate {
+class MD2TextFieldWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UITextFieldDelegate {
     
     let widgetId: MD2WidgetMapping
     

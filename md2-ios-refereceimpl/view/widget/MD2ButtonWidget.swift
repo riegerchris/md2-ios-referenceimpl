@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MD2ButtonWidget: MD2SingleWidget, MD2WidgetStyle {
+class MD2ButtonWidget: MD2SingleWidget, MD2StylableWidget {
     
     let widgetId: MD2WidgetMapping
     

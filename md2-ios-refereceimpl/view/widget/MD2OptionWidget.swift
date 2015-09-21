@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MD2OptionWidget: NSObject, MD2SingleWidget, MD2WidgetAssisted, UIPickerViewDataSource, UIPickerViewDelegate, UIGestureRecognizerDelegate {
+class MD2OptionWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UIPickerViewDataSource, UIPickerViewDelegate, UIGestureRecognizerDelegate {
     
     let widgetId: MD2WidgetMapping
     
