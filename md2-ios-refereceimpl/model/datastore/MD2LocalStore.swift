@@ -29,7 +29,7 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
             var result: T = T()
             result.internalId = MD2Integer(MD2String(data.valueForKey("internalId") as! String))
             
-            for (attributeKey, attributeValue) in result.containeds {
+            for (attributeKey, attributeValue) in result.containedTypes {
                 if data.valueForKey(attributeKey) == nil {
                     continue
                 }
@@ -153,7 +153,7 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
     }
     
     private func setValues(object: NSManagedObject, entity: MD2Entity) {
-        for (attributeKey, attributeValue) in entity.containeds {
+        for (attributeKey, attributeValue) in entity.containedTypes {
             if attributeValue is MD2Enum && (attributeValue as! MD2Enum).value != nil {
                 object.setValue(attributeValue.toString(), forKey: attributeKey)
                 

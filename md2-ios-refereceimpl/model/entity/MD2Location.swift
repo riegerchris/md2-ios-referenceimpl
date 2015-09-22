@@ -10,19 +10,19 @@ class MD2Location: MD2Entity {
     
     var internalId: MD2Integer = MD2Integer()
     
-    var containeds: Dictionary<String,MD2Type> = [:]
+    var containedTypes: Dictionary<String,MD2Type> = [:]
     
     required init() {
         // Initialize location fields
-        containeds["longitude"] = MD2Float(0.0)
-        containeds["latitude"] = MD2Float(0.0)
+        containedTypes["longitude"] = MD2Float(0.0)
+        containedTypes["latitude"] = MD2Float(0.0)
     }
     
     convenience init(md2Entity: MD2Location) {
         self.init()
         
-        for (typeName, typeValue) in md2Entity.containeds {
-            containeds[typeName] = typeValue.clone()
+        for (typeName, typeValue) in md2Entity.containedTypes {
+            containedTypes[typeName] = typeValue.clone()
         }
     }
     
@@ -31,8 +31,8 @@ class MD2Location: MD2Entity {
     }
     
     func toString() -> String {
-        return "(Location: [longitude: " + containeds["longitude"]!.toString()
-            + ", latitude: " + containeds["latitude"]!.toString()
+        return "(Location: [longitude: " + containedTypes["longitude"]!.toString()
+            + ", latitude: " + containedTypes["latitude"]!.toString()
             + "])"
     }
     
@@ -43,8 +43,8 @@ class MD2Location: MD2Entity {
 
         var isEqual = true
         
-        for (typeName, typeValue) in (value as! MD2Location).containeds {
-            if !(containeds[typeName] != nil && containeds[typeName]!.equals(typeValue)) {
+        for (typeName, typeValue) in (value as! MD2Location).containedTypes {
+            if !(containedTypes[typeName] != nil && containedTypes[typeName]!.equals(typeValue)) {
                 isEqual = false
                 break
             }
@@ -54,11 +54,11 @@ class MD2Location: MD2Entity {
     }
     
     func get(attribute: String) -> MD2Type? {
-        return containeds[attribute]
+        return containedTypes[attribute]
     }
     
     func set(attribute: String, value: MD2Type) {
-        containeds[attribute] = value
+        containedTypes[attribute] = value
     }
     
 }

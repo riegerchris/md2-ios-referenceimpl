@@ -73,7 +73,7 @@ class MD2RemoteStore<T: MD2Entity>: MD2DataStore {
     private func entityToDict(entity: MD2Entity) -> Dictionary<String, AnyObject> {
         var dict: Dictionary<String, AnyObject> = [:]
         
-        for (attributeKey, attributeValue) in entity.containeds {
+        for (attributeKey, attributeValue) in entity.containedTypes {
             if attributeValue is MD2Enum && (attributeValue as! MD2Enum).value != nil {
                 dict[attributeKey] = (attributeValue as! MD2Enum).toInt()
             } else if attributeValue is MD2Entity {
@@ -111,7 +111,7 @@ class MD2RemoteStore<T: MD2Entity>: MD2DataStore {
         
         entity.internalId = MD2Integer(json["__internalId"].intValue)
         
-        for (attributeKey, attributeValue) in entity.containeds {
+        for (attributeKey, attributeValue) in entity.containedTypes {
             if json[attributeKey] == nil {
                 continue
             }
