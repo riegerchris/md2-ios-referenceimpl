@@ -32,9 +32,13 @@ class MD2StringRangeValidator: MD2Validator {
     func isValid(value: MD2Type) -> Bool {
         if !(value is MD2String)
             || !((value as! MD2String).isSet())
-            || !(minLength.isSet())
             || !(maxLength.isSet()) {
                 return false
+        }
+        
+        // Set default minimum length
+        if minLength.isSet() == false {
+            minLength.platformValue = 0
         }
         
         let stringValue = (value as! MD2String).platformValue!
