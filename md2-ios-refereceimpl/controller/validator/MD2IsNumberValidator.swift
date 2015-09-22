@@ -24,7 +24,18 @@ class MD2IsNumberValidator: MD2Validator {
     }
     
     func isValid(value: MD2Type) -> Bool {
-        return value is MD2NumericType
+        switch value {
+        case is MD2NumericType: return true
+        case is MD2String:
+            // Try to parse
+            if MD2Float(MD2String(value.toString())).toString() == value.toString()
+                || MD2Integer(MD2String(value.toString())).toString() == value.toString() {
+                    return true
+            }
+        default: return false
+        }
+        
+        return false
     }
     
     func getMessage() -> MD2String {

@@ -12,6 +12,14 @@ class MD2CustomAction_LocationDetection_init: MD2Action {
     
     func execute() {
         // Bindings/ Mappings / Call action / Set content provider / Conditions
+        
+        MD2DataMapper.instance.map(MD2WidgetRegistry.instance.getWidget(MD2WidgetMapping.ZipValue)!, contentProvider: MD2ContentProviderRegistry.instance.getContentProvider("AddressProvider")!, attribute: "myPostalCode")
+        
+        MD2DataMapper.instance.map(MD2WidgetRegistry.instance.getWidget(MD2WidgetMapping.ZipValue1)!, contentProvider: MD2ContentProviderRegistry.instance.getContentProvider("AddressProvider")!, attribute: "myPostalCode")
+        
+        MD2DataMapper.instance.map(MD2WidgetRegistry.instance.getWidget(MD2WidgetMapping.CityValue)!, contentProvider: MD2ContentProviderRegistry.instance.getContentProvider("AddressProvider")!, attribute: "myCity")
+        
+        MD2DataMapper.instance.map(MD2WidgetRegistry.instance.getWidget(MD2WidgetMapping.CityValue1)!, contentProvider: MD2ContentProviderRegistry.instance.getContentProvider("AddressProvider")!, attribute: "myCity")
        
     }
     
