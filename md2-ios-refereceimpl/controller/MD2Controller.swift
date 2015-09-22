@@ -654,11 +654,12 @@ class MD2Controller {
         
         
         let wfeLocationDetection = MD2WorkflowElement(name: "LocationDetection", onInit: MD2CustomAction___LocationDetection_startupAction())
+        MD2WorkflowManager.instance.addStartableWorkflowElement(wfeLocationDetection)
         
         let wfeSubmitComplaint = MD2WorkflowElement(name: "SubmitComplaint", onInit: MD2CustomAction___SubmitComplaint_startupAction())
+        MD2WorkflowManager.instance.addStartableWorkflowElement(wfeSubmitComplaint)
         
         // Register workflow events
-            
         MD2WorkflowEventHandler.instance.registerWorkflowElement(
             MD2WorkflowEvent.DoneEvent,
             action: MD2WorkflowAction.Start,
@@ -681,15 +682,13 @@ class MD2Controller {
         
         /***************************************************
 		 * 
-		 * Start initial workflow of the app
+		 * Initial workflow selection
 		 * 
 		 ***************************************************/
-		 
-		// Execute startup action for first WFE
-		// TODO Construct workflow element selection screen
 		
-		MD2SetWorkflowElementAction(actionSignature: "SetWorkflowLocationDetectionAction", workflowElement: wfeLocationDetection).execute()
-		
+        // Show start screen
+        MD2WorkflowManager.instance.generateStartScreen()
+        
 		println("[Controller] Startup completed")
     }
 }

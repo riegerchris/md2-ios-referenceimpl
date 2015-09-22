@@ -15,9 +15,24 @@ class MD2WorkflowManager {
     /// The current workflow element
     var currentWorkflowElement: MD2WorkflowElement?
     
+    /// List of startable workflow elements to present on start screeen
+    var startableWorkflowElements: Dictionary<String, MD2WorkflowElement> = [:]
+    
+    /// Start screen view to fill with elements
+    var startScreen: MD2ViewController?
+    
     /// Singleton initializer
     private init() {
         // Private initializer for singleton object
+    }
+    
+    /**
+    Add startable workflow element.
+    
+    :param: workflowElement The startable workflow element
+    */
+    func addStartableWorkflowElement(workflowElement: MD2WorkflowElement) {
+        startableWorkflowElements[workflowElement.name] = workflowElement
     }
     
     /**
@@ -50,4 +65,33 @@ class MD2WorkflowManager {
         MD2ViewManager.instance.goToStartView()
     }
     
+    /**
+    Generate a view with buttons for all startable workflow elements that is shown on startup
+    */
+    func generateStartScreen() {
+        let outerLayout = MD2FlowLayoutPane(widgetId: MD2WidgetMapping.__startScreen)
+        outerLayout.orientation = MD2FlowLayoutPane.Orientation.Vertical
+        
+        // Add initial Label
+        let label = MD2LabelWidget(widgetId: MD2WidgetMapping.__startScreen_Label)
+        label.value = MD2String("Select workflow to start")
+        label.fontSize = MD2Float(2.5)
+        label.color = MD2String("#000000")
+        label.textStyle = MD2WidgetTextStyle.Bold
+        outerLayout.addWidget(label)
+        MD2WidgetRegistry.instance.add(MD2WidgetWrapper(widget: label))
+        
+        // Add buttons for each startable workflow
+        // TODO
+        
+        startScreen = MD2ViewManager.instance.setupView("__startScreen", view: outerLayout)
+        MD2ViewManager.instance.showStartView("__startScreen")
+    }
+    
+    /**
+    Recreate the start screen view with all startable workflow elements
+    */
+    func updateStartScreen() {
+        // MARK Update existing view when remote workflow handling is implemented (currently there is no change)
+    }
 }
