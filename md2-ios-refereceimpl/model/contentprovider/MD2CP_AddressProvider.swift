@@ -20,7 +20,7 @@ class MD2CP_AddressProvider: MD2ContentProvider {
     
     var filter: MD2Filter?
     
-var entityPath: String = ""
+	var entityPath: String = ""
     
     init() {
     	self.store = MD2DataStoreFactory<contentType>().createStore(entityPath)
@@ -109,7 +109,7 @@ var entityPath: String = ""
     }
     
     func reset() {
-        // Check all observed properties
+        load()
         checkAllAttributesForObserver()
     }
     

@@ -25,9 +25,6 @@ class MD2CustomAction___LocationDetection_processChainProcessingAction: MD2Actio
 			
 			let codeFragment1_if_0_if_1 = MD2CustomAction___LocationDetection_processChainExecuteStepAction()
 			codeFragment1_if_0_if_1.execute()
-			
-			let codeFragment1_if_0_if_2 = MD2CustomAction_LocationDetection_saveComplaint()
-			codeFragment1_if_0_if_2.execute()
 		}
 		else {
 		}
