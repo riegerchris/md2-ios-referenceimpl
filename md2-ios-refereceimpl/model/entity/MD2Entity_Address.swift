@@ -1,7 +1,7 @@
 //
 //  MD2Entity_Address.swift
 //
-//  Generated code by class 'IOSEntity' on 30.08.2015
+//  Generated code by class 'IOSEntity' on 22.09.2015
 //
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
@@ -11,27 +11,29 @@ import Foundation
 // Make class visible for Objective-C to work with Core Data persistence framework
 @objc(MD2Entity_Address)
 class MD2Entity_Address: NSObject, MD2Entity {
+	
+	var md2ClassName: String = "Address"
 
 	var internalId: MD2Integer = MD2Integer()
     
-    var containeds: Dictionary<String, MD2Type> = [:]
+    var containedTypes: Dictionary<String, MD2Type> = [:]
     
     required override init() {
         // Initialize fields
-        containeds["myStreet"] = MD2String()
-        containeds["myStreetNo"] = MD2String()
-        containeds["myPostalCode"] = MD2String()
-        containeds["myCity"] = MD2String()
-        containeds["myCountry"] = MD2String()
-        containeds["myLatitude"] = MD2Float()
-        containeds["myLongitude"] = MD2Float()
+        containedTypes["myStreet"] = MD2String()
+        containedTypes["myStreetNo"] = MD2String()
+        containedTypes["myPostalCode"] = MD2String()
+        containedTypes["myCity"] = MD2String()
+        containedTypes["myCountry"] = MD2String()
+        containedTypes["myLatitude"] = MD2Float()
+        containedTypes["myLongitude"] = MD2Float()
     }
     
     convenience init(md2Entity: MD2Entity_Address) {
         self.init()
         
-        for (typeName, typeValue) in md2Entity.containeds {
-            containeds[typeName] = typeValue.clone()
+        for (typeName, typeValue) in md2Entity.containedTypes {
+            containedTypes[typeName] = typeValue.clone()
         }
     }
     
@@ -40,13 +42,13 @@ class MD2Entity_Address: NSObject, MD2Entity {
     }
     
     func toString() -> String {
-    return "(MD2Entity_Address: [myStreet: " + containeds["myStreet"]!.toString()
-    + ", myStreetNo: " + containeds["myStreetNo"]!.toString()
-    + ", myPostalCode: " + containeds["myPostalCode"]!.toString()
-    + ", myCity: " + containeds["myCity"]!.toString()
-    + ", myCountry: " + containeds["myCountry"]!.toString()
-    + ", myLatitude: " + containeds["myLatitude"]!.toString()
-    + ", myLongitude: " + containeds["myLongitude"]!.toString() 
+    return "(MD2Entity_Address: [myStreet: " + containedTypes["myStreet"]!.toString()
+    + ", myStreetNo: " + containedTypes["myStreetNo"]!.toString()
+    + ", myPostalCode: " + containedTypes["myPostalCode"]!.toString()
+    + ", myCity: " + containedTypes["myCity"]!.toString()
+    + ", myCountry: " + containedTypes["myCountry"]!.toString()
+    + ", myLatitude: " + containedTypes["myLatitude"]!.toString()
+    + ", myLongitude: " + containedTypes["myLongitude"]!.toString() 
 	        + "])"
     }
     
@@ -57,8 +59,8 @@ class MD2Entity_Address: NSObject, MD2Entity {
         
         var isEqual = true
         
-        for (typeName, typeValue) in (value as! MD2Entity_Address).containeds {
-            if !(containeds[typeName] != nil && containeds[typeName]!.equals(typeValue)) {
+        for (typeName, typeValue) in (value as! MD2Entity_Address).containedTypes {
+            if !(containedTypes[typeName] != nil && containedTypes[typeName]!.equals(typeValue)) {
                 isEqual = false
                 break
             }
@@ -68,14 +70,14 @@ class MD2Entity_Address: NSObject, MD2Entity {
     }
     
     func get(attribute: String) -> MD2Type? {
-        return containeds[attribute]
+        return containedTypes[attribute]
     }
     
     func set(attribute: String, value: MD2Type) {
     	// Check if attribute exists
-    	if containeds[attribute] == nil {
+    	if containedTypes[attribute] == nil {
     		fatalError("Tried to set non-existing attribute in entity type MD2Entity_Address")
     	}
-        containeds[attribute] = value
+        containedTypes[attribute] = value
     }
 }

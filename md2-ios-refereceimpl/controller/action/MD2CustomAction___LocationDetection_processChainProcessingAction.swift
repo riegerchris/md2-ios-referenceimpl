@@ -1,7 +1,7 @@
 //
 //  MD2CustomAction___LocationDetection_processChainProcessingAction.swift
 //
-//  Generated code by class 'IOSCustomAction' on 30.08.2015
+//  Generated code by class 'IOSCustomAction' on 22.09.2015
 //
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
@@ -25,6 +25,9 @@ class MD2CustomAction___LocationDetection_processChainProcessingAction: MD2Actio
 			
 			let codeFragment1_if_0_if_1 = MD2CustomAction___LocationDetection_processChainExecuteStepAction()
 			codeFragment1_if_0_if_1.execute()
+			
+			let codeFragment1_if_0_if_2 = MD2CustomAction_LocationDetection_saveComplaint()
+			codeFragment1_if_0_if_2.execute()
 		}
 		else {
 		}
