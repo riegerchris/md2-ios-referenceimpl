@@ -337,8 +337,7 @@ class MD2Controller {
         latitudeValue.tooltip = MD2String("To get the value for latitude, use the My Location function down below.")
         		__ContainerlatitudeValue.addWidget(latitudeValue)
         let wrapper_latitudeValue = MD2WidgetWrapper(widget: latitudeValue)
-        wrapper_latitudeValue.isElementDisabled = true
-        wrapper_latitudeValue.addValidator(MD2IsNumberValidator(identifier: MD2String("latitudeValue_auto_number"), 
+        wrapper_latitudeValue.addValidator(MD2IsNumberValidator(identifier: MD2String("latitudeValue_auto_number"),
         		message: nil))
         wrapper_latitudeValue.addValidator(MD2StringRangeValidator(identifier: MD2String("latitudeValue_auto_places"), 
         	message: nil, 
@@ -367,7 +366,6 @@ class MD2Controller {
         longitudeValue.tooltip = MD2String("To get the value for longitude, use the My Location function down below.")
         		__ContainerlongitudeValue.addWidget(longitudeValue)
         let wrapper_longitudeValue = MD2WidgetWrapper(widget: longitudeValue)
-        wrapper_longitudeValue.isElementDisabled = true
         wrapper_longitudeValue.addValidator(MD2IsNumberValidator(identifier: MD2String("longitudeValue_auto_number"), 
         		message: nil))
         wrapper_longitudeValue.addValidator(MD2StringRangeValidator(identifier: MD2String("longitudeValue_auto_places"), 

@@ -37,6 +37,8 @@ protocol MD2ContentProvider: AnyObject {
     
     func registerAttributeContentProvider(attribute: String, contentProvider: MD2ContentProvider)
     
+    func checkAllAttributesForObserver()
+    
     func reset()
     
     func load()

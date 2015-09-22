@@ -64,6 +64,9 @@ class MD2CP_AddressProvider: MD2ContentProvider {
     func registerObservedOnChange(attribute: String) {
         // Add observed attribute and remember current value
         observedAttributes[attribute] = self.content?.get(attribute)
+        
+        // Trigger initial value setting
+        MD2OnContentChangeHandler.instance.fire(MD2ContentProviderAttributeIdentity(self, attribute))
     }
     
     func unregisterObservedOnChange(attribute: String) {
