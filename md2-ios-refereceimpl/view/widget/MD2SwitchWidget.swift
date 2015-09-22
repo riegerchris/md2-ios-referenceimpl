@@ -85,6 +85,7 @@ class MD2SwitchWidget: MD2SingleWidget, MD2AssistedWidget {
     }
     
     // Event from itself
+    @objc
     func onUpdate() {
         self.value = MD2Boolean(self.widgetElement.on)
         MD2WidgetRegistry.instance.getWidget(widgetId)?.setValue(self.value)

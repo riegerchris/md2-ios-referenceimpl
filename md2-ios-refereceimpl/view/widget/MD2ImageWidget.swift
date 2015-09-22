@@ -39,6 +39,9 @@ class MD2ImageWidget: MD2SingleWidget {
             return
         }
         
+        // Default parameters
+        widgetElement.contentMode = UIViewContentMode.ScaleAspectFit
+        
         // Set value
         updateElement()
         
@@ -69,7 +72,11 @@ class MD2ImageWidget: MD2SingleWidget {
     }
     
     func updateElement() {
-        let image = UIImage(named: value.toString())
-        widgetElement.image = image
+        // Image from URL (synchronous call)
+        if let url = NSURL(string: value.toString()) {
+            if let data = NSData(contentsOfURL: url) {
+                widgetElement.image = UIImage(data: data)
+            }
+        }
     }
 }

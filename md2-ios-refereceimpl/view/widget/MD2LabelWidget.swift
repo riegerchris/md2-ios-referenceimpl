@@ -46,8 +46,9 @@ class MD2LabelWidget: MD2SingleWidget, MD2StylableWidget {
         updateElement()
         
         // Set default styles
-        //label.textAlignment = .Center
-        //label.numberOfLines = 5
+        //widgetElement.textAlignment = .Center
+        widgetElement.numberOfLines = 2
+        widgetElement.lineBreakMode = .ByWordWrapping
         
         // Set custom styles
         if color?.isSet() == true {

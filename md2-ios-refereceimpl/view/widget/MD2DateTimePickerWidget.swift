@@ -47,7 +47,6 @@ class MD2DateTimePickerWidget: NSObject, MD2SingleWidget, UIGestureRecognizerDel
         widgetElement.placeholder = MD2ViewConfig.OPTION_WIDGET_PLACEHOLDER
         
         widgetElement.tag = widgetId.rawValue
-        widgetElement.addTarget(self, action: "onUpdate", forControlEvents: UIControlEvents.ValueChanged)
         
         // Set styling
         widgetElement.backgroundColor = UIColor(rgba: "#fff")
@@ -115,6 +114,10 @@ class MD2DateTimePickerWidget: NSObject, MD2SingleWidget, UIGestureRecognizerDel
         }
         
         self.widgetElement.text = formatter.stringFromDate(self.pickerElement!.date)
+        
+        // Update event
+        self.value = MD2String(self.widgetElement.text)
+        MD2WidgetRegistry.instance.getWidget(widgetId)?.setValue(self.value)
     }
     
     func enable() {
@@ -123,12 +126,6 @@ class MD2DateTimePickerWidget: NSObject, MD2SingleWidget, UIGestureRecognizerDel
     
     func disable() {
         self.widgetElement.enabled = false
-    }
-    
-    // Event from itself
-    func onUpdate() {
-        self.value = MD2String(self.widgetElement.text)
-        MD2WidgetRegistry.instance.getWidget(widgetId)?.setValue(self.value)
     }
     
     func updateElement() {

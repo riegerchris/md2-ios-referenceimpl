@@ -110,6 +110,8 @@ class MD2OptionWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UIPickerVie
     // Action method to capture single click on picker view element
     func pickerViewTapped() {
         self.widgetElement.text = options![self.picker.selectedRowInComponent(0)]
+        onUpdate()
+        
         // Hide picker element
         self.widgetElement.resignFirstResponder()
     }
