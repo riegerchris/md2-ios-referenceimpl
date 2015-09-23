@@ -13,17 +13,17 @@ class MD2WorkflowElement {
     let name: String
     
     /**
-    A list of actions to trigger when the workflow is triggered.
+        A list of actions to trigger when the workflow is triggered.
     
-    *Notice:* Currently preprocessing leaves only one action MD2CustomAction__<WfeName>_startupAction.
+        *Notice:* Currently preprocessing leaves only one action MD2CustomAction__<WfeName>_startupAction.
     */
     var onInit: Array<MD2Action> = []
 
     /**
-    Object Constructor. The identifier and at least one action to trigger are required.
+        Object Constructor. The identifier and at least one action to trigger are required.
     
-    :param: name The workflow element name as identifier.
-    :param: onInit The initial action to trigger when the workflow element is started.
+        :param: name The workflow element name as identifier.
+        :param: onInit The initial action to trigger when the workflow element is started.
     */    
     init(name: String, onInit: MD2Action) {
         self.name = name
@@ -31,7 +31,7 @@ class MD2WorkflowElement {
     }
     
     /**
-    Start the workflow element, i.e. its initial actions.
+        Start the workflow element, i.e. its initial actions.
     */
     func start() {
         for initAction in onInit {
@@ -40,7 +40,7 @@ class MD2WorkflowElement {
     }
     
     /**
-    Eventually perform actions when the workflow element is left.
+        Eventually perform actions when the workflow element is left.
     */
     func end() {
         // Currently nothing to do

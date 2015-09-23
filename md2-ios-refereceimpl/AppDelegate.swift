@@ -106,6 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - Core Data Saving support
     
+    /// Save the complete managed object context with the local data model
     func saveContext () {
         if let moc = self.managedObjectContext {
             var error: NSError? = nil

@@ -27,18 +27,18 @@ class MD2WorkflowManager {
     }
     
     /**
-    Add startable workflow element.
+        Add startable workflow element.
     
-    :param: workflowElement The startable workflow element
+        :param: workflowElement The startable workflow element
     */
     func addStartableWorkflowElement(workflowElement: MD2WorkflowElement, withCaption: String, forWidget: MD2WidgetMapping) {
         startableWorkflowElements[forWidget] = (withCaption, workflowElement)
     }
     
     /**
-    Switch to another workflow element. The currently running workflow element (if existing) is properly ended beforehand.
+        Switch to another workflow element. The currently running workflow element (if existing) is properly ended beforehand.
     
-    :param workflowElement The workflow element to start.
+        :param workflowElement The workflow element to start.
     */
     func goToWorkflow(workflowElement: MD2WorkflowElement) {
         println("[WorkflowManager] Switch workflow into '\(workflowElement.name)'")
@@ -51,9 +51,9 @@ class MD2WorkflowManager {
     }
     
     /**
-    End the workflow element. To continue the app flow, the start view is invoked for a new workflow selection.
+        End the workflow element. To continue the app flow, the start view is invoked for a new workflow selection.
     
-    :param workflowElement The workflow element to end.
+        :param workflowElement The workflow element to end.
     */
     func endWorkflow(workflowElement: MD2WorkflowElement) {
         println("[WorkflowManager] End workflow '\(workflowElement.name)'")
@@ -66,7 +66,7 @@ class MD2WorkflowManager {
     }
     
     /**
-    Generate a view with buttons for all startable workflow elements that is shown on startup
+        Generate a view with buttons for all startable workflow elements that is shown on startup
     */
     func generateStartScreen() {
         let outerLayout = MD2FlowLayoutPane(widgetId: MD2WidgetMapping.__startScreen)
@@ -101,7 +101,7 @@ class MD2WorkflowManager {
     }
     
     /**
-    Recreate the start screen view with all startable workflow elements
+        Recreate the start screen view with all startable workflow elements
     */
     func updateStartScreen() {
         // MARK Update existing view when remote workflow handling is implemented (currently there is no change)
