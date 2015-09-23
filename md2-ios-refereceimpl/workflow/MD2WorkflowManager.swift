@@ -16,7 +16,7 @@ class MD2WorkflowManager {
     var currentWorkflowElement: MD2WorkflowElement?
     
     /// List of startable workflow elements to present on start screeen
-    var startableWorkflowElements: Dictionary<String, MD2WorkflowElement> = [:]
+    var startableWorkflowElements: Dictionary<MD2WidgetMapping, (String, MD2WorkflowElement)> = [:]
     
     /// Start screen view to fill with elements
     var startScreen: MD2ViewController?
@@ -31,8 +31,8 @@ class MD2WorkflowManager {
     
     :param: workflowElement The startable workflow element
     */
-    func addStartableWorkflowElement(workflowElement: MD2WorkflowElement) {
-        startableWorkflowElements[workflowElement.name] = workflowElement
+    func addStartableWorkflowElement(workflowElement: MD2WorkflowElement, withCaption: String, forWidget: MD2WidgetMapping) {
+        startableWorkflowElements[forWidget] = (withCaption, workflowElement)
     }
     
     /**
@@ -81,8 +81,20 @@ class MD2WorkflowManager {
         outerLayout.addWidget(label)
         MD2WidgetRegistry.instance.add(MD2WidgetWrapper(widget: label))
         
+        outerLayout.addWidget(MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer))
+        
         // Add buttons for each startable workflow
-        // TODO
+        for (widget, (caption, wfe)) in startableWorkflowElements {
+            let button = MD2ButtonWidget(widgetId: widget)
+            button.value = MD2String(caption)
+            outerLayout.addWidget(button)
+            
+            let buttonWrapper = MD2WidgetWrapper(widget: button)
+            MD2WidgetRegistry.instance.add(buttonWrapper)
+            
+            // Link button click to workflow action
+            MD2OnClickHandler.instance.registerAction(MD2SetWorkflowElementAction(actionSignature: "__startScreen_" + wfe.name, workflowElement: wfe), widget: buttonWrapper)
+        }
         
         startScreen = MD2ViewManager.instance.setupView("__startScreen", view: outerLayout)
         MD2ViewManager.instance.showStartView("__startScreen")
