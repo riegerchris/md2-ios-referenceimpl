@@ -21,10 +21,10 @@ func =~ (input: MD2String, pattern: MD2String) -> Bool {
     Implementation adapted from http://benscheirman.com/2014/06/regex-in-swift/
 */
 class MD2RegEx {
-    /// The internal Objective-C regular expression object
+    /// The internal Objective-C regular expression object.
     let expression: NSRegularExpression?
     
-    /// The RegEx pattern as string
+    /// The RegEx pattern as string.
     let pattern: MD2String
     
     /**

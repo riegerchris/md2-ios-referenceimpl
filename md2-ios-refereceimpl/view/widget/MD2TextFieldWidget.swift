@@ -90,7 +90,7 @@ class MD2TextFieldWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UITextFi
         
         // If tooltip info is available show info button
         if tooltip != nil && tooltip!.isSet() && !tooltip!.equals(MD2String("")) {
-            infoButton.button = UIButtonType.InfoLight
+            infoButton.buttonType = UIButtonType.InfoLight
             infoButton.dimensions = self.tooltipDimensions
             infoButton.render(view, controller: controller)
         }

@@ -31,16 +31,16 @@ func ==(lhs: MD2ContentProviderAttributeIdentity, rhs: MD2ContentProviderAttribu
 @objc
 class MD2ContentProviderAttributeIdentity: Hashable {
     
-	/// The content provider object
+	/// The content provider object.
     let contentProvider: MD2ContentProvider
     
-	/// The attribute string
+	/// The attribute string.
     let attribute: String
     
-	/// The internal hash value
+	/// The internal hash value.
     private let _hashValue: Int
     
-	/// The externally facing hash value
+	/// The externally facing hash value.
     var hashValue: Int {
         get {
             return _hashValue
