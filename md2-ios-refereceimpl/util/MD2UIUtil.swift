@@ -12,11 +12,11 @@ import UIKit
 class MD2UIUtil {
     
     /**
-    Transform the CGRect object of view elements to a dimension object for easier handling. 
+        Transform the CGRect object of view elements to a dimension object for easier handling. 
 
-    :param: bounds The rectangle object.
+        :param: bounds The rectangle object.
     
-    :returns: The dimension object.
+        :returns: The dimension object.
     */
     static func CGRectToDimension(bounds: CGRect) -> MD2Dimension {
         let dimension = MD2Dimension(
@@ -29,11 +29,11 @@ class MD2UIUtil {
     }
     
     /**
-    Transform the CGSize object of view elements to a dimension object for easier handling.
+        Transform the CGSize object of view elements to a dimension object for easier handling.
     
-    :param: size The size object.
+        :param: size The size object.
     
-    :returns: The dimension object.
+        :returns: The dimension object.
     */
     static func CGSizeToDimension(size: CGSize) -> MD2Dimension {
         let dimension = MD2Dimension(
@@ -45,11 +45,11 @@ class MD2UIUtil {
     }
     
     /**
-    Transform the dimension object to a CGRect object to set within a view element. 
+        Transform the dimension object to a CGRect object to set within a view element.
 
-    :param: dimension The dimension object.
+        :param: dimension The dimension object.
     
-    :returns: The rectangle object.
+        :returns: The rectangle object.
     */
     static func dimensionToCGRect(dimension: MD2Dimension) -> CGRect {
         let rect = CGRect(x: Double(dimension.x),
@@ -60,11 +60,11 @@ class MD2UIUtil {
     }
     
     /**
-    Transform the dimension object to a CGSize object.
+        Transform the dimension object to a CGSize object.
     
-    :param: dimension The dimension object.
+        :param: dimension The dimension object.
     
-    :returns: The size object.
+        :returns: The size object.
     */
     static func dimensionToCGSize(dimension: MD2Dimension) -> CGSize {
         let size = CGSize(
@@ -74,10 +74,10 @@ class MD2UIUtil {
     }
     
     /**
-    Show a message in an overlay popup.
+        Show a message in an overlay popup.
 
-    :param: message The message to show.
-    :param: title The popup title.
+        :param: message The message to show.
+        :param: title The popup title.
     */
     static func showMessage(message: String, title: String) {
         var alertView = UIAlertView()
@@ -88,11 +88,11 @@ class MD2UIUtil {
     }
 
     /**
-    Return the inner dimensions of a view element by applying the gutter margin to an outer margin. 
+        Return the inner dimensions of a view element by applying the gutter margin to an outer margin.
 
-    :param: outerDimension The outer dimension object.
+        :param: outerDimension The outer dimension object.
     
-    :returns: The inner dimension.
+        :returns: The inner dimension.
     */
     static func innerDimensionsWithGutter(outerDimensions: MD2Dimension) -> MD2Dimension {
         return outerDimensions + MD2Dimension(

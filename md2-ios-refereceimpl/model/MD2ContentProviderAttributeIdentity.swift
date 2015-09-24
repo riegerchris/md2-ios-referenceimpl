@@ -9,35 +9,38 @@
 import Foundation
 
 /**
-Operator overloading to compare two contentProvider-attribute identity objects.
+    Operator overloading to compare two contentProvider-attribute identity objects.
 
-*Notice* Needed to implement the Equatable protocol as supertype of the Hashable protocol.
+    *Notice* Needed to implement the Equatable protocol as supertype of the Hashable protocol.
 */
 func ==(lhs: MD2ContentProviderAttributeIdentity, rhs: MD2ContentProviderAttributeIdentity) -> Bool {
     return lhs.contentProvider === rhs.contentProvider && lhs.attribute == rhs.attribute
 }
 
 /**
-An object representing the combined identity of a content provider and an attribute.
+    An object representing the combined identity of a content provider and an attribute.
 
-*Notice* For using this object as dictionary key this 
-- must be a class, not a struct
-- must be visible to Objective-C runtime (@objc)
-- must implement the Hashable protocol (which itself requires the Equatable protocol)
+    *Notice* For using this object as dictionary key this
+
+    - must be a class, not a struct
+
+    - must be visible to Objective-C runtime (@objc)
+
+    - must implement the Hashable protocol (which itself requires the Equatable protocol)
 */
 @objc
 class MD2ContentProviderAttributeIdentity: Hashable {
     
-	/// The content provider object
+	/// The content provider object.
     let contentProvider: MD2ContentProvider
     
-	/// The attribute string
+	/// The attribute string.
     let attribute: String
     
-	/// The internal hash value
+	/// The internal hash value.
     private let _hashValue: Int
     
-	/// The externally facing hash value
+	/// The externally facing hash value.
     var hashValue: Int {
         get {
             return _hashValue
@@ -45,10 +48,10 @@ class MD2ContentProviderAttributeIdentity: Hashable {
     }
     
 	/**
-	Initializing function which automatically sets a random hash value.
+        Initializing function which automatically sets a random hash value.
 	
-	:param: contentProvider The content provider object.
-	:param: attribute The attribute string.
+        :param: contentProvider The content provider object.
+        :param: attribute The attribute string.
 	*/
     init(_ contentProvider: MD2ContentProvider, _ attribute: String) {
         self.contentProvider = contentProvider

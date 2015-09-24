@@ -6,15 +6,11 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
-/// A query specifying entity restrictions
+/// A query specifying entity restrictions.
 class MD2Query {
     
 	/// A list of attribute-value pairs to be matched
     var predicates: Array<(String, String)> = []
-    
-    init() {
-        // Nothing to initialize
-    }
 
     /**
 	Add an attribute to value restriction.

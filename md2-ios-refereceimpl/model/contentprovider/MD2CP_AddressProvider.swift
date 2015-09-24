@@ -1,7 +1,7 @@
 //
 //  MD2CP_AddressProvider.swift
 //
-//  Generated code by class 'IOSContentProvider' on 30.08.2015
+//  Generated code by class 'IOSContentProvider' on 22.09.2015
 //
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
@@ -20,10 +20,10 @@ class MD2CP_AddressProvider: MD2ContentProvider {
     
     var filter: MD2Filter?
     
-    var entityPath: String = ""
+	var entityPath: String = ""
     
     init() {
-        self.store = MD2DataStoreFactory<contentType>().createStore(entityPath)
+    	self.store = MD2DataStoreFactory<contentType>().createStore(entityPath)
     }
     
     convenience init(content: MD2Entity) {
@@ -64,6 +64,9 @@ class MD2CP_AddressProvider: MD2ContentProvider {
     func registerObservedOnChange(attribute: String) {
         // Add observed attribute and remember current value
         observedAttributes[attribute] = self.content?.get(attribute)
+        
+        // Trigger initial value setting
+        MD2OnContentChangeHandler.instance.fire(MD2ContentProviderAttributeIdentity(self, attribute))
     }
     
     func unregisterObservedOnChange(attribute: String) {
@@ -75,11 +78,15 @@ class MD2CP_AddressProvider: MD2ContentProvider {
     }
     
     func setValue(attribute: String, value: MD2Type) {
+    	// Check for value change
+    	if content == nil || content?.get(attribute) == nil || value.equals(content!.get(attribute)!) {
+    		return
+    	}
+    	
         // Update content
         let newValue = value.clone()
-        if content != nil {
-            println("[MD2CP_AddressProvider] Update id=\(content!.internalId.toString()) set \(attribute) to '\(newValue.toString())'")
-        }
+        println("[MD2CP_AddressProvider] Update id=\(content!.internalId.toString()) set \(attribute) to '\(newValue.toString())'")
+        
         content?.set(attribute, value: newValue)
         
         // Check if attribute is observed and fire event accordingly
@@ -105,7 +112,7 @@ class MD2CP_AddressProvider: MD2ContentProvider {
     }
     
     func reset() {
-        // Check all observed properties
+        load()
         checkAllAttributesForObserver()
     }
     

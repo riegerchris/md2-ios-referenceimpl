@@ -1,7 +1,7 @@
 //
 //  WorkflowEvent.swift
 //
-//  Generated code by class 'IOSWidgetMapping' on 30.08.2015
+//  Generated code by class 'IOSWidgetMapping' on 22.09.2015
 //
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
@@ -86,6 +86,9 @@ enum MD2WidgetMapping: Int {
     case DescriptionTxt = 73
     case Cancel3 = 74
     case SubmitComplaint = 75
+    case __startScreen = 76
+    case __startScreen_Button = 77
+    case __startScreen_Label = 78
     
     // There is currently no introspection into enums
     // Therefore computed property to establish a link of type enum -> string representation
@@ -166,6 +169,9 @@ enum MD2WidgetMapping: Int {
         case .DescriptionTxt: return "DescriptionTxt"
         case .Cancel3: return "Cancel3"
         case .SubmitComplaint: return "SubmitComplaint"
+        case .__startScreen: return "__startScreen"
+        case .__startScreen_Button: return "__startScreen_Button"
+        case .__startScreen_Label: return "__startScreen_Label"
     	default: return "NotFound"
         }
     }
@@ -249,6 +255,9 @@ enum MD2WidgetMapping: Int {
     	case 73: return .DescriptionTxt
     	case 74: return .Cancel3
     	case 75: return .SubmitComplaint
+        case 76: return .__startScreen
+        case 77: return .__startScreen_Button
+        case 78: return .__startScreen_Label
     	default: return .NotFound
         }
     }

@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
+
+/// Filter a set of entities
 class MD2Filter {
-    
+    // TODO implementation
 }

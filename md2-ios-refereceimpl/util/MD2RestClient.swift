@@ -49,8 +49,12 @@ class MD2RestClient: NSObject {
     /**
         Send a snychronous GET request to the given path.
         
-        *Notice* SendSynchronousRequest function will not be available in Swift2. Options:
+        *Notice* SendSynchronousRequest function will be deprecated in Swift2. 
+    
+        Alternative options:
+    
         1) Modify reference architecture to allow asynchronous calls (recommended to also avoid blocking the main thread!)
+    
         2) Use workarounds like MD2Util.syncFromAsync()
 		
         :param: path The full URL of the requested resource.

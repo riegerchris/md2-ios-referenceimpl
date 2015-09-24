@@ -1,7 +1,7 @@
 //
 //  MD2Entity___ProcessChainControllerState.swift
 //
-//  Generated code by class 'IOSEntity' on 30.08.2015
+//  Generated code by class 'IOSEntity' on 22.09.2015
 //
 // 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
 //
@@ -11,22 +11,24 @@ import Foundation
 // Make class visible for Objective-C to work with Core Data persistence framework
 @objc(MD2Entity___ProcessChainControllerState)
 class MD2Entity___ProcessChainControllerState: NSObject, MD2Entity {
+	
+	var md2ClassName: String = "__ProcessChainControllerState"
 
 	var internalId: MD2Integer = MD2Integer()
     
-    var containeds: Dictionary<String, MD2Type> = [:]
+    var containedTypes: Dictionary<String, MD2Type> = [:]
     
     required override init() {
         // Initialize fields
-        containeds["currentProcessChainStep"] = MD2String()
-        containeds["lastEventFired"] = MD2String()
+        containedTypes["currentProcessChainStep"] = MD2String()
+        containedTypes["lastEventFired"] = MD2String()
     }
     
     convenience init(md2Entity: MD2Entity___ProcessChainControllerState) {
         self.init()
         
-        for (typeName, typeValue) in md2Entity.containeds {
-            containeds[typeName] = typeValue.clone()
+        for (typeName, typeValue) in md2Entity.containedTypes {
+            containedTypes[typeName] = typeValue.clone()
         }
     }
     
@@ -35,8 +37,8 @@ class MD2Entity___ProcessChainControllerState: NSObject, MD2Entity {
     }
     
     func toString() -> String {
-    return "(MD2Entity___ProcessChainControllerState: [currentProcessChainStep: " + containeds["currentProcessChainStep"]!.toString()
-    + ", lastEventFired: " + containeds["lastEventFired"]!.toString() 
+    return "(MD2Entity___ProcessChainControllerState: [currentProcessChainStep: " + containedTypes["currentProcessChainStep"]!.toString()
+    + ", lastEventFired: " + containedTypes["lastEventFired"]!.toString() 
 	        + "])"
     }
     
@@ -47,8 +49,8 @@ class MD2Entity___ProcessChainControllerState: NSObject, MD2Entity {
         
         var isEqual = true
         
-        for (typeName, typeValue) in (value as! MD2Entity___ProcessChainControllerState).containeds {
-            if !(containeds[typeName] != nil && containeds[typeName]!.equals(typeValue)) {
+        for (typeName, typeValue) in (value as! MD2Entity___ProcessChainControllerState).containedTypes {
+            if !(containedTypes[typeName] != nil && containedTypes[typeName]!.equals(typeValue)) {
                 isEqual = false
                 break
             }
@@ -58,14 +60,14 @@ class MD2Entity___ProcessChainControllerState: NSObject, MD2Entity {
     }
     
     func get(attribute: String) -> MD2Type? {
-        return containeds[attribute]
+        return containedTypes[attribute]
     }
     
     func set(attribute: String, value: MD2Type) {
     	// Check if attribute exists
-    	if containeds[attribute] == nil {
+    	if containedTypes[attribute] == nil {
     		fatalError("Tried to set non-existing attribute in entity type MD2Entity___ProcessChainControllerState")
     	}
-        containeds[attribute] = value
+        containedTypes[attribute] = value
     }
 }

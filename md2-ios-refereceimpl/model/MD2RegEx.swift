@@ -16,21 +16,21 @@ func =~ (input: MD2String, pattern: MD2String) -> Bool {
 }
 
 /**
-A regular expression object.
+    A regular expression object.
 
-Implementation adapted from http://benscheirman.com/2014/06/regex-in-swift/
+    Implementation adapted from http://benscheirman.com/2014/06/regex-in-swift/
 */
 class MD2RegEx {
-    /// The internal Objective-C regular expression object
+    /// The internal Objective-C regular expression object.
     let expression: NSRegularExpression?
     
-    /// The RegEx pattern as string
+    /// The RegEx pattern as string.
     let pattern: MD2String
     
     /**
-    Initialize the object by setting a pattern string and transforming it to the native object.
+        Initialize the object by setting a pattern string and transforming it to the native object.
     
-    :param: pattern The RegEx pattern as string.
+        :param: pattern The RegEx pattern as string.
     */
     init(pattern: MD2String) {
         self.pattern = pattern
@@ -44,11 +44,11 @@ class MD2RegEx {
     }
     
     /**
-    Test the given input string to match against the expression.
+        Test the given input string to match against the expression.
     
-    :param: input The input string to test
+        :param: input The input string to test
     
-    :returns: Whether at least one match was found.
+        :returns: Whether at least one match was found.
     */
     func test(input: MD2String) -> Bool {
         if expression == nil || !input.isSet() {

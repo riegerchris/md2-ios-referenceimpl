@@ -8,14 +8,19 @@
 
 import UIKit
 
+/// Custom view controller for all MD2 views that wraps the view layout specified in the model.
 class MD2ViewController: UIViewController {
 
+    /// The root view layout container.
     var layout: MD2Layout
     
+    /// An auto-generated scroll-view to support long forms.
     var scrollView: UIScrollView
     
+    /// Size of the view (set to the screen dimensions).
     var dimensions: MD2Dimension
     
+    /// Initialize the controller with the layout to wrap.
     init(layout: MD2Layout) {
         self.layout = layout
         self.scrollView = UIScrollView()
@@ -23,30 +28,36 @@ class MD2ViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
+    /// Unsupported initializer (required by inheritance)
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// Add programmatically created view elements when the view loads.
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor=UIColor.whiteColor()
         
+        // Add the scroll view to the root view.
         self.view.addSubview(scrollView)
         
-        // Render the desired Layout
+        // Render the desired layout in the scroll view.
         layout.render(self.scrollView, controller: self)
     }
 
+    /// Handle view state when memory warning is issued.
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    /// Calculate the view controller's dimensions using the full screen size as default.
     func calculateDimensions() {
         dimensions = MD2UIUtil.CGRectToDimension(UIScreen.mainScreen().bounds)
         calculateDimensions(dimensions)
     }
     
+    /// Calculate the view controller's dimensions based on given bounds.
     func calculateDimensions(dimensions: MD2Dimension) {
         self.dimensions = dimensions
         scrollView.frame = MD2UIUtil.dimensionToCGRect(dimensions)
@@ -64,9 +75,8 @@ class MD2ViewController: UIViewController {
 
     }
     
-    /// Notify view manager about oientation change
+    /// Notify view manager about orientation change
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         MD2ViewManager.instance.rotateScreen(size)
     }
-    
 }

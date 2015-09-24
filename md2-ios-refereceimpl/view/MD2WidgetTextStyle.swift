@@ -6,6 +6,11 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
+/**
+    Enumeration of possible text styles.
+
+    The value translates to different fonts available on the iOS platform.
+*/
 enum MD2WidgetTextStyle : String {
     case Normal = "HelveticaNeue-Light"
     case Bold = "HelveticaNeue-Medium"

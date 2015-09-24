@@ -4,19 +4,21 @@
 //
 //  Created by R0CKSTAR on 6/13/14.
 //  Copyright (c) 2014 P.D.Q. All rights reserved.
-//  
-//  https://github.com/yeahdongcn/UIColor-Hex-Swift
+//
 //
 
 import UIKit
 
-/// Extension to the UIColor class which allows setting a hex color as UIColor
+/**
+    Extension to the UIColor class which allows setting a hex color as UIColor.
+    Based on https://github.com/yeahdongcn/UIColor-Hex-Swift
+*/
 extension UIColor {
 
     /**
-    Add a convenience initializer that takes the an rgba hex string and transforms it to a UIColor.
+        Add a convenience initializer that takes the an rgba hex string and transforms it to a UIColor.
     
-    :param: rgba The hex string
+        :param: rgba The hex string
     */
     public convenience init(rgba: String) {
         var red:   CGFloat = 0.0

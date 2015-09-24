@@ -45,14 +45,10 @@ class MD2DataMapper {
         :param: attribute The attribute to specify the field of the content provider.
     */
     func map(widget: MD2WidgetWrapper, contentProvider: MD2ContentProvider, attribute: String) {
-        contentProviderToWidgetMapping[MD2ContentProviderAttributeIdentity(contentProvider, attribute)] = widget
-        
         // Add mapping
+        contentProviderToWidgetMapping[MD2ContentProviderAttributeIdentity(contentProvider, attribute)] = widget
         widgetToContentProviderMapping[widget] = MD2ContentProviderAttributeIdentity(contentProvider, attribute)
         
-        // Add content provider observer
-        contentProvider.registerObservedOnChange(attribute)
-
         // Add respective action on change
         let providerChangeAction = MD2UpdateWidgetAction(
             actionSignature: MD2Util.getClassName(contentProvider) + "__" + attribute + "__" + widget.widgetId.description,
@@ -67,6 +63,9 @@ class MD2DataMapper {
             contentProvider: contentProvider,
             attribute: attribute)
         MD2OnWidgetChangeHandler.instance.registerAction(fieldChangeAction, widget: widget)
+
+        // Add content provider observer and trigger first value update
+        contentProvider.registerObservedOnChange(attribute)
     }
 
     /**
@@ -77,9 +76,11 @@ class MD2DataMapper {
         :param: attribute The attribute to specify the field of the content provider.
     */
     func unmap(widget: MD2WidgetWrapper, contentProvider: MD2ContentProvider, attribute: String) {
+        // Remove mapping
         contentProviderToWidgetMapping.removeValueForKey(MD2ContentProviderAttributeIdentity(contentProvider, attribute))
+        widgetToContentProviderMapping.removeValueForKey(widget)
         
-        // Remove conent provider observer
+        // Remove content provider observer
         contentProvider.unregisterObservedOnChange(attribute)
         
         // Remove onChange action
