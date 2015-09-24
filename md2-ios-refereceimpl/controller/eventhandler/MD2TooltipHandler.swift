@@ -8,18 +8,44 @@
 
 import UIKit
 
+/// Event handler for tooltip handling.
 class MD2TooltipHandler: MD2WidgetEventHandler {
     
+    /// The singleton instance.
     static let instance: MD2TooltipHandler = MD2TooltipHandler()
     
-    func registerAction(action: MD2Action, widget: MD2WidgetWrapper) {
-        // Not neccessary
+    /// Singleton initializer.
+    private init() {
+        // Nothing to initialize
     }
     
+    /**
+        Register an action.
+
+        :param: action The action to execute in case of an event.
+        :param: widget The widget that the action is bound to.
+    */
+    func registerAction(action: MD2Action, widget: MD2WidgetWrapper) {
+        // Not neccessary, tooltips are created dynamically when fired.
+    }
+    
+    /**
+        Unregister an action.
+    
+        :param: action The action to remove.
+        :param: widget The widget the action was registered to.
+    */
     func unregisterAction(action: MD2Action, widget: MD2WidgetWrapper) {
         // Not neccessary
     }
     
+    /**
+        Method that is called to fire an event.
+    
+        *Notice* Visible to Objective-C runtime to receive events from UI elements.
+    
+        :param: sender The widget sending the event.
+    */
     @objc
     func fire(sender: UIControl) {
         let wrapper = MD2WidgetRegistry.instance.getWidget(MD2WidgetMapping.fromRawValue(sender.tag))

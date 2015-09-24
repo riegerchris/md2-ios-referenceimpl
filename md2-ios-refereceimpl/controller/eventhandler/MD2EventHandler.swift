@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
+/// MD2 event handler interface
 protocol MD2EventHandler: class {
     
 }

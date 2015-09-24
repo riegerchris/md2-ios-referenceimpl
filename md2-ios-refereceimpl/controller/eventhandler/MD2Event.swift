@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
+/// Enumeration to define constants for all MD2 events.
 enum MD2Event {
     // WidgetEvents
     case OnClick
@@ -23,6 +24,12 @@ enum MD2Event {
     case OnConnectionRegained
     case OnLocationUpdate
     
+    /**
+        Retrieve the event handler object managing the respective event type.
+        Used to decouple event sending and receipt as much as possible.
+        
+        :returns: The responsible event handler.
+    */
     func getEventHandler() -> MD2EventHandler {
         switch self {
         case OnClick: return MD2OnClickHandler.instance
@@ -38,6 +45,12 @@ enum MD2Event {
         }
     }
     
+    /**
+        Retrieve the method selector (name + attribute) that triggers the event in the respective event handler.
+        Used to decouple event sending and receipt as much as possible.
+    
+        :returns: The responsible target method as string (to use as Objective-C method selector).
+    */
     func getTargetMethod() -> String {
         switch self {
         case OnClick: return "fire:"
@@ -53,14 +66,29 @@ enum MD2Event {
         }
     }
     
+    /**
+        Determine if the event type is a widget event.
+    
+        :returns: Is the event type a widget event.
+    */
     func isWidgetEvent() -> Bool {
         return self == .OnClick || self == .OnWidgetChange || self == .OnLeftSwipe || self == .OnRightSwipe || self == OnWrongValidation
     }
     
+    /**
+        Determine if the event type is a content provider event.
+    
+        :returns: Is the event type a content provider event.
+    */
     func isContentProviderEvent() -> Bool {
         return self == .OnContentChange
     }
     
+    /**
+        Determine if the event type is a global event.
+    
+        :returns: Is the event type a global event.
+    */
     func isGlobalEvent() -> Bool {
         return self == .OnConnectionLost || self == .OnConnectionRegained || self == .OnLocationUpdate
     }
