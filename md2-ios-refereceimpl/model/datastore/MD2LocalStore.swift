@@ -9,16 +9,26 @@
 import UIKit
 import CoreData
 
+/// Local data store implementation.
 class MD2LocalStore<T: MD2Entity>: MD2DataStore {
     
+    /// The managed object context that is used to persist the data.
     let managedContext : NSManagedObjectContext
     
+    /// Default initializer
     init() {
         // Setup connection to data store managed context
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         managedContext = appDelegate.managedObjectContext!
     }
     
+    /**
+        Query the data store.
+    
+        :param: query The query to specify which entity to retrieve.
+    
+        :returns: The entity (if exists).
+    */
     func query(query: MD2Query) -> MD2Entity? {
         let results = getManagedObject(query)
         
@@ -70,6 +80,11 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
         return nil
     }
     
+    /**
+        Create or update the entity in the data store.
+    
+        :param: entity The entity to persist.
+    */
     func put(entity: MD2Entity) {
         if let managedObject = getById(entity.internalId) {
             // Exists -> update
@@ -80,6 +95,11 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
         }
     }
     
+    /**
+        Remove an entity from the data store by Id.
+    
+        :param: internalId The Id of the entity to remove.
+    */
     func remove(internalId: MD2Integer) {
         if let object = getById(internalId) {
             managedContext.deleteObject(object)
@@ -88,6 +108,13 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
         saveManagedContext()
     }
     
+    /**
+        Retrieve an object from the data store.
+
+        :param: query The query specifying which entity to retrieve.
+
+        :returns: A list of entities matching the query.
+    */
     private func getManagedObject(query: MD2Query) -> NSArray {
         var request = NSFetchRequest(entityName: MD2Util.getClassName(T()))
         request.returnsObjectsAsFaults = false
@@ -115,6 +142,13 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
         return results
     }
     
+    /**
+        Retrieve an object from the local store by Id.
+
+        :param: internalId The Id of the object to look up.
+    
+        :returns: The managed object instance if found.
+    */
     private func getById(internalId: MD2Integer) -> NSManagedObject? {
         if internalId.isSet() && !internalId.equals(MD2Integer(0)) {
             let query = MD2Query()
@@ -130,6 +164,11 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
         return nil
     }
     
+    /**
+        Add a new entity to the local data store.
+    
+        :param: entity The entity to persist.
+    */
     private func insertData(entity: MD2Entity) {
         // Get new managed object
         let entityClass = NSEntityDescription.entityForName(MD2Util.getClassName(entity), inManagedObjectContext: managedContext)
@@ -146,12 +185,24 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
         saveManagedContext()
     }
     
+    /**
+        Update an existing entity in the local data store.
+
+        :param: managedObject The object that is updated.
+        :param: entity The MD2 entity to persist in the managed object.
+    */
     private func updateData(managedObject: NSManagedObject, entity: MD2Entity) {
         // Fill with data and save
         setValues(managedObject, entity: entity)
         saveManagedContext()
     }
     
+    /**
+        Helper function to copy the entity content into a managed object.
+
+        :param: managedObject The object that is filled.
+        :param: entity The MD2 entity to copy.
+    */
     private func setValues(object: NSManagedObject, entity: MD2Entity) {
         for (attributeKey, attributeValue) in entity.containedTypes {
             if attributeValue is MD2Enum && (attributeValue as! MD2Enum).value != nil {
@@ -171,6 +222,9 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
         }
     }
     
+    /**
+        Save the managed context (similar to a commit in relational databases).
+    */
     private func saveManagedContext() {
         var error: NSError?
         if !managedContext.save(&error) {
