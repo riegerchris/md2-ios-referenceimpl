@@ -21,8 +21,11 @@ func ==(lhs: MD2ContentProviderAttributeIdentity, rhs: MD2ContentProviderAttribu
     An object representing the combined identity of a content provider and an attribute.
 
     *Notice* For using this object as dictionary key this
+
     - must be a class, not a struct
+
     - must be visible to Objective-C runtime (@objc)
+
     - must implement the Hashable protocol (which itself requires the Equatable protocol)
 */
 @objc

@@ -8,9 +8,7 @@
 
 import UIKit
 
-/**
-The view manager.
-*/
+/// The view manager.
 class MD2ViewManager {
     
     /// The singleton instance
@@ -31,9 +29,9 @@ class MD2ViewManager {
     }
     
     /**
-    Search for a view name and push the respective view on top of the navigation controller.
+        Search for a view name and push the respective view on top of the navigation controller.
     
-    :param: viewName The name of the view, i.e. the outermost layout name.
+        :param: viewName The name of the view, i.e. the outermost layout name.
     */
     func goTo(viewName: String) {
         for (name, controller) in views {
@@ -59,7 +57,7 @@ class MD2ViewManager {
     }
     
     /**
-    Go back to start view.
+        Go back to start view.
     */
     func goToStartView() {
         if let _ = navigationController {
@@ -72,12 +70,12 @@ class MD2ViewManager {
     }
     
     /**
-    Setup the specified view.
+        Setup the specified view.
     
-    *Notice* Called once per view on startup of the app.
+        *Notice* Called once per view on startup of the app.
     
-    :param: viewName The name of the view, i.e. the outermost layout name.
-    :param: view The layout of the app to use as root view.
+        :param: viewName The name of the view, i.e. the outermost layout name.
+        :param: view The layout of the app to use as root view.
     */
     func setupView(viewName: String, view: MD2Layout) -> MD2ViewController {
         // Called once at start-up of the app for each view
@@ -95,9 +93,9 @@ class MD2ViewManager {
     }
     
     /**
-    Set the registered viewName as root view in a navigation controller and show it.
+        Set the registered viewName as root view in a navigation controller and show it.
     
-    :param: viewName The name of the view, i.e. the outermost layout name.
+        :param: viewName The name of the view, i.e. the outermost layout name.
     */
     func showStartView(viewName:String) {
         for (name, controller) in views {
@@ -116,7 +114,7 @@ class MD2ViewManager {
     }
     
     /**
-    Recalculate the view element positions when a screen orientation change occurs.
+        Recalculate the view element positions when a screen orientation change occurs.
     */
     func rotateScreen(size: CGSize) {
         println("Screen rotation detected! New screen dimensions: " + MD2UIUtil.CGSizeToDimension(size).toString())

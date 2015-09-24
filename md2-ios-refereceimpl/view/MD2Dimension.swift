@@ -10,14 +10,14 @@ infix operator + {}
 infix operator - {}
 
 /**
-Adds two dimension objects.
+    Adds two dimension objects.
 
-**Important** This is meant to alter dimension objects. For geometrical calculations of two distinct dimensions see union()
+    **Important** This is meant to alter dimension objects. For geometrical calculations of two distinct dimensions see union()
 
-:param: first The original dimension object.
-:param: second The altering dimension object.
+    :param: first The original dimension object.
+    :param: second The altering dimension object.
 
-:results: The altered dimension.
+    :results: The altered dimension.
 */
 func + (first: MD2Dimension, second: MD2Dimension) -> MD2Dimension {
     return MD2Dimension(
@@ -28,14 +28,14 @@ func + (first: MD2Dimension, second: MD2Dimension) -> MD2Dimension {
 }
 
 /**
-Subtracts two dimension objects.
+    Subtracts two dimension objects.
 
-**Important** This is meant to alter dimension objects, not for geometrical calculations.
+    **Important** This is meant to alter dimension objects, not for geometrical calculations.
 
-:param: first The original dimension object.
-:param: second The altering dimension object.
+    :param: first The original dimension object.
+    :param: second The altering dimension object.
 
-:results: The altered dimension.
+    :results: The altered dimension.
 */
 func - (first: MD2Dimension, second: MD2Dimension) -> MD2Dimension {
     return MD2Dimension(
@@ -63,12 +63,12 @@ struct MD2Dimension {
     }
     
     /**
-    Initialize a rectangle with a given dimension.
+        Initialize a rectangle with a given dimension.
     
-    :param: x The x position of the rectangle.
-    :param: y The y position of the rectangle.
-    :param: The width of the rectangle.
-    :param: The height of the rectangle.
+        :param: x The x position of the rectangle.
+        :param: y The y position of the rectangle.
+        :param: The width of the rectangle.
+        :param: The height of the rectangle.
     */
     init(x: Float, y: Float, width:Float, height: Float) {
         self.x = x
@@ -78,20 +78,20 @@ struct MD2Dimension {
     }
     
     /**
-    A string representation of the rectangle
+        A string representation of the rectangle
     
-    :returns: The string representation
+        :returns: The string representation
     */
     func toString() -> String {
         return "x: \(x), y: \(y), width: \(width), height: \(height)"
     }
     
     /**
-    Adds a second dimension object geometrically, forming the surrounding rectangle.
+        Adds a second dimension object geometrically, forming the surrounding rectangle.
 
-    :param: second The dimension object to be combined with.
+        :param: second The dimension object to be combined with.
 
-    :results: The resulting dimension.
+        :results: The resulting dimension.
     */
     func union(second: MD2Dimension) -> MD2Dimension {
         let newX = min(self.x, second.x)

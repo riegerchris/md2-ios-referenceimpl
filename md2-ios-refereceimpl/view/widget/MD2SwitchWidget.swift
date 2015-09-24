@@ -8,10 +8,13 @@
 
 import UIKit
 
+/// A switch widget to represent binary values.
 class MD2SwitchWidget: MD2SingleWidget, MD2AssistedWidget {
     
+    /// Unique widget identification.
     let widgetId: MD2WidgetMapping
     
+    /// The view element value. Using a property observer, external changes trigger a UI control update.
     var value: MD2Type {
         didSet (oldValue) {
             // Check for type
@@ -22,23 +25,39 @@ class MD2SwitchWidget: MD2SingleWidget, MD2AssistedWidget {
             updateElement()
         }
     }
-
+    
+    /// Inner dimensions of the screen occupied by the widget.
     var dimensions: MD2Dimension?
     
+    /// The native UI control.
     var widgetElement: UISwitch
     
+    /// The caption for the switch.
     var label: MD2String?
     
+    /// The tooltip text to display for assistance.
     var tooltip: MD2String?
     
+    /// Width of the widget as specified by the model (percentage of the availale width).
     var width: Float?
     
+    /**
+        Default initializer.
+    
+        :param: widgetId Widget identifier
+    */
     init(widgetId: MD2WidgetMapping) {
         self.widgetId = widgetId
         self.value = MD2Boolean(false)
         self.widgetElement = UISwitch()
     }
     
+    /**
+        Render the view element, i.e. specifying the position and appearance of the widget.
+    
+        :param: view The surrounding view element.
+        :param: controller The responsible view controller.
+    */
     func render(view: UIView, controller: UIViewController) {
         if dimensions == nil {
             // Element is not specified in layout. Maybe grid with not enough cells?!
@@ -62,6 +81,17 @@ class MD2SwitchWidget: MD2SingleWidget, MD2AssistedWidget {
         view.addSubview(widgetElement)
     }
     
+    /**
+        Calculate the dimensions of the widget based on the available bounds. The occupied space of the widget is returned.
+    
+        *NOTICE* The occupied space may surpass the bounds (and thus the visible screen), if the height of the element is not sufficient. This is not a problem as the screen will scroll automatically.
+    
+        *NOTICE* The occupied space usually differs from the dimensions property as it refers to the *outer* dimensions in contrast to the dimensions property referring to *inner* dimensions. The difference represents the gutter included in the widget positioning process.
+    
+        :param: bounds The available screen space.
+    
+        :returns: The occupied outer dimensions of the widget.
+    */
     func calculateDimensions(bounds: MD2Dimension) -> MD2Dimension {
         let outerDimensions = MD2Dimension(
             x: bounds.x,
@@ -76,21 +106,28 @@ class MD2SwitchWidget: MD2SingleWidget, MD2AssistedWidget {
         return outerDimensions
     }
     
+    /// Enable the view element.
     func enable() {
         self.widgetElement.enabled = true
     }
     
+    /// Disable the view element.
     func disable() {
         self.widgetElement.enabled = false
     }
     
-    // Event from itself
+    /**
+        Target for the value change event. Updates the stored value and passes it to the respective widget wrapper which will process the value, e.g. applying validators and firing further events.
+    */
     @objc
     func onUpdate() {
         self.value = MD2Boolean(self.widgetElement.on)
         MD2WidgetRegistry.instance.getWidget(widgetId)?.setValue(self.value)
     }
     
+    /**
+        Update the view element after its value was changed externally.
+    */
     func updateElement() {
         // Update element
         if (self.value as! MD2Boolean).isSet() {
