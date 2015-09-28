@@ -3,7 +3,7 @@
 //
 //  Generated code by class 'WidgetMapping' on 28.09.2015
 //
-// 	iOS generator for MD2 (version 1.0) written by Christoph Rieger on 15.08.2015 
+// 	iOS generator for MD2 (version 1.0) written by Christoph Rieger on 28.09.2015 
 //
 
 /**
