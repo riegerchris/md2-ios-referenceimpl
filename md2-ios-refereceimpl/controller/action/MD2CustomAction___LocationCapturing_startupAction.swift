@@ -1,26 +1,31 @@
 //
-//  MD2CustomAction_SubmitComplaint_saveComplaint.swift
+//  MD2CustomAction___LocationCapturing_startupAction.swift
 //
 //  Generated code by class 'IOSCustomAction' on 28.09.2015
 //
 // 	iOS generator for MD2 (version 1.0) written by Christoph Rieger on 15.08.2015 
 //
 
-class MD2CustomAction_SubmitComplaint_saveComplaint: MD2Action {
+class MD2CustomAction___LocationCapturing_startupAction: MD2Action {
     
     /// Unique action identifier.
-    let actionSignature: String = "MD2CustomAction_SubmitComplaint_saveComplaint"
+    let actionSignature: String = "MD2CustomAction___LocationCapturing_startupAction"
     
     /// Execute action commands.
     func execute() {
         // Bindings/ Mappings / Call action / Set content provider / Conditions
 	
-	let codeFragment1 = MD2ContentProviderOperationAction(actionSignature: "MD2CustomAction_SubmitComplaint_saveComplaint_1", 
-		allowedOperation: MD2ContentProviderOperationAction.AllowedOperation.Save,
-		contentProvider: MD2ContentProviderRegistry.instance.getContentProvider(
-		"ComplaintProvider"
-		)!)
+	let codeFragment1 = MD2CustomAction___LocationCapturing_registerProcessChainActionEventTrigger()
 	codeFragment1.execute()
+	
+	let codeFragment2 = MD2CustomAction___processChainSetProcessChainLocationProcessChainAction()
+	codeFragment2.execute()
+	
+	let codeFragment3 = MD2CustomAction_LocationCapturing_init()
+	codeFragment3.execute()
+	
+	let codeFragment4 = MD2CustomAction_LocationCapturing_buttonInit()
+	codeFragment4.execute()
        
     }
     

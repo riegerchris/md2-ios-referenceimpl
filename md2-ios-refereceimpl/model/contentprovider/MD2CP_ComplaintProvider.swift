@@ -1,9 +1,9 @@
 //
 //  MD2CP_ComplaintProvider.swift
 //
-//  Generated code by class 'IOSContentProvider' on 22.09.2015
+//  Generated code by class 'IOSContentProvider' on 28.09.2015
 //
-// 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
+// 	iOS generator for MD2 (version 1.0) written by Christoph Rieger on 15.08.2015 
 //
 
 class MD2CP_ComplaintProvider: MD2ContentProvider {
@@ -64,9 +64,6 @@ class MD2CP_ComplaintProvider: MD2ContentProvider {
     func registerObservedOnChange(attribute: String) {
         // Add observed attribute and remember current value
         observedAttributes[attribute] = self.content?.get(attribute)
-        
-        // Trigger initial value setting
-        MD2OnContentChangeHandler.instance.fire(MD2ContentProviderAttributeIdentity(self, attribute))
     }
     
     func unregisterObservedOnChange(attribute: String) {

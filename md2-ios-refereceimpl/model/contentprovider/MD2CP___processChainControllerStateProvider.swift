@@ -1,9 +1,9 @@
 //
 //  MD2CP___processChainControllerStateProvider.swift
 //
-//  Generated code by class 'IOSContentProvider' on 22.09.2015
+//  Generated code by class 'IOSContentProvider' on 28.09.2015
 //
-// 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
+// 	iOS generator for MD2 (version 1.0) written by Christoph Rieger on 15.08.2015 
 //
 
 class MD2CP___processChainControllerStateProvider: MD2ContentProvider {
