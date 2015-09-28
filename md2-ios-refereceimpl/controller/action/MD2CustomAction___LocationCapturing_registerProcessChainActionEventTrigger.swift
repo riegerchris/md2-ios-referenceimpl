@@ -1,15 +1,17 @@
 //
-//  MD2CustomAction___LocationDetection_registerProcessChainActionEventTrigger.swift
+//  MD2CustomAction___LocationCapturing_registerProcessChainActionEventTrigger.swift
 //
-//  Generated code by class 'IOSCustomAction' on 22.09.2015
+//  Generated code by class 'IOSCustomAction' on 28.09.2015
 //
-// 	iOS generator for MD2 (version 0.1) written by Christoph Rieger on 15.08.2015 
+// 	iOS generator for MD2 (version 1.0) written by Christoph Rieger on 15.08.2015 
 //
 
-class MD2CustomAction___LocationDetection_registerProcessChainActionEventTrigger: MD2Action {
+class MD2CustomAction___LocationCapturing_registerProcessChainActionEventTrigger: MD2Action {
     
-    let actionSignature: String = "MD2CustomAction___LocationDetection_registerProcessChainActionEventTrigger"
+    /// Unique action identifier.
+    let actionSignature: String = "MD2CustomAction___LocationCapturing_registerProcessChainActionEventTrigger"
     
+    /// Execute action commands.
     func execute() {
         // Bindings/ Mappings / Call action / Set content provider / Conditions
 		
@@ -20,6 +22,12 @@ class MD2CustomAction___LocationDetection_registerProcessChainActionEventTrigger
 	MD2OnClickHandler.instance.registerAction(codeFragment2_1_1, widget: MD2WidgetRegistry.instance.getWidget(MD2WidgetMapping.Previous)!)
        
     }
+    
+    /**
+        Compare two action objects.
+    
+        :param: anotherAction The action to compare with.
+    */
     
     func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature
