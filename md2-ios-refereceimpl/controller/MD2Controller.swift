@@ -3,7 +3,7 @@
 //
 //  Generated code by class 'IOSController' on 28.09.2015
 //
-// 	iOS generator for MD2 (version 1.0) written by Christoph Rieger on 15.08.2015 
+// 	iOS generator for MD2 (version 1.0) written by Christoph Rieger on 28.09.2015 
 //
 
 import UIKit
@@ -26,152 +26,6 @@ class MD2Controller {
 		 * Initialize all view elements
 		 * 
 		 ***************************************************/
-        // View: ComplaintInput
-        let complaintInput = MD2GridLayoutPane(widgetId: MD2WidgetMapping.ComplaintInput)
-        complaintInput.columns = MD2Integer(1)
-        complaintInput.rows = MD2Integer(7)
-        complaintInput.width = Float(1/100 * 100)
-        let titleLbl2 = MD2LabelWidget(widgetId: MD2WidgetMapping.TitleLbl2)
-        		titleLbl2.value = MD2String("Submit Complaint")
-        		titleLbl2.fontSize = MD2Float(2.5)
-        		titleLbl2.color = MD2String("#000000")
-        		titleLbl2.textStyle = MD2WidgetTextStyle.BoldItalic
-        		complaintInput.addWidget(titleLbl2)
-        widgetRegistry.add(MD2WidgetWrapper(widget: titleLbl2))
-        
-        
-        let addressView1 = MD2GridLayoutPane(widgetId: MD2WidgetMapping.AddressView1)
-        addressView1.columns = MD2Integer(4)
-        addressView1.rows = MD2Integer(3)
-        addressView1.width = Float(1/100 * 100)
-        complaintInput.addWidget(addressView1)
-        let streetLbl1 = MD2LabelWidget(widgetId: MD2WidgetMapping.StreetLbl1)
-        		streetLbl1.value = MD2String("Street")
-        		streetLbl1.width = Float(1/100 * 25)
-        		addressView1.addWidget(streetLbl1)
-        widgetRegistry.add(MD2WidgetWrapper(widget: streetLbl1))
-        
-        
-        let streetValue2 = MD2LabelWidget(widgetId: MD2WidgetMapping.StreetValue2)
-        		streetValue2.value = MD2String("")
-        		streetValue2.width = Float(1/100 * 25)
-        		streetValue2.color = MD2String("#32CD32")
-        		addressView1.addWidget(streetValue2)
-        widgetRegistry.add(MD2WidgetWrapper(widget: streetValue2))
-        
-        
-        let streetNoLbl1 = MD2LabelWidget(widgetId: MD2WidgetMapping.StreetNoLbl1)
-        		streetNoLbl1.value = MD2String("Street Number")
-        		streetNoLbl1.width = Float(1/100 * 25)
-        		addressView1.addWidget(streetNoLbl1)
-        widgetRegistry.add(MD2WidgetWrapper(widget: streetNoLbl1))
-        
-        
-        let streetNoValue2 = MD2LabelWidget(widgetId: MD2WidgetMapping.StreetNoValue2)
-        		streetNoValue2.value = MD2String("")
-        		streetNoValue2.width = Float(1/100 * 25)
-        		streetNoValue2.color = MD2String("#32CD32")
-        		addressView1.addWidget(streetNoValue2)
-        widgetRegistry.add(MD2WidgetWrapper(widget: streetNoValue2))
-        
-        
-        let zipLbl1 = MD2LabelWidget(widgetId: MD2WidgetMapping.ZipLbl1)
-        		zipLbl1.value = MD2String("Zip Code")
-        		zipLbl1.width = Float(1/100 * 25)
-        		addressView1.addWidget(zipLbl1)
-        widgetRegistry.add(MD2WidgetWrapper(widget: zipLbl1))
-        
-        
-        let zipValue2 = MD2LabelWidget(widgetId: MD2WidgetMapping.ZipValue2)
-        		zipValue2.value = MD2String("")
-        		zipValue2.width = Float(1/100 * 25)
-        		zipValue2.color = MD2String("#32CD32")
-        		addressView1.addWidget(zipValue2)
-        widgetRegistry.add(MD2WidgetWrapper(widget: zipValue2))
-        
-        
-        let cityLbl1 = MD2LabelWidget(widgetId: MD2WidgetMapping.CityLbl1)
-        		cityLbl1.value = MD2String("City")
-        		cityLbl1.width = Float(1/100 * 25)
-        		addressView1.addWidget(cityLbl1)
-        widgetRegistry.add(MD2WidgetWrapper(widget: cityLbl1))
-        
-        
-        let cityValue2 = MD2LabelWidget(widgetId: MD2WidgetMapping.CityValue2)
-        		cityValue2.value = MD2String("")
-        		cityValue2.width = Float(1/100 * 25)
-        		cityValue2.color = MD2String("#32CD32")
-        		addressView1.addWidget(cityValue2)
-        widgetRegistry.add(MD2WidgetWrapper(widget: cityValue2))
-        
-        
-        let addressView1_Spacer799284 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		addressView1_Spacer799284.width = Float(1/100 * 25)
-        		addressView1.addWidget(addressView1_Spacer799284)
-        
-        
-        let addressView1_Spacer556024 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		addressView1_Spacer556024.width = Float(1/100 * 25)
-        		addressView1.addWidget(addressView1_Spacer556024)
-        
-        
-        let countryLbl1 = MD2LabelWidget(widgetId: MD2WidgetMapping.CountryLbl1)
-        		countryLbl1.value = MD2String("Country")
-        		countryLbl1.width = Float(1/100 * 25)
-        		addressView1.addWidget(countryLbl1)
-        widgetRegistry.add(MD2WidgetWrapper(widget: countryLbl1))
-        
-        
-        let countryValue2 = MD2LabelWidget(widgetId: MD2WidgetMapping.CountryValue2)
-        		countryValue2.value = MD2String("")
-        		countryValue2.width = Float(1/100 * 25)
-        		countryValue2.color = MD2String("#32CD32")
-        		addressView1.addWidget(countryValue2)
-        widgetRegistry.add(MD2WidgetWrapper(widget: countryValue2))
-        
-        
-        
-        
-        let complaintInput_Spacer684827 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		complaintInput.addWidget(complaintInput_Spacer684827)
-        
-        
-        let descriptionLbl = MD2LabelWidget(widgetId: MD2WidgetMapping.DescriptionLbl)
-        		descriptionLbl.value = MD2String("Additional Description:")
-        		complaintInput.addWidget(descriptionLbl)
-        widgetRegistry.add(MD2WidgetWrapper(widget: descriptionLbl))
-        
-        
-        let descriptionTxt = MD2TextFieldWidget(widgetId: MD2WidgetMapping.DescriptionTxt)
-        		descriptionTxt.value = MD2String("")
-        		complaintInput.addWidget(descriptionTxt)
-        let wrapper_descriptionTxt = MD2WidgetWrapper(widget: descriptionTxt)
-        wrapper_descriptionTxt.isElementDisabled = false
-        widgetRegistry.add(wrapper_descriptionTxt)
-        
-        
-        let cancel3 = MD2ButtonWidget(widgetId: MD2WidgetMapping.Cancel3)
-        		cancel3.value = MD2String("Cancel")
-        		cancel3.fontSize = MD2Float(1.2)
-        		cancel3.color = MD2String("#007AFF")
-        		complaintInput.addWidget(cancel3)
-        let wrapper_cancel3 = MD2WidgetWrapper(widget: cancel3)
-        wrapper_cancel3.isElementDisabled = false
-        widgetRegistry.add(wrapper_cancel3)
-        
-        
-        let submitComplaint = MD2ButtonWidget(widgetId: MD2WidgetMapping.SubmitComplaint)
-        		submitComplaint.value = MD2String("Submit complaint")
-        		submitComplaint.fontSize = MD2Float(1.2)
-        		submitComplaint.color = MD2String("#007AFF")
-        		complaintInput.addWidget(submitComplaint)
-        let wrapper_submitComplaint = MD2WidgetWrapper(widget: submitComplaint)
-        wrapper_submitComplaint.isElementDisabled = false
-        widgetRegistry.add(wrapper_submitComplaint)
-        
-        
-        
-        
         // View: LocationDetectionView
         let locationDetectionView = MD2GridLayoutPane(widgetId: MD2WidgetMapping.LocationDetectionView)
         locationDetectionView.columns = MD2Integer(1)
@@ -186,8 +40,8 @@ class MD2Controller {
         widgetRegistry.add(MD2WidgetWrapper(widget: titleLbl))
         
         
-        let locationDetectionView_Spacer669168 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		locationDetectionView.addWidget(locationDetectionView_Spacer669168)
+        let locationDetectionView_Spacer40962 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
+        		locationDetectionView.addWidget(locationDetectionView_Spacer40962)
         
         
         let addressData = MD2GridLayoutPane(widgetId: MD2WidgetMapping.AddressData)
@@ -315,8 +169,8 @@ class MD2Controller {
         
         
         
-        let addressData_Spacer232620 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		addressData.addWidget(addressData_Spacer232620)
+        let addressData_Spacer391518 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
+        		addressData.addWidget(addressData_Spacer391518)
         
         
         let __ContainerlatitudeValue = MD2GridLayoutPane(widgetId: MD2WidgetMapping.__ContainerlatitudeValue)
@@ -381,8 +235,8 @@ class MD2Controller {
         
         
         
-        let locationDetectionView_Spacer477997 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		locationDetectionView.addWidget(locationDetectionView_Spacer477997)
+        let locationDetectionView_Spacer245957 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
+        		locationDetectionView.addWidget(locationDetectionView_Spacer245957)
         
         
         let navbar = MD2GridLayoutPane(widgetId: MD2WidgetMapping.Navbar)
@@ -506,14 +360,14 @@ class MD2Controller {
         widgetRegistry.add(MD2WidgetWrapper(widget: cityValue1))
         
         
-        let addressView_Spacer800393 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		addressView_Spacer800393.width = Float(1/100 * 25)
-        		addressView.addWidget(addressView_Spacer800393)
+        let addressView_Spacer26393 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
+        		addressView_Spacer26393.width = Float(1/100 * 25)
+        		addressView.addWidget(addressView_Spacer26393)
         
         
-        let addressView_Spacer815268 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		addressView_Spacer815268.width = Float(1/100 * 25)
-        		addressView.addWidget(addressView_Spacer815268)
+        let addressView_Spacer199141 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
+        		addressView_Spacer199141.width = Float(1/100 * 25)
+        		addressView.addWidget(addressView_Spacer199141)
         
         
         let countryLbl = MD2LabelWidget(widgetId: MD2WidgetMapping.CountryLbl)
@@ -570,8 +424,8 @@ class MD2Controller {
         
         
         
-        let locationVerifyView_Spacer133754 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
-        		locationVerifyView.addWidget(locationVerifyView_Spacer133754)
+        let locationVerifyView_Spacer95491 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
+        		locationVerifyView.addWidget(locationVerifyView_Spacer95491)
         
         
         let buttons = MD2GridLayoutPane(widgetId: MD2WidgetMapping.Buttons)
@@ -616,6 +470,152 @@ class MD2Controller {
         
         
         
+        // View: ComplaintInput
+        let complaintInput = MD2GridLayoutPane(widgetId: MD2WidgetMapping.ComplaintInput)
+        complaintInput.columns = MD2Integer(1)
+        complaintInput.rows = MD2Integer(7)
+        complaintInput.width = Float(1/100 * 100)
+        let titleLbl2 = MD2LabelWidget(widgetId: MD2WidgetMapping.TitleLbl2)
+        		titleLbl2.value = MD2String("Submit Complaint")
+        		titleLbl2.fontSize = MD2Float(2.5)
+        		titleLbl2.color = MD2String("#000000")
+        		titleLbl2.textStyle = MD2WidgetTextStyle.BoldItalic
+        		complaintInput.addWidget(titleLbl2)
+        widgetRegistry.add(MD2WidgetWrapper(widget: titleLbl2))
+        
+        
+        let addressView1 = MD2GridLayoutPane(widgetId: MD2WidgetMapping.AddressView1)
+        addressView1.columns = MD2Integer(4)
+        addressView1.rows = MD2Integer(3)
+        addressView1.width = Float(1/100 * 100)
+        complaintInput.addWidget(addressView1)
+        let streetLbl1 = MD2LabelWidget(widgetId: MD2WidgetMapping.StreetLbl1)
+        		streetLbl1.value = MD2String("Street")
+        		streetLbl1.width = Float(1/100 * 25)
+        		addressView1.addWidget(streetLbl1)
+        widgetRegistry.add(MD2WidgetWrapper(widget: streetLbl1))
+        
+        
+        let streetValue2 = MD2LabelWidget(widgetId: MD2WidgetMapping.StreetValue2)
+        		streetValue2.value = MD2String("")
+        		streetValue2.width = Float(1/100 * 25)
+        		streetValue2.color = MD2String("#32CD32")
+        		addressView1.addWidget(streetValue2)
+        widgetRegistry.add(MD2WidgetWrapper(widget: streetValue2))
+        
+        
+        let streetNoLbl1 = MD2LabelWidget(widgetId: MD2WidgetMapping.StreetNoLbl1)
+        		streetNoLbl1.value = MD2String("Street Number")
+        		streetNoLbl1.width = Float(1/100 * 25)
+        		addressView1.addWidget(streetNoLbl1)
+        widgetRegistry.add(MD2WidgetWrapper(widget: streetNoLbl1))
+        
+        
+        let streetNoValue2 = MD2LabelWidget(widgetId: MD2WidgetMapping.StreetNoValue2)
+        		streetNoValue2.value = MD2String("")
+        		streetNoValue2.width = Float(1/100 * 25)
+        		streetNoValue2.color = MD2String("#32CD32")
+        		addressView1.addWidget(streetNoValue2)
+        widgetRegistry.add(MD2WidgetWrapper(widget: streetNoValue2))
+        
+        
+        let zipLbl1 = MD2LabelWidget(widgetId: MD2WidgetMapping.ZipLbl1)
+        		zipLbl1.value = MD2String("Zip Code")
+        		zipLbl1.width = Float(1/100 * 25)
+        		addressView1.addWidget(zipLbl1)
+        widgetRegistry.add(MD2WidgetWrapper(widget: zipLbl1))
+        
+        
+        let zipValue2 = MD2LabelWidget(widgetId: MD2WidgetMapping.ZipValue2)
+        		zipValue2.value = MD2String("")
+        		zipValue2.width = Float(1/100 * 25)
+        		zipValue2.color = MD2String("#32CD32")
+        		addressView1.addWidget(zipValue2)
+        widgetRegistry.add(MD2WidgetWrapper(widget: zipValue2))
+        
+        
+        let cityLbl1 = MD2LabelWidget(widgetId: MD2WidgetMapping.CityLbl1)
+        		cityLbl1.value = MD2String("City")
+        		cityLbl1.width = Float(1/100 * 25)
+        		addressView1.addWidget(cityLbl1)
+        widgetRegistry.add(MD2WidgetWrapper(widget: cityLbl1))
+        
+        
+        let cityValue2 = MD2LabelWidget(widgetId: MD2WidgetMapping.CityValue2)
+        		cityValue2.value = MD2String("")
+        		cityValue2.width = Float(1/100 * 25)
+        		cityValue2.color = MD2String("#32CD32")
+        		addressView1.addWidget(cityValue2)
+        widgetRegistry.add(MD2WidgetWrapper(widget: cityValue2))
+        
+        
+        let addressView1_Spacer926350 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
+        		addressView1_Spacer926350.width = Float(1/100 * 25)
+        		addressView1.addWidget(addressView1_Spacer926350)
+        
+        
+        let addressView1_Spacer992623 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
+        		addressView1_Spacer992623.width = Float(1/100 * 25)
+        		addressView1.addWidget(addressView1_Spacer992623)
+        
+        
+        let countryLbl1 = MD2LabelWidget(widgetId: MD2WidgetMapping.CountryLbl1)
+        		countryLbl1.value = MD2String("Country")
+        		countryLbl1.width = Float(1/100 * 25)
+        		addressView1.addWidget(countryLbl1)
+        widgetRegistry.add(MD2WidgetWrapper(widget: countryLbl1))
+        
+        
+        let countryValue2 = MD2LabelWidget(widgetId: MD2WidgetMapping.CountryValue2)
+        		countryValue2.value = MD2String("")
+        		countryValue2.width = Float(1/100 * 25)
+        		countryValue2.color = MD2String("#32CD32")
+        		addressView1.addWidget(countryValue2)
+        widgetRegistry.add(MD2WidgetWrapper(widget: countryValue2))
+        
+        
+        
+        
+        let complaintInput_Spacer576269 = MD2SpacerWidget(widgetId: MD2WidgetMapping.Spacer)
+        		complaintInput.addWidget(complaintInput_Spacer576269)
+        
+        
+        let descriptionLbl = MD2LabelWidget(widgetId: MD2WidgetMapping.DescriptionLbl)
+        		descriptionLbl.value = MD2String("Additional Description:")
+        		complaintInput.addWidget(descriptionLbl)
+        widgetRegistry.add(MD2WidgetWrapper(widget: descriptionLbl))
+        
+        
+        let descriptionTxt = MD2TextFieldWidget(widgetId: MD2WidgetMapping.DescriptionTxt)
+        		descriptionTxt.value = MD2String("")
+        		complaintInput.addWidget(descriptionTxt)
+        let wrapper_descriptionTxt = MD2WidgetWrapper(widget: descriptionTxt)
+        wrapper_descriptionTxt.isElementDisabled = false
+        widgetRegistry.add(wrapper_descriptionTxt)
+        
+        
+        let cancel3 = MD2ButtonWidget(widgetId: MD2WidgetMapping.Cancel3)
+        		cancel3.value = MD2String("Cancel")
+        		cancel3.fontSize = MD2Float(1.2)
+        		cancel3.color = MD2String("#007AFF")
+        		complaintInput.addWidget(cancel3)
+        let wrapper_cancel3 = MD2WidgetWrapper(widget: cancel3)
+        wrapper_cancel3.isElementDisabled = false
+        widgetRegistry.add(wrapper_cancel3)
+        
+        
+        let submitComplaint = MD2ButtonWidget(widgetId: MD2WidgetMapping.SubmitComplaint)
+        		submitComplaint.value = MD2String("Submit complaint")
+        		submitComplaint.fontSize = MD2Float(1.2)
+        		submitComplaint.color = MD2String("#007AFF")
+        		complaintInput.addWidget(submitComplaint)
+        let wrapper_submitComplaint = MD2WidgetWrapper(widget: submitComplaint)
+        wrapper_submitComplaint.isElementDisabled = false
+        widgetRegistry.add(wrapper_submitComplaint)
+        
+        
+        
+        
         
     	/***************************************************
 		 * 
@@ -644,9 +644,9 @@ class MD2Controller {
         var viewManager = MD2ViewManager.instance
         viewManager.window = window
         
-        viewManager.setupView("ComplaintInput", view: complaintInput)
         viewManager.setupView("LocationDetectionView", view: locationDetectionView)
         viewManager.setupView("LocationVerifyView", view: locationVerifyView)
+        viewManager.setupView("ComplaintInput", view: complaintInput)
         
         /***************************************************
 		 * 
