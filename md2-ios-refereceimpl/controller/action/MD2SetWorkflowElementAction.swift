@@ -18,8 +18,8 @@ class MD2SetWorkflowElementAction: MD2Action {
     /**
         Default initializer.
     
-        :param: actionSignature The action identifier.
-        :param: workflowElement The workflow element to set.
+        - parameter actionSignature: The action identifier.
+        - parameter workflowElement: The workflow element to set.
     */
     init(actionSignature: String, workflowElement: MD2WorkflowElement) {
         self.actionSignature = actionSignature
@@ -34,7 +34,7 @@ class MD2SetWorkflowElementAction: MD2Action {
     /**
         Compare two action objects.
     
-        :param: anotherAction The action to compare with.
+        - parameter anotherAction: The action to compare with.
     */
     func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature

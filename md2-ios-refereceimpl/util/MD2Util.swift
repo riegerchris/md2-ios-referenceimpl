@@ -16,9 +16,9 @@ class MD2Util {
 
         *Notice*  inspection is very limited so a standard library function is needed instead.
     
-        :param: object The object to inspect.
+        - parameter object: The object to inspect.
     
-        :returns: The class name.
+        - returns: The class name.
     */
     static func getClassName(object: Any) -> String {
         return _stdlib_getDemangledTypeName(object).componentsSeparatedByString(".").last!
@@ -36,7 +36,7 @@ class MD2Util {
     
         :params: async The asynchronous function handler.
     
-        :returns: The asynchronous handler result as regular function result.
+        - returns: The asynchronous handler result as regular function result.
     */
     static func syncFromAsync<R>(async: (handler: R -> Void) -> Void) -> R {
         let group = dispatch_group_create()

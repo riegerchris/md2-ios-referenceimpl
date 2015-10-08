@@ -29,7 +29,7 @@ class MD2CustomAction___processChainActionEventTrigger_0d320e0de11118a0c2f068677
     /**
         Compare two action objects.
     
-        :param: anotherAction The action to compare with.
+        - parameter anotherAction: The action to compare with.
     */
     
     func equals(anotherAction: MD2Action) -> Bool {

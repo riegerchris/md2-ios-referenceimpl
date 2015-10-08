@@ -82,56 +82,105 @@ class MD2CP_ComplaintProvider: MD2ContentProvider {
     	
         // Update content
         let newValue = value.clone()
-        println("[MD2CP_ComplaintProvider] Update id=\(content!.internalId.toString()) set \(attribute) to '\(newValue.toString())'")
+        print("[MD2CP_ComplaintProvider] Update id=\(content!.internalId.toString()) set \(attribute) to '\(newValue.toString())'")
+
         
+
         content?.set(attribute, value: newValue)
+
         
+
         // Check if attribute is observed and fire event accordingly
+
         checkForObserver(attribute, newValue: value)
+
         
+
         // Update value in map
+
         observedAttributes[attribute] = newValue
+
     }
+
     
+
     func checkForObserver(attribute: String, newValue: MD2Type) {
+
         // Check if attribute is observed
+
         if observedAttributes[attribute] != nil && !observedAttributes[attribute]!.equals(newValue) {
+
             MD2OnContentChangeHandler.instance.fire(MD2ContentProviderAttributeIdentity(self, attribute))
+
         }
+
     }
+
     
+
     func checkAllAttributesForObserver() {
+
         if let _ = content {
+
             for (attribute, _) in observedAttributes {
+
                 checkForObserver(attribute, newValue: content!.get(attribute)!)
+
             }
+
         }
+
     }
+
     
+
     func reset() {
+
         load()
+
         checkAllAttributesForObserver()
+
     }
+
     
+
     func load() {
+
         if let _ = content {
-            println("LOAD entity \(content!.internalId.toString())")
+
+            print("LOAD entity \(content!.internalId.toString())")
+
             let query = MD2Query()
+
             query.addPredicate("internalId", value: content!.internalId.toString())
+
             content = store.query(query)
+
         }
+
     }
+
     
+
     func save() {
+
         if let _ = content {
-            println("SAVE entity \(content!.internalId.toString())")
+
+            print("SAVE entity \(content!.internalId.toString())")
+
             store.put(content!)
+
         }
+
     }
+
     
+
     func remove() {
+
         if let _ = content {
-            println("REMOVE entity \(content!.internalId.toString())")
+
+            print("REMOVE entity \(content!.internalId.toString())")
             store.remove(content!.internalId)
         }
     }

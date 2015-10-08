@@ -29,7 +29,7 @@ class MD2ViewController: UIViewController {
     }
 
     /// Unsupported initializer (required by inheritance)
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

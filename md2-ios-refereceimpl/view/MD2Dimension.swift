@@ -14,8 +14,8 @@ infix operator - {}
 
     **Important** This is meant to alter dimension objects. For geometrical calculations of two distinct dimensions see union()
 
-    :param: first The original dimension object.
-    :param: second The altering dimension object.
+    - parameter first: The original dimension object.
+    - parameter second: The altering dimension object.
 
     :results: The altered dimension.
 */
@@ -32,8 +32,8 @@ func + (first: MD2Dimension, second: MD2Dimension) -> MD2Dimension {
 
     **Important** This is meant to alter dimension objects, not for geometrical calculations.
 
-    :param: first The original dimension object.
-    :param: second The altering dimension object.
+    - parameter first: The original dimension object.
+    - parameter second: The altering dimension object.
 
     :results: The altered dimension.
 */
@@ -65,10 +65,10 @@ struct MD2Dimension {
     /**
         Initialize a rectangle with a given dimension.
     
-        :param: x The x position of the rectangle.
-        :param: y The y position of the rectangle.
-        :param: The width of the rectangle.
-        :param: The height of the rectangle.
+        - parameter x: The x position of the rectangle.
+        - parameter y: The y position of the rectangle.
+        - parameter The: width of the rectangle.
+        - parameter The: height of the rectangle.
     */
     init(x: Float, y: Float, width:Float, height: Float) {
         self.x = x
@@ -80,7 +80,7 @@ struct MD2Dimension {
     /**
         A string representation of the rectangle
     
-        :returns: The string representation
+        - returns: The string representation
     */
     func toString() -> String {
         return "x: \(x), y: \(y), width: \(width), height: \(height)"
@@ -89,7 +89,7 @@ struct MD2Dimension {
     /**
         Adds a second dimension object geometrically, forming the surrounding rectangle.
 
-        :param: second The dimension object to be combined with.
+        - parameter second: The dimension object to be combined with.
 
         :results: The resulting dimension.
     */

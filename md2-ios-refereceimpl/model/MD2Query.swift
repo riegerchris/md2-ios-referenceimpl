@@ -17,8 +17,8 @@ class MD2Query {
 	
 	TODO for now only AND-Predicates are supported.
 	
-	:param: attribute The attribute to check.
-	:param: value The value to check.
+	- parameter attribute: The attribute to check.
+	- parameter value: The value to check.
 	*/
     func addPredicate(attribute: String, value: String) {
         predicates.append((attribute, value))

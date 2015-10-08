@@ -18,9 +18,9 @@ class MD2DataStoreFactory<T: MD2Entity> {
     
         - MD2RemoteStore: Assumes a REST service if an entityPath is given.
     
-        :param: entityPath The entityPath.
+        - parameter entityPath: The entityPath.
     
-        :returns: The data store.
+        - returns: The data store.
     */
     func createStore(entityPath: String) -> MD2DataStore {
         if entityPath == "" {

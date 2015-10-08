@@ -33,10 +33,10 @@ class MD2StringRangeValidator: MD2Validator {
     /**
         Default initializer.
     
-        :param: identifier The unique validator identifier.
-        :param: message Closure of the custom method to display.
-        :param: minLength The minimum length of a valid string.
-        :param: maxLength The maximum langth of a valid string.
+        - parameter identifier: The unique validator identifier.
+        - parameter message: Closure of the custom method to display.
+        - parameter minLength: The minimum length of a valid string.
+        - parameter maxLength: The maximum langth of a valid string.
     */
     init(identifier: MD2String, message: (() -> MD2String)?, minLength: MD2Integer, maxLength: MD2Integer) {
         self.identifier = identifier
@@ -48,7 +48,7 @@ class MD2StringRangeValidator: MD2Validator {
     /**
         Validate a value.
     
-        :param: value The value to check.
+        - parameter value: The value to check.
     
         :return: Validation result
     */
@@ -66,8 +66,8 @@ class MD2StringRangeValidator: MD2Validator {
         
         let stringValue = (value as! MD2String).platformValue!
         
-        if count(stringValue) >= minLength.platformValue!
-           && count(stringValue) <= maxLength.platformValue! {
+        if stringValue.characters.count >= minLength.platformValue!
+           && stringValue.characters.count <= maxLength.platformValue! {
             return true
         } else {
             return false

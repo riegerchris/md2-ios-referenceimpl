@@ -23,7 +23,7 @@ class MD2OnConnectionLostHandler: MD2GlobalEventHandler {
     /**
         Register an action to execute when the connection is lost.
     
-        :param: action The action to execute in case of an event.
+        - parameter action: The action to execute in case of an event.
     */
     func registerAction(action: MD2Action) {
         actions[action.actionSignature] = action
@@ -32,7 +32,7 @@ class MD2OnConnectionLostHandler: MD2GlobalEventHandler {
     /**
         Unregister an action.
     
-        :param: action The action to remove.
+        - parameter action: The action to remove.
     */
     func unregisterAction(action: MD2Action) {
         for (key, value) in actions {

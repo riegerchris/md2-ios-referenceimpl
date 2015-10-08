@@ -27,7 +27,7 @@ class MD2OnLocationUpdateHandler: MD2GlobalEventHandler {
     /**
         Unregister an action.
     
-        :param: action The action to remove.
+        - parameter action: The action to remove.
     */
     func unregisterAction(action: MD2Action) {
         for (key, value) in actions {

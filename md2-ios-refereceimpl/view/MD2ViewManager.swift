@@ -31,7 +31,7 @@ class MD2ViewManager {
     /**
         Search for a view name and push the respective view on top of the navigation controller.
     
-        :param: viewName The name of the view, i.e. the outermost layout name.
+        - parameter viewName: The name of the view, i.e. the outermost layout name.
     */
     func goTo(viewName: String) {
         for (name, controller) in views {
@@ -74,8 +74,8 @@ class MD2ViewManager {
     
         *Notice* Called once per view on startup of the app.
     
-        :param: viewName The name of the view, i.e. the outermost layout name.
-        :param: view The layout of the app to use as root view.
+        - parameter viewName: The name of the view, i.e. the outermost layout name.
+        - parameter view: The layout of the app to use as root view.
     */
     func setupView(viewName: String, view: MD2Layout) -> MD2ViewController {
         // Called once at start-up of the app for each view
@@ -95,7 +95,7 @@ class MD2ViewManager {
     /**
         Set the registered viewName as root view in a navigation controller and show it.
     
-        :param: viewName The name of the view, i.e. the outermost layout name.
+        - parameter viewName: The name of the view, i.e. the outermost layout name.
     */
     func showStartView(viewName:String) {
         for (name, controller) in views {
@@ -117,7 +117,7 @@ class MD2ViewManager {
         Recalculate the view element positions when a screen orientation change occurs.
     */
     func rotateScreen(size: CGSize) {
-        println("Screen rotation detected! New screen dimensions: " + MD2UIUtil.CGSizeToDimension(size).toString())
+        print("Screen rotation detected! New screen dimensions: " + MD2UIUtil.CGSizeToDimension(size).toString())
         
         for (_, viewController) in views {
             viewController.calculateDimensions(MD2UIUtil.CGSizeToDimension(size))

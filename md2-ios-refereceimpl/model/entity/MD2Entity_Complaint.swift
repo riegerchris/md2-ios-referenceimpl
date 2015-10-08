@@ -36,77 +36,147 @@ class MD2Entity_Complaint: NSObject, MD2Entity {
     /**
         Initializer to create an object from the same data type (=copy).
 
-        :param: md2Entity The entity to copy.
+        - parameter md2Entity: The entity to copy.
+
     */
+
     convenience init(md2Entity: MD2Entity_Complaint) {
+
         self.init()
+
         
+
         for (typeName, typeValue) in md2Entity.containedTypes {
+
             containedTypes[typeName] = typeValue.clone()
+
         }
+
     }
+
     
+
     /**
+
         Clone an object.
+
     
-        :returns: A copy of the object.
+
+        - returns: A copy of the object.
+
     */
+
     func clone() -> MD2Type {
+
         return MD2Entity_Complaint(md2Entity: self)
+
     }
+
     
+
     /**
+
         Get a string representation of the object.
+
     
-        :returns: The string representation
+
+        - returns: The string representation
+
     */
+
     func toString() -> String {
+
     return "(MD2Entity_Complaint: [descriptions: " + containedTypes["descriptions"]!.toString()
+
     + ", feedback: " + containedTypes["feedback"]!.toString()
+
     + ", status: " + containedTypes["status"]!.toString() 
+
 	        + "])"
+
     }
+
     
+
     /**
+
         Compare two objects based on their content (not just comparing references).
+
     
-        :param: value The object to compare with.
+
+        - parameter value: The object to compare with.
+
     
-        :returns: Whether the values are equal or not.
+
+        - returns: Whether the values are equal or not.
+
     */
+
     func equals(value : MD2Type) -> Bool {
+
         if !(value is MD2Entity_Complaint) {
+
             return false
+
         }
+
         
+
         var isEqual = true
+
         
+
         for (typeName, typeValue) in (value as! MD2Entity_Complaint).containedTypes {
+
             if !(containedTypes[typeName] != nil && containedTypes[typeName]!.equals(typeValue)) {
+
                 isEqual = false
+
                 break
+
             }
+
         }
+
         
+
         return isEqual
+
     }
+
     
+
     /**
+
         Retrieve an attribute value.
+
     
-        :param: attribute The attribute name.
+
+        - parameter attribute: The attribute name.
+
     
-        :returns: The attribute value if found.
+
+        - returns: The attribute value if found.
+
     */
+
     func get(attribute: String) -> MD2Type? {
+
         return containedTypes[attribute]
+
     }
+
     
+
     /**
+
         Set an attribute value.
+
     
-        :param: attribute The attribute name.
-        :param: value The value to set.
+
+        - parameter attribute: The attribute name.
+
+        - parameter value: The value to set.
     */
     func set(attribute: String, value: MD2Type) {
     	// Check if attribute exists

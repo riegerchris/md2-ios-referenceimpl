@@ -21,17 +21,17 @@ protocol MD2Entity: MD2Type {
     /**
         Retrieve an attribute value.
 
-        :param: attribute The attribute name.
+        - parameter attribute: The attribute name.
 
-        :returns: The attribute value if found.
+        - returns: The attribute value if found.
     */
     func get(attribute: String) -> MD2Type?
     
     /**
         Set an attribute value.
 
-        :param: attribute The attribute name.
-        :param: value The value to set.
+        - parameter attribute: The attribute name.
+        - parameter value: The value to set.
     */
     func set(attribute: String, value: MD2Type)
     

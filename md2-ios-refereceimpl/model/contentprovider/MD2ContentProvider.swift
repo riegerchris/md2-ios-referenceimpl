@@ -30,7 +30,7 @@ protocol MD2ContentProvider: AnyObject {
     /**
         Retrieve the managed entity.
 
-        :returns: The managed entity if exists.
+        - returns: The managed entity if exists.
     */
     func getContent() -> MD2Entity?
     
@@ -40,14 +40,14 @@ protocol MD2ContentProvider: AnyObject {
     /**
         Set the managed entity.
 
-        :param: content The entity to manage.
+        - parameter content: The entity to manage.
     */
     func setContent(content: MD2Entity)
     
     /**
         Register an attribute to observe about changes.
 
-        :param: attribute The attribute to observe.
+        - parameter attribute: The attribute to observe.
     */
     func registerObservedOnChange(attribute: String)
     
@@ -56,32 +56,32 @@ protocol MD2ContentProvider: AnyObject {
     
         **IMPORTANT** This is not observer-specific and will remove any observers.
     
-        :param: attribute The attribute to stop observing.
+        - parameter attribute: The attribute to stop observing.
     */
     func unregisterObservedOnChange(attribute: String)
     
     /**
         Retrieve an attribute value of the managed entity.
         
-        :param: attribute The attribute name.
+        - parameter attribute: The attribute name.
         
-        :returns: The attribute value if exists.
+        - returns: The attribute value if exists.
     */
     func getValue(attribute: String) -> MD2Type?
     
     /**
         Set an attribute value of the managed entity.
 
-        :param: attribute The attribute name.
-        :param: value The attribute value to set.
+        - parameter attribute: The attribute name.
+        - parameter value: The attribute value to set.
     */
     func setValue(attribute: String, value: MD2Type)
     
     /**
         Add a content provider that manages an attribute of the managed entity.
 
-        :param: attribute The affected attribute.
-        :param: contentProvider The managing content provider object.
+        - parameter attribute: The affected attribute.
+        - parameter contentProvider: The managing content provider object.
     */
     func registerAttributeContentProvider(attribute: String, contentProvider: MD2ContentProvider)
     

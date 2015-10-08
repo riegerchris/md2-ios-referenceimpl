@@ -22,8 +22,8 @@ class MD2LocationAction: MD2Action {
     /**
         Default initializer.
     
-        :param: actionSignature The action identifier.
-        :param: location The location.
+        - parameter actionSignature: The action identifier.
+        - parameter location: The location.
     */
     init(actionSignature: String, location: MD2Location) {
         self.actionSignature = actionSignature
@@ -39,7 +39,7 @@ class MD2LocationAction: MD2Action {
     /**
         Compare two action objects.
     
-        :param: anotherAction The action to compare with.
+        - parameter anotherAction: The action to compare with.
     */
     func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature

@@ -23,7 +23,7 @@ class MD2WidgetRegistry {
     /**
         Register a widget wrapper.
     
-        :param: widget The widget wrapper to register.
+        - parameter widget: The widget wrapper to register.
     */
     func add(widget: MD2WidgetWrapper) {
         widgets[widget.widgetId] = widget
@@ -32,9 +32,9 @@ class MD2WidgetRegistry {
     /**
         Retrieve a widget object.
 
-        :param: id The identifier of the widget.
+        - parameter id: The identifier of the widget.
     
-        :returns: The widget wrapper element if found.
+        - returns: The widget wrapper element if found.
     */
     func getWidget(id: MD2WidgetMapping) -> MD2WidgetWrapper? {
         return widgets[id]

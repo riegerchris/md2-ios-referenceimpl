@@ -18,8 +18,8 @@ class MD2GotoViewAction: MD2Action {
     /**
         Default initializer.
 
-        :param: actionSignature The action identifier.
-        :param: targetView The view to show.
+        - parameter actionSignature: The action identifier.
+        - parameter targetView: The view to show.
     */
     init(actionSignature: String, targetView: MD2WidgetMapping) {
         self.actionSignature = actionSignature
@@ -34,7 +34,7 @@ class MD2GotoViewAction: MD2Action {
     /**
         Compare two action objects.
     
-        :param: anotherAction The action to compare with.
+        - parameter anotherAction: The action to compare with.
     */
     func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature

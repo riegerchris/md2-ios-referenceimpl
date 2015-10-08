@@ -14,9 +14,9 @@ class MD2UIUtil {
     /**
         Transform the CGRect object of view elements to a dimension object for easier handling. 
 
-        :param: bounds The rectangle object.
+        - parameter bounds: The rectangle object.
     
-        :returns: The dimension object.
+        - returns: The dimension object.
     */
     static func CGRectToDimension(bounds: CGRect) -> MD2Dimension {
         let dimension = MD2Dimension(
@@ -31,9 +31,9 @@ class MD2UIUtil {
     /**
         Transform the CGSize object of view elements to a dimension object for easier handling.
     
-        :param: size The size object.
+        - parameter size: The size object.
     
-        :returns: The dimension object.
+        - returns: The dimension object.
     */
     static func CGSizeToDimension(size: CGSize) -> MD2Dimension {
         let dimension = MD2Dimension(
@@ -47,9 +47,9 @@ class MD2UIUtil {
     /**
         Transform the dimension object to a CGRect object to set within a view element.
 
-        :param: dimension The dimension object.
+        - parameter dimension: The dimension object.
     
-        :returns: The rectangle object.
+        - returns: The rectangle object.
     */
     static func dimensionToCGRect(dimension: MD2Dimension) -> CGRect {
         let rect = CGRect(x: Double(dimension.x),
@@ -62,9 +62,9 @@ class MD2UIUtil {
     /**
         Transform the dimension object to a CGSize object.
     
-        :param: dimension The dimension object.
+        - parameter dimension: The dimension object.
     
-        :returns: The size object.
+        - returns: The size object.
     */
     static func dimensionToCGSize(dimension: MD2Dimension) -> CGSize {
         let size = CGSize(
@@ -76,11 +76,11 @@ class MD2UIUtil {
     /**
         Show a message in an overlay popup.
 
-        :param: message The message to show.
-        :param: title The popup title.
+        - parameter message: The message to show.
+        - parameter title: The popup title.
     */
     static func showMessage(message: String, title: String) {
-        var alertView = UIAlertView()
+        let alertView = UIAlertView()
         alertView.title = title
         alertView.addButtonWithTitle(MD2ViewConfig.TOOLTIP_BUTTON)
         alertView.message = message
@@ -90,9 +90,9 @@ class MD2UIUtil {
     /**
         Return the inner dimensions of a view element by applying the gutter margin to an outer margin.
 
-        :param: outerDimension The outer dimension object.
+        - parameter outerDimension: The outer dimension object.
     
-        :returns: The inner dimension.
+        - returns: The inner dimension.
     */
     static func innerDimensionsWithGutter(outerDimensions: MD2Dimension) -> MD2Dimension {
         return outerDimensions + MD2Dimension(

@@ -29,7 +29,7 @@ class MD2WorkflowManager {
     /**
         Add startable workflow element.
     
-        :param: workflowElement The startable workflow element
+        - parameter workflowElement: The startable workflow element
     */
     func addStartableWorkflowElement(workflowElement: MD2WorkflowElement, withCaption: String, forWidget: MD2WidgetMapping) {
         startableWorkflowElements[forWidget] = (withCaption, workflowElement)
@@ -41,7 +41,7 @@ class MD2WorkflowManager {
         :param workflowElement The workflow element to start.
     */
     func goToWorkflow(workflowElement: MD2WorkflowElement) {
-        println("[WorkflowManager] Switch workflow into '\(workflowElement.name)'")
+        print("[WorkflowManager] Switch workflow into '\(workflowElement.name)'")
         
         if let _ = currentWorkflowElement {
             currentWorkflowElement!.end()
@@ -56,7 +56,7 @@ class MD2WorkflowManager {
         :param workflowElement The workflow element to end.
     */
     func endWorkflow(workflowElement: MD2WorkflowElement) {
-        println("[WorkflowManager] End workflow '\(workflowElement.name)'")
+        print("[WorkflowManager] End workflow '\(workflowElement.name)'")
 
         workflowElement.end()
         currentWorkflowElement = nil

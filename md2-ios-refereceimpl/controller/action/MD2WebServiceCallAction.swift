@@ -22,8 +22,8 @@ class MD2WebServiceCallAction: MD2Action {
     /**
         Default initializer.
     
-        :param: actionSignature The action identifier.
-        :param: webServiceCall The web service call.
+        - parameter actionSignature: The action identifier.
+        - parameter webServiceCall: The web service call.
     */
     init(actionSignature: String, webServiceCall: String) {
         self.actionSignature = actionSignature
@@ -39,7 +39,7 @@ class MD2WebServiceCallAction: MD2Action {
     /**
         Compare two action objects.
     
-        :param: anotherAction The action to compare with.
+        - parameter anotherAction: The action to compare with.
     */
     func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature

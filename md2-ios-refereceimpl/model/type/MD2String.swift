@@ -27,7 +27,7 @@ class MD2String: MD2DataType {
     /**
         Required initializer to deserialize values from a string representation.
     
-        :param: value The string representation.
+        - parameter value: The string representation.
     */
     required init(_ value: MD2String) {
         if value.isSet() {
@@ -38,7 +38,7 @@ class MD2String: MD2DataType {
     /**
         Initializer to create an MD2 data type from a native string value.
     
-        :param: value The string representation.
+        - parameter value: The string representation.
     */
     init(_ value: String) {
         platformValue = value
@@ -47,7 +47,7 @@ class MD2String: MD2DataType {
     /**
         Determine whether the represented value is empty/unset or filled.
     
-        :returns: Whether the value is empty or not.
+        - returns: Whether the value is empty or not.
     */
     func isSet() -> Bool {
         return platformValue != nil
@@ -56,7 +56,7 @@ class MD2String: MD2DataType {
     /**
         Clone an object.
     
-        :returns: A copy of the object.
+        - returns: A copy of the object.
     */
     func clone() -> MD2Type {
         return MD2String(self)
@@ -65,7 +65,7 @@ class MD2String: MD2DataType {
     /**
         Get a string representation of the object.
     
-        :returns: The string representation
+        - returns: The string representation
     */
     func toString() -> String {
         if platformValue == nil {
@@ -78,9 +78,9 @@ class MD2String: MD2DataType {
     /**
         Compare two objects based on their content (not just comparing references).
     
-        :param: value The object to compare with.
+        - parameter value: The object to compare with.
     
-        :returns: Whether the values are equal or not.
+        - returns: Whether the values are equal or not.
     */
     func equals(value : MD2Type) -> Bool {
         if platformValue == nil {

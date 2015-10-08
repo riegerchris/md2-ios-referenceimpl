@@ -25,7 +25,7 @@ class MD2Location: MD2Entity {
     /**
         Initializer to create an object from the same data type (=copy).
 
-        :param: md2Entity The entity to copy.
+        - parameter md2Entity: The entity to copy.
     */
     convenience init(md2Entity: MD2Location) {
         self.init()
@@ -38,7 +38,7 @@ class MD2Location: MD2Entity {
     /**
         Clone an object.
     
-        :returns: A copy of the object.
+        - returns: A copy of the object.
     */
     func clone() -> MD2Type {
         return MD2Location(md2Entity: self)
@@ -47,7 +47,7 @@ class MD2Location: MD2Entity {
     /**
         Get a string representation of the object.
     
-        :returns: The string representation
+        - returns: The string representation
     */
     func toString() -> String {
         return "(Location: [longitude: " + containedTypes["longitude"]!.toString()
@@ -58,9 +58,9 @@ class MD2Location: MD2Entity {
     /**
         Compare two objects based on their content (not just comparing references).
     
-        :param: value The object to compare with.
+        - parameter value: The object to compare with.
     
-        :returns: Whether the values are equal or not.
+        - returns: Whether the values are equal or not.
     */
     func equals(value : MD2Type) -> Bool {
         if !(value is MD2Location) {
@@ -82,9 +82,9 @@ class MD2Location: MD2Entity {
     /**
         Retrieve an attribute value.
     
-        :param: attribute The attribute name.
+        - parameter attribute: The attribute name.
     
-        :returns: The attribute value if found.
+        - returns: The attribute value if found.
     */
     func get(attribute: String) -> MD2Type? {
         return containedTypes[attribute]
@@ -93,8 +93,8 @@ class MD2Location: MD2Entity {
     /**
         Set an attribute value.
     
-        :param: attribute The attribute name.
-        :param: value The value to set.
+        - parameter attribute: The attribute name.
+        - parameter value: The value to set.
     */
     func set(attribute: String, value: MD2Type) {
         containedTypes[attribute] = value

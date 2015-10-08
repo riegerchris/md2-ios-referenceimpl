@@ -18,8 +18,8 @@ class MD2NewObjectAction: MD2Action {
     /**
         Default initializer.
     
-        :param: actionSignature The action identifier.
-        :param: contentProvider The content provider to change.
+        - parameter actionSignature: The action identifier.
+        - parameter contentProvider: The content provider to change.
     */
     init(actionSignature: String, contentProvider: MD2ContentProvider) {
         self.actionSignature = actionSignature
@@ -34,7 +34,7 @@ class MD2NewObjectAction: MD2Action {
     /**
         Compare two action objects.
     
-        :param: anotherAction The action to compare with.
+        - parameter anotherAction: The action to compare with.
     */
     func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature

@@ -25,18 +25,18 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
     /**
         Query the data store.
     
-        :param: query The query to specify which entity to retrieve.
+        - parameter query: The query to specify which entity to retrieve.
     
-        :returns: The entity (if exists).
+        - returns: The entity (if exists).
     */
     func query(query: MD2Query) -> MD2Entity? {
         let results = getManagedObject(query)
         
         if (results.count > 0) {
-            var data: NSManagedObject = results[0] as! NSManagedObject
+            let data: NSManagedObject = results[0] as! NSManagedObject
             
             // Convert attributes to their respective types
-            var result: T = T()
+            let result: T = T()
             result.internalId = MD2Integer(MD2String(data.valueForKey("internalId") as! String))
             
             for (attributeKey, attributeValue) in result.containedTypes {
@@ -50,7 +50,7 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
                     (attributeValue as! MD2Enum).setValueFromString(MD2String(stringValue))
                     
                 } else if attributeValue is MD2Entity {
-                    println(attributeValue)
+                    print(attributeValue)
                     // TODO
                     //result.set(attributeKey, value: attributeValue)
                     
@@ -76,14 +76,14 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
             return result
         }
         
-        println("No results returned")
+        print("No results returned")
         return nil
     }
     
     /**
         Create or update the entity in the data store.
     
-        :param: entity The entity to persist.
+        - parameter entity: The entity to persist.
     */
     func put(entity: MD2Entity) {
         if let managedObject = getById(entity.internalId) {
@@ -98,7 +98,7 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
     /**
         Remove an entity from the data store by Id.
     
-        :param: internalId The Id of the entity to remove.
+        - parameter internalId: The Id of the entity to remove.
     */
     func remove(internalId: MD2Integer) {
         if let object = getById(internalId) {
@@ -111,18 +111,18 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
     /**
         Retrieve an object from the data store.
 
-        :param: query The query specifying which entity to retrieve.
+        - parameter query: The query specifying which entity to retrieve.
 
-        :returns: A list of entities matching the query.
+        - returns: A list of entities matching the query.
     */
     private func getManagedObject(query: MD2Query) -> NSArray {
-        var request = NSFetchRequest(entityName: MD2Util.getClassName(T()))
+        let request = NSFetchRequest(entityName: MD2Util.getClassName(T()))
         request.returnsObjectsAsFaults = false
         
         // Construct predicates
         var requestPredicates: Array<NSPredicate> = []
         for (attribute, value) in query.predicates {
-            println("add query predicate: " + attribute + "==" + value)
+            print("add query predicate: " + attribute + "==" + value)
             requestPredicates.append(NSPredicate(format: attribute + " == %@", value))
         }
         
@@ -132,11 +132,11 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
             request.predicate = NSCompoundPredicate(type: NSCompoundPredicateType.OrPredicateType, subpredicates: requestPredicates)
         }
         
-        var error: NSError?
-        var results: NSArray = managedContext.executeFetchRequest(request, error: &error)!
+        let error: NSError?
+        let results: NSArray = try! managedContext.executeFetchRequest(request)
         
         if error != nil {
-            println("Could not load \(error), \(error?.userInfo)")
+            print("Could not load \(error), \(error?.userInfo)")
         }
         
         return results
@@ -145,9 +145,9 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
     /**
         Retrieve an object from the local store by Id.
 
-        :param: internalId The Id of the object to look up.
+        - parameter internalId: The Id of the object to look up.
     
-        :returns: The managed object instance if found.
+        - returns: The managed object instance if found.
     */
     private func getById(internalId: MD2Integer) -> NSManagedObject? {
         if internalId.isSet() && !internalId.equals(MD2Integer(0)) {
@@ -167,7 +167,7 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
     /**
         Add a new entity to the local data store.
     
-        :param: entity The entity to persist.
+        - parameter entity: The entity to persist.
     */
     private func insertData(entity: MD2Entity) {
         // Get new managed object
@@ -188,8 +188,8 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
     /**
         Update an existing entity in the local data store.
 
-        :param: managedObject The object that is updated.
-        :param: entity The MD2 entity to persist in the managed object.
+        - parameter managedObject: The object that is updated.
+        - parameter entity: The MD2 entity to persist in the managed object.
     */
     private func updateData(managedObject: NSManagedObject, entity: MD2Entity) {
         // Fill with data and save
@@ -200,8 +200,8 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
     /**
         Helper function to copy the entity content into a managed object.
 
-        :param: managedObject The object that is filled.
-        :param: entity The MD2 entity to copy.
+        - parameter managedObject: The object that is filled.
+        - parameter entity: The MD2 entity to copy.
     */
     private func setValues(object: NSManagedObject, entity: MD2Entity) {
         for (attributeKey, attributeValue) in entity.containedTypes {
@@ -227,8 +227,11 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
     */
     private func saveManagedContext() {
         var error: NSError?
-        if !managedContext.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
+        do {
+            try managedContext.save()
+        } catch let error1 as NSError {
+            error = error1
+            print("Could not save \(error), \(error?.userInfo)")
         }
     }
 

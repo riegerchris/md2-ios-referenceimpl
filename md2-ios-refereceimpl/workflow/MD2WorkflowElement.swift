@@ -22,8 +22,8 @@ class MD2WorkflowElement {
     /**
         Object Constructor. The identifier and at least one action to trigger are required.
     
-        :param: name The workflow element name as identifier.
-        :param: onInit The initial action to trigger when the workflow element is started.
+        - parameter name: The workflow element name as identifier.
+        - parameter onInit: The initial action to trigger when the workflow element is started.
     */    
     init(name: String, onInit: MD2Action) {
         self.name = name

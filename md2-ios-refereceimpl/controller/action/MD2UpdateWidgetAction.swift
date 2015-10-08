@@ -24,10 +24,10 @@ class MD2UpdateWidgetAction: MD2Action {
     /**
         Default initializer.
     
-        :param: actionSignature The action identifier.
-        :param: viewElement The view element that needs to be updated.
-        :param: contentProvider The content provider that has changed.
-        :param: attribute The attribute of the content provider that has changed.
+        - parameter actionSignature: The action identifier.
+        - parameter viewElement: The view element that needs to be updated.
+        - parameter contentProvider: The content provider that has changed.
+        - parameter attribute: The attribute of the content provider that has changed.
     */
     init(actionSignature: String, viewElement: MD2WidgetWrapper, contentProvider: MD2ContentProvider, attribute: String) {
         self.actionSignature = actionSignature
@@ -39,7 +39,7 @@ class MD2UpdateWidgetAction: MD2Action {
     /// Execute the action commands: Notify widget of content provider change.
     func execute() {
         if let value = contentProvider.getValue(attribute) {
-            println("[UpdateWidgetAction] Update " + actionSignature)
+            print("[UpdateWidgetAction] Update " + actionSignature)
             self.viewElement.setValue(value)
         }
     }
@@ -47,7 +47,7 @@ class MD2UpdateWidgetAction: MD2Action {
     /**
         Compare two action objects.
     
-        :param: anotherAction The action to compare with.
+        - parameter anotherAction: The action to compare with.
     */
     func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature

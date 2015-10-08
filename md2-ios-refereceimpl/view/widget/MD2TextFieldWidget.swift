@@ -51,7 +51,7 @@ class MD2TextFieldWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UITextFi
     /**
         Default initializer.
     
-        :param: widgetId Widget identifier
+        - parameter widgetId: Widget identifier
     */
     init(widgetId: MD2WidgetMapping) {
         self.widgetId = widgetId
@@ -63,8 +63,8 @@ class MD2TextFieldWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UITextFi
     /**
         Render the view element, i.e. specifying the position and appearance of the widget.
     
-        :param: view The surrounding view element.
-        :param: controller The responsible view controller.
+        - parameter view: The surrounding view element.
+        - parameter controller: The responsible view controller.
     */
     func render(view: UIView, controller: UIViewController) {
         if dimensions == nil {
@@ -77,7 +77,7 @@ class MD2TextFieldWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UITextFi
         updateElement()
         
         widgetElement.tag = widgetId.rawValue
-        widgetElement.addTarget(self, action: "onUpdate", forControlEvents: (UIControlEvents.EditingDidEnd | UIControlEvents.EditingDidEndOnExit))
+        widgetElement.addTarget(self, action: "onUpdate", forControlEvents: ([UIControlEvents.EditingDidEnd, UIControlEvents.EditingDidEndOnExit]))
         
         // Set styling
         widgetElement.backgroundColor = UIColor.whiteColor()
@@ -103,9 +103,9 @@ class MD2TextFieldWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UITextFi
     
         *NOTICE* The occupied space usually differs from the dimensions property as it refers to the *outer* dimensions in contrast to the dimensions property referring to *inner* dimensions. The difference represents the gutter included in the widget positioning process.
     
-        :param: bounds The available screen space.
+        - parameter bounds: The available screen space.
     
-        :returns: The occupied outer dimensions of the widget.
+        - returns: The occupied outer dimensions of the widget.
     */
     func calculateDimensions(bounds: MD2Dimension) -> MD2Dimension {
         var outerDimensions: MD2Dimension = bounds
@@ -118,7 +118,7 @@ class MD2TextFieldWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UITextFi
                 width: bounds.width,
                 height: MD2ViewConfig.DIMENSION_TEXTFIELD_HEIGHT)
             
-            var textFieldDimensions = outerDimensions - MD2Dimension(
+            let textFieldDimensions = outerDimensions - MD2Dimension(
                 x: Float(0.0),
                 y: Float(0.0),
                 width: Float(MD2ViewConfig.TOOLTIP_WIDTH),

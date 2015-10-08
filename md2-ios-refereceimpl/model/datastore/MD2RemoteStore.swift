@@ -18,7 +18,7 @@ class MD2RemoteStore<T: MD2Entity>: MD2DataStore {
     /**
         Default initializer.
     
-        :param: entityPath The remote entity path.
+        - parameter entityPath: The remote entity path.
     */
     init(entityPath: String) {
         self.entityPath = entityPath
@@ -27,9 +27,9 @@ class MD2RemoteStore<T: MD2Entity>: MD2DataStore {
     /**
         Query the data store.
     
-        :param: query The query to specify which entity to retrieve.
+        - parameter query: The query to specify which entity to retrieve.
     
-        :returns: The entity (if exists).
+        - returns: The entity (if exists).
     */
     func query(query: MD2Query) -> MD2Entity? {
         let fullPath = entityPath + queryToFilterString(query)
@@ -43,7 +43,7 @@ class MD2RemoteStore<T: MD2Entity>: MD2DataStore {
     /**
         Create or update the entity in the data store.
     
-        :param: entity The entity to persist.
+        - parameter entity: The entity to persist.
     */
     func put(entity: MD2Entity) {
         self.saveData(entity)
@@ -52,16 +52,16 @@ class MD2RemoteStore<T: MD2Entity>: MD2DataStore {
     /**
         Remove an entity from the data store by Id.
     
-        :param: internalId The Id of the entity to remove.
+        - parameter internalId: The Id of the entity to remove.
     */
     func remove(internalId: MD2Integer) {
         let fullPath = entityPath + "?id=" + internalId.toString()
         
         MD2RestClient.instance.makeHTTPDeleteRequest(fullPath, body: JSON(""), onCompletion: { json, err in
             if json["result"].bool == true {
-                println("[RemoteStore] Deleted entity with internalId \(internalId.toString())")
+                print("[RemoteStore] Deleted entity with internalId \(internalId.toString())")
             } else {
-                println("[RemoteStore] Deletion of entity with internalId \(internalId.toString()) failed")
+                print("[RemoteStore] Deletion of entity with internalId \(internalId.toString()) failed")
             }
         })
     }
@@ -69,9 +69,9 @@ class MD2RemoteStore<T: MD2Entity>: MD2DataStore {
     /**
         Retrieve an object from the remote store by Id.
     
-        :param: internalId The Id of the object to look up.
+        - parameter internalId: The Id of the object to look up.
     
-        :returns: The entity if found.
+        - returns: The entity if found.
     */
     private func getById(internalId: MD2Integer) -> MD2Entity? {
         if internalId.isSet() && !internalId.equals(MD2Integer(0)) {
@@ -89,7 +89,7 @@ class MD2RemoteStore<T: MD2Entity>: MD2DataStore {
     /**
         Create or update an entity on the remote web service.
     
-        :param: entity The entity to persist.
+        - parameter entity: The entity to persist.
     */
     private func saveData(entity: MD2Entity) {
         // Single entities are also tranferred as array
@@ -100,7 +100,7 @@ class MD2RemoteStore<T: MD2Entity>: MD2DataStore {
             if let newId = newId {
                 entity.internalId = MD2Integer(newId)
             } else {
-                println("Warning: RemoteStore.saveData returned unexpected response!")
+                print("Warning: RemoteStore.saveData returned unexpected response!")
             }
         })
     }
@@ -108,9 +108,9 @@ class MD2RemoteStore<T: MD2Entity>: MD2DataStore {
     /**
         Helper function to translate an entity into a key-value dictionary of attributes.
 
-        :param: entity The entity to translate.
+        - parameter entity: The entity to translate.
 
-        :returns: The resulting dictionary
+        - returns: The resulting dictionary
     */
     private func entityToDict(entity: MD2Entity) -> Dictionary<String, AnyObject> {
         var dict: Dictionary<String, AnyObject> = [:]
@@ -149,10 +149,10 @@ class MD2RemoteStore<T: MD2Entity>: MD2DataStore {
     /**
         Helper function to parse a retrieved json object to an MD2 entity.
 
-        :param: json The JSON object.
-        :param: entity The entity to update
+        - parameter json: The JSON object.
+        - parameter entity: The entity to update
 
-        :returns: The updated entity.
+        - returns: The updated entity.
     */
     private func JSONToEntity(json: JSON, entity:MD2Entity) -> MD2Entity {
         if json == nil {
@@ -171,7 +171,7 @@ class MD2RemoteStore<T: MD2Entity>: MD2DataStore {
                 
             } else if attributeValue is MD2Entity {
                 // TODO recursive usage
-                println("Nested entities not supported for key: " + attributeKey)
+                print("Nested entities not supported for key: " + attributeKey)
                 
             } else if attributeValue is MD2DataType {
                 if attributeValue is MD2String {
@@ -200,9 +200,9 @@ class MD2RemoteStore<T: MD2Entity>: MD2DataStore {
 
         TODO currently only a subset of filter/query possibilities is implemented, using only strictly "equals"
 
-        :param: query The query to translate.
+        - parameter query: The query to translate.
 
-        :returns: The filter string to append to the request.
+        - returns: The filter string to append to the request.
     */
     private func queryToFilterString(query: MD2Query) -> String {
         

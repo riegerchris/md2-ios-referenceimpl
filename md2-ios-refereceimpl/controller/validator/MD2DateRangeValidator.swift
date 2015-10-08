@@ -33,10 +33,10 @@ class MD2DateRangeValidator: MD2Validator {
     /**
         Default initializer.
     
-        :param: identifier The unique validator identifier.
-        :param: message Closure of the custom method to display.
-        :param: min The minimum date of a valid date.
-        :param: max The maximum date of a valid date.
+        - parameter identifier: The unique validator identifier.
+        - parameter message: Closure of the custom method to display.
+        - parameter min: The minimum date of a valid date.
+        - parameter max: The maximum date of a valid date.
     */
     init(identifier: MD2String, message: (() -> MD2String)?, min: MD2Date, max: MD2Date) {
         self.identifier = identifier
@@ -48,7 +48,7 @@ class MD2DateRangeValidator: MD2Validator {
     /**
         Validate a value.
     
-        :param: value The value to check.
+        - parameter value: The value to check.
     
         :return: Validation result
     */

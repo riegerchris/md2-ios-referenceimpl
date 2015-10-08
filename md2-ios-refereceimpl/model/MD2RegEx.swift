@@ -30,14 +30,19 @@ class MD2RegEx {
     /**
         Initialize the object by setting a pattern string and transforming it to the native object.
     
-        :param: pattern The RegEx pattern as string.
+        - parameter pattern: The RegEx pattern as string.
     */
     init(pattern: MD2String) {
         self.pattern = pattern
         
         if let _ = pattern.platformValue {
             var error: NSError?
-            expression = NSRegularExpression(pattern: pattern.platformValue!, options: .CaseInsensitive, error: &error)
+            do {
+                expression = try NSRegularExpression(pattern: pattern.platformValue!, options: .CaseInsensitive)
+            } catch let error1 as NSError {
+                error = error1
+                expression = nil
+            }
         } else {
             expression = nil
         }
@@ -46,16 +51,16 @@ class MD2RegEx {
     /**
         Test the given input string to match against the expression.
     
-        :param: input The input string to test
+        - parameter input: The input string to test
     
-        :returns: Whether at least one match was found.
+        - returns: Whether at least one match was found.
     */
     func test(input: MD2String) -> Bool {
         if expression == nil || !input.isSet() {
             return false
         }
         
-        let matches = self.expression!.matchesInString(input.platformValue!, options: nil, range:NSMakeRange(0, count(input.platformValue!)))
+        let matches = self.expression!.matchesInString(input.platformValue!, options: [], range:NSMakeRange(0, (input.platformValue!).characters.count))
         return matches.count > 0
     }
 }

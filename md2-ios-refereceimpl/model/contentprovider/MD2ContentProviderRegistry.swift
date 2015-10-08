@@ -18,8 +18,8 @@ class MD2ContentProviderRegistry {
     /**
         Register a content provider.
     
-        :param: contentProviderName The content provider identifier to register.
-        :param: provider The content provider object.
+        - parameter contentProviderName: The content provider identifier to register.
+        - parameter provider: The content provider object.
     */
     func addContentProvider(contentProviderName: String, provider: MD2ContentProvider) {
         contentProviders[contentProviderName] = provider
@@ -28,9 +28,9 @@ class MD2ContentProviderRegistry {
     /**
         Retrieve a content provider object.
     
-        :param: contentProviderName The identifier of the content provider.
+        - parameter contentProviderName: The identifier of the content provider.
     
-        :returns: The content provider element if found.
+        - returns: The content provider element if found.
     */
     func getContentProvider(contentProviderName: String) -> MD2ContentProvider? {
         return contentProviders[contentProviderName]

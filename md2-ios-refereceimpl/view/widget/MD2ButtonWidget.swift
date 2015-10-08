@@ -45,7 +45,7 @@ class MD2ButtonWidget: MD2SingleWidget, MD2StylableWidget {
     /**
         Default initializer.
     
-        :param: widgetId Widget identifier
+        - parameter widgetId: Widget identifier
     */
     init(widgetId: MD2WidgetMapping) {
         self.widgetId = widgetId
@@ -55,8 +55,8 @@ class MD2ButtonWidget: MD2SingleWidget, MD2StylableWidget {
     /**
         Render the view element, i.e. specifying the position and appearance of the widget.
     
-        :param: view The surrounding view element.
-        :param: controller The responsible view controller.
+        - parameter view: The surrounding view element.
+        - parameter controller: The responsible view controller.
     */
     func render(view: UIView, controller: UIViewController) {
         if dimensions == nil {
@@ -78,12 +78,12 @@ class MD2ButtonWidget: MD2SingleWidget, MD2StylableWidget {
     
         *NOTICE* The occupied space usually differs from the dimensions property as it refers to the *outer* dimensions in contrast to the dimensions property referring to *inner* dimensions. The difference represents the gutter included in the widget positioning process.
     
-        :param: bounds The available screen space.
+        - parameter bounds: The available screen space.
 
-        :returns: The occupied outer dimensions of the widget.
+        - returns: The occupied outer dimensions of the widget.
     */
     func calculateDimensions(bounds: MD2Dimension) -> MD2Dimension {
-        var outerDimensions = MD2Dimension(
+        let outerDimensions = MD2Dimension(
             x: bounds.x,
             y: bounds.y,
             width: bounds.width,
@@ -110,11 +110,11 @@ class MD2ButtonWidget: MD2SingleWidget, MD2StylableWidget {
     /**
         Render a regular system button.
     
-        :param: view The surrounding view container.
+        - parameter view: The surrounding view container.
     */
     func renderSystemButton(view: UIView) {
         // Create and set value
-        widgetElement = (UIButton.buttonWithType(UIButtonType.System) as! UIButton)
+        widgetElement = (UIButton(type: UIButtonType.System))
         widgetElement!.frame = MD2UIUtil.dimensionToCGRect(dimensions!)
         updateElement()
         
@@ -142,10 +142,10 @@ class MD2ButtonWidget: MD2SingleWidget, MD2StylableWidget {
     /**
         Render an information button, used for example as tooltip hint.
 
-        :param: view The surrounding view container.
+        - parameter view: The surrounding view container.
     */
     func renderInfoButton(view: UIView) {
-        widgetElement = (UIButton.buttonWithType(UIButtonType.InfoLight) as! UIButton)
+        widgetElement = (UIButton(type: UIButtonType.InfoLight))
         widgetElement!.frame = MD2UIUtil.dimensionToCGRect(dimensions!)
         widgetElement!.tag = widgetId.rawValue
         

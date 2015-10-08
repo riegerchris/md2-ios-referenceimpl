@@ -30,9 +30,9 @@ class MD2RegExValidator: MD2Validator {
     /**
         Default initializer.
     
-        :param: identifier The unique validator identifier.
-        :param: message Closure of the custom method to display.
-        :param: regEx The regular expression matching a valid string.
+        - parameter identifier: The unique validator identifier.
+        - parameter message: Closure of the custom method to display.
+        - parameter regEx: The regular expression matching a valid string.
     */
     init(identifier: MD2String, message: (() -> MD2String)?, regEx: MD2String) {
         self.identifier = identifier
@@ -43,7 +43,7 @@ class MD2RegExValidator: MD2Validator {
     /**
         Validate a value.
     
-        :param: value The value to check.
+        - parameter value: The value to check.
     
         :return: Validation result
     */

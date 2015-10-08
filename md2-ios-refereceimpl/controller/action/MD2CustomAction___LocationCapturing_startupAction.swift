@@ -32,7 +32,7 @@ class MD2CustomAction___LocationCapturing_startupAction: MD2Action {
     /**
         Compare two action objects.
     
-        :param: anotherAction The action to compare with.
+        - parameter anotherAction: The action to compare with.
     */
     
     func equals(anotherAction: MD2Action) -> Bool {

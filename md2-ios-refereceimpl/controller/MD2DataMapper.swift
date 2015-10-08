@@ -40,9 +40,9 @@ class MD2DataMapper {
         
         On change of the input field or the content provider a respective event is fired to update the mapping partner.
         
-        :param: widget The widget wrapper of the input field.
-        :param: contentProvider The content provider for data storage.
-        :param: attribute The attribute to specify the field of the content provider.
+        - parameter widget: The widget wrapper of the input field.
+        - parameter contentProvider: The content provider for data storage.
+        - parameter attribute: The attribute to specify the field of the content provider.
     */
     func map(widget: MD2WidgetWrapper, contentProvider: MD2ContentProvider, attribute: String) {
         // Add mapping
@@ -71,9 +71,9 @@ class MD2DataMapper {
     /**
         Revoke the binding between a widget wrapper and a content provider and attribute combination.
         
-        :param: widget The widget wrapper of the input field.
-        :param: contentProvider The content provider for data storage.
-        :param: attribute The attribute to specify the field of the content provider.
+        - parameter widget: The widget wrapper of the input field.
+        - parameter contentProvider: The content provider for data storage.
+        - parameter attribute: The attribute to specify the field of the content provider.
     */
     func unmap(widget: MD2WidgetWrapper, contentProvider: MD2ContentProvider, attribute: String) {
         // Remove mapping
@@ -97,10 +97,10 @@ class MD2DataMapper {
     /**
         Retrieve the widget wrapper for a content provider and attribute combination.
         
-        :param: contentProvider The content provider for data storage.
-        :param: attribute The attribute to specify the field of the content provider.
+        - parameter contentProvider: The content provider for data storage.
+        - parameter attribute: The attribute to specify the field of the content provider.
         
-        :returns: The respective widget wrapper if found.
+        - returns: The respective widget wrapper if found.
     */
     func getWidgetForContentProvider(contentProvider: MD2ContentProvider, attribute: String) -> MD2WidgetWrapper? {
         return contentProviderToWidgetMapping[MD2ContentProviderAttributeIdentity(contentProvider, attribute)]
@@ -109,9 +109,9 @@ class MD2DataMapper {
     /**
         Retrieve the content provider for a widget wrapper.
         
-        :param: widget The widget wrapper of the input field.
+        - parameter widget: The widget wrapper of the input field.
         
-        :returns: The respective content provider and attribute combination if found.
+        - returns: The respective content provider and attribute combination if found.
     */
     func getContentProviderForWidget(widget: MD2WidgetWrapper) -> MD2ContentProviderAttributeIdentity? {
         return widgetToContentProviderMapping[widget]

@@ -31,8 +31,8 @@ class MD2RestClient: NSObject {
     /**
         Send an asnychronous GET request to the given path.
         
-        :param: path The full URL of the requested resource.
-        :param: onCompletion The callback fuction to call after completing the request.
+        - parameter path: The full URL of the requested resource.
+        - parameter onCompletion: The callback fuction to call after completing the request.
     */
     func makeHTTPGetRequest(path: String, onCompletion: ServiceResponse) {
         let request = NSMutableURLRequest(URL: NSURL(string: path)!)
@@ -57,26 +57,32 @@ class MD2RestClient: NSObject {
     
         2) Use workarounds like MD2Util.syncFromAsync()
 		
-        :param: path The full URL of the requested resource.
+        - parameter path: The full URL of the requested resource.
 
-        :returns: The JSON response or null if no response.
+        - returns: The JSON response or null if no response.
     */
     func makeHTTPGetRequestSync(path: String) -> JSON {
         let request = NSURLRequest(URL: NSURL(string: path)!)
-        println("Request to " + path)
+        print("Request to " + path)
         
         var response: NSURLResponse?
         var error: NSError?
-        let urlData = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
+        let urlData: NSData?
+        do {
+            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)
+        } catch let error1 as NSError {
+            error = error1
+            urlData = nil
+        }
         
         if let httpResponse = response as? NSHTTPURLResponse {
-            println(httpResponse.statusCode)
+            print(httpResponse.statusCode)
         }
         
         if let urlData = urlData {
             return JSON(data: urlData)
         } else {
-            println("empty response")
+            print("empty response")
             return JSON("")
         }
     }
@@ -84,12 +90,12 @@ class MD2RestClient: NSObject {
     /**
         Send an asnychronous POST request to the given path.
         
-        :param: path The full URL of the requested resource.
-        :param: body A key-value array which will be encoded as JSON and passed as request body.
-        :param: onCompletion The callback fuction to call after completing the request.
+        - parameter path: The full URL of the requested resource.
+        - parameter body: A key-value array which will be encoded as JSON and passed as request body.
+        - parameter onCompletion: The callback fuction to call after completing the request.
     */
     func makeHTTPPostRequest(path: String, body: JSON, onCompletion: ServiceResponse) {
-        var err: NSError? = NSError()
+        let err: NSError? = NSError()
         let request = NSMutableURLRequest(URL: NSURL(string: path)!)
         
         request.HTTPMethod = "POST"
@@ -102,11 +108,11 @@ class MD2RestClient: NSObject {
         let task = session.uploadTaskWithRequest(request, fromData: data, completionHandler: {data, response, error -> Void in
             
             if let httpResponse = response as? NSHTTPURLResponse {
-                println("Response code: " + String(httpResponse.statusCode))
+                print("Response code: " + String(httpResponse.statusCode))
             }
             
             let json:JSON = JSON(data: data)
-            println(json.rawString())
+            print(json.rawString())
             onCompletion(json, err)
         })
         task.resume()
@@ -115,12 +121,12 @@ class MD2RestClient: NSObject {
     /**
         Send an asnychronous DELETE request to the given path.
         
-        :param: path The full URL of the requested resource.
-        :param: body A key-value array which will be encoded as JSON and passed as request body.
-        :param: onCompletion The callback fuction to call after completing the request.
+        - parameter path: The full URL of the requested resource.
+        - parameter body: A key-value array which will be encoded as JSON and passed as request body.
+        - parameter onCompletion: The callback fuction to call after completing the request.
     */
     func makeHTTPDeleteRequest(path: String, body: JSON, onCompletion: ServiceResponse) {
-        var err: NSError?
+        let err: NSError?
         let request = NSMutableURLRequest(URL: NSURL(string: path)!)
         
         request.HTTPMethod = "DELETE"
@@ -135,7 +141,7 @@ class MD2RestClient: NSObject {
         let task = session.uploadTaskWithRequest(request, fromData: data, completionHandler: {data, response, error -> Void in
             
             if let httpResponse = response as? NSHTTPURLResponse {
-                println("Response code: " + String(httpResponse.statusCode))
+                print("Response code: " + String(httpResponse.statusCode))
                 if httpResponse.statusCode == 204 {
                     onCompletion(JSON(["result":true]), err)
                     return
@@ -152,15 +158,15 @@ class MD2RestClient: NSObject {
         
         Needs to be checked on startup of the app if there are remote content providers.
         
-        :param: version The version of the app model
-        :param: basePath The base path of the remote server
+        - parameter version: The version of the app model
+        - parameter basePath: The base path of the remote server
 
-        :returns: Whether the model version is supported by the backend server or not.
+        - returns: Whether the model version is supported by the backend server or not.
     */
     func testModelVersion(version: String, basePath: String) -> Bool {
         let result = makeHTTPGetRequestSync(basePath + "md2_model_version/is_valid?version=" + version)
         
-        println("The model version was checked for validity: " + result["isValid"].stringValue)
+        print("The model version was checked for validity: " + result["isValid"].stringValue)
         return result["isValid"].bool == true
     }
 }

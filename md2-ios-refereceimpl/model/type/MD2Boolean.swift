@@ -27,7 +27,7 @@ class MD2Boolean: MD2DataType {
     /**
         Required initializer to deserialize values from a string representation.
     
-        :param: value The string representation.
+        - parameter value: The string representation.
     */
     required init(_ value: MD2String) {
         if value.isSet() && value.equals(MD2String("true")) {
@@ -40,7 +40,7 @@ class MD2Boolean: MD2DataType {
     /**
         Initializer to create an MD2 data type from a native boolean value.
 
-        :param: value The boolean representation.
+        - parameter value: The boolean representation.
     */
     init(_ value : Bool) {
         platformValue = value
@@ -49,7 +49,7 @@ class MD2Boolean: MD2DataType {
     /**
         Initialitzer to create an MD2 data type from another MD2Boolean value.
 
-        :param: md2Boolean The MD2 data type to copy.
+        - parameter md2Boolean: The MD2 data type to copy.
     */
     init(_ md2Boolean: MD2Boolean) {
         platformValue = md2Boolean.platformValue
@@ -58,9 +58,9 @@ class MD2Boolean: MD2DataType {
     /**
         Compare two objects based on their content (not just comparing references).
     
-        :param: value The object to compare with.
+        - parameter value: The object to compare with.
     
-        :returns: Whether the values are equal or not.
+        - returns: Whether the values are equal or not.
     */
     func isSet() -> Bool {
         return platformValue != nil
@@ -69,7 +69,7 @@ class MD2Boolean: MD2DataType {
     /**
         Clone an object.
     
-        :returns: A copy of the object.
+        - returns: A copy of the object.
     */
     func clone() -> MD2Type {
         return MD2Boolean(self)
@@ -78,7 +78,7 @@ class MD2Boolean: MD2DataType {
     /**
         Get a string representation of the object.
     
-        :returns: The string representation
+        - returns: The string representation
     */
     func toString() -> String {
         if platformValue == nil {
@@ -91,9 +91,9 @@ class MD2Boolean: MD2DataType {
     /**
         Compare two objects based on their content (not just comparing references).
     
-        :param: value The object to compare with.
+        - parameter value: The object to compare with.
     
-        :returns: Whether the values are equal or not.
+        - returns: Whether the values are equal or not.
     */
     func equals(value : MD2Type) -> Bool {
         return (value is MD2Boolean)

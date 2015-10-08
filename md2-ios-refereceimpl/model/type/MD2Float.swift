@@ -29,7 +29,7 @@ class MD2Float: MD2NumericType {
     /**
         Required initializer to deserialize values from a string representation.
     
-        :param: value The string representation.
+        - parameter value: The string representation.
     */
     required init(_ value: MD2String) {
         if value.isSet() && !value.equals(MD2String("")) {
@@ -40,7 +40,7 @@ class MD2Float: MD2NumericType {
     /**
         Initializer to create an MD2 data type from a native float value.
     
-        :param: value The float representation.
+        - parameter value: The float representation.
     */
     init(_ value: Float) {
         platformValue = value
@@ -49,7 +49,7 @@ class MD2Float: MD2NumericType {
     /**
         Initialitzer to create an MD2 data type from another MD2Float value.
     
-        :param: md2Float The MD2 data type to copy.
+        - parameter md2Float: The MD2 data type to copy.
     */
     init(_ md2Float: MD2Float) {
         platformValue = md2Float.platformValue
@@ -58,7 +58,7 @@ class MD2Float: MD2NumericType {
     /**
         Determine whether the represented value is empty/unset or filled.
     
-        :returns: Whether the value is empty or not.
+        - returns: Whether the value is empty or not.
     */
     func isSet() -> Bool {
         return platformValue != nil
@@ -67,9 +67,9 @@ class MD2Float: MD2NumericType {
     /**
         Greater-or-equal comparison method.
     
-        :param: value The value to compare with.
+        - parameter value: The value to compare with.
     
-        :returns: Whether the object is greater or equal to the parameter value.
+        - returns: Whether the object is greater or equal to the parameter value.
     */
     func gt(value: MD2NumericType) -> Bool {
         if value is MD2Integer && isSet() && value.isSet() {
@@ -83,9 +83,9 @@ class MD2Float: MD2NumericType {
     /**
         Greater-or-equal comparison method.
     
-        :param: value The value to compare with.
+        - parameter value: The value to compare with.
     
-        :returns: Whether the object is greater or equal to the parameter value.
+        - returns: Whether the object is greater or equal to the parameter value.
     */
     func gte(value: MD2NumericType) -> Bool {
         return gt(value) || equals(value)
@@ -94,9 +94,9 @@ class MD2Float: MD2NumericType {
     /**
         Lower-than comparison method.
     
-        :param: value The value to compare with.
+        - parameter value: The value to compare with.
     
-        :returns: Whether the object is lower than the parameter value.
+        - returns: Whether the object is lower than the parameter value.
     */
     func lt(value: MD2NumericType) -> Bool {
         if value is MD2Integer && isSet() && value.isSet() {
@@ -110,9 +110,9 @@ class MD2Float: MD2NumericType {
     /**
         Lower-or-equal comparison method.
     
-        :param: value The value to compare with.
+        - parameter value: The value to compare with.
     
-        :returns: Whether the object is lower or equal to the parameter value.
+        - returns: Whether the object is lower or equal to the parameter value.
     */
     func lte(value: MD2NumericType) -> Bool {
         return lt(value) || equals(value)
@@ -121,7 +121,7 @@ class MD2Float: MD2NumericType {
     /**
         Clone an object.
     
-        :returns: A copy of the object.
+        - returns: A copy of the object.
     */
     func clone() -> MD2Type {
         return MD2Float(self)
@@ -130,7 +130,7 @@ class MD2Float: MD2NumericType {
     /**
         Get a string representation of the object.
     
-        :returns: The string representation
+        - returns: The string representation
     */
     func toString() -> String {
         return platformValue != nil ? platformValue!.description : ""
@@ -139,9 +139,9 @@ class MD2Float: MD2NumericType {
     /**
         Compare two objects based on their content (not just comparing references).
     
-        :param: value The object to compare with.
+        - parameter value: The object to compare with.
     
-        :returns: Whether the values are equal or not.
+        - returns: Whether the values are equal or not.
     */
     func equals(value : MD2Type) -> Bool {
         if value is MD2Integer && isSet() && (value as! MD2Integer).isSet() {

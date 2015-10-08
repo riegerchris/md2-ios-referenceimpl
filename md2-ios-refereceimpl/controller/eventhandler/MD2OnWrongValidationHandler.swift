@@ -28,8 +28,8 @@ class MD2OnWrongValidationHandler: MD2WidgetEventHandler {
     /**
         Register an action.
     
-        :param: action The action to execute in case of an event.
-        :param: widget The widget that the action should be bound to.
+        - parameter action: The action to execute in case of an event.
+        - parameter widget: The widget that the action should be bound to.
     */
     func registerAction(action: MD2Action, widget: MD2WidgetWrapper) {
         actions[action.actionSignature] = (action, widget)
@@ -38,8 +38,8 @@ class MD2OnWrongValidationHandler: MD2WidgetEventHandler {
     /**
         Unregister an action.
     
-        :param: action The action to remove.
-        :param: widget The widget the action was registered to.
+        - parameter action: The action to remove.
+        - parameter widget: The widget the action was registered to.
     */
     func unregisterAction(action: MD2Action, widget: MD2WidgetWrapper) {
         for (key, value) in actions {
@@ -55,7 +55,7 @@ class MD2OnWrongValidationHandler: MD2WidgetEventHandler {
     
         *Notice* Visible to Objective-C runtime to receive events from UI elements.
     
-        :param: sender The widget sending the event.
+        - parameter sender: The widget sending the event.
     */
     @objc
     func fire(sender: MD2WidgetWrapper) {

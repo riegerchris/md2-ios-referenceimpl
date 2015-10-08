@@ -21,14 +21,14 @@ protocol MD2DataType: MD2Type {
     /** 
         Required initializer to deserialize values from a string representation.
         
-        :param: value The string representation.
+        - parameter value: The string representation.
     */
     init(_ value: MD2String)
     
     /**
         Determine whether the represented value is empty/unset or filled.
     
-        :returns: Whether the value is empty or not.
+        - returns: Whether the value is empty or not.
     */
     func isSet() -> Bool
     

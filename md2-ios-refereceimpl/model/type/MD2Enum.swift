@@ -21,28 +21,28 @@ protocol MD2Enum: MD2Type {
     /**
         Deserialize the string representation to an enumeration value.
 
-        :param: value The string representation to use.
+        - parameter value: The string representation to use.
     */
     func setValueFromString(value: MD2String)
     
     /**
         Helper function due to missing introspection capabilities: Retrieve a list of all enumeration values.
 
-        :returns: List of string values
+        - returns: List of string values
     */
     func getAllValues() -> Array<String>
     
     /**
         Serialization of an enumeration value to integer.
     
-        :returns: The integer value.
+        - returns: The integer value.
     */
     func toInt() -> Int
     
     /**
         Deserialization from an integer value.
 
-        :param: value The value to convert to an enumeration.
+        - parameter value: The value to convert to an enumeration.
     */
     func setValueFromInt(value: Int)
 }

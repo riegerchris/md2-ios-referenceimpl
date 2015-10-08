@@ -18,8 +18,8 @@ class MD2DisplayMessageAction: MD2Action {
     /**
         Default initializer.
     
-        :param: actionSignature The action identifier.
-        :param: message The message to display.
+        - parameter actionSignature: The action identifier.
+        - parameter message: The message to display.
     */
     init(actionSignature: String, message: String) {
         self.actionSignature = actionSignature
@@ -34,7 +34,7 @@ class MD2DisplayMessageAction: MD2Action {
     /**
         Compare two action objects.
 
-        :param: anotherAction The action to compare with.
+        - parameter anotherAction: The action to compare with.
     */
     func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature

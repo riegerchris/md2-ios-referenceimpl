@@ -23,8 +23,8 @@ protocol MD2Widget: class {
     /**
         Render the view element, i.e. specifying the position and appearance of the widget.
     
-        :param: view The surrounding view element.
-        :param: controller The responsible view controller.
+        - parameter view: The surrounding view element.
+        - parameter controller: The responsible view controller.
     */
     func render(view: UIView, controller: UIViewController)
 
@@ -35,9 +35,9 @@ protocol MD2Widget: class {
     
         *NOTICE* The occupied space usually differs from the dimensions property as it refers to the *outer* dimensions in contrast to the dimensions property referring to *inner* dimensions. The difference represents the gutter included in the widget positioning process.
     
-        :param: bounds The available screen space.
+        - parameter bounds: The available screen space.
     
-        :returns: The occupied outer dimensions of the widget.
+        - returns: The occupied outer dimensions of the widget.
     */
     func calculateDimensions(bounds: MD2Dimension) -> MD2Dimension
     

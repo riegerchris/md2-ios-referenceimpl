@@ -18,8 +18,8 @@ class MD2FireEventAction: MD2Action {
     /**
         Default initializer.
     
-        :param: actionSignature The action identifier.
-        :param: event The workflow event to trigger.
+        - parameter actionSignature: The action identifier.
+        - parameter event: The workflow event to trigger.
     */
     init(actionSignature: String, event: MD2WorkflowEvent) {
         self.actionSignature = actionSignature
@@ -34,7 +34,7 @@ class MD2FireEventAction: MD2Action {
     /**
         Compare two action objects.
     
-        :param: anotherAction The action to compare with.
+        - parameter anotherAction: The action to compare with.
     */
     func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature

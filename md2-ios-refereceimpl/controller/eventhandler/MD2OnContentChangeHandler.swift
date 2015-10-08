@@ -23,9 +23,9 @@ class MD2OnContentChangeHandler: MD2ContentProviderEventHandler {
     /**
         Register an action.
     
-        :param: action The action to execute in case of an event.
-        :param: contentProvider The content provider that the action should be bound to.
-        :param: attribute The content provider attribute the action should be bound to.
+        - parameter action: The action to execute in case of an event.
+        - parameter contentProvider: The content provider that the action should be bound to.
+        - parameter attribute: The content provider attribute the action should be bound to.
     */
     func registerAction(action: MD2Action, contentProvider: MD2ContentProvider, attribute: String) {
         actions[MD2ContentProviderAttributeIdentity(contentProvider, attribute)] = action
@@ -34,9 +34,9 @@ class MD2OnContentChangeHandler: MD2ContentProviderEventHandler {
     /**
         Unregister an action.
     
-        :param: action The action to remove.
-        :param: contentProvider The content provider the action was registered to.
-        :param: attribute The content provider attribute the action was registered to.
+        - parameter action: The action to remove.
+        - parameter contentProvider: The content provider the action was registered to.
+        - parameter attribute: The content provider attribute the action was registered to.
     */
     func unregisterAction(action: MD2Action, contentProvider: MD2ContentProvider, attribute: String) {
         for (cpaIdentity, value) in actions {
@@ -50,12 +50,12 @@ class MD2OnContentChangeHandler: MD2ContentProviderEventHandler {
     /**
         Method that is called to fire an event.
     
-        :param: contentProviderAttributeIdentity The content provider attribute sending the event.
+        - parameter contentProviderAttributeIdentity: The content provider attribute sending the event.
     */
     func fire(contentProviderAttributeIdentity: MD2ContentProviderAttributeIdentity) {
         for (cpaIdentity, action) in actions {
             if cpaIdentity == contentProviderAttributeIdentity {
-                println("[OnContentChangeHandler] Execute action")
+                print("[OnContentChangeHandler] Execute action")
                 action.execute()
             }
         }

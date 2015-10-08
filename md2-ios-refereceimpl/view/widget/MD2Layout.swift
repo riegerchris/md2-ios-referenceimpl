@@ -15,7 +15,7 @@ protocol MD2Layout: MD2Widget {
     /**
         Add a view elements to the list of contained view elements.
 
-        :param: widget The view element to add.
+        - parameter widget: The view element to add.
     */
     func addWidget(widget: MD2Widget)
     

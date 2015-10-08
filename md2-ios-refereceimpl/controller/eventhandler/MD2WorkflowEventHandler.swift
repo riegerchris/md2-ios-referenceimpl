@@ -26,9 +26,9 @@ class MD2WorkflowEventHandler: MD2EventHandler {
     /**
         Register workflow elements for a specific event and action.
     
-        :param: workflowEvent The workflow event to react to.
-        :param: action The type of action (start/end) to perform.
-        :param: workflowElement The workflow element to start or end.
+        - parameter workflowEvent: The workflow event to react to.
+        - parameter action: The type of action (start/end) to perform.
+        - parameter workflowElement: The workflow element to start or end.
     */
     func registerWorkflowElement(workflowEvent: MD2WorkflowEvent, action: MD2WorkflowAction, workflowElement: MD2WorkflowElement) {
         for (event, action, element) in workflowElements {
@@ -44,12 +44,12 @@ class MD2WorkflowEventHandler: MD2EventHandler {
     /**
         Unregister workflow elements for a specific event and action.
     
-        :param: workflowEvent The workflow event to react to.
-        :param: action The type of action (start/end) to perform.
-        :param: workflowElement The workflow element to start or end.
+        - parameter workflowEvent: The workflow event to react to.
+        - parameter action: The type of action (start/end) to perform.
+        - parameter workflowElement: The workflow element to start or end.
     */
     func unregisterWorkflowElement(workflowEvent: MD2WorkflowEvent, action: MD2WorkflowAction, workflowElement: MD2WorkflowElement) {
-        for (index, (event, action, element)) in enumerate(workflowElements) {
+        for (index, (event, action, element)) in workflowElements.enumerate() {
             if event == workflowEvent && action == action && element === workflowElement {
                 workflowElements.removeAtIndex(index)
                 break
@@ -60,11 +60,11 @@ class MD2WorkflowEventHandler: MD2EventHandler {
     /**
         Function to trigger the event.
     
-        :param: sender The workflow event to be fired.
+        - parameter sender: The workflow event to be fired.
     */
     @objc
     func fire(sender: MD2WorkflowEvent) {
-        println("Event fired to WorkflowEventHandler: " + String(sender.description))
+        print("Event fired to WorkflowEventHandler: " + String(sender.description))
         
         for (event, action, workflowElement) in self.workflowElements {
             if event == sender {

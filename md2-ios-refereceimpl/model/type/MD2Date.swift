@@ -29,11 +29,11 @@ class MD2Date: MD2TemporalType {
     /**
         Required initializer to deserialize values from a string representation.
     
-        :param: value The string representation.
+        - parameter value: The string representation.
     */
     required init(_ value: MD2String) {
         if value.isSet() && !value.equals(MD2String("")) {
-            var dateFormatter = NSDateFormatter()
+            let dateFormatter = NSDateFormatter()
             dateFormatter.timeZone = NSTimeZone.defaultTimeZone()
             dateFormatter.dateFormat = MD2ModelConfig.STRING_FORMAT_DATE
             
@@ -44,7 +44,7 @@ class MD2Date: MD2TemporalType {
     /**
         Initializer to create an MD2 data type from a native string value.
     
-        :param: value The string representation.
+        - parameter value: The string representation.
     */
     convenience init(_ value: String) {
         self.init(MD2String(value))
@@ -53,7 +53,7 @@ class MD2Date: MD2TemporalType {
     /**
         Initialitzer to create an MD2 data type from another MD2Date value.
     
-        :param: md2Date The MD2 data type to copy.
+        - parameter md2Date: The MD2 data type to copy.
     */
     init(_ md2Date: MD2Date) {
         platformValue = md2Date.platformValue
@@ -62,7 +62,7 @@ class MD2Date: MD2TemporalType {
     /**
         Determine whether the represented value is empty/unset or filled.
     
-        :returns: Whether the value is empty or not.
+        - returns: Whether the value is empty or not.
     */
     func isSet() -> Bool {
         return platformValue != nil
@@ -71,9 +71,9 @@ class MD2Date: MD2TemporalType {
     /**
         Greater-than comparison method.
     
-        :param: value The value to compare with.
+        - parameter value: The value to compare with.
     
-        :returns: Whether the object is greater than the parameter value.
+        - returns: Whether the object is greater than the parameter value.
     */
     func gt(value: MD2TemporalType) -> Bool {
         if value is MD2Date || value is MD2DateTime {
@@ -89,9 +89,9 @@ class MD2Date: MD2TemporalType {
     /**
         Greater-or-equal comparison method.
     
-        :param: value The value to compare with.
+        - parameter value: The value to compare with.
     
-        :returns: Whether the object is greater or equal to the parameter value.
+        - returns: Whether the object is greater or equal to the parameter value.
     */
     func gte(value: MD2TemporalType) -> Bool {
         if value is MD2Date {
@@ -113,9 +113,9 @@ class MD2Date: MD2TemporalType {
     /**
         Lower-than comparison method.
     
-        :param: value The value to compare with.
+        - parameter value: The value to compare with.
     
-        :returns: Whether the object is lower than the parameter value.
+        - returns: Whether the object is lower than the parameter value.
     */
     func lt(value: MD2TemporalType) -> Bool {
         if value is MD2Date {
@@ -133,9 +133,9 @@ class MD2Date: MD2TemporalType {
     /**
         Lower-or-equal comparison method.
     
-        :param: value The value to compare with.
+        - parameter value: The value to compare with.
     
-        :returns: Whether the object is lower or equal to the parameter value.
+        - returns: Whether the object is lower or equal to the parameter value.
     */
     func lte(value: MD2TemporalType) -> Bool {
         if value is MD2Date {
@@ -157,7 +157,7 @@ class MD2Date: MD2TemporalType {
     /**
         Clone an object.
     
-        :returns: A copy of the object.
+        - returns: A copy of the object.
     */
     func clone() -> MD2Type {
         return MD2Date(self)
@@ -166,14 +166,14 @@ class MD2Date: MD2TemporalType {
     /**
         Get a string representation of the object.
     
-        :returns: The string representation
+        - returns: The string representation
     */
     func toString() -> String {
         if platformValue == nil {
             return ""
         }
         
-        var dateFormatter = NSDateFormatter()
+        let dateFormatter = NSDateFormatter()
         dateFormatter.timeZone = NSTimeZone.defaultTimeZone()
         dateFormatter.dateFormat = MD2ModelConfig.STRING_FORMAT_DATE
         
@@ -183,9 +183,9 @@ class MD2Date: MD2TemporalType {
     /**
         Compare two objects based on their content (not just comparing references).
     
-        :param: value The object to compare with.
+        - parameter value: The object to compare with.
     
-        :returns: Whether the values are equal or not.
+        - returns: Whether the values are equal or not.
     */
     func equals(value : MD2Type) -> Bool {
         if value is MD2TemporalType {

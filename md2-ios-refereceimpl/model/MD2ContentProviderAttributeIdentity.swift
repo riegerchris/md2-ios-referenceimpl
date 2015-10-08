@@ -28,7 +28,7 @@ func ==(lhs: MD2ContentProviderAttributeIdentity, rhs: MD2ContentProviderAttribu
 
     - must implement the Hashable protocol (which itself requires the Equatable protocol)
 */
-@objc
+
 class MD2ContentProviderAttributeIdentity: Hashable {
     
 	/// The content provider object.
@@ -50,8 +50,8 @@ class MD2ContentProviderAttributeIdentity: Hashable {
 	/**
         Initializing function which automatically sets a random hash value.
 	
-        :param: contentProvider The content provider object.
-        :param: attribute The attribute string.
+        - parameter contentProvider: The content provider object.
+        - parameter attribute: The attribute string.
 	*/
     init(_ contentProvider: MD2ContentProvider, _ attribute: String) {
         self.contentProvider = contentProvider

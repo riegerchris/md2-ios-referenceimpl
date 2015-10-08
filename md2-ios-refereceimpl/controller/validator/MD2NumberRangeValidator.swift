@@ -33,10 +33,10 @@ class MD2NumberRangeValidator: MD2Validator {
     /**
         Default initializer.
     
-        :param: identifier The unique validator identifier.
-        :param: message Closure of the custom method to display.
-        :param: min The minimum value of a valid number.
-        :param: max The maximum value of a valid number.
+        - parameter identifier: The unique validator identifier.
+        - parameter message: Closure of the custom method to display.
+        - parameter min: The minimum value of a valid number.
+        - parameter max: The maximum value of a valid number.
     */
     init(identifier: MD2String, message: (() -> MD2String)?, min: MD2Float, max: MD2Float) {
         self.identifier = identifier
@@ -48,7 +48,7 @@ class MD2NumberRangeValidator: MD2Validator {
     /**
         Validate a value.
     
-        :param: value The value to check.
+        - parameter value: The value to check.
     
         :return: Validation result
     */

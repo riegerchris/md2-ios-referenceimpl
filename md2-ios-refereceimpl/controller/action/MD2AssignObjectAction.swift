@@ -24,10 +24,10 @@ class MD2AssignObjectAction: MD2Action {
     /**
         Default initializer.
     
-        :param: actionSignature The action identifier.
-        :param: assignContentProvider The content provider to assign.
-        :param: toContentProvider The content procider to assign the other provider to.
-        :param: attribute The attribute of the target content provider to set.
+        - parameter actionSignature: The action identifier.
+        - parameter assignContentProvider: The content provider to assign.
+        - parameter toContentProvider: The content procider to assign the other provider to.
+        - parameter attribute: The attribute of the target content provider to set.
     */
     init(actionSignature: String, assignContentProvider: MD2ContentProvider, toContentProvider: MD2ContentProvider, attribute: String) {
         
@@ -45,7 +45,7 @@ class MD2AssignObjectAction: MD2Action {
     /**
         Compare two action objects.
     
-        :param: anotherAction The action to compare with.
+        - parameter anotherAction: The action to compare with.
     */
     func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature

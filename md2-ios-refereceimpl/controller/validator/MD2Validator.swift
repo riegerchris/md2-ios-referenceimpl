@@ -21,7 +21,7 @@ protocol MD2Validator {
     /**
         Validate a value.
 
-        :param: value The value to check.
+        - parameter value: The value to check.
 
         :return: Validation result
     */

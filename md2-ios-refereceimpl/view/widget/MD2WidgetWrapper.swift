@@ -9,10 +9,10 @@
 /**
     Helper function needed to implement Equatable protocol as supertype of Hashable.
 
-    :param: lhs The first widget wrapper to compare.
-    :param: rhs The second widget wrapper to compare.
+    - parameter lhs: The first widget wrapper to compare.
+    - parameter rhs: The second widget wrapper to compare.
 
-    :returns: Whether the widget wrappers are the same.
+    - returns: Whether the widget wrappers are the same.
 */
 func ==(lhs: MD2WidgetWrapper, rhs: MD2WidgetWrapper) -> Bool {
     return lhs.widgetId == rhs.widgetId
@@ -25,7 +25,7 @@ func ==(lhs: MD2WidgetWrapper, rhs: MD2WidgetWrapper) -> Bool {
 
     *NOTICE* Make visible to Objective-C to allow as sender in event handling.
 */
-@objc
+
 class MD2WidgetWrapper: Hashable {
     
     /// The wrapped view element.
@@ -53,7 +53,7 @@ class MD2WidgetWrapper: Hashable {
         didSet (oldValue) {
             // Check that data is valid and reset value to old state if not
             if !validate(value) {
-                println("[WidgetWrapper] Fire OnWrongValidationEvent")
+                print("[WidgetWrapper] Fire OnWrongValidationEvent")
                 MD2OnWrongValidationHandler.instance.fire(self)
                 self.value = oldValue
             } else if self.value.equals(oldValue) == false {
@@ -61,7 +61,7 @@ class MD2WidgetWrapper: Hashable {
                 
                 // Ensure synchronized behavior with widget
                 widget?.value = value
-                println("[WidgetWrapper] Value for \(widgetId.description) changed from '\(oldValue.toString())' to '\(self.value.toString())' -> fire OnWidgetChangeEvent")
+                print("[WidgetWrapper] Value for \(widgetId.description) changed from '\(oldValue.toString())' to '\(self.value.toString())' -> fire OnWidgetChangeEvent")
                 // Fire change event to inform about change
                 MD2OnWidgetChangeHandler.instance.fire(self)
             }
@@ -81,7 +81,7 @@ class MD2WidgetWrapper: Hashable {
     /**
         Convenience initializer to create a wrapper element for a given view element.
 
-        :param: widget The view element to wrap.
+        - parameter widget: The view element to wrap.
     */
     init(widget: MD2SingleWidget){
         self.widget = widget
@@ -93,7 +93,7 @@ class MD2WidgetWrapper: Hashable {
     /**
         Set a widget to wrap.
 
-        :param: widget The view element to wrap.
+        - parameter widget: The view element to wrap.
     */
     func setWidget(widget: MD2SingleWidget){
         self.widget = widget
@@ -120,7 +120,7 @@ class MD2WidgetWrapper: Hashable {
     /** 
         Enable/Disable the wrapped view element.
 
-        :param: isDisabled Whether to deactivate or activate the view element.
+        - parameter isDisabled: Whether to deactivate or activate the view element.
     */
     func setDisabled(isDisabled: Bool) {
         isElementDisabled = isDisabled // property observer will care about the rest
@@ -129,7 +129,7 @@ class MD2WidgetWrapper: Hashable {
     /**
         Check if the view element is disabled.
 
-        :returns: Whether the element is disabled.
+        - returns: Whether the element is disabled.
     */
     func isDisabled() -> Bool {
         return isElementDisabled
@@ -138,7 +138,7 @@ class MD2WidgetWrapper: Hashable {
     /**
         Get the value of the view element.
 
-        :returns: The value if set.
+        - returns: The value if set.
     */
     func getValue() -> MD2Type? {
         return widget?.value
@@ -147,7 +147,7 @@ class MD2WidgetWrapper: Hashable {
     /**
         Set the value of the wrapped view element.
 
-        :param: value The value to set
+        - parameter value: The value to set
     */
     func setValue(value: MD2Type) {
         self.value = value  // property observer will care about the rest
@@ -156,7 +156,7 @@ class MD2WidgetWrapper: Hashable {
     /**
         Add a validator the value has to comply to.
 
-        :param: validator The validator to add.
+        - parameter validator: The validator to add.
     */
     func addValidator(validator: MD2Validator) {
         validators.append(validator)
@@ -165,12 +165,12 @@ class MD2WidgetWrapper: Hashable {
     /**
         Remove a validator (by reference).
     
-        :param: validator The validator to add.
+        - parameter validator: The validator to add.
     */
     func removeValidator(validator: MD2Validator){
         if validators.isEmpty { return }
         
-        for i in 0..<count(validators) {
+        for i in 0..<validators.count {
             if validators[i].identifier.equals(validator.identifier) {
                 validators.removeAtIndex(i)
                 break
@@ -181,9 +181,9 @@ class MD2WidgetWrapper: Hashable {
     /**
         Validate the current value.
     
-        :param: value The value to validate.
+        - parameter value: The value to validate.
 
-        :returns: The validation result.
+        - returns: The validation result.
     */
     func validate(value: MD2Type) -> Bool {
         var validationResult: Bool = true

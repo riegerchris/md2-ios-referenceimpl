@@ -12,23 +12,23 @@ protocol MD2DataStore {
     /**
         Query the data store.
 
-        :param: query The query to specify which entity to retrieve.
+        - parameter query: The query to specify which entity to retrieve.
 
-        :returns: The entity (if exists).
+        - returns: The entity (if exists).
     */
     func query(query: MD2Query) -> MD2Entity?
     
     /**
         Create or update the entity in the data store.
 
-        :param: entity The entity to persist.
+        - parameter entity: The entity to persist.
     */
     func put(entity: MD2Entity)
     
     /**
         Remove an entity from the data store by Id.
 
-        :param: internalId The Id of the entity to remove.
+        - parameter internalId: The Id of the entity to remove.
     */
     func remove(internalId: MD2Integer)
     

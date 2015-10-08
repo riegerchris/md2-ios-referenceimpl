@@ -19,8 +19,8 @@ class MD2CombinedAction: MD2Action {
     /**
     Default initializer.
     
-    :param: actionSignature The action identifier.
-    :param: actionList The list of contained actions.
+    - parameter actionSignature: The action identifier.
+    - parameter actionList: The list of contained actions.
     */
     init(actionSignature: String, actionList: Array<MD2Action>) {
         self.actionSignature = actionSignature
@@ -37,7 +37,7 @@ class MD2CombinedAction: MD2Action {
     /**
         Compare two action objects.
     
-        :param: anotherAction The action to compare with.
+        - parameter anotherAction: The action to compare with.
     */
     func equals(anotherAction: MD2Action) -> Bool {
         return actionSignature == anotherAction.actionSignature

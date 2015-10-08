@@ -45,7 +45,7 @@ class MD2OptionWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UIPickerVie
     /**
         Default initializer.
     
-        :param: widgetId Widget identifier
+        - parameter widgetId: Widget identifier
     */
     init(widgetId: MD2WidgetMapping) {
         self.widgetId = widgetId
@@ -56,8 +56,8 @@ class MD2OptionWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UIPickerVie
     /**
         Render the view element, i.e. specifying the position and appearance of the widget.
     
-        :param: view The surrounding view element.
-        :param: controller The responsible view controller.
+        - parameter view: The surrounding view element.
+        - parameter controller: The responsible view controller.
     */
     func render(view: UIView, controller: UIViewController) {
         if dimensions == nil {
@@ -101,9 +101,9 @@ class MD2OptionWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UIPickerVie
     
         *NOTICE* The occupied space usually differs from the dimensions property as it refers to the *outer* dimensions in contrast to the dimensions property referring to *inner* dimensions. The difference represents the gutter included in the widget positioning process.
     
-        :param: bounds The available screen space.
+        - parameter bounds: The available screen space.
     
-        :returns: The occupied outer dimensions of the widget.
+        - returns: The occupied outer dimensions of the widget.
     */
     func calculateDimensions(bounds: MD2Dimension) -> MD2Dimension {
         let outerDimensions = MD2Dimension(
@@ -122,7 +122,7 @@ class MD2OptionWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UIPickerVie
     /**
         Data source method: Specify the number of wheels. Value selector only has one.
     
-        :param: colorPicker The picker element.
+        - parameter colorPicker: The picker element.
     
         :return: Option selector only has one wheel.
     */
@@ -134,8 +134,8 @@ class MD2OptionWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UIPickerVie
     /**
         Data source method: Get the total number of rows in the wheel.
         
-        :param: pickerView The picker element.
-        :param: numberOfRowsInComponent The number of rows in a wheel (widget has only one).
+        - parameter pickerView: The picker element.
+        - parameter numberOfRowsInComponent: The number of rows in a wheel (widget has only one).
     
         :return: The number of values.
     */
@@ -147,11 +147,11 @@ class MD2OptionWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UIPickerVie
     /**
         Delegate method to update the picker view element with the respective value.
         
-        :param: pickerView The picker element.
-        :param: titleForRow Index of the selected row.
-        :param: forComponent Index of the selected wheel (only has one).
+        - parameter pickerView: The picker element.
+        - parameter titleForRow: Index of the selected row.
+        - parameter forComponent: Index of the selected wheel (only has one).
     
-        :returns: The string value to display for this item.
+        - returns: The string value to display for this item.
     */
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
         return options?[row] ?? ""
@@ -160,9 +160,9 @@ class MD2OptionWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UIPickerVie
     /**
         Synchronize text field with input wheels.
     
-        :param: pickerView The picker element.
-        :param: didSelectRow Index of the selected row.
-        :param: inComponent Index of the selected wheel (only has one).
+        - parameter pickerView: The picker element.
+        - parameter didSelectRow: Index of the selected row.
+        - parameter inComponent: Index of the selected wheel (only has one).
     */
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // Update text field on scrolling
@@ -211,7 +211,7 @@ class MD2OptionWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UIPickerVie
     func updateElement() {
         self.widgetElement.text = value.toString()
         
-        var defaultRowIndex = find(options!, self.value.toString())
+        var defaultRowIndex = (options!).indexOf(self.value.toString())
         if(defaultRowIndex == nil) { defaultRowIndex = 0 }
         self.picker.selectRow(defaultRowIndex!, inComponent: 0, animated: false)
     }
