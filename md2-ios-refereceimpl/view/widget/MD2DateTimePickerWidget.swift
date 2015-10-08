@@ -146,7 +146,7 @@ class MD2DateTimePickerWidget: NSObject, MD2SingleWidget, UIGestureRecognizerDel
         self.widgetElement.text = formatter.stringFromDate(self.pickerElement!.date)
         
         // Update event
-        self.value = MD2String(self.widgetElement.text)
+        self.value = MD2String(self.widgetElement.text!)
         MD2WidgetRegistry.instance.getWidget(widgetId)?.setValue(self.value)
     }
     

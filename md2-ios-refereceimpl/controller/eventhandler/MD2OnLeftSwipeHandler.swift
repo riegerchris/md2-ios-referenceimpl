@@ -42,7 +42,7 @@ class MD2OnLeftSwipeHandler: MD2WidgetEventHandler {
         - parameter widget: The widget the action was registered to.
     */
     func unregisterAction(action: MD2Action, widget: MD2WidgetWrapper) {
-        for (key, value) in actions {
+        for (key, _) in actions {
             if key == action.actionSignature {
                 actions[key] = nil
                 break

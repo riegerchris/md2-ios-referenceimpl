@@ -132,11 +132,10 @@ class MD2LocalStore<T: MD2Entity>: MD2DataStore {
             request.predicate = NSCompoundPredicate(type: NSCompoundPredicateType.OrPredicateType, subpredicates: requestPredicates)
         }
         
-        let error: NSError?
         let results: NSArray = try! managedContext.executeFetchRequest(request)
         
-        if error != nil {
-            print("Could not load \(error), \(error?.userInfo)")
+        if results.count == 0 {
+            print("Could not load!")
         }
         
         return results

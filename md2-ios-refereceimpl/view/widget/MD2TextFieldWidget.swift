@@ -182,7 +182,7 @@ class MD2TextFieldWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UITextFi
         Target for the value change event. Updates the stored value and passes it to the respective widget wrapper which will process the value, e.g. applying validators and firing further events.
     */
     func onUpdate() {
-        self.value = MD2String(self.widgetElement.text)
+        self.value = MD2String(self.widgetElement.text!)
         MD2WidgetRegistry.instance.getWidget(widgetId)?.setValue(self.value)
     }
     

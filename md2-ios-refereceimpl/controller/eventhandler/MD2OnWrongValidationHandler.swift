@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 /// Event handler for failed validations.
@@ -42,7 +43,7 @@ class MD2OnWrongValidationHandler: MD2WidgetEventHandler {
         - parameter widget: The widget the action was registered to.
     */
     func unregisterAction(action: MD2Action, widget: MD2WidgetWrapper) {
-        for (key, value) in actions {
+        for (key, _) in actions {
             if key == action.actionSignature {
                 actions[key] = nil
                 break

@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
+import Foundation
+
 /// The workflow event handler to hook the workflow layer into the MD2 event system.
 class MD2WorkflowEventHandler: MD2EventHandler {
     

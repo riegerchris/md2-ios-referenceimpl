@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
+import Foundation
+
 /// Event handler for location updates.
 class MD2OnLocationUpdateHandler: MD2GlobalEventHandler {
     
@@ -30,7 +32,7 @@ class MD2OnLocationUpdateHandler: MD2GlobalEventHandler {
         - parameter action: The action to remove.
     */
     func unregisterAction(action: MD2Action) {
-        for (key, value) in actions {
+        for (key, _) in actions {
             if key == action.actionSignature {
                 actions[key] = nil
                 break

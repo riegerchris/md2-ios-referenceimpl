@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Christoph Rieger. All rights reserved.
 //
 
+import Foundation
+
 /**
     Helper function needed to implement Equatable protocol as supertype of Hashable.
 
@@ -26,7 +28,8 @@ func ==(lhs: MD2WidgetWrapper, rhs: MD2WidgetWrapper) -> Bool {
     *NOTICE* Make visible to Objective-C to allow as sender in event handling.
 */
 
-class MD2WidgetWrapper: Hashable {
+@objc
+class MD2WidgetWrapper: NSObject {
     
     /// The wrapped view element.
     var widget: MD2SingleWidget?
@@ -72,7 +75,7 @@ class MD2WidgetWrapper: Hashable {
     var validators: Array<MD2Validator> = []
     
     /// Hash value as required by hashable interface
-    var hashValue: Int {
+    override var hashValue: Int {
         get {
             return widgetId.rawValue
         }

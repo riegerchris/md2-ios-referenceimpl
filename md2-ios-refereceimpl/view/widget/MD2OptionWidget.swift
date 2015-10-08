@@ -153,7 +153,7 @@ class MD2OptionWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UIPickerVie
     
         - returns: The string value to display for this item.
     */
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return options?[row] ?? ""
     }
     
@@ -201,7 +201,7 @@ class MD2OptionWidget: NSObject, MD2SingleWidget, MD2AssistedWidget, UIPickerVie
         Target for the value change event. Updates the stored value and passes it to the respective widget wrapper which will process the value, e.g. applying validators and firing further events.
     */
     func onUpdate() {
-        self.value = MD2String(self.widgetElement.text)
+        self.value = MD2String(self.widgetElement.text!)
         MD2WidgetRegistry.instance.getWidget(widgetId)?.setValue(self.value)
     }
     

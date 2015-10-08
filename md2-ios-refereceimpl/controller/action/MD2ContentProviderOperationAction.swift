@@ -37,7 +37,6 @@ class MD2ContentProviderOperationAction: MD2Action {
         case AllowedOperation.Load: contentProvider.load()
         case AllowedOperation.Save: contentProvider.save()
         case AllowedOperation.Remove: contentProvider.remove()
-        default: return
         }
     }
     

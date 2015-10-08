@@ -40,7 +40,7 @@ class MD2RestClient: NSObject {
         let session = NSURLSession.sharedSession()
             
         let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            let json:JSON = JSON(data: data)
+            let json:JSON = JSON(data: data!)
             onCompletion(json, error)
         })
         task.resume()
@@ -66,12 +66,10 @@ class MD2RestClient: NSObject {
         print("Request to " + path)
         
         var response: NSURLResponse?
-        var error: NSError?
         let urlData: NSData?
         do {
             urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)
-        } catch let error1 as NSError {
-            error = error1
+        } catch _ as NSError {
             urlData = nil
         }
         
@@ -95,7 +93,6 @@ class MD2RestClient: NSObject {
         - parameter onCompletion: The callback fuction to call after completing the request.
     */
     func makeHTTPPostRequest(path: String, body: JSON, onCompletion: ServiceResponse) {
-        let err: NSError? = NSError()
         let request = NSMutableURLRequest(URL: NSURL(string: path)!)
         
         request.HTTPMethod = "POST"
@@ -111,9 +108,9 @@ class MD2RestClient: NSObject {
                 print("Response code: " + String(httpResponse.statusCode))
             }
             
-            let json:JSON = JSON(data: data)
+            let json:JSON = JSON(data: data!)
             print(json.rawString())
-            onCompletion(json, err)
+            onCompletion(json, nil)
         })
         task.resume()
     }
@@ -126,7 +123,6 @@ class MD2RestClient: NSObject {
         - parameter onCompletion: The callback fuction to call after completing the request.
     */
     func makeHTTPDeleteRequest(path: String, body: JSON, onCompletion: ServiceResponse) {
-        let err: NSError?
         let request = NSMutableURLRequest(URL: NSURL(string: path)!)
         
         request.HTTPMethod = "DELETE"
@@ -143,12 +139,12 @@ class MD2RestClient: NSObject {
             if let httpResponse = response as? NSHTTPURLResponse {
                 print("Response code: " + String(httpResponse.statusCode))
                 if httpResponse.statusCode == 204 {
-                    onCompletion(JSON(["result":true]), err)
+                    onCompletion(JSON(["result":true]), nil)
                     return
                 }
             }
             
-            onCompletion(JSON(["result":false]), err)
+            onCompletion(JSON(["result":false]), nil)
         })
         task.resume()
     }

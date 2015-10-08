@@ -39,7 +39,7 @@ class MD2OnContentChangeHandler: MD2ContentProviderEventHandler {
         - parameter attribute: The content provider attribute the action was registered to.
     */
     func unregisterAction(action: MD2Action, contentProvider: MD2ContentProvider, attribute: String) {
-        for (cpaIdentity, value) in actions {
+        for (cpaIdentity, _) in actions {
             if cpaIdentity == MD2ContentProviderAttributeIdentity(contentProvider, attribute) {
                 actions[cpaIdentity] = nil
                 break

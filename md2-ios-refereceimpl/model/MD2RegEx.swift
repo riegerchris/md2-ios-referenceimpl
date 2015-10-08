@@ -36,11 +36,9 @@ class MD2RegEx {
         self.pattern = pattern
         
         if let _ = pattern.platformValue {
-            var error: NSError?
             do {
                 expression = try NSRegularExpression(pattern: pattern.platformValue!, options: .CaseInsensitive)
-            } catch let error1 as NSError {
-                error = error1
+            } catch _ as NSError {
                 expression = nil
             }
         } else {

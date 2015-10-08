@@ -6,6 +6,8 @@
 // 	iOS generator for MD2 (version 1.0) written by Christoph Rieger on 28.09.2015 
 //
 
+import Foundation
+
 // Make visible to Objective-C to allow use as Dictionary key (e.g. in MD2WorkflowEventHandler)
 @objc
 /// Enumaration of all workflow events used throughout the app
@@ -22,7 +24,6 @@ enum MD2WorkflowEvent: Int {
         case .CancelWorkflowEvent: return "CancelWorkflowEvent"
         case .SubmitEvent: return "SubmitEvent"
         case .CancelComplaintWorkflowEvent: return "CancelComplaintWorkflowEvent"
-    	default: return "NotFound"
         }
     }
 }
